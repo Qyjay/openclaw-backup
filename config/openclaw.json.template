@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.13",
-    "lastTouchedAt": "2026-03-19T10:52:14.746Z"
+    "lastTouchedAt": "2026-03-20T02:02:15.129Z"
   },
   "wizard": {
     "lastRunAt": "2026-02-02T08:28:08.796Z",
@@ -116,13 +116,13 @@
           },
           {
             "id": "claude-opus-4-6-thinking-low",
-            "contextWindow": 200000,
-            "name": "claude-opus-4-6-thinking-low"
+            "name": "claude-opus-4-6-thinking-low",
+            "contextWindow": 200000
           },
           {
             "id": "claude-opus-4-6-thinking-medium",
-            "contextWindow": 200000,
-            "name": "claude-opus-4-6-thinking-medium"
+            "name": "claude-opus-4-6-thinking-medium",
+            "contextWindow": 200000
           }
         ]
       },
@@ -137,6 +137,47 @@
           {
             "id": "minimax-m2.7",
             "name": "MiniMax M2.7",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 8192
+          }
+        ]
+      },
+      "minimax-tokenplan": {
+        "baseUrl": "https://api.minimaxi.com/anthropic",
+        "apiKey": "<YOUR_API_KEY_HERE>",
+        "api": "anthropic-messages",
+        "models": [
+          {
+            "id": "MiniMax-M2.7",
+            "name": "MiniMax M2.7 (Token Plan)",
+            "api": "anthropic-messages",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "MiniMax-M2.7-highspeed",
+            "name": "MiniMax M2.7 Highspeed (Token Plan)",
+            "api": "anthropic-messages",
             "reasoning": false,
             "input": [
               "text"
@@ -180,6 +221,12 @@
         },
         "minimax-portal/MiniMax-M2.1-lightning": {
           "alias": "minimax-m2.1-lightning"
+        },
+        "minimax-tokenplan/MiniMax-M2.7": {
+          "alias": "m2.7-tp"
+        },
+        "minimax-tokenplan/MiniMax-M2.7-highspeed": {
+          "alias": "m2.7-hs"
         }
       },
       "workspace": "/Users/minimax/.openclaw/workspace",
