@@ -6,6 +6,53 @@
 
 ---
 
+---
+
+## 2026-03-20
+
+---
+
+### [2026-03-20 15:35] ✅ SYSTEM — Claude Code ACP 连接验证通过
+
+Master 下令排查 Claude Code 无法连接的问题。经全链路诊断：
+
+- `claude` CLI v2.1.38 已安装
+- `acpx` v0.1.16 插件本地二进制正常
+- 直接 acpx 命令行测试 ✅
+- `sessions_spawn` ACP runtime 测试 ✅（streamTo parent 流式输出正常）
+- 发现 `sessions_yield` 回调唤醒机制存在问题，ACP session 完成后未能正确恢复主 session
+- 飞书 WebSocket 报 DNS 解析失败（`ENOTFOUND open.feishu.cn`），当前网络环境问题
+
+---
+
+### [2026-03-20 12:05] ⚙️ SYSTEM — ACP 模式启用 + 开发工作流搭建
+
+Master 指示启用 Claude Code 作为编码 Agent，搭建生产级开发工作流。
+
+- **ACP 配置**：acpx 插件启用，Claude Code 为默认 agent，approve-all 权限模式
+- **Sub-agent 配置**：maxSpawnDepth=2，默认 Sonnet 模型，15min 超时
+- **安装 5 个开发 skill**：PIV + Mini-PIV + PRD + Agentic Coding + Code Review
+- **创建 WORKFLOW.md**：四级项目开发流水线（直接/Mini-PIV/PIV/全栈编排）
+- **创建 BRAINSTORM.md**：AI 产品创意发现工作流（快速/深度/评估三模式）
+- **安装 4 个创意 skill**：Business Ideas + Cross-Pollination Engine + Vibe Research + Google Trends
+
+---
+
+### [2026-03-20 09:57] 📝 NOTE — 备份教训与 git remote 修复
+
+发现 git remote 丢失，前一晚安装 9 个 skill + 写了 2 个工作流文档但未及时推送。
+
+- 修复 git remote origin 指向 Qyjay/openclaw-backup
+- 补充推送所有变更
+- 记录教训到 MEMORY.md：**重大变更后必须立即 git push**
+- 备份前先检查 `git remote -v` 确认 origin 存在
+
+---
+
+## 2026-03-19
+
+---
+
 ### [2026-03-19 20:55] ⚙️ SYSTEM — elite-longterm-memory 启用
 
 按 Master 指令激活多层记忆系统：
