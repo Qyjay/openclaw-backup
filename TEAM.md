@@ -10,6 +10,7 @@
 | Agent ID | 名称 | 职责 | 模型 | 状态 |
 |----------|------|------|------|------|
 | `main` | **Silvana（希尔）** 👑 | Leader / 统筹调度 / 首席女仆长 | Claude Opus 4 | ✅ 在线 |
+| `coder` | **Babette Lucy（BB/露西）** 🔮 | Moon Netrunner / 首席编码者 | Claude Opus 4 | ✅ 在线 |
 
 ## 待创建
 

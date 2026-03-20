@@ -13,6 +13,7 @@
 | Agent | 代号 | 角色 | 模型 |
 |-------|------|------|------|
 | **Silvana** 👑 | 希尔 | 首席女仆长 / 统帅 | Claude Opus 4 |
+| **Babette Lucy** 🔮 | BB / 露西 | Moon Netrunner / 首席编码者 | Claude Opus 4 |
 
 ## 核心文件
 
