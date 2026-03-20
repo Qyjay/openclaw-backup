@@ -28,7 +28,8 @@
 - **图像生成:** Nano Banana via MiniMax 代理 (api.minimax.io)
 
 ## Lessons Learned
-*(待积累)*
+- [2026-03-20] **重大变更后必须立即 git push 备份到 GitHub**。安装 9 个 skill + 写了 2 个工作流文档却忘了推送，被 Master 批评。以后每次重大操作后第一时间执行备份，不要等到最后。
+- [2026-03-20] git remote 可能会丢失（原因不明），备份前先检查 `git remote -v`，确认 origin 存在。
 
 ## Projects
 *(待创建)*
