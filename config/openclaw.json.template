@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.13",
-    "lastTouchedAt": "2026-03-20T02:02:15.129Z"
+    "lastTouchedAt": "2026-03-20T03:43:48.474Z"
   },
   "wizard": {
     "lastRunAt": "2026-02-02T08:28:08.796Z",
@@ -15,6 +15,22 @@
         "provider": "minimax-portal",
         "mode": "oauth"
       }
+    }
+  },
+  "acp": {
+    "enabled": true,
+    "backend": "acpx",
+    "defaultAgent": "claude",
+    "allowedAgents": [
+      "claude"
+    ],
+    "maxConcurrentSessions": 4,
+    "stream": {
+      "coalesceIdleMs": 300,
+      "maxChunkChars": 1200
+    },
+    "runtime": {
+      "ttlMinutes": 120
     }
   },
   "models": {
@@ -232,7 +248,11 @@
       "workspace": "/Users/minimax/.openclaw/workspace",
       "maxConcurrent": 4,
       "subagents": {
-        "maxConcurrent": 8
+        "maxConcurrent": 8,
+        "maxSpawnDepth": 2,
+        "maxChildrenPerAgent": 5,
+        "model": "sonnet",
+        "runTimeoutSeconds": 900
       }
     },
     "list": [
@@ -288,6 +308,13 @@
       },
       "feishu": {
         "enabled": true
+      },
+      "acpx": {
+        "enabled": true,
+        "config": {
+          "permissionMode": "approve-all",
+          "nonInteractivePermissions": "deny"
+        }
       }
     }
   }
