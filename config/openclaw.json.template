@@ -1,0 +1,247 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.3.13",
+    "lastTouchedAt": "2026-03-19T10:52:14.746Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-02-02T08:28:08.796Z",
+    "lastRunVersion": "2026.1.30",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "minimax-portal:default": {
+        "provider": "minimax-portal",
+        "mode": "oauth"
+      }
+    }
+  },
+  "models": {
+    "providers": {
+      "minimax-portal": {
+        "baseUrl": "https://api.minimaxi.com/anthropic",
+        "apiKey": "minimax-oauth",
+        "api": "anthropic-messages",
+        "models": [
+          {
+            "id": "MiniMax-M2.1",
+            "name": "MiniMax M2.1",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "MiniMax-M2.1-lightning",
+            "name": "MiniMax M2.1 Lightning",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          }
+        ]
+      },
+      "claude-api": {
+        "baseUrl": "https://platform-api.xaminim.com",
+        "apiKey": "<YOUR_API_KEY_HERE>",
+        "api": "anthropic-messages",
+        "headers": {
+          "X-Sub-Module": "claude-code-internal"
+        },
+        "models": [
+          {
+            "id": "claude-opus-4-6-thinking-high",
+            "name": "Claude Opus 4 (Thinking High)",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 200000,
+            "maxTokens": 32000
+          },
+          {
+            "id": "claude-sonnet-4-6",
+            "name": "Claude Sonnet 4.6",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "claude-haiku-4-5-20251001",
+            "name": "Claude Haiku 4.5",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "claude-opus-4-6-thinking-low",
+            "contextWindow": 200000,
+            "name": "claude-opus-4-6-thinking-low"
+          },
+          {
+            "id": "claude-opus-4-6-thinking-medium",
+            "contextWindow": 200000,
+            "name": "claude-opus-4-6-thinking-medium"
+          }
+        ]
+      },
+      "minimax-internal": {
+        "baseUrl": "https://talkie-ali-virginia-prod-internal.xaminim.com/llm/debug/claude",
+        "apiKey": "<YOUR_API_KEY_HERE>",
+        "api": "anthropic-messages",
+        "headers": {
+          "X-Biz-Id": "claude-code"
+        },
+        "models": [
+          {
+            "id": "minimax-m2.7",
+            "name": "MiniMax M2.7",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 8192
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "claude-api/claude-opus-4-6-thinking-high",
+        "fallbacks": [
+          "minimax-internal/minimax-m2.7"
+        ]
+      },
+      "models": {
+        "claude-api/claude-opus-4-6-thinking-high": {
+          "alias": "opus"
+        },
+        "claude-api/claude-sonnet-4-6": {
+          "alias": "sonnet"
+        },
+        "claude-api/claude-haiku-4-5-20251001": {
+          "alias": "haiku"
+        },
+        "minimax-internal/minimax-m2.7": {
+          "alias": "minimax"
+        },
+        "minimax-portal/MiniMax-M2.1": {
+          "alias": "minimax-m2.1"
+        },
+        "minimax-portal/MiniMax-M2.1-lightning": {
+          "alias": "minimax-m2.1-lightning"
+        }
+      },
+      "workspace": "/Users/minimax/.openclaw/workspace",
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "identity": {
+          "name": "Silvana",
+          "emoji": "👑",
+          "avatar": "avatars/silvana.png"
+        }
+      }
+    ]
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "channels": {
+    "feishu": {
+      "enabled": true,
+      "dmPolicy": "pairing",
+      "accounts": {
+        "default": {
+          "appId": "cli_a9f63f867cb9dcca",
+          "appSecret": "Kn8zGSoJv8TcQfmqemWaPgd3qEHvi8sC",
+          "botName": "Silvana"
+        }
+      }
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "<YOUR_GATEWAY_TOKEN_HERE>"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    }
+  },
+  "plugins": {
+    "entries": {
+      "minimax-portal-auth": {
+        "enabled": true
+      },
+      "feishu": {
+        "enabled": true
+      }
+    }
+  }
+}

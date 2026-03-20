@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "ed1bacf0-01c0-4b51-9b3a-92a2703fb8e0",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "daily-backup",
+      "enabled": true,
+      "createdAtMs": 1773914973121,
+      "updatedAtMs": 1773935224145,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 23 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "执行每日自动备份：1) 确保 /tmp/openclaw-backup 仓库存在（不存在则 git clone https://github.com/Qyjay/openclaw-backup.git），2) 运行 bash /tmp/openclaw-backup/scripts/backup.sh 完成全量备份并推送到 GitHub，3) 在 CHRONICLE.md 记录备份事件。静默执行，仅在失败时通知 Master。"
+      },
+      "delivery": {
+        "mode": "announce"
+      },
+      "state": {
+        "nextRunAtMs": 1774018800000,
+        "lastRunAtMs": 1773933224265,
+        "lastRunStatus": "error",
+        "lastStatus": "error",
+        "lastDurationMs": 1999880,
+        "lastError": "Error: All models failed (2): claude-api/claude-opus-4-6-thinking-high: LLM request timed out. (unknown) | minimax-internal/minimax-m2.7: LLM request timed out. (unknown)",
+        "lastErrorReason": "timeout",
+        "lastDeliveryStatus": "unknown",
+        "consecutiveErrors": 1
+      }
+    }
+  ]
+}
