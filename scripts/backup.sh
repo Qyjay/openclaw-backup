@@ -92,7 +92,8 @@ for agent in agents:
             if item == '.git':
                 continue
             if os.path.isdir(s):
-                shutil.copytree(s, d, dirs_exist_ok=True)
+                shutil.copytree(s, d, dirs_exist_ok=True,
+                    ignore=shutil.ignore_patterns('.git'))
             else:
                 shutil.copy2(s, d)
         print(f'    ✓ Agent [{aid}] backed up')
