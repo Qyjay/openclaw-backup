@@ -32,7 +32,7 @@
         "lastErrorReason": "timeout",
         "lastDeliveryStatus": "unknown",
         "consecutiveErrors": 2,
-        "lastError": "Error: All models failed (3): claude-api/claude-sonnet-4-6: LLM request timed out. (unknown) | minimax-internal/minimax-m2.7: LLM request timed out. (unknown) | claude-api/claude-opus-4-6-thinking-high: LLM request timed out. (unknown)"
+        "runningAtMs": 1774105200002
       }
     }
   ]

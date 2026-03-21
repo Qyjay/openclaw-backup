@@ -17,6 +17,23 @@
 ## Architecture Decisions
 *(待积累)*
 
+## 前辈的铁则
+
+### 1. 任务完成先通知，再验证（2026-03-21）
+→ 见 Lessons Learned
+
+### 2. 验证交互流程用录屏（2026-03-21）
+- 截图无法展示动画/流式效果/交互流程
+- 用 ffmpeg 录屏后发飞书给前辈
+- 视频定期清理节省磁盘
+
+### 3. 实践经验严格记录 + 备份（2026-03-21）
+- 所有实践、经验、教训必须写入 memory 系统
+- 定期同步到 GitHub 备份仓库：https://github.com/Qyjay/openclaw-backup
+- **目标：换设备重新部署后，所有记忆和配置立刻可用**
+- 备份范围：MEMORY.md + memory/*.md + SESSION-STATE.md + skills/ + 配置文件
+- 备份命令：`cd ~/projects/openclaw-backup && rsync -av ~/.openclaw/workspace-coder/ agents/coder/ && git add -A && git commit && git push`
+
 ## Lessons Learned
 
 ### 🔴 铁律：任务完成先通知前辈，再做验证（2026-03-21）
