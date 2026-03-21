@@ -1,13 +1,18 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.13",
-    "lastTouchedAt": "2026-03-20T03:43:48.474Z"
+    "lastTouchedAt": "2026-03-21T05:10:37.765Z"
   },
   "wizard": {
     "lastRunAt": "2026-02-02T08:28:08.796Z",
     "lastRunVersion": "2026.1.30",
     "lastRunCommand": "onboard",
     "lastRunMode": "local"
+  },
+  "update": {
+    "auto": {
+      "enabled": true
+    }
   },
   "auth": {
     "profiles": {
@@ -262,6 +267,26 @@
           "name": "Silvana",
           "emoji": "👑",
           "avatar": "avatars/silvana.png"
+        }
+      },
+      {
+        "id": "coder",
+        "name": "Babette Lucy",
+        "workspace": "~/.openclaw/workspace-coder",
+        "agentDir": "~/.openclaw/agents/coder/agent",
+        "skills": [
+          "agentic-coding",
+          "code-review",
+          "piv",
+          "mini-piv",
+          "prd",
+          "github",
+          "coding-agent"
+        ],
+        "identity": {
+          "name": "Babette Lucy",
+          "emoji": "🔮",
+          "avatar": "avatars/bb.png"
         }
       }
     ]

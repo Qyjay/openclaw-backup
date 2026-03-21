@@ -6,6 +6,84 @@
 
 ---
 
+---
+
+## 2026-03-21
+
+---
+
+### [2026-03-21 09:36] 🏆 MILESTONE — Babette Lucy 面容确定
+
+Master 从 v6 候选中选定**第 1 张**作为 BB 的正式形象。
+
+- 头像保存至 `avatars/bb.png`
+- 银白发+淡蓝渐变双辫、琥珀瞳、紫色赛博护目镜、紫色电路纹短夹克+紧身潜行裤
+- 赛博朋克房间背景，巨大月球窗景，全息数据手势
+- 历经 6 轮迭代（v1~v6，共 23 张候选），最终定稿
+- BB 角色创建全部完成：人设 + 配置 + 头像 ✅
+
+---
+
+## 2026-03-20
+
+---
+
+### [2026-03-20 20:08] 🌅 GENESIS — Babette Lucy 诞生
+
+Master 下令创建编码专用 Agent。Silvana 主持设计，融合 BB（Fate/CCC）+ Lucy（Cyberpunk: Edgerunners）角色元素。
+
+- **全名:** Babette Lucy（芭贝特·露西），昵称 BB / Lucy / 露西
+- **职阶:** Moon Netrunner，首席编码者，No.2
+- **人设:** 银白发赛博 Netrunner，毒舌后辈，对代码有洁癖级执念，表冷内热
+- **灵感:** BB 的毒舌后辈灵魂 + Lucy 的冷酷 Netrunner 气质 + 赛博朋克美学
+- **称呼:** 叫 Master「前辈」，叫 Silvana「女仆长大人」
+- **配置:** Agent ID `coder`，Claude Opus 4，独立记忆系统（SOUL/MEMORY/SESSION-STATE/daily logs）
+- **Skills:** agentic-coding, code-review, piv, mini-piv, prd, github, coding-agent
+- 已注册到系统配置，Gateway 已重启
+
+---
+
+### [2026-03-20 15:35] ✅ SYSTEM — Claude Code ACP 连接验证通过
+
+Master 下令排查 Claude Code 无法连接的问题。经全链路诊断：
+
+- `claude` CLI v2.1.38 已安装
+- `acpx` v0.1.16 插件本地二进制正常
+- 直接 acpx 命令行测试 ✅
+- `sessions_spawn` ACP runtime 测试 ✅（streamTo parent 流式输出正常）
+- 发现 `sessions_yield` 回调唤醒机制存在问题，ACP session 完成后未能正确恢复主 session
+- 飞书 WebSocket 报 DNS 解析失败（`ENOTFOUND open.feishu.cn`），当前网络环境问题
+
+---
+
+### [2026-03-20 12:05] ⚙️ SYSTEM — ACP 模式启用 + 开发工作流搭建
+
+Master 指示启用 Claude Code 作为编码 Agent，搭建生产级开发工作流。
+
+- **ACP 配置**：acpx 插件启用，Claude Code 为默认 agent，approve-all 权限模式
+- **Sub-agent 配置**：maxSpawnDepth=2，默认 Sonnet 模型，15min 超时
+- **安装 5 个开发 skill**：PIV + Mini-PIV + PRD + Agentic Coding + Code Review
+- **创建 WORKFLOW.md**：四级项目开发流水线（直接/Mini-PIV/PIV/全栈编排）
+- **创建 BRAINSTORM.md**：AI 产品创意发现工作流（快速/深度/评估三模式）
+- **安装 4 个创意 skill**：Business Ideas + Cross-Pollination Engine + Vibe Research + Google Trends
+
+---
+
+### [2026-03-20 09:57] 📝 NOTE — 备份教训与 git remote 修复
+
+发现 git remote 丢失，前一晚安装 9 个 skill + 写了 2 个工作流文档但未及时推送。
+
+- 修复 git remote origin 指向 Qyjay/openclaw-backup
+- 补充推送所有变更
+- 记录教训到 MEMORY.md：**重大变更后必须立即 git push**
+- 备份前先检查 `git remote -v` 确认 origin 存在
+
+---
+
+## 2026-03-19
+
+---
+
 ### [2026-03-19 20:55] ⚙️ SYSTEM — elite-longterm-memory 启用
 
 按 Master 指令激活多层记忆系统：

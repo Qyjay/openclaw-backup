@@ -8,7 +8,7 @@
       "name": "daily-backup",
       "enabled": true,
       "createdAtMs": 1773914973121,
-      "updatedAtMs": 1773935224145,
+      "updatedAtMs": 1774021863270,
       "schedule": {
         "kind": "cron",
         "expr": "0 23 * * *",
@@ -24,15 +24,15 @@
         "mode": "announce"
       },
       "state": {
-        "nextRunAtMs": 1774018800000,
-        "lastRunAtMs": 1773933224265,
+        "nextRunAtMs": 1774105200000,
+        "lastRunAtMs": 1774018858286,
         "lastRunStatus": "error",
         "lastStatus": "error",
-        "lastDurationMs": 1999880,
-        "lastError": "Error: All models failed (2): claude-api/claude-opus-4-6-thinking-high: LLM request timed out. (unknown) | minimax-internal/minimax-m2.7: LLM request timed out. (unknown)",
+        "lastDurationMs": 3004984,
         "lastErrorReason": "timeout",
         "lastDeliveryStatus": "unknown",
-        "consecutiveErrors": 1
+        "consecutiveErrors": 2,
+        "lastError": "Error: All models failed (3): claude-api/claude-sonnet-4-6: LLM request timed out. (unknown) | minimax-internal/minimax-m2.7: LLM request timed out. (unknown) | claude-api/claude-opus-4-6-thinking-high: LLM request timed out. (unknown)"
       }
     }
   ]

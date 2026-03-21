@@ -34,21 +34,3 @@
 | ClawHub Skills 大小 | 424K |
 | OpenClaw 总占用 |  43M |
 
-
-## 2026-03-21
-
-| 项目 | 数值 |
-|------|------|
-| 记录时间 | 2026-03-21 13:05:13 |
-| 活跃会话数 | 2 |
-| 对话轮数 (user messages) | 29 |
-| 模型 | claude-api/claude-opus-4-6-thinking-high |
-| Token (输入/输出) | 7 / 2,609 |
-| Cache (读/写) | 0 / 117,366 |
-| Token 总计 | 117,367 |
-| 压缩次数 | 2 |
-| Workspace 大小 | 1.9G |
-| Sessions 大小 |  18M |
-| ClawHub Skills 大小 | 716K |
-| OpenClaw 总占用 | 2.1G |
-
