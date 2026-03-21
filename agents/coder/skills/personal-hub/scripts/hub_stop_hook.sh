@@ -5,6 +5,7 @@
 set -uo pipefail
 
 INPUT=$(cat)
+echo "$INPUT" > "/tmp/hub_stop_hook_last_input.json"
 
 STATE_FILE="/tmp/.claude_hub_active"
 if [ ! -f "$STATE_FILE" ]; then
@@ -31,6 +32,37 @@ if [ "$RETRY_COUNT" -ge "$MAX_RETRIES" ]; then
 fi
 
 LAST_MSG=$(echo "$INPUT" | python3 -c "import sys,json; print(json.load(sys.stdin).get('last_assistant_message', ''))" 2>/dev/null || echo "")
+
+# Claude Code 2.1.38 sends last_assistant_message_id (not content) — fall back to reading JSONL
+if [ -z "$LAST_MSG" ]; then
+    SESSION_ID=$(echo "$INPUT" | python3 -c "import sys,json; print(json.load(sys.stdin).get('session_id', ''))" 2>/dev/null || echo "")
+    if [ -n "$SESSION_ID" ]; then
+        PROJECTS_DIR="${HOME}/.claude/projects"
+        JSONL_FILE=$(find "$PROJECTS_DIR" -name "${SESSION_ID}.jsonl" 2>/dev/null | head -1)
+        if [ -n "$JSONL_FILE" ] && [ -f "$JSONL_FILE" ]; then
+            LAST_MSG=$(python3 -c "
+import json, sys
+lines = open('$JSONL_FILE').readlines()
+for line in reversed(lines):
+    try:
+        obj = json.loads(line)
+        msg = obj.get('message', {})
+        if msg.get('role') == 'assistant':
+            content = msg.get('content', [])
+            if isinstance(content, list):
+                for block in content:
+                    if isinstance(block, dict) and block.get('type') == 'text':
+                        print(block.get('text', ''))
+                        sys.exit(0)
+            elif isinstance(content, str):
+                print(content)
+                sys.exit(0)
+    except:
+        pass
+" 2>/dev/null || echo "")
+        fi
+    fi
+fi
 
 HAS_REPORT="false"
 if echo "$LAST_MSG" | grep -q "Hub 执行报告"; then
