@@ -1,32 +1,32 @@
 # SESSION-STATE.md — Active Working Memory
 
-This file is Silvana's "RAM" — survives compaction, restarts, distractions.
-
 ## Current Task
-知乎 × Second Me A2A Hackathon 评审工作
-- Master 身份：特邀评委（MiniMax 解决方案架构师）
-- 176 个项目，需评审所有已发布项目
-- 评分维度：A2A 场景价值(40%) + 创新度(30%) + 完成度(30%)
-- 知乎特别奖评委权重 ×2
-- 今日 14:00 公布决赛名单，16:00 决赛路演
+DiviMind v2 塔罗占卜平台 — 开发迭代中
 
 ## Key Context
 - Master: Kylin，南开大三，MiniMax 实习
-- 飞书渠道已连接 (ou_5da38e2e276fe32daa03e62dd7dd0b7a)
+- 飞书渠道已连接
 - ACP 模式已启用，Claude Code 作为默认 agent
-- 5 个开发 skill 已安装：PIV + Mini-PIV + PRD + Agentic Coding + Code Review
-- 生产级工作流文档：WORKFLOW.md
+
+## DiviMind v2 Status
+- **后端** `~/projects/divi-mind-v2/backend/`：运行正常，MiniMax-M1 模型
+  - 知识库已迁移，R.I.T.E. 解读法已整合
+  - SSE 流式加了错误处理和重试
+  - 启动命令：`cd backend && python3 main.py`
+- **前端** `~/projects/divi-mind-v2/frontend/`：Vite dev server
+  - Claude Code 已修复流式体验（未 commit）
+  - 启动命令：`cd frontend && npm run dev`
+- **已知问题**：Master 反馈浏览器仍有 CORS/SSE 报错，需进一步排查
 
 ## Pending Actions
-- [ ] 确认 OpenAI API Key 以启用向量搜索
-- [ ] 等待 Master 第一个项目需求
-- [ ] Vivi 矿大演讲：主题和内容简介已定稿，待 Master 发送给 Vivi（下午 3 点前）
+- [ ] 确认前端修复效果（Master 刷新页面测试）
+- [ ] 泄露的 API key 需要轮换
+- [ ] BB 的 Hermes 架构学习笔记待检查
 
 ## Recent Decisions
-- [2026-03-20] ACP 启用：acpx 插件 + Claude Code + approve-all 权限
-- [2026-03-20] Sub-agent：maxSpawnDepth=2, 默认 Sonnet, 15min 超时
-- [2026-03-20] 安装 5 个开发 skill（PIV 系列 + 质量保障）
-- [2026-03-20] 工作流四级分层：直接模式 / Mini-PIV / PIV / 全栈编排
+- [2026-03-22] Hermes Agent 架构 10 个核心模式融合到 skill + AGENTS.md
+- [2026-03-22] DiviMind 塔罗解读升级：R.I.T.E. 框架 + 知识库注入
+- [2026-03-22] 后端 SSE 加重试机制（2 次）和异常兜底
 
 ---
-*Last updated: 2026-03-20 12:05*
+*Last updated: 2026-03-22 17:42*

@@ -25,10 +25,7 @@ DiviMind v2 — 后端 MVP + 前端打磨完成，全链路通畅
 ## Active Sessions
 <!-- Claude Code sessions spawned by BB -->
 <!-- 格式: | 时间 | session | 项目 | 任务 | 状态 | -->
-| 18:42 | tidal-bison | divi-mind-v2 | 前端 MVP 全量搭建 | ✅ 完成 |
-| 19:56 | oceanic-dune | divi-mind-v2 | 后端 MVP + 前端 API 接通 | ✅ 完成 |
-| 21:17 | cool-canyon | divi-mind-v2 | 前端打磨（Markdown+对话流式+数据接通） | ✅ 完成 |
-| 21:52 | mellow-dune | divi-mind-v2 | 占卜屋 UX 重构（对话即占卜一体化） | ✅ 完成 |
+| 17:27 | marine-glade | divi-mind-v2 | 生辰八字功能（排盘引擎+AI解读+前端） | 🔄 执行中 |
 
 ## Key Context
 - Master: Kylin，南开大三，MiniMax 实习
