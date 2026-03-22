@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.13",
-    "lastTouchedAt": "2026-03-21T04:54:02.569Z"
+    "lastTouchedAt": "2026-03-21T10:35:56.947Z"
   },
   "wizard": {
     "lastRunAt": "2026-02-02T08:28:08.796Z",
@@ -272,8 +272,8 @@
       {
         "id": "coder",
         "name": "Babette Lucy",
-        "workspace": "/Users/minimax/.openclaw/workspace",
-        "agentDir": "/Users/minimax/.openclaw/workspace/agents/coder",
+        "workspace": "~/.openclaw/workspace-coder",
+        "agentDir": "~/.openclaw/agents/coder/agent",
         "skills": [
           "agentic-coding",
           "code-review",
@@ -291,6 +291,14 @@
       }
     ]
   },
+  "bindings": [
+    {
+      "agentId": "coder",
+      "match": {
+        "channel": "feishu"
+      }
+    }
+  ],
   "messages": {
     "ackReactionScope": "group-mentions"
   },

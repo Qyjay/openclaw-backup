@@ -52,3 +52,26 @@
 | ClawHub Skills 大小 | 716K |
 | OpenClaw 总占用 | 2.1G |
 
+
+## 2026-03-22
+
+| 项目 | 数值 |
+|------|------|
+| 记录时间 | 2026-03-22 09:41:07 |
+| 活跃会话数 | 2 |
+| 对话轮数 (user messages) | 5 |
+| 模型 | claude-api/claude-sonnet-4-6 |
+| Token (输入/输出) | 12 / 1,074 |
+| Cache (读/写) | 45,139 / 180,534 |
+| Token 总计 | 23,458 |
+| 压缩次数 | 0 |
+| 模型 | claude-api/claude-sonnet-4-6 |
+| Token (输入/输出) | 12 / 1,074 |
+| Cache (读/写) | 45,139 / 180,534 |
+| Token 总计 | 23,458 |
+| 压缩次数 | 0 |
+| Workspace 大小 | 1.9G |
+| Sessions 大小 |  23M |
+| ClawHub Skills 大小 | 716K |
+| OpenClaw 总占用 | 2.1G |
+
