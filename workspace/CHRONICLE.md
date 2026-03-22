@@ -12,11 +12,6 @@
 
 ---
 
-### [2026-03-21 23:00] 🗄️ AUTO-BACKUP — 每日定时备份完成
-- 全量备份 workspace、skills、配置、cron 任务
-- 初次推送遇到远端分歧，rebase 后成功推送至 GitHub
-- 仓库：https://github.com/Qyjay/openclaw-backup
-
 ### [2026-03-21 09:36] 🏆 MILESTONE — Babette Lucy 面容确定
 
 Master 从 v6 候选中选定**第 1 张**作为 BB 的正式形象。
