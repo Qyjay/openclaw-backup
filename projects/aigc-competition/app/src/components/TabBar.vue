@@ -1,5 +1,5 @@
 <template>
-  <view class="tabbar-wrapper">
+  <view v-if="visible" class="tabbar-wrapper">
     <!-- ActionSheet -->
     <transition name="sheet">
       <view v-if="showActionSheet" class="action-sheet-overlay" @click="closeActionSheet">
@@ -75,6 +75,7 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
+import { onShow } from '@dcloudio/uni-app'
 
 const props = defineProps<{
   current?: number
@@ -82,6 +83,47 @@ const props = defineProps<{
 
 const activeIndex = ref(props.current ?? 0)
 const showActionSheet = ref(false)
+
+// 只在 Tab 一级页面显示 TabBar
+const visible = ref(true)
+
+// 不应显示 TabBar 的二级页面路由
+const HIDE_ROUTES = [
+  'pages/growth/index',
+  'pages/growth/achievements',
+  'pages/novel/index',
+  'pages/novel/reader',
+  'pages/social/match',
+  'pages/profile/settings',
+  'pages/profile/agent-portrait',
+  'pages/profile/semester-report',
+  'pages/settings/about',
+  'pages/diary/detail',
+  'pages/diary/comic',
+  'pages/diary/share-card',
+  'pages/diary/emotion-calendar',
+  'pages/diary/style-engine',
+  'pages/study/pomodoro',
+  'pages/study/todo',
+  'pages/fortune/index',
+  'pages/chat/index',
+]
+
+onShow(() => {
+  try {
+    const pages = getCurrentPages()
+    if (!pages || pages.length === 0) {
+      visible.value = true
+      return
+    }
+    const currentPage = pages[pages.length - 1]
+    const route = currentPage.route || ''
+    const shouldHide = HIDE_ROUTES.some(r => route === r || route.startsWith(r))
+    visible.value = !shouldHide
+  } catch (_) {
+    visible.value = true
+  }
+})
 
 watch(() => props.current, (v) => {
   if (v !== undefined) activeIndex.value = v
