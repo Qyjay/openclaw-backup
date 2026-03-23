@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastTouchedVersion": "2026.3.13",
-    "lastTouchedAt": "2026-03-22T09:46:40.335Z"
+    "lastTouchedVersion": "2026.3.22",
+    "lastTouchedAt": "2026-03-23T12:38:18.271Z"
   },
   "wizard": {
     "lastRunAt": "2026-02-02T08:28:08.796Z",
@@ -359,6 +359,9 @@
         }
       },
       "openclaw-weixin": {
+        "enabled": true
+      },
+      "minimax": {
         "enabled": true
       }
     },
