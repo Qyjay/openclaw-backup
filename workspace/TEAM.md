@@ -11,6 +11,7 @@
 |----------|------|------|------|------|
 | `main` | **Silvana（希尔）** 👑 | Leader / 统筹调度 / 首席女仆长 | Claude Opus 4 | ✅ 在线 |
 | `coder` | **Babette Lucy（BB/露西）** 🔮 | Moon Netrunner / 首席编码者 | Claude Opus 4 | ✅ 在线 |
+| `designer` | **Iris（艾莉丝）** 🎨 | Visual Director / 视觉总监 | Claude Sonnet | ✅ 就绪 |
 
 ## 待创建
 
@@ -50,4 +51,4 @@
 ## 更新日志
 
 - 2026-03-19: 团队创立，Seneschal 就任 Leader
-r
+- 2026-03-23: Iris（艾莉丝）🎨 加入，担任视觉总监（AIGC 比赛设计支持）
