@@ -1,29 +1,396 @@
 <template>
-  <view class="page">
-    <CustomNavBar title="心情漫画" left-icon="back" />
-    <view class="content">
-      <text class="placeholder">心情漫画页 - 开发中</text>
+  <view class="page page-root">
+    <CustomNavBar title="漫画工坊" left-icon="back" @right-click="handleSave" />
+
+    <view class="page-scroll">
+      <!-- 原始日记 -->
+      <view class="section-label">原始日记</view>
+      <view class="diary-card">
+        <view class="diary-header">
+          <text class="diary-emoji">{{ diary?.emotion.emoji }}</text>
+          <text class="diary-time">{{ formatTime(diary?.createdAt) }}</text>
+        </view>
+        <text class="diary-content">{{ diary?.content }}</text>
+      </view>
+
+      <!-- 选择风格 -->
+      <view class="section-label">选择风格</view>
+      <scroll-view class="style-scroll" scroll-x enable-flex>
+        <view
+          v-for="style in comicStyles"
+          :key="style.id"
+          class="style-item"
+          :class="{ 'style-item--active': selectedStyle === style.id }"
+          @click="selectedStyle = style.id"
+        >
+          <text class="style-emoji">{{ style.emoji }}</text>
+          <text class="style-name">{{ style.name }}</text>
+          <text class="style-desc">{{ style.desc }}</text>
+        </view>
+      </scroll-view>
+
+      <!-- 生成按钮 -->
+      <view class="generate-btn-wrap">
+        <view class="generate-btn" @click="handleGenerate">
+          <text class="generate-btn-text">✨ 生成漫画</text>
+        </view>
+      </view>
+
+      <!-- 生成结果 -->
+      <template v-if="isGenerating || hasGenerated">
+        <view class="section-label">生成结果</view>
+        <view class="comic-panel-card">
+          <!-- Loading -->
+          <view v-if="isGenerating" class="loading-wrap">
+            <view class="loading-spinner" />
+            <text class="loading-text">正在生成漫画...</text>
+          </view>
+          <!-- 结果 -->
+          <view v-else class="comic-grid">
+            <view
+              v-for="(panel, idx) in comicPanels"
+              :key="idx"
+              class="comic-panel"
+            >
+              <image
+                class="panel-img"
+                :src="panel.image"
+                mode="aspectFill"
+              />
+              <view class="panel-caption">
+                <text class="panel-caption-text">{{ panel.caption }}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 底部操作按钮 -->
+        <view v-if="!isGenerating" class="action-btns">
+          <view class="action-btn" @click="handleShare">
+            <text class="action-icon">📤</text>
+            <text class="action-label">分享</text>
+          </view>
+          <view class="action-btn" @click="handleSaveLocal">
+            <text class="action-icon">💾</text>
+            <text class="action-label">保存到相册</text>
+          </view>
+          <view class="action-btn" @click="handleRegenerate">
+            <text class="action-icon">🔄</text>
+            <text class="action-label">重新生成</text>
+          </view>
+        </view>
+      </template>
     </view>
   </view>
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
+import { getDiaryDetail } from '@/services/api/diary'
+import type { Diary } from '@/services/api/diary'
+
+const comicStyles = [
+  { id: 'jp-fresh', emoji: '🌸', name: '日漫清新', desc: '治愈系少女风' },
+  { id: 'jp-hot', emoji: '🎌', name: '日漫热血', desc: '少年漫风格' },
+  { id: 'cn-wuxia', emoji: '🇨🇳', name: '国漫武侠', desc: '水墨风格' },
+  { id: 'watercolor', emoji: '🎨', name: '水彩治愈', desc: '手绘水彩' },
+  { id: 'pixel', emoji: '👾', name: '像素复古', desc: '8bit像素风' },
+  { id: 'chibi', emoji: '🧸', name: 'Q版可爱', desc: 'SD比例' },
+]
+
+const selectedStyle = ref('jp-fresh')
+const diary = ref<Diary | null>(null)
+const isGenerating = ref(false)
+const hasGenerated = ref(false)
+
+interface ComicPanel {
+  image: string
+  caption: string
+}
+
+const comicPanels = ref<ComicPanel[]>([])
+
+function formatTime(ts?: number): string {
+  if (!ts) return ''
+  const d = new Date(ts)
+  const month = d.getMonth() + 1
+  const day = d.getDate()
+  const hour = d.getHours().toString().padStart(2, '0')
+  const min = d.getMinutes().toString().padStart(2, '0')
+  return `${month}月${day}日 ${hour}:${min}`
+}
+
+function generateCaptions(content: string): string[] {
+  // Split content into ~4 sentences/phrases for comic panels
+  const sentences = content.split(/[，。！~～,.!]/).filter(s => s.trim().length > 2)
+  const captions: string[] = []
+  for (let i = 0; i < 4; i++) {
+    if (sentences[i]) {
+      captions.push(sentences[i].trim().substring(0, 30))
+    } else {
+      captions.push(`场景${i + 1}`)
+    }
+  }
+  return captions
+}
+
+async function handleGenerate() {
+  if (isGenerating.value) return
+  isGenerating.value = true
+  hasGenerated.value = false
+  comicPanels.value = []
+
+  await new Promise(resolve => setTimeout(resolve, 2000))
+
+  const diaryId = diary.value?.id ?? '1'
+  const style = selectedStyle.value
+  const captions = generateCaptions(diary.value?.content ?? '今天是个好日子')
+
+  comicPanels.value = [
+    { image: `https://picsum.photos/seed/${diaryId}${style}1/400/300`, caption: captions[0] },
+    { image: `https://picsum.photos/seed/${diaryId}${style}2/400/300`, caption: captions[1] },
+    { image: `https://picsum.photos/seed/${diaryId}${style}3/400/300`, caption: captions[2] },
+    { image: `https://picsum.photos/seed/${diaryId}${style}4/400/300`, caption: captions[3] },
+  ]
+
+  isGenerating.value = false
+  hasGenerated.value = true
+}
+
+async function handleRegenerate() {
+  await handleGenerate()
+}
+
+function handleShare() {
+  uni.showToast({ title: '分享功能开发中', icon: 'none' })
+}
+
+function handleSave() {
+  uni.showToast({ title: '已保存到相册', icon: 'success' })
+}
+
+function handleSaveLocal() {
+  uni.showToast({ title: '已保存到相册', icon: 'success' })
+}
+
+onMounted(async () => {
+  const pages = getCurrentPages()
+  const current = pages[pages.length - 1]
+  const options = (current as any).$page?.options ?? current.options ?? {}
+  const id = (options as any).id ?? '1'
+  diary.value = await getDiaryDetail(id)
+})
 </script>
 
 <style lang="scss" scoped>
 .page {
-  min-height: 100vh;
+  position: absolute;
+  inset: 0;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: 100% !important;
   background: #FDF8F3;
+  overflow: hidden;
 }
-.content {
+
+.page-scroll {
+  position: absolute;
+  top: 88px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  padding: 16px 16px 32px;
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #AE9D92;
+  margin-bottom: 10px;
+  margin-top: 16px;
+  &:first-child { margin-top: 0; }
+}
+
+.diary-card {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.diary-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.diary-emoji { font-size: 18px; }
+
+.diary-time {
+  font-size: 12px;
+  color: #AE9D92;
+}
+
+.diary-content {
+  font-size: 14px;
+  color: #4A3628;
+  line-height: 1.7;
+}
+
+.style-scroll {
+  white-space: nowrap;
+}
+
+.style-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 160rpx;
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 16rpx 8rpx;
+  margin-right: 12rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+  border: 2rpx solid transparent;
+  transition: border-color 0.2s;
+  cursor: pointer;
+}
+
+.style-item--active {
+  border-color: #E8855A;
+  background: #FDF0E8;
+}
+
+.style-emoji { font-size: 28px; }
+
+.style-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2C1F14;
+  margin-top: 2px;
+}
+
+.style-desc {
+  font-size: 11px;
+  color: #AE9D92;
+}
+
+.generate-btn-wrap {
+  margin-top: 20px;
+}
+
+.generate-btn {
+  background: linear-gradient(135deg, #E8855A, #F0A882);
+  border-radius: 40rpx;
+  padding: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 88px);
+  box-shadow: 0 4px 16px rgba(232, 133, 90, 0.35);
 }
-.placeholder {
-  font-size: 15px;
+
+.generate-btn:active {
+  transform: scale(0.97);
+}
+
+.generate-btn-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.comic-panel-card {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+  min-height: 200px;
+}
+
+.loading-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  gap: 16px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(232, 133, 90, 0.20);
+  border-top-color: #E8855A;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 14px;
   color: #AE9D92;
+}
+
+.comic-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8rpx;
+  padding: 8rpx;
+}
+
+.comic-panel {
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.panel-img {
+  width: 100%;
+  height: 240rpx;
+  display: block;
+}
+
+.panel-caption {
+  background: rgba(44, 31, 20, 0.85);
+  padding: 6rpx 10rpx;
+}
+
+.panel-caption-text {
+  font-size: 11px;
+  color: #FFFFFF;
+  line-height: 1.5;
+}
+
+.action-btns {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.action-btn {
+  flex: 1;
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  &:active { background: #F5F0EB; }
+}
+
+.action-icon { font-size: 20px; }
+
+.action-label {
+  font-size: 12px;
+  color: #4A3628;
 }
 </style>

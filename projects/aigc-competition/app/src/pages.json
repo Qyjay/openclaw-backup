@@ -21,7 +21,8 @@
     { "path": "pages/social/match", "style": { "navigationStyle": "custom" } },
     { "path": "pages/profile/agent-portrait", "style": { "navigationStyle": "custom" } },
     { "path": "pages/profile/settings", "style": { "navigationStyle": "custom" } },
-    { "path": "pages/profile/semester-report", "style": { "navigationStyle": "custom" } }
+    { "path": "pages/profile/semester-report", "style": { "navigationStyle": "custom" } },
+    { "path": "pages/settings/about", "style": { "navigationStyle": "custom" } }
   ],
   "globalStyle": {
     "navigationBarTextStyle": "black",

@@ -4,64 +4,85 @@
     <!-- ── 顶栏 ── -->
     <view class="navbar">
       <text class="navbar-title font-handwrite">消息</text>
-      <text class="navbar-badge">2</text>
     </view>
 
     <!-- ── 滚动内容区 ── -->
     <view class="page-scroll">
 
-      <!-- AI 助手置顶 -->
+      <!-- AI 伙伴置顶 -->
       <view class="ai-chat-card" @click="openAI">
-        <view class="ai-avatar">
-          <text class="ai-avatar-icon">🤖</text>
-        </view>
-        <view class="ai-chat-body">
-          <view class="ai-chat-header">
-            <text class="ai-chat-name">你的 AI 伙伴</text>
-            <view class="ai-badge-dot" />
+        <view class="ai-left">
+          <view class="ai-avatar">
+            <text class="ai-avatar-icon">🤖</text>
           </view>
-          <text class="ai-chat-preview">「今天运势不错，适合学习。来写日记吧 ✨」</text>
+          <view class="ai-info">
+            <view class="ai-name-row">
+              <text class="ai-name">AI 伙伴</text>
+              <text class="ai-time">刚刚</text>
+            </view>
+            <text class="ai-preview">看到你昨天的雅思全对了...</text>
+          </view>
         </view>
-        <text class="ai-chat-time">刚刚</text>
+        <view class="unread-badge">
+          <text class="unread-num">2</text>
+        </view>
       </view>
 
-      <!-- 分隔 -->
+      <!-- ── 搭子消息 ── -->
       <view class="section-sep">
         <view class="sep-line" />
         <text class="sep-label font-handwrite">搭子消息</text>
         <view class="sep-line" />
       </view>
 
-      <!-- 搭子消息列表 -->
-      <view class="chat-list">
+      <view class="buddy-list">
         <view
-          v-for="chat in chats"
-          :key="chat.id"
-          class="chat-item"
-          @click="openChat(chat)"
+          v-for="buddy in buddyMessages"
+          :key="buddy.id"
+          class="buddy-item"
+          @click="openBuddy(buddy)"
         >
-          <view class="chat-avatar" :style="{ background: chat.avatarBg }">
-            <text class="chat-avatar-text">{{ chat.avatar }}</text>
+          <view class="buddy-avatar" :style="{ background: buddy.avatarBg }">
+            <text class="buddy-avatar-emoji">{{ buddy.emoji }}</text>
           </view>
-          <view class="chat-body">
-            <view class="chat-header">
-              <text class="chat-name">{{ chat.name }}</text>
-              <text class="chat-time">{{ chat.time }}</text>
+          <view class="buddy-info">
+            <view class="buddy-name-row">
+              <text class="buddy-name">{{ buddy.name }}</text>
+              <text class="buddy-time">{{ buddy.time }}</text>
             </view>
-            <text class="chat-preview" :class="{ 'chat-preview--unread': chat.unread > 0 }">
-              {{ chat.lastMsg }}
-            </text>
+            <text class="buddy-preview">{{ buddy.lastMsg }}</text>
           </view>
-          <view v-if="chat.unread > 0" class="unread-badge">
-            <text class="unread-num">{{ chat.unread }}</text>
+          <view v-if="buddy.unread > 0" class="unread-badge">
+            <text class="unread-num">{{ buddy.unread }}</text>
           </view>
         </view>
       </view>
 
-      <!-- 空态提示 -->
-      <view class="empty-tip">
-        <text class="empty-icon">💬</text>
-        <text class="empty-text font-handwrite">去发现页找搭子，开始聊天吧！</text>
+      <!-- ── 系统通知 ── -->
+      <view class="section-sep">
+        <view class="sep-line" />
+        <text class="sep-label font-handwrite">系统通知</text>
+        <view class="sep-line" />
+      </view>
+
+      <view class="system-list">
+        <view
+          v-for="notif in systemNotifications"
+          :key="notif.id"
+          class="system-item"
+          @click="handleSystemNotif(notif)"
+        >
+          <view class="system-icon-wrap">
+            <text class="system-icon">{{ notif.emoji }}</text>
+          </view>
+          <view class="system-info">
+            <view class="system-name-row">
+              <text class="system-name">{{ notif.type }}</text>
+              <text class="system-time">{{ notif.time }}</text>
+            </view>
+            <text class="system-content">{{ notif.content }}</text>
+          </view>
+        </view>
       </view>
 
       <view class="bottom-spacer" />
@@ -93,42 +114,67 @@
 </template>
 
 <script setup lang="ts">
-const chats = [
+const buddyMessages = [
   {
     id: 1,
-    avatar: '小明',
+    emoji: '🧑‍🎓',
     avatarBg: 'linear-gradient(135deg, #7BB8D4, #A8D4E8)',
-    name: '自习搭子·小明',
-    lastMsg: '明天图书馆见！',
-    time: '14:30',
-    unread: 2,
-  },
-  {
-    id: 2,
-    avatar: '小红',
-    avatarBg: 'linear-gradient(135deg, #F2B49B, #F7CDB5)',
-    name: '饭搭子·小红',
-    lastMsg: '新食堂二楼好吃！推荐番茄牛腩！',
-    time: '昨天',
+    name: '学习搭子 · 小明',
+    lastMsg: '明天一起去图书馆吗？',
+    time: '3小时前',
     unread: 0,
   },
   {
-    id: 3,
-    avatar: '阿强',
-    avatarBg: 'linear-gradient(135deg, #5BAF85, #8ECFAD)',
-    name: '跑步搭子·阿强',
-    lastMsg: '明早六点半操场！',
+    id: 2,
+    emoji: '🏃',
+    avatarBg: 'linear-gradient(135deg, #F2B49B, #F7CDB5)',
+    name: '运动搭子 · 小红',
+    lastMsg: '晨跑 6:30，老地方见！',
     time: '昨天',
     unread: 1,
+  },
+  {
+    id: 3,
+    emoji: '🍳',
+    avatarBg: 'linear-gradient(135deg, #5BAF85, #8ECFAD)',
+    name: '美食搭子 · 小华',
+    lastMsg: '发现了一家新开的奶茶店！',
+    time: '2天前',
+    unread: 0,
+  },
+]
+
+const systemNotifications = [
+  {
+    id: 1,
+    emoji: '🏆',
+    type: '成就解锁 · 今天',
+    content: '"连续7天写日记" 成就已解锁！',
+    time: '今天',
+    path: '/pages/growth/achievements',
+  },
+  {
+    id: 2,
+    emoji: '🌱',
+    type: '成长提醒 · 昨天',
+    content: '本周成长值 +125，排名上升 3 位',
+    time: '昨天',
+    path: '/pages/growth/index',
   },
 ]
 
 function openAI() {
-  uni.showToast({ title: 'AI 对话功能即将开放', icon: 'none' })
+  uni.navigateTo({ url: '/pages/chat/index' })
 }
 
-function openChat(chat: any) {
-  uni.showToast({ title: `打开与 ${chat.name} 的对话`, icon: 'none' })
+function openBuddy(buddy: any) {
+  uni.showToast({ title: '搭子聊天开发中', icon: 'none' })
+}
+
+function handleSystemNotif(notif: any) {
+  if (notif.path) {
+    uni.navigateTo({ url: notif.path })
+  }
 }
 
 const tabList = [
@@ -147,9 +193,7 @@ function switchTab(index: number) {
 }
 </script>
 
-<style lang="scss">
-@import '@/common/styles/handdrawn.scss';
-
+<style lang="scss" scoped>
 .page {
   position: absolute;
   inset: 0;
@@ -168,7 +212,6 @@ function switchTab(index: number) {
   display: flex;
   align-items: center;
   padding: 0 16px;
-  gap: 8px;
   background: rgba(253, 248, 243, 0.95);
   backdrop-filter: blur(12px);
   box-shadow: 0 1px 0 rgba(44, 31, 20, 0.06);
@@ -180,15 +223,6 @@ function switchTab(index: number) {
   color: #2C1F14;
 }
 
-.navbar-badge {
-  background: #E8855A;
-  color: #FFFFFF;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 1px 6px;
-  border-radius: 9999px;
-}
-
 .page-scroll {
   position: absolute;
   top: 44px; left: 0; right: 0; bottom: 60px;
@@ -196,16 +230,27 @@ function switchTab(index: number) {
   -webkit-overflow-scrolling: touch;
 }
 
-/* ── AI 助手卡 ── */
+/* ── AI 伙伴置顶卡 ── */
 .ai-chat-card {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px;
-  background: rgba(232, 133, 90, 0.05);
-  border-bottom: 1px solid rgba(44, 31, 20, 0.06);
+  justify-content: space-between;
+  margin: 12px 16px;
+  padding: 14px 16px;
+  background: #FFFFFF;
+  border-radius: 16px;
+  border-left: 4rpx solid #E8855A;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   cursor: pointer;
-  &:active { background: rgba(232, 133, 90, 0.10); }
+  &:active { background: #FEF8F5; }
+}
+
+.ai-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
 }
 
 .ai-avatar {
@@ -222,45 +267,52 @@ function switchTab(index: number) {
 
 .ai-avatar-icon { font-size: 22px; }
 
-.ai-chat-body { flex: 1; }
+.ai-info {
+  flex: 1;
+  min-width: 0;
+}
 
-.ai-chat-header {
+.ai-name-row {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   margin-bottom: 4px;
 }
 
-.ai-chat-name {
+.ai-name {
   font-size: 15px;
   font-weight: 600;
   color: #2C1F14;
 }
 
-.ai-badge-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 9999px;
-  background: #E8855A;
-  animation: pulse 2s ease infinite;
+.ai-time {
+  font-size: 11px;
+  color: #AE9D92;
+  flex-shrink: 0;
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.6; transform: scale(1.3); }
-}
-
-.ai-chat-preview {
+.ai-preview {
   font-size: 13px;
   color: #857268;
-  display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 220px;
+  display: block;
 }
 
-.ai-chat-time { font-size: 11px; color: #AE9D92; flex-shrink: 0; align-self: flex-start; margin-top: 2px; }
+.unread-badge {
+  flex-shrink: 0;
+  background: #E8855A;
+  border-radius: 9999px;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+}
+
+.unread-num { font-size: 11px; color: #FFFFFF; font-weight: 700; }
 
 /* ── 分隔 ── */
 .section-sep {
@@ -278,16 +330,20 @@ function switchTab(index: number) {
 
 .sep-label { font-size: 12px; color: #857268; white-space: nowrap; }
 
-/* ── 消息列表 ── */
-.chat-list {
+.font-handwrite {
+  font-family: 'ZcoolKuaiLe', 'ZCOOL KuaiLe', 'STXingkai', 'KaiTi', 'PingFang SC', sans-serif !important;
+}
+
+/* ── 搭子消息列表 ── */
+.buddy-list {
+  margin: 0 16px;
   background: #FFFFFF;
   border-radius: 16px;
-  margin: 0 16px;
   overflow: hidden;
   box-shadow: 0 1px 6px rgba(44, 31, 20, 0.06);
 }
 
-.chat-item {
+.buddy-item {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -298,7 +354,7 @@ function switchTab(index: number) {
   &:active { background: rgba(232, 133, 90, 0.04); }
 }
 
-.chat-avatar {
+.buddy-avatar {
   width: 46px;
   height: 46px;
   border-radius: 9999px;
@@ -308,21 +364,21 @@ function switchTab(index: number) {
   justify-content: center;
 }
 
-.chat-avatar-text { font-size: 13px; color: #FFFFFF; font-weight: 600; }
+.buddy-avatar-emoji { font-size: 22px; }
 
-.chat-body { flex: 1; min-width: 0; }
+.buddy-info { flex: 1; min-width: 0; }
 
-.chat-header {
+.buddy-name-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 4px;
 }
 
-.chat-name { font-size: 15px; font-weight: 600; color: #2C1F14; }
-.chat-time { font-size: 11px; color: #AE9D92; }
+.buddy-name { font-size: 15px; font-weight: 600; color: #2C1F14; }
+.buddy-time { font-size: 11px; color: #AE9D92; }
 
-.chat-preview {
+.buddy-preview {
   font-size: 13px;
   color: #AE9D92;
   white-space: nowrap;
@@ -331,37 +387,58 @@ function switchTab(index: number) {
   display: block;
 }
 
-.chat-preview--unread { color: #4A3628; font-weight: 500; }
+/* ── 系统通知 ── */
+.system-list {
+  margin: 0 16px;
+  background: #F5F0EB;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(44, 31, 20, 0.04);
+}
 
-.unread-badge {
-  flex-shrink: 0;
-  background: #E8855A;
-  border-radius: 9999px;
-  min-width: 20px;
-  height: 20px;
+.system-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(44, 31, 20, 0.05);
+  cursor: pointer;
+  &:last-child { border-bottom: none; }
+  &:active { background: rgba(232, 133, 90, 0.05); }
+}
+
+.system-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 5px;
+  flex-shrink: 0;
 }
 
-.unread-num { font-size: 11px; color: #FFFFFF; font-weight: 700; }
+.system-icon { font-size: 20px; }
 
-/* ── 空态 ── */
-.empty-tip {
+.system-info { flex: 1; min-width: 0; }
+
+.system-name-row {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  padding: 32px 16px;
-  opacity: 0.6;
+  justify-content: space-between;
+  margin-bottom: 4px;
 }
 
-.empty-icon { font-size: 40px; }
-.empty-text { font-size: 14px; color: #857268; }
+.system-name { font-size: 13px; color: #4A3628; font-weight: 600; }
+.system-time { font-size: 11px; color: #AE9D92; }
 
-.font-handwrite {
-  font-family: 'ZcoolKuaiLe', 'ZCOOL KuaiLe', 'STXingkai', 'KaiTi', 'PingFang SC', sans-serif !important;
+.system-content {
+  font-size: 13px;
+  color: #857268;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
 }
 
 .bottom-spacer { height: 20px; }
@@ -392,10 +469,7 @@ function switchTab(index: number) {
   padding-top: 4px;
 }
 
-.tabbar-item--write {
-  padding-top: 0;
-  margin-top: -18px;
-}
+.tabbar-item--write { padding-top: 0; margin-top: -18px; }
 
 .tabbar-write-btn {
   width: 52px;

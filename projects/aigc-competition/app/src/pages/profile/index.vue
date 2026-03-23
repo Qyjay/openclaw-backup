@@ -19,38 +19,37 @@
             <image class="profile-avatar-img" src="/static/brand/logo-d-mascot.png" mode="aspectFill" />
           </view>
           <view class="profile-level-badge">
-            <text class="profile-level-text">Lv.12</text>
+            <text class="profile-level-text">Lv.{{ profile.level }}</text>
           </view>
         </view>
         <view class="profile-info">
-          <text class="profile-name">Kylin</text>
-          <text class="profile-school">南开大学 · 软件工程 · 大三</text>
+          <text class="profile-name">{{ profile.name }}</text>
+          <text class="profile-school">{{ profile.school }} · {{ profile.major }} · 大三</text>
           <view class="profile-title-badge">
             <text class="profile-title-text">🌟 探索者</text>
           </view>
         </view>
-        <!-- 手绘装饰 -->
         <text class="deco-star profile-deco-1">✦</text>
         <text class="deco-star profile-deco-2">✧</text>
       </view>
 
       <!-- 数据统计卡 -->
       <view class="stats-card">
-        <view class="stat-item" @click="showStat('diary')">
+        <view class="stat-item" @click="navTo('/pages/index/index')">
           <text class="stat-icon">📔</text>
-          <text class="stat-num font-mono">127</text>
+          <text class="stat-num font-mono">{{ profile.diaryCount }}</text>
           <text class="stat-label">日记</text>
         </view>
         <view class="stat-divider" />
-        <view class="stat-item" @click="showStat('match')">
+        <view class="stat-item" @click="navTo('/pages/social/index')">
           <text class="stat-icon">👥</text>
-          <text class="stat-num font-mono">23</text>
+          <text class="stat-num font-mono">{{ buddyCount }}</text>
           <text class="stat-label">搭子</text>
         </view>
         <view class="stat-divider" />
-        <view class="stat-item" @click="showStat('trophy')">
+        <view class="stat-item" @click="navTo('/pages/growth/achievements')">
           <text class="stat-icon">🏆</text>
-          <text class="stat-num font-mono">15</text>
+          <text class="stat-num font-mono">{{ achievementCount }}</text>
           <text class="stat-label">成就</text>
         </view>
       </view>
@@ -58,13 +57,13 @@
       <!-- 经验条 -->
       <view class="exp-card">
         <view class="exp-header">
-          <text class="exp-label font-handwrite">探索者 Lv.12</text>
-          <text class="exp-value">2,450 / 3,000 XP</text>
+          <text class="exp-label font-handwrite">探索者 Lv.{{ profile.level }}</text>
+          <text class="exp-value">{{ currentXP }} / {{ nextLevelXP }} XP</text>
         </view>
         <view class="exp-bar-bg">
-          <view class="exp-bar-fill" :style="{ width: '82%' }" />
+          <view class="exp-bar-fill" :style="{ width: expPercent + '%' }" />
         </view>
-        <text class="exp-hint">再写 18 篇日记升至 Lv.13 🌟</text>
+        <text class="exp-hint">{{ expHint }}</text>
       </view>
 
       <!-- 功能列表 -->
@@ -117,24 +116,57 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed, onMounted } from 'vue'
+import { getUserProfile } from '@/services/api/user'
+import { getAchievements } from '@/services/api/user'
+import type { UserProfile } from '@/services/api/user'
+import type { Achievement } from '@/services/api/user'
+
+const profile = ref<UserProfile>({
+  name: 'Kylin',
+  school: '南开大学',
+  major: '软件工程',
+  level: 12,
+  diaryCount: 127,
+  streakDays: 23,
+  pomodoroCount: 247,
+  avatar: '',
+})
+
+const achievements = ref<Achievement[]>([])
+const buddyCount = ref(23)
+
+const achievementCount = computed(() =>
+  achievements.value.filter(a => a.unlocked).length
+)
+
+const currentXP = computed(() => 2450)
+const nextLevelXP = computed(() => 3000)
+const expPercent = computed(() => Math.round((currentXP.value / nextLevelXP.value) * 100))
+const expHint = computed(() => `再写 ${nextLevelXP.value - currentXP.value} XP 升至 Lv.${profile.value.level + 1} 🌟`)
+
 const menuItems = [
-  { key: 'stats',   icon: '📊', name: '我的数据',   iconBg: 'rgba(232, 133, 90, 0.10)' },
-  { key: 'skill',   icon: '🌳', name: '技能树',     iconBg: 'rgba(91, 175, 133, 0.12)' },
-  { key: 'report',  icon: '📄', name: '学期报告',   iconBg: 'rgba(123, 184, 212, 0.12)' },
-  { key: 'privacy', icon: '🔒', name: '隐私设置',   iconBg: 'rgba(174, 157, 146, 0.12)' },
-  { key: 'about',   icon: 'ℹ️', name: '关于 App',   iconBg: 'rgba(230, 184, 112, 0.12)' },
+  { key: 'stats',   icon: '📊', name: '我的数据',   iconBg: 'rgba(232, 133, 90, 0.10)', path: '/pages/growth/index' },
+  { key: 'skill',   icon: '🌳', name: '技能树',     iconBg: 'rgba(91, 175, 133, 0.12)', path: '' },
+  { key: 'report',  icon: '📄', name: '学期报告',   iconBg: 'rgba(123, 184, 212, 0.12)', path: '/pages/novel/index' },
+  { key: 'privacy', icon: '🔒', name: '隐私设置',   iconBg: 'rgba(174, 157, 146, 0.12)', path: '/pages/profile/settings' },
+  { key: 'about',   icon: 'ℹ️', name: '关于 App',   iconBg: 'rgba(230, 184, 112, 0.12)', path: '/pages/settings/about' },
 ]
 
 function handleMenu(item: any) {
-  uni.showToast({ title: `${item.name} 即将开放`, icon: 'none' })
+  if (!item.path) {
+    uni.showToast({ title: '复赛上线', icon: 'none' })
+    return
+  }
+  uni.navigateTo({ url: item.path })
 }
 
-function showStat(key: string) {
-  uni.showToast({ title: `查看${key}详情`, icon: 'none' })
+function navTo(path: string) {
+  uni.navigateTo({ url: path })
 }
 
 function openSettings() {
-  uni.showToast({ title: '设置', icon: 'none' })
+  uni.navigateTo({ url: '/pages/profile/settings' })
 }
 
 function handleLogout() {
@@ -161,11 +193,14 @@ function switchTab(index: number) {
   const paths = ['/pages/index/index', '/pages/discover/index', '', '/pages/messages/index', '/pages/profile/index']
   uni.switchTab({ url: paths[index] })
 }
+
+onMounted(async () => {
+  profile.value = await getUserProfile()
+  achievements.value = await getAchievements()
+})
 </script>
 
-<style lang="scss">
-@import '@/common/styles/handdrawn.scss';
-
+<style lang="scss" scoped>
 .page {
   position: absolute;
   inset: 0;
@@ -230,9 +265,9 @@ function switchTab(index: number) {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
-.profile-avatar-emoji { font-size: 32px; }
 .profile-avatar-img { width: 100%; height: 100%; border-radius: 9999px; }
 
 .profile-level-badge {
@@ -273,7 +308,6 @@ function switchTab(index: number) {
 
 .profile-title-text { font-size: 12px; color: #FFFFFF; font-weight: 600; }
 
-/* 装饰星星 */
 .deco-star { position: absolute; color: rgba(255,255,255,0.50); pointer-events: none; }
 .profile-deco-1 { top: 12px; right: 18px; font-size: 16px; }
 .profile-deco-2 { bottom: 14px; right: 36px; font-size: 10px; }
@@ -429,10 +463,7 @@ function switchTab(index: number) {
   padding-top: 4px;
 }
 
-.tabbar-item--write {
-  padding-top: 0;
-  margin-top: -18px;
-}
+.tabbar-item--write { padding-top: 0; margin-top: -18px; }
 
 .tabbar-write-btn {
   width: 52px;
