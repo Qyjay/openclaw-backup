@@ -4,43 +4,68 @@
       v-for="(item, index) in tabs"
       :key="index"
       class="tabbar-item"
-      :class="{ 'tabbar-item--active': currentIndex === index, 'tabbar-item--home': index === 2 }"
+      :class="{
+        'tabbar-item--active': activeIndex === index,
+        'tabbar-item--write': index === 2
+      }"
       @click="switchTab(index)"
     >
-      <!-- 首页中间凸起按钮 -->
-      <view v-if="index === 2" class="tabbar-home-btn">
-        <text class="tabbar-home-icon">{{ item.icon }}</text>
+      <!-- 写日记：中间凸起圆形按钮 -->
+      <view v-if="index === 2" class="tabbar-write-btn">
+        <text class="tabbar-write-icon">✏️</text>
       </view>
+
       <!-- 普通 tab -->
       <template v-else>
-        <text class="tabbar-item-icon">{{ item.icon }}</text>
-        <text class="tabbar-item-label" :class="{ 'tabbar-item-label--active': currentIndex === index }">
-          {{ item.text }}
-        </text>
+        <view class="tabbar-icon-wrap">
+          <image
+            v-if="item.icon"
+            class="tabbar-icon-img"
+            :class="{ 'tabbar-icon-img--active': activeIndex === index }"
+            :src="item.icon"
+            mode="aspectFit"
+          />
+          <text v-else class="tabbar-icon-emoji" :class="{ 'tabbar-icon-emoji--active': activeIndex === index }">
+            {{ item.emoji }}
+          </text>
+        </view>
+        <text
+          class="tabbar-label"
+          :class="{ 'tabbar-label--active': activeIndex === index }"
+        >{{ item.text }}</text>
       </template>
     </view>
   </view>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 const props = defineProps<{
   current?: number
 }>()
 
-const currentIndex = ref(props.current ?? 2)
+const activeIndex = ref(props.current ?? 0)
+
+watch(() => props.current, (v) => {
+  if (v !== undefined) activeIndex.value = v
+})
 
 const tabs = [
-  { icon: '📔', text: '日记', path: '/pages/diary/index' },
-  { icon: '📚', text: '学习', path: '/pages/study/index' },
-  { icon: '🏠', text: '首页', path: '/pages/index/index' },
-  { icon: '👥', text: '社交', path: '/pages/social/index' },
-  { icon: '👤', text: '我的', path: '/pages/profile/index' },
+  { emoji: '📔', text: '日记',  path: '/pages/index/index',    icon: '/static/tabbar/tab-diary.png' },
+  { emoji: '🧭', text: '发现',  path: '/pages/discover/index',  icon: '' },
+  { emoji: '✏️', text: '写',    path: '/pages/write/index',     icon: '' },
+  { emoji: '💬', text: '消息',  path: '/pages/messages/index',  icon: '' },
+  { emoji: '👤', text: '我的',  path: '/pages/profile/index',   icon: '/static/tabbar/tab-profile.png' },
 ]
 
 function switchTab(index: number) {
-  currentIndex.value = index
+  activeIndex.value = index
+  if (index === 2) {
+    // 写日记是全屏页，用 navigateTo
+    uni.navigateTo({ url: '/pages/write/index' })
+    return
+  }
   uni.switchTab({ url: tabs[index].path })
 }
 </script>
@@ -51,14 +76,15 @@ function switchTab(index: number) {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 100;
-  height: 120rpx;
+  z-index: 9999;
+  height: 60px;
   padding-bottom: env(safe-area-inset-bottom);
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 -2rpx 12rpx rgba(26, 26, 46, 0.08);
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 -1px 6px rgba(26, 26, 46, 0.08);
   display: flex;
-  align-items: center;
-  padding-top: 8rpx;
+  align-items: stretch;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .tabbar-item {
@@ -67,58 +93,81 @@ function switchTab(index: number) {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4rpx;
+  gap: 2px;
   cursor: pointer;
-  padding-top: 8rpx;
+  padding-top: 4px;
 }
 
-.tabbar-item-icon {
-  font-size: 44rpx;
-  line-height: 1;
-  opacity: 0.5;
+.tabbar-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.tabbar-icon-img {
+  width: 44rpx;
+  height: 44rpx;
+  opacity: 0.4;
   transition: opacity 0.2s, transform 0.2s;
 }
 
-.tabbar-item--active .tabbar-item-icon {
+.tabbar-icon-img--active {
   opacity: 1;
-  transform: scale(1.1);
+  transform: scale(1.12);
 }
 
-.tabbar-item-label {
-  font-size: 22rpx;
+.tabbar-icon-emoji {
+  font-size: 22px;
+  opacity: 0.45;
+  transition: opacity 0.2s, transform 0.2s;
+  line-height: 1;
+}
+
+.tabbar-icon-emoji--active {
+  opacity: 1;
+  transform: scale(1.12);
+}
+
+.tabbar-label {
+  font-size: 11px;
   color: #AE9D92;
   font-weight: 500;
   transition: color 0.2s;
+  line-height: 1;
 }
 
-.tabbar-item-label--active {
+.tabbar-label--active {
   color: #E8855A;
 }
 
-/* 首页中间凸起 */
-.tabbar-item--home {
-  margin-top: -36rpx;
+/* 写日记：中间凸起 */
+.tabbar-item--write {
+  padding-top: 0;
+  margin-top: -18px;
 }
 
-.tabbar-home-btn {
-  width: 96rpx;
-  height: 96rpx;
-  border-radius: 9999rpx;
+.tabbar-write-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 9999px;
   background: linear-gradient(135deg, #E8855A 0%, #F0A882 100%);
-  box-shadow: 0 8rpx 20rpx rgba(232, 133, 90, 0.40);
+  box-shadow: 0 4px 16px rgba(232, 133, 90, 0.42);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.15s, box-shadow 0.15s;
 }
 
-.tabbar-item--home:active .tabbar-home-btn {
-  transform: scale(0.92);
-  box-shadow: 0 4rpx 12rpx rgba(232, 133, 90, 0.30);
+.tabbar-item--write:active .tabbar-write-btn {
+  transform: scale(0.90);
+  box-shadow: 0 2px 8px rgba(232, 133, 90, 0.28);
 }
 
-.tabbar-home-icon {
-  font-size: 44rpx;
+.tabbar-write-icon {
+  font-size: 22px;
   line-height: 1;
+  filter: brightness(0) invert(1);
 }
 </style>

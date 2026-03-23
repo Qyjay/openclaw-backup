@@ -1,5 +1,5 @@
 # 设计系统文档 — 大学生 AI 生活伙伴
-**Design System v1.0** | 由 Iris 🎨 出品 | 2026-03-23
+**Design System v1.2** | 由 Iris 🎨 出品 | 2026-03-23
 
 > **设计哲学**：像一个贴心的 AI 朋友——温暖但不幼稚，科技感但不冰冷，有个性但不刺眼。
 > 所有数值均可直接写入代码。
@@ -18,6 +18,7 @@
 8. [图标风格规范](#8-图标风格规范)
 9. [动效规范](#9-动效规范)
 10. [核心页面布局概述](#10-核心页面布局概述)
+11. [手绘风格规范](#11-手绘风格规范)
 
 ---
 
@@ -1778,12 +1779,773 @@ confetti({
 
 ---
 
+---
+
+## 11. 手绘风格规范
+
+> **设计意图**：像 Headspace 一样，让用户觉得"这个 App 有温度"，但不牺牲任何可用性。  
+> UI 框架保持现代（8pt 网格、圆角卡片、清晰排版），在此基础上叠加手绘/手帐风格的温度感。  
+> 参考 App：Headspace（手绘动画 + 柔和配色）、Forest（插画重度 UI）、Mori 手帐（纸张纹理 + 手绘装饰）。
+
+---
+
+### 11.1 纸张纹理背景
+
+页面背景在奶油白 `#FDF8F3` 底色上叠加极微妙的纸张纹理感，营造温暖手帐质感。卡片表面保持纯白 `#FFFFFF` 无纹理，确保视觉层次清晰。
+
+#### 实现方案（纯 CSS + SVG，无需图片依赖）
+
+**方案 A：SVG feTurbulence 噪点（推荐）**
+
+```css
+/* 1. 在 app.vue 或 page 根容器添加 */
+.page-bg {
+  background-color: #FDF8F3;
+  position: relative;
+}
+
+.page-bg::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.04; /* 4% 透明度，不影响阅读 */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 300px 300px;
+}
+```
+
+**方案 B：CSS grain（轻量备选）**
+
+```css
+/* 更轻量，兼容性更广 */
+.page-bg {
+  background-color: #FDF8F3;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.05'/%3E%3C/svg%3E");
+  background-blend-mode: multiply;
+}
+```
+
+**UniApp 适配写法（page 节点 style）**
+
+```css
+/* pages.json 中的 style 无法设置伪元素，需在 page 组件内用 view 铺底 */
+/* 推荐在每个 page.vue 的根 view 添加 class="page-root" */
+
+.page-root {
+  min-height: 100vh;
+  background-color: #FDF8F3;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200rpx 200rpx;
+}
+```
+
+#### 纹理参数规范
+
+| 参数 | 值 | 说明 |
+|------|----|------|
+| 底色 | `#FDF8F3` | 奶油白，保持不变 |
+| 纹理透明度 | `3%–5%` | 低于 3% 无感知，高于 6% 影响阅读 |
+| 纹理频率 | `baseFrequency: 0.65–0.9` | 越高越细腻，推荐 0.85 |
+| 卡片背景 | `#FFFFFF` | **不加纹理**，保持对比层次 |
+| 纹理混合 | `pointer-events: none` | 不影响任何交互 |
+
+---
+
+### 11.2 手写字体系统
+
+#### 字体选型（免费可商用）
+
+| 层级 | 字体 | 授权 | 用途 | 备注 |
+|------|------|------|------|------|
+| **主力手写** | **站酷快乐体** | 站酷（免费商用） | Section 标题、问候语 | 活泼圆润，大学生气质强 |
+| **副力手写** | **庞门正道轻松体** | 免费商用 | Tab 名称、情感标签 | 笔触更秀气，女性用户友好 |
+| **正文** | PingFang SC | 系统字体 | 所有正文内容 | 可读性最优，不替换 |
+
+> 🎯 **主力选择：站酷快乐体** —— 笔触自然、圆润有活力，与 Headspace 气质高度契合。
+
+#### @font-face 引入代码
+
+```css
+/* 站酷快乐体（主力） */
+@font-face {
+  font-family: 'ZcoolKuaiLe';
+  src: url('https://fonts.gstatic.com/s/zcoolkuaile/v19/tssqApdaRQokwFjFJjvM6h2WpozzoXhC2g.woff2') format('woff2'),
+       url('/static/fonts/ZCOOLKuaiLe-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* 防止 FOIT */
+}
+
+/* 庞门正道轻松体（副力） */
+@font-face {
+  font-family: 'PMZDQingSong';
+  src: url('/static/fonts/PangMenZhengDao-QingSong.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+```
+
+> **字体文件建议**：优先从 Google Fonts 加载站酷快乐体（CDN 稳定），庞门正道本地托管。
+
+#### 字体使用规则
+
+**✅ 使用手写字体的元素**
+
+```css
+/* Section 标题（页面内区块标题） */
+.section-title {
+  font-family: 'ZcoolKuaiLe', 'PingFang SC', sans-serif;
+  font-size: 36rpx;
+  color: #2C1F14;
+  letter-spacing: 2rpx;
+}
+
+/* 首页问候语（"早安，Kylin ☀️"） */
+.greeting-text {
+  font-family: 'ZcoolKuaiLe', 'PingFang SC', sans-serif;
+  font-size: 52rpx;
+  color: #2C1F14;
+}
+
+/* TabBar 名称 */
+.tab-label {
+  font-family: 'PMZDQingSong', 'ZcoolKuaiLe', 'PingFang SC', sans-serif;
+  font-size: 24rpx;
+}
+
+/* 情感标签 / Tag / Badge */
+.emotion-tag {
+  font-family: 'ZcoolKuaiLe', 'PingFang SC', sans-serif;
+  font-size: 24rpx;
+}
+
+/* 空状态说明文字 */
+.empty-hint {
+  font-family: 'ZcoolKuaiLe', 'PingFang SC', sans-serif;
+  font-size: 28rpx;
+  color: #8C7B6A;
+}
+```
+
+**❌ 保持系统字体的元素**
+
+```css
+/* 所有正文 / 日记内容 / 数据展示 / 输入框 */
+.body-text, .diary-content, .data-number, input, textarea {
+  font-family: 'PingFang SC', -apple-system, 'Helvetica Neue', sans-serif;
+}
+```
+
+#### Fallback 字体链
+
+```css
+/* 手写标题 Fallback 链 */
+font-family: 
+  'ZcoolKuaiLe',         /* 主力：站酷快乐体 */
+  'PMZDQingSong',         /* 副力：庞门正道轻松体 */
+  'ZCOOL KuaiLe',         /* Google Fonts 名称变体 */
+  'STXingkai',            /* macOS 行楷（有手写感） */
+  'KaiTi',                /* Windows 楷体备选 */
+  'PingFang SC',          /* 终极 fallback：系统标准字 */
+  sans-serif;
+```
+
+---
+
+### 11.3 手绘装饰元素库
+
+> 所有 SVG 均为内联 data URI 格式，可直接在 UniApp `image` 组件或 CSS `background-image` 中使用。
+
+---
+
+#### 11.3.1 手绘下划线
+
+**用途**：Section 标题下方，波浪感强调线  
+**推荐尺寸**：宽度跟随文字，高度 `12rpx`
+
+```html
+<!-- 波浪下划线 SVG（120×12px，可拉伸） -->
+<image 
+  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' width='120' height='12'%3E%3Cpath d='M2 8 Q15 2 28 8 Q41 14 54 8 Q67 2 80 8 Q93 14 106 8 Q113 4 118 7' stroke='%23E8855A' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
+  style="width: 120rpx; height: 12rpx; display: block; margin-top: 4rpx;"
+/>
+```
+
+```css
+/* CSS 版本（用于 after 伪元素） */
+.section-title-underline::after {
+  content: '';
+  display: block;
+  width: 80%;
+  height: 12rpx;
+  margin-top: 4rpx;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12'%3E%3Cpath d='M2 8 Q15 2 28 8 Q41 14 54 8 Q67 2 80 8 Q93 14 106 8 Q113 4 118 7' stroke='%23E8855A' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+```
+
+---
+
+#### 11.3.2 手绘星星 ⭐
+
+**用途**：散落装饰点缀，三种尺寸  
+**三种规格**：大(32px)、中(20px)、小(12px)
+
+```html
+<!-- 手绘星星·大（32×32px） -->
+<image src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32'%3E%3Cpath d='M16 4 L18.5 12.5 L27 13 L21 18.5 L23 27 L16 22.5 L9 27 L11 18.5 L5 13 L13.5 12.5 Z' stroke='%23E8855A' stroke-width='1.8' fill='%23FFF0E8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" style="width: 64rpx; height: 64rpx;" />
+
+<!-- 手绘星星·中（20×20px） -->
+<image src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' width='20' height='20'%3E%3Cpath d='M10 2.5 L11.5 7.5 L17 8 L13 11.5 L14.5 17 L10 14 L5.5 17 L7 11.5 L3 8 L8.5 7.5 Z' stroke='%23E8855A' stroke-width='1.5' fill='%23FFF0E8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" style="width: 40rpx; height: 40rpx;" />
+
+<!-- 手绘星星·小（12×12px） -->
+<image src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12'%3E%3Cpath d='M6 1.5 L7 4.5 L10.5 5 L8 7 L9 10.5 L6 8.5 L3 10.5 L4 7 L1.5 5 L5 4.5 Z' stroke='%23E8855A' stroke-width='1.2' fill='%23FFF0E8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" style="width: 24rpx; height: 24rpx;" />
+```
+
+| 规格 | 尺寸 | 使用场景 |
+|------|------|----------|
+| 大星星 | `64×64rpx` | 成就解锁、空状态插画角落 |
+| 中星星 | `40×40rpx` | 卡片右上角装饰、日记页点缀 |
+| 小星星 | `24×24rpx` | 标题旁散落、按钮hover动效 |
+
+---
+
+#### 11.3.3 手绘心形 ♥
+
+**用途**：点赞/收藏状态，active 状态填色  
+**推荐尺寸**：`40×40rpx`（标准）、`56×56rpx`（主操作）
+
+```html
+<!-- 手绘心形·未激活（描边） -->
+<image src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath d='M12 21 C12 21 3 15 3 9 C3 6 5.5 4 8 4.5 C10 5 11 6.5 12 8 C13 6.5 14 5 16 4.5 C18.5 4 21 6 21 9 C21 15 12 21 12 21 Z' stroke='%238C7B6A' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" style="width: 40rpx; height: 40rpx;" />
+
+<!-- 手绘心形·激活（填色） -->
+<image src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath d='M12 21 C12 21 3 15 3 9 C3 6 5.5 4 8 4.5 C10 5 11 6.5 12 8 C13 6.5 14 5 16 4.5 C18.5 4 21 6 21 9 C21 15 12 21 12 21 Z' stroke='%23E8855A' stroke-width='1.8' fill='%23F7CDB5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" style="width: 40rpx; height: 40rpx;" />
+```
+
+---
+
+#### 11.3.4 手绘小花/叶子
+
+**用途**：空白区域点缀，卡片角落装饰  
+**推荐尺寸**：`48×48rpx`
+
+```html
+<!-- 手绘小花（5瓣） -->
+<image src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32'%3E%3Ccircle cx='16' cy='16' r='3' fill='%23E8855A' stroke='%23C05C30' stroke-width='1'/%3E%3Cellipse cx='16' cy='9' rx='2.5' ry='4.5' fill='%23F7CDB5' stroke='%23E8855A' stroke-width='1.2' transform='rotate(0,16,16)'/%3E%3Cellipse cx='16' cy='9' rx='2.5' ry='4.5' fill='%23F7CDB5' stroke='%23E8855A' stroke-width='1.2' transform='rotate(72,16,16)'/%3E%3Cellipse cx='16' cy='9' rx='2.5' ry='4.5' fill='%23F7CDB5' stroke='%23E8855A' stroke-width='1.2' transform='rotate(144,16,16)'/%3E%3Cellipse cx='16' cy='9' rx='2.5' ry='4.5' fill='%23F7CDB5' stroke='%23E8855A' stroke-width='1.2' transform='rotate(216,16,16)'/%3E%3Cellipse cx='16' cy='9' rx='2.5' ry='4.5' fill='%23F7CDB5' stroke='%23E8855A' stroke-width='1.2' transform='rotate(288,16,16)'/%3E%3C/svg%3E" style="width: 48rpx; height: 48rpx;" />
+
+<!-- 手绘叶子（对生叶，更简洁） -->
+<image src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28' width='28' height='28'%3E%3Cpath d='M14 24 Q14 14 8 6 Q12 8 16 14 Q18 6 22 4 Q16 12 14 24 Z' fill='%23A8C5A0' stroke='%2380A878' stroke-width='1.2' stroke-linecap='round'/%3E%3Cline x1='14' y1='24' x2='14' y2='6' stroke='%2380A878' stroke-width='1' stroke-dasharray='2,2'/%3E%3C/svg%3E" style="width: 48rpx; height: 48rpx;" />
+```
+
+| 元素 | 使用场景 |
+|------|----------|
+| 小花 | 空状态页面、成就卡片角落、日记封面 |
+| 叶子 | 学习模块空状态、成长页面背景点缀 |
+
+---
+
+#### 11.3.5 手绘箭头
+
+**用途**：引导跳转、功能介绍指引  
+**推荐尺寸**：`56×32rpx`（水平）、`32×56rpx`（垂直）
+
+```html
+<!-- 手绘箭头·向右（引导） -->
+<image src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 24' width='48' height='24'%3E%3Cpath d='M4 12 Q16 10 28 12 Q22 8 30 6' stroke='%23E8855A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M26 7 L34 12 L26 17' stroke='%23E8855A' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" style="width: 96rpx; height: 48rpx;" />
+
+<!-- 手绘箭头·向下（展开提示） -->
+<image src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 32' width='24' height='32'%3E%3Cpath d='M12 4 Q10 14 12 24' stroke='%23E8855A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M7 22 L12 30 L17 22' stroke='%23E8855A' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" style="width: 48rpx; height: 64rpx;" />
+```
+
+---
+
+#### 11.3.6 手绘圆圈
+
+**用途**：高亮圈注、选中状态、强调内容  
+**推荐尺寸**：根据圈注内容大小调整，`80×60rpx` 标准
+
+```html
+<!-- 手绘圆圈（不规则椭圆，像用笔画的） -->
+<image src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 44' width='60' height='44'%3E%3Cpath d='M30 4 C45 3 58 10 58 22 C58 34 45 41 30 41 C15 42 2 35 2 22 C2 10 15 4 30 4 Z' stroke='%23E8855A' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-dasharray='0' opacity='0.85'/%3E%3C/svg%3E" style="width: 120rpx; height: 88rpx; position: absolute;" />
+```
+
+```css
+/* 圈注使用方式（相对定位叠加） */
+.circle-highlight {
+  position: relative;
+  display: inline-block;
+}
+.circle-highlight::before {
+  content: '';
+  position: absolute;
+  top: -8rpx;
+  left: -12rpx;
+  right: -12rpx;
+  bottom: -8rpx;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 44'%3E%3Cpath d='M30 4 C45 3 58 10 58 22 C58 34 45 41 30 41 C15 42 2 35 2 22 C2 10 15 4 30 4 Z' stroke='%23E8855A' stroke-width='2.2' fill='none' stroke-linecap='round' opacity='0.85'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+```
+
+---
+
+#### 11.3.7 手绘分隔线
+
+**用途**：替代直线 `<hr>`，用于内容区块间分隔  
+**推荐尺寸**：全宽，高度 `16rpx`
+
+```html
+<!-- 手绘分隔线（略带起伏，像随手画的一横） -->
+<image src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 16' width='320' height='16' preserveAspectRatio='none'%3E%3Cpath d='M4 8 Q40 5 80 8.5 Q120 12 160 7.5 Q200 4 240 8.5 Q280 12 316 8' stroke='%23E8E3DE' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" style="width: 100%; height: 16rpx; display: block; margin: 16rpx 0;" />
+```
+
+```css
+/* CSS 版本 */
+.hand-divider {
+  width: 100%;
+  height: 16rpx;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 16' preserveAspectRatio='none'%3E%3Cpath d='M4 8 Q40 5 80 8.5 Q120 12 160 7.5 Q200 4 240 8.5 Q280 12 316 8' stroke='%23E8E3DE' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin: 16rpx 0;
+  border: none;
+}
+```
+
+---
+
+### 11.4 卡片手绘增强
+
+#### 11.4.1 可选手绘描边
+
+卡片保持现代圆角，可选叠加 1-2px 不规则手绘描边风格，颜色用 `neutral-200（#E8E3DE）`。
+
+```css
+/* 标准卡片（无手绘描边） */
+.card {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(44, 31, 20, 0.08);
+  overflow: hidden;
+}
+
+/* 手绘描边卡片（可选变体） */
+.card--handdrawn {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(44, 31, 20, 0.08);
+  /* 用 SVG border-image 实现不规则描边 */
+  border: 2rpx solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.card--handdrawn::before {
+  content: '';
+  position: absolute;
+  inset: -2rpx;
+  border-radius: 26rpx;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Crect x='1' y='1' width='98' height='98' rx='12' ry='12' fill='none' stroke='%23E8E3DE' stroke-width='1.5' stroke-dasharray='0' stroke-linecap='round' stroke-linejoin='round' pathLength='100' style='stroke-dashoffset: 0.3; filter: url(%23rough)'/%3E%3Cfilter id='rough'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.05' numOctaves='2' seed='5' result='noise'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='noise' scale='1.5' xChannelSelector='R' yChannelSelector='G'/%3E%3C/filter%3E%3C/svg%3E") border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+```
+
+#### 11.4.2 日记卡片左侧手绘边框
+
+日记卡片左侧边框从直线改为手绘风格的竖线，增加温度感。
+
+```css
+/* 日记卡片：左侧手绘竖线边框 */
+.diary-card {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  box-shadow: 0 4rpx 20rpx rgba(44, 31, 20, 0.08);
+  position: relative;
+  /* 移除普通 border-left，改用 SVG 背景 */
+}
+
+.diary-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12rpx;
+  bottom: 12rpx;
+  width: 6rpx;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 100' preserveAspectRatio='none'%3E%3Cpath d='M3 2 Q4 20 2.5 38 Q1 56 3.5 74 Q5 88 3 98' stroke='%23E8855A' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-radius: 3rpx;
+}
+
+/* 情绪色变体（通过 CSS 变量控制颜色） */
+.diary-card[data-mood="happy"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 100' preserveAspectRatio='none'%3E%3Cpath d='M3 2 Q4 20 2.5 38 Q1 56 3.5 74 Q5 88 3 98' stroke='%23F5C842' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.diary-card[data-mood="calm"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 100' preserveAspectRatio='none'%3E%3Cpath d='M3 2 Q4 20 2.5 38 Q1 56 3.5 74 Q5 88 3 98' stroke='%2387C4B8' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+```
+
+---
+
+### 11.5 按钮手绘风格
+
+#### 11.5.1 按钮变体规范
+
+```css
+/* ─── 主按钮：保持现有圆角填充，不变 ─── */
+.btn-primary {
+  background: #E8855A;
+  border-radius: 999rpx;
+  color: #FFFFFF;
+  font-family: 'PingFang SC', sans-serif;
+  font-size: 32rpx;
+  font-weight: 600;
+  padding: 28rpx 64rpx;
+  border: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+  box-shadow: 0 2rpx 8rpx rgba(232, 133, 90, 0.3);
+}
+
+/* ─── 次级按钮：手绘描边风格 ─── */
+.btn-secondary--handdrawn {
+  background: transparent;
+  border: none;
+  border-radius: 999rpx;
+  color: #E8855A;
+  font-family: 'ZcoolKuaiLe', 'PingFang SC', sans-serif;
+  font-size: 30rpx;
+  padding: 26rpx 60rpx;
+  position: relative;
+  cursor: pointer;
+}
+
+/* 手绘描边用 SVG background 模拟 */
+.btn-secondary--handdrawn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 56' preserveAspectRatio='none'%3E%3Cpath d='M28 4 Q80 1 132 4 Q157 6 156 28 Q157 50 132 52 Q80 55 28 52 Q3 50 4 28 Q3 6 28 4 Z' fill='none' stroke='%23E8855A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+```
+
+#### 11.5.2 Hover / Active 手绘动效（小星星）
+
+```css
+/* hover 时右上角弹出小星星 */
+.btn-primary {
+  position: relative;
+  overflow: visible;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -16rpx;
+  right: -8rpx;
+  width: 24rpx;
+  height: 24rpx;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M6 1.5 L7 4.5 L10.5 5 L8 7 L9 10.5 L6 8.5 L3 10.5 L4 7 L1.5 5 L5 4.5 Z' stroke='%23E8855A' stroke-width='1.2' fill='%23FFF0E8' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0;
+  transform: scale(0.5) rotate(-20deg);
+  transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+
+.btn-primary:hover::after,
+.btn-primary:active::after {
+  opacity: 1;
+  transform: scale(1) rotate(15deg);
+}
+
+/* active 时轻微抖动 */
+@keyframes btn-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+}
+
+.btn-primary:active {
+  animation: btn-wiggle 0.3s ease;
+}
+```
+
+---
+
+### 11.6 加载 / 空状态手绘动效
+
+#### 11.6.1 加载动画：手绘铅笔画线条
+
+```css
+/* 铅笔从左到右逐渐描绘效果 */
+@keyframes draw-line {
+  0% {
+    stroke-dashoffset: 200;
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes pencil-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6rpx); }
+}
+```
+
+```html
+<!-- 加载动画组件（纯 SVG 内联） -->
+<view class="loading-handdrawn">
+  <svg viewBox="0 0 120 40" width="180" height="60" style="display:block;margin:0 auto;">
+    <!-- 第1条线 -->
+    <path d="M10 20 Q40 16 70 20 Q90 23 110 19" 
+          stroke="#E8855A" stroke-width="2.5" fill="none" 
+          stroke-linecap="round" stroke-dasharray="120" stroke-dashoffset="120"
+          style="animation: draw-line 1.2s ease forwards 0s;" />
+    <!-- 第2条线（延迟） -->
+    <path d="M20 28 Q50 25 80 28 Q95 30 105 27" 
+          stroke="#F7CDB5" stroke-width="2" fill="none" 
+          stroke-linecap="round" stroke-dasharray="100" stroke-dashoffset="100"
+          style="animation: draw-line 1.2s ease forwards 0.3s;" />
+    <!-- 第3条线（更短） -->
+    <path d="M30 35 Q55 33 80 35" 
+          stroke="#E8E3DE" stroke-width="1.5" fill="none" 
+          stroke-linecap="round" stroke-dasharray="60" stroke-dashoffset="60"
+          style="animation: draw-line 1.2s ease forwards 0.6s;" />
+    <!-- 铅笔图标 -->
+    <g style="animation: pencil-bounce 1s ease infinite;">
+      <rect x="100" y="14" width="16" height="7" rx="1" fill="#F5C842" stroke="#C8A020" stroke-width="1"/>
+      <polygon points="116,14 116,21 120,17.5" fill="#F0D090"/>
+      <rect x="98" y="14" width="3" height="7" rx="1" fill="#D4A0A0"/>
+    </g>
+  </svg>
+  <text class="loading-text" style="font-family: 'ZcoolKuaiLe', sans-serif; color: #8C7B6A; font-size: 28rpx; display: block; text-align: center; margin-top: 16rpx;">正在思考中～</text>
+</view>
+```
+
+#### 11.6.2 页面切换：纸张翻页感
+
+```css
+/* 页面进入动效 */
+@keyframes page-flip-in {
+  0% {
+    transform: perspective(800px) rotateY(-8deg) translateX(-20rpx);
+    opacity: 0;
+  }
+  60% {
+    transform: perspective(800px) rotateY(2deg) translateX(4rpx);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(800px) rotateY(0deg) translateX(0);
+    opacity: 1;
+  }
+}
+
+/* 页面退出动效 */
+@keyframes page-flip-out {
+  0% {
+    transform: perspective(800px) rotateY(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(800px) rotateY(8deg) translateX(20rpx);
+    opacity: 0;
+  }
+}
+
+.page-enter-active {
+  animation: page-flip-in 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.page-leave-active {
+  animation: page-flip-out 0.25s ease-in forwards;
+}
+```
+
+#### 11.6.3 情绪选择：手绘圈圈动画
+
+```css
+/* 情绪选中时：像用笔圈了一下的动画 */
+@keyframes circle-draw {
+  0% {
+    stroke-dashoffset: 157; /* circumference of circle r=25 ≈ 157 */
+    opacity: 0;
+    transform: rotate(-90deg);
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+    transform: rotate(270deg);
+  }
+}
+
+@keyframes emotion-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.18); }
+  70% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+```
+
+```html
+<!-- 情绪选项组件（Vue/UniApp） -->
+<template>
+  <view 
+    class="emotion-item" 
+    :class="{ 'is-selected': selected }"
+    @tap="onSelect"
+  >
+    <view class="emotion-icon-wrap">
+      <!-- 手绘圆圈 SVG（仅 selected 时显示） -->
+      <svg v-if="selected" class="emotion-circle" viewBox="0 0 60 60" width="60" height="60">
+        <circle 
+          cx="30" cy="30" r="26"
+          fill="none" 
+          stroke="#E8855A" 
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-dasharray="163"
+          stroke-dashoffset="163"
+          style="animation: circle-draw 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; transform-origin: center;"
+        />
+      </svg>
+      <text class="emotion-emoji" style="animation: emotion-pop 0.4s ease;">{{ emoji }}</text>
+    </view>
+    <text class="emotion-label">{{ label }}</text>
+  </view>
+</template>
+```
+
+```css
+.emotion-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.emotion-icon-wrap {
+  position: relative;
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emotion-circle {
+  position: absolute;
+  top: -10rpx;
+  left: -10rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.emotion-emoji {
+  font-size: 48rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.emotion-item.is-selected .emotion-label {
+  color: #E8855A;
+  font-family: 'ZcoolKuaiLe', sans-serif;
+}
+```
+
+---
+
+### 11.7 手绘风格使用规则（DO / DON'T）
+
+> **核心原则**：温度感与可用性不是对立的。每一处手绘装饰都应该有意义，而不是为了"显得有设计感"而堆砌。
+
+#### ✅ DO — 应该这样做
+
+| 场景 | 规则 | 原因 |
+|------|------|------|
+| **Section 标题** | 使用手写字体（站酷快乐体） | 增加亲切感，标题不影响阅读效率 |
+| **首页问候语** | 手写字体 + 手绘下划线 | 第一屏决定情绪，用温度感开场 |
+| **Tab 名称** | 可用庞门正道轻松体 | 5 个字的 Tab，手写体不影响识别 |
+| **空状态页面** | 手绘插画 + 手写说明文字 | 空状态是情感连接的最佳时机 |
+| **纸张纹理** | 作为页面底部全局背景 | 3-5% 透明度，只添加质感不干扰 |
+| **卡片装饰** | 右上角点缀小星星/小花（中小尺寸） | 画龙点睛，不抢内容主角 |
+| **成就/奖励** | 手绘星星 + 手绘圆圈高亮 | 庆祝感强化，符合情境 |
+| **日记卡片** | 左侧手绘竖线边框 | 模拟真实日记本格调 |
+| **按钮 hover** | 微弹出小星星动效 | 趣味微交互，不影响核心功能 |
+| **情绪选择** | 选中时手绘圈圈动画 | 像用笔圈出心情，强化仪式感 |
+
+#### ❌ DON'T — 绝对避免
+
+| 禁止行为 | 原因 |
+|----------|------|
+| **正文 / 日记内容用手写字体** | 手写体行距宽、识别慢，长文必须用 PingFang SC |
+| **输入框加手绘描边** | 输入框需要清晰边界感，手绘描边破坏输入状态反馈 |
+| **数据图表用手绘风格** | 番茄钟数据、情绪统计图必须清晰精准，不要"温暖感" |
+| **导航栏 / 顶部状态栏装饰** | 系统级 UI 区域，保持原生风格，避免混淆 |
+| **每屏超过 4 个装饰元素** | 超过阈值变"乱"，反而失去手帐的精致感 |
+| **多种手写字体同屏混用** | 最多 2 款字体共存，避免视觉噪音 |
+| **手绘边框用于主要数据卡片** | 统计卡片的数据密度高，手绘边框会抢焦点 |
+| **Loading 动画过长** | 手绘铅笔动画循环时间不超过 2s，否则反而让用户焦虑 |
+
+#### 密度控制速查表
+
+```
+每屏装饰元素数量上限：
+├── 首页 (Home)：最多 4 个（问候区下划线 + 2颗星星 + 纸张纹理底）
+├── 日记页：最多 3 个（左侧竖线边框 + 1个角落装饰 + 纸张纹理底）
+├── 学习页：最多 2 个（Section标题下划线 + 纸张纹理底）
+├── 空状态页：最多 4 个（插画 + 说明手写文字 + 1朵小花 + 纸张纹理底）
+└── 设置/个人页：最多 1 个（纸张纹理底，其余不加）
+```
+
+---
+
 ## 设计系统版本日志
 
 | 版本 | 日期 | 变更 |
 |------|------|------|
 | v1.0 | 2026-03-23 | 初始版本，由 Iris 🎨 完整输出 |
 | v1.1 | 2026-03-23 | 配色方案全面调整为暖色调：主色由暖紫改为暖杏橙 #E8855A，背景改为奶油白 #FDF8F3，辅助色改为淡珊瑚粉 #F2B49B，中性灰改为暖灰系，模块色统一为暖色系，功能色微调协调暖调 |
+| v1.2 | 2026-03-23 | 新增第 11 章「手绘风格规范」：纸张纹理背景、手写字体系统（站酷快乐体/庞门正道轻松体）、手绘装饰元素库（7类SVG元素含内联data URI）、卡片手绘增强、按钮手绘风格、加载/空状态手绘动效、DO/DON'T使用规则。方案B：现代框架+手绘点缀（Headspace/Forest路线）|
 
 ---
 

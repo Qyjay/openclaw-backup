@@ -6,6 +6,9 @@
 </template>
 
 <style lang="scss">
+// 引入手绘风格规范（§11）
+@import './common/styles/handdrawn.scss';
+
 /* 全局字体 & 重置 */
 page {
   background-color: #FDF8F3;
@@ -13,6 +16,19 @@ page {
   color: #4A3628;
   font-size: 32rpx;
   line-height: 1.5;
+  height: 100%;
+}
+
+uni-page, uni-page-wrapper, uni-page-body {
+  height: 100% !important;
+  max-height: 100% !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* 隐藏 UniApp 原生 TabBar，我们用自定义的 */
+uni-tabbar, .uni-tabbar {
+  display: none !important;
 }
 
 view, text, input, textarea {
