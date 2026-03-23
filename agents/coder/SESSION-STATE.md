@@ -25,7 +25,7 @@ DiviMind v2 — 后端 MVP + 前端打磨完成，全链路通畅
 ## Active Sessions
 <!-- Claude Code sessions spawned by BB -->
 <!-- 格式: | 时间 | session | 项目 | 任务 | 状态 | -->
-| 17:27 | marine-glade | divi-mind-v2 | 生辰八字功能（排盘引擎+AI解读+前端） | 🔄 执行中 |
+| 10:29 | fresh-rook | divi-mind-v2 | 塔罗解读改流式SSE + 测试用真实API | 🔄 执行中 |
 
 ## Key Context
 - Master: Kylin，南开大三，MiniMax 实习

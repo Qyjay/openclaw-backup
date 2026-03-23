@@ -37,15 +37,19 @@
 ## Lessons Learned
 
 ### 🔴 铁律：任务完成先通知前辈，再做验证（2026-03-21）
-- **事件：** 同一天三次 Claude Code 任务完成后没有及时通知前辈，分别迟了 60 分钟、20 分钟、20 分钟
-- **根因：** 完成后沉迷验证细节（跑测试、截图、走流程），把「通知前辈」排在了「自己验证」后面
-- **教训：** Claude Code 任务完成后，**第一件事是发飞书通知前辈**，哪怕只是一句「完成了，正在验证」。验证是第二步。通知不能等验证做完
-- **前辈原话：** 「事不过三」——这是底线，不能再犯
+- **事件：** 3/21 四次迟报 + 3/22 又多次迟报（UI升级30分钟迟报、周易40分钟迟报）
+- **根因（真正的）：** 不是「忘了」，是架构缺陷——BB 不是常驻进程，process poll 超时后就睡了，没人唤醒
+- **根治方案（2026-03-22 实施）：**
+  1. **watch-claude.sh** — 后台脚本监控 Claude Code PID，进程结束后直接发飞书（不依赖 BB 被唤醒）
+  2. **dispatch-claude.sh** — 派活时自动启动 watch 脚本
+  3. **HEARTBEAT.md** — 配置 heartbeat 定期轮询活跃 session 状态
+  4. 三重保障：watch 脚本（主）+ heartbeat 轮询（备）+ process poll（补）
+- **脚本路径：** ~/.openclaw/workspace-coder/scripts/
 - **执行规则：**
-  1. Claude Code session 完成 → 立刻发飞书通知（30 秒内）
-  2. 通知内容：完成/失败 + 一句话摘要
-  3. 然后再做验证、截图、详细报告
-  4. 绝不静默失败，绝不迟报
+  1. 每次 spawn Claude Code → 必须同时启动 watch-claude.sh
+  2. Claude Code 完成 → watch 脚本自动发飞书（0 秒延迟）
+  3. Heartbeat 轮询兜底检查
+  4. 绝不再依赖 process poll 单点
 
 ## Projects
 

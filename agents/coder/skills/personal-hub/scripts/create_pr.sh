@@ -142,6 +142,21 @@ if [ "$CAN_CREATE_PR" = "true" ]; then
         echo "title: ${PR_TITLE}"
         echo "commits: ${COMMIT_COUNT}"
         echo "=== END ==="
+        # Write step5 state before exiting
+        STATE_FILE="/tmp/.claude_hub_active"
+        if [ -f "$STATE_FILE" ]; then
+            if [ -n "$SERVICE_NAME" ]; then
+                _MARKER_KEY="svc_${SERVICE_NAME}_step5"
+            else
+                _MARKER_KEY="step5_pr_created"
+            fi
+            if grep -q "^${_MARKER_KEY}:" "$STATE_FILE" 2>/dev/null; then
+                sed -i.bak "s/^${_MARKER_KEY}:.*/${_MARKER_KEY}: push-only/" "$STATE_FILE"
+                rm -f "${STATE_FILE}.bak"
+            else
+                echo "${_MARKER_KEY}: push-only" >> "$STATE_FILE"
+            fi
+        fi
         exit 0
     }
 
