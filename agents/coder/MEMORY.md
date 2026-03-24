@@ -53,7 +53,17 @@
 
 ## Projects
 
-### DiviMind v2
+### AIGC 比赛 — 大学生 AI 生活伙伴 App（当前主项目）
+- **路径:** ~/.openclaw/workspace/projects/aigc-competition/
+- **比赛:** 第三届中国高校计算机大赛·AIGC创新赛·应用赛道
+- **初赛截止:** 2026年5月11日
+- **技术栈:** UniApp (Vue 3) + Vite + TypeScript / 后端待搭建
+- **当前状态:** 前端 MVP 完成（46文件/11691行/20页面），Phase 2 后端待开始
+- **产品名:** 待定（半日 > 拾光 > 同频 > 在场 > 碎碎念）
+- **交接:** 2026-03-24 从女仆长大人 workspace 接手，前辈直接调度
+- **关键文档:** PRD-v1.md / frontend-design-spec.md / design-system.md / WORKFLOW.md
+
+### DiviMind v2（暂停）
 - **路径:** ~/projects/divi-mind-v2/
 - **GitHub:** https://github.com/Qyjay/divi-mind-v2
 - **定位:** AI 灵感伙伴 × 占卜引导 × 情绪支持平台

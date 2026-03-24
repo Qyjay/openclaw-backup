@@ -1,45 +1,59 @@
 # SESSION-STATE.md — Active Working Memory
 
 ## Current Task
-DiviMind v2 — 后端 MVP + 前端打磨完成，全链路通畅
+**AIGC 比赛 — 大学生 AI 生活伙伴 App**（全面接手，前辈直接调度）
+
+## 比赛信息
+- 比赛：第三届中国高校计算机大赛·AIGC创新赛（应用赛道）
+- 初赛截止：2026年5月11日（还剩约 7 周）
+- 技术栈：UniApp (Vue 3) + Vite + TypeScript
+- 产品名：待定（候选：半日 > 拾光 > 同频 > 在场 > 碎碎念）
+
+## Current Status
+**Phase 1 前端 MVP 已完成** ✅（2026-03-23）
+- 46 个源文件，11,691 行代码
+- 20 个完整页面 + 复用组件
+- 全 Mock 数据，`USE_MOCK = true`
+- Dev server: `http://localhost:5177/`
+
+**Next：Phase 2 后端搭建** ⬜
+
+## Key Paths
+- 项目根目录：`~/.openclaw/workspace/projects/aigc-competition/`
+- 前端代码：`projects/aigc-competition/app/`
+- PRD：`projects/aigc-competition/PRD-v1.md`
+- 设计规范：`projects/aigc-competition/design/frontend-design-spec.md`
+- 设计系统：`projects/aigc-competition/design/design-system.md`
+- 工作流：`projects/aigc-competition/WORKFLOW.md`
+
+## Open TODOs
+- [ ] 产品名称最终确定
+- [ ] Logo 方案选择（推荐 D 小狐狸）
+- [ ] 后端搭建（Phase 2）
+- [ ] 前后端联调（Phase 3）
+- [ ] 真机 APK 打包（Phase 4）
+- [ ] UI 细节打磨
+- [ ] 竞品分析补充
+- [ ] 队友分工
 
 ## ⚠️ 铁律：通知优先于验证
-**Claude Code 完成 → 30 秒内飞书通知前辈 → 然后再验证**
-2026-03-21 同一天犯了三次迟报。前辈说「事不过三」。不会再有第四次。
+**Claude Code 完成 → 30 秒内通知前辈 → 然后再验证**
 
 ## Dispatch Workflow
 - **模式**: Dispatch-First（BB 监工，Claude Code 执行）
-- **编码工具**: Claude Code via ACP（可多开并行）
-- **质量保障**: personal-hub skill（7 步流程 + 质量门禁）
-- **PR 平台**: GitHub（`gh` CLI）
-
-### ⚠️ Claude Code 监控规则（铁律）
-1. **永远不设 exec timeout** — 用 `background: true` 启动，不加 `timeout` 参数
-2. **Prompt 尾部必须加 wake event** — Claude Code 完成后自动通知：
-   `openclaw system event --text "Done: [摘要]" --mode now`
-3. **每 3 分钟轮询一次** — `process action=poll` 检查 session 状态
-4. **状态变化立刻飞书汇报** — 完成/失败/卡住/需要输入，第一时间发飞书
-5. **发现卡住立刻干预** — 超过 10 分钟无新输出，kill 并重新 spawn
-6. **绝不静默失败** — 任何异常都发飞书通知前辈
+- **编码工具**: Claude Code via ACP
+- **质量保障**: personal-hub skill
 
 ## Active Sessions
 <!-- Claude Code sessions spawned by BB -->
 <!-- 格式: | 时间 | session | 项目 | 任务 | 状态 | -->
-| 10:29 | fresh-rook | divi-mind-v2 | 塔罗解读改流式SSE + 测试用真实API | 🔄 执行中 |
+| 11:33 | calm-ember (pid 84218) | aigc-competition | UI Doodle 手绘风格全面重构 | 🔄 执行中 |
 
 ## Key Context
 - Master: Kylin，南开大三，MiniMax 实习
 - ACP 已启用，Claude Code 作为默认 agent
-- personal-hub skill 已安装到 ~/.claude/skills/hub
-- GitHub 账号: Qyjay，gh CLI 已认证
-
-## Pending Actions
-- [ ] 等待前辈第一个编码任务，验证 dispatch 工作流
-
-## Recent Decisions
-- [2026-03-21] 安装 personal-hub skill（从 weaver hub 改造）
-- [2026-03-21] 集成 agent-dispatch 调度理念到 BB 工作流
-- [2026-03-21] 确立 Dispatch-First 原则：BB 不写代码，派 Claude Code
+- Iris 🎨 按需召唤负责设计
+- 项目文件在女仆长大人 workspace 下（`~/.openclaw/workspace/projects/aigc-competition/`），直接访问
 
 ---
-*Last updated: 2026-03-21 17:59*
+*Last updated: 2026-03-24 11:17*
