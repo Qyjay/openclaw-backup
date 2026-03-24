@@ -63,7 +63,7 @@
       </view>
 
       <!-- 经验条 -->
-      <view class="exp-card">
+      <view class="exp-card" @click="navTo('/pages/growth/index')">
         <view class="exp-header">
           <text class="exp-label font-handwrite">探索者 Lv.{{ profile.level }}</text>
           <text class="exp-value">{{ currentXP }} / {{ nextLevelXP }} XP</text>
@@ -71,7 +71,10 @@
         <view class="exp-bar-bg">
           <view class="exp-bar-fill" :style="{ width: expPercent + '%' }" />
         </view>
-        <text class="exp-hint">{{ expHint }}</text>
+        <view class="exp-bottom">
+          <text class="exp-hint">{{ expHint }}</text>
+          <text class="exp-arrow">查看详情 ›</text>
+        </view>
       </view>
 
       <!-- 功能列表 -->
@@ -142,7 +145,6 @@ const expPercent = computed(() => Math.round((currentXP.value / nextLevelXP.valu
 const expHint = computed(() => `再写 ${nextLevelXP.value - currentXP.value} XP 升至 Lv.${profile.value.level + 1} 🌟`)
 
 const menuItems = [
-  { key: 'stats',   iconName: 'chart',    iconColor: '#E8855A', name: '我的数据',   iconBg: 'rgba(232, 133, 90, 0.10)', path: '/pages/growth/index' },
   { key: 'skill',   iconName: 'sparkle',  iconColor: '#5BBF8E', name: '技能树',     iconBg: 'rgba(91, 175, 133, 0.12)', path: '' },
   { key: 'report',  iconName: 'book',     iconColor: '#6B8EC4', name: '学期报告',   iconBg: 'rgba(123, 184, 212, 0.12)', path: '/pages/novel/index' },
   { key: 'privacy', iconName: 'lock',     iconColor: '#AE9D92', name: '隐私设置',   iconBg: 'rgba(174, 157, 146, 0.12)', path: '/pages/profile/settings' },
@@ -363,6 +365,8 @@ onMounted(async () => {
 }
 
 .exp-hint { font-size: 24rpx; color: #AE9D92; }
+.exp-bottom { display: flex; align-items: center; justify-content: space-between; }
+.exp-arrow { font-size: 24rpx; color: #E8855A; font-weight: 500; }
 
 /* ── 功能列表 ── */
 .menu-card {
