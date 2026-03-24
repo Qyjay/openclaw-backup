@@ -9,7 +9,7 @@
         <view class="logo-wrap">
           <image class="logo-img" src="/static/brand/logo-d-mascot.png" mode="aspectFill" />
         </view>
-        <text class="app-name">半日</text>
+        <text class="app-name">日迹</text>
         <text class="app-slogan">你的 AI 生活伙伴</text>
         <view class="version-badge">
           <text class="version-text">v1.0.0</text>
@@ -20,51 +20,12 @@
       <view class="info-card">
         <view class="info-row">
           <text class="info-label">App 名称</text>
-          <text class="info-value">半日</text>
+          <text class="info-value">日迹</text>
         </view>
         <view class="info-divider" />
         <view class="info-row">
           <text class="info-label">版本号</text>
           <text class="info-value">v1.0.0</text>
-        </view>
-        <view class="info-divider" />
-        <view class="info-row">
-          <text class="info-label">所属平台</text>
-          <text class="info-value">MiniMax AI 能力创作大赛</text>
-        </view>
-        <view class="info-divider" />
-        <view class="info-row">
-          <text class="info-label">开发团队</text>
-          <text class="info-value">Kylin Studio</text>
-        </view>
-      </view>
-
-      <!-- Competition Info -->
-      <view class="section-title">
-        <view class="section-title-row">
-          <DoodleIcon name="trophy" color="#C8A86B" :size="36" />
-          <text class="section-title-text">比赛信息</text>
-        </view>
-      </view>
-      <view class="info-card">
-        <view class="info-row">
-          <text class="info-label">赛事名称</text>
-          <text class="info-value">MiniMax AI 开放平台</text>
-        </view>
-        <view class="info-divider" />
-        <view class="info-row">
-          <text class="info-label">赛道</text>
-          <text class="info-value">AI 原生应用赛道</text>
-        </view>
-        <view class="info-divider" />
-        <view class="info-row">
-          <text class="info-label">开发框架</text>
-          <text class="info-value">UniApp + Vue 3 + TypeScript</text>
-        </view>
-        <view class="info-divider" />
-        <view class="info-row">
-          <text class="info-label">AI 能力</text>
-          <text class="info-value">通义千问 / 豆包 / Seedance</text>
         </view>
       </view>
 
@@ -86,8 +47,8 @@
 
       <!-- Footer -->
       <view class="footer">
-        <text class="footer-text">© 2026 Kylin Studio</text>
-        <text class="footer-text">Made with ❤️ for everyone</text>
+        <text class="footer-text">© 2026 日迹</text>
+        <text class="footer-text">记录每一天，遇见更好的自己</text>
       </view>
     </scroll-view>
   </view>

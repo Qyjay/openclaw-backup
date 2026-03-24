@@ -1,6 +1,5 @@
 <template>
   <view class="drawer-teleport-wrapper">
-    <transition name="drawer">
       <view v-if="visible" class="drawer-overlay" @click="close">
         <view class="drawer-panel" @click.stop>
           <!-- 用户卡片 -->
@@ -61,7 +60,6 @@
           </view>
         </view>
       </view>
-    </transition>
   </view>
 </template>
 

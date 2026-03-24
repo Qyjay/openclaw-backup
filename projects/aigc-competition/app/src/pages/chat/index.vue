@@ -5,7 +5,7 @@
     <!-- NavBar 占位 -->
     <view class="nav-placeholder" :style="{ height: navPlaceholderHeight + 'px' }" />
 
-    <view class="page-content" :style="{ height: scrollHeight + 'px' }">
+    <view class="page-content">
       <!-- AI 伙伴信息卡 -->
       <view class="ai-info-card">
         <view class="ai-info-icon doodle-box-v3">
@@ -22,6 +22,7 @@
       <scroll-view
         class="messages-scroll"
         scroll-y
+        :style="{ height: msgScrollHeight + 'px' }"
         :scroll-into-view="scrollIntoId"
         :scroll-with-animation="true"
       >
@@ -78,8 +79,8 @@
         </scroll-view>
       </view>
 
-      <!-- 输入栏 -->
-      <view class="input-bar">
+      <!-- 输入栏 — 固定底部 -->
+      <view class="input-bar-fixed">
         <view class="input-row">
           <view class="attach-btn press-feedback" @click="handleAttach">
             <DoodleIcon name="attach" color="#AE9D92" :size="36" />
@@ -218,11 +219,15 @@ function handleQuickAction(path: string) {
 
 const navPlaceholderHeight = ref(64)
 const scrollHeight = ref(600)
+// AI 信息卡约 100px + 快捷操作约 80px + 输入栏约 60px = 240px
+const msgScrollHeight = ref(400)
 
 onMounted(async () => {
   const info = uni.getSystemInfoSync()
   navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
   scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 0
+  // 消息区高度 = 总内容区 - AI信息卡(约80) - 快捷操作(约70) - 底部输入栏(约60) - 间距
+  msgScrollHeight.value = scrollHeight.value - 210
   profile.value = await getUserProfile()
   scrollToBottom()
 })
@@ -237,8 +242,6 @@ onMounted(async () => {
 }
 
 .page-content {
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
 }
 
@@ -282,7 +285,6 @@ onMounted(async () => {
 }
 
 .messages-scroll {
-  flex: 1;
   overflow-y: auto;
 }
 
@@ -369,7 +371,6 @@ onMounted(async () => {
 }
 
 .quick-actions {
-  flex-shrink: 0;
   background: #FFFFFF;
   border-top: 1px solid rgba(44, 31, 20, 0.06);
   padding: 16rpx 0;
@@ -404,12 +405,16 @@ onMounted(async () => {
   white-space: nowrap;
 }
 
-.input-bar {
-  flex-shrink: 0;
+.input-bar-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background: #FFFFFF;
   border-top: 1px solid rgba(44, 31, 20, 0.06);
   padding: 20rpx 24rpx;
   padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+  z-index: 100;
 }
 
 .input-row {

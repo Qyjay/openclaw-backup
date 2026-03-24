@@ -1,7 +1,6 @@
 <template>
   <view v-if="visible" class="tabbar-wrapper">
     <!-- ActionSheet -->
-    <transition name="sheet">
       <view v-if="showActionSheet" class="action-sheet-overlay" @click="closeActionSheet">
         <view class="action-sheet-panel doodle-box" @click.stop>
           <view class="action-sheet-header">
@@ -38,7 +37,6 @@
           </view>
         </view>
       </view>
-    </transition>
 
     <!-- TabBar -->
     <view class="tabbar">
