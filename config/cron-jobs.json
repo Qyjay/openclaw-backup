@@ -33,7 +33,7 @@
         "lastDurationMs": 58642,
         "lastDeliveryStatus": "unknown",
         "consecutiveErrors": 1,
-        "runningAtMs": 1774324800008
+        "lastError": "Error: weixin: accountId is required (no default account)"
       }
     }
   ]

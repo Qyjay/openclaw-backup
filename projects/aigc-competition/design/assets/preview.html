@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎨 品牌素材预览 — Iris 出品</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "PingFang SC", "SF Pro Display", -apple-system, sans-serif;
+    background: #FDF8F3;
+    color: #2C1F14;
+    padding: 40px 20px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #E8855A, #D4956A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: #857268;
+    margin-bottom: 48px;
+  }
+  .section {
+    margin-bottom: 48px;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #2C1F14;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-desc {
+    font-size: 13px;
+    color: #AE9D92;
+    margin-bottom: 20px;
+  }
+  .grid {
+    display: grid;
+    gap: 20px;
+  }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .grid-5 { grid-template-columns: repeat(5, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-1 { grid-template-columns: 1fr; }
+
+  @media (max-width: 768px) {
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .grid-5 { grid-template-columns: repeat(3, 1fr); }
+    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(44, 31, 20, 0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(232, 133, 90, 0.15);
+  }
+  .card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    background: #F5EDE4;
+  }
+  .card.tall img {
+    aspect-ratio: auto;
+    max-height: 500px;
+    object-fit: contain;
+    background: #F5EDE4;
+    padding: 8px;
+  }
+  .card-info {
+    padding: 12px 14px;
+  }
+  .card-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2C1F14;
+    margin-bottom: 4px;
+  }
+  .card-desc {
+    font-size: 12px;
+    color: #AE9D92;
+    line-height: 1.5;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-top: 6px;
+  }
+  .badge-recommend {
+    background: linear-gradient(135deg, #E8855A, #F0A882);
+    color: #FFF;
+  }
+  .badge-good {
+    background: rgba(232, 133, 90, 0.12);
+    color: #E8855A;
+  }
+  .divider {
+    height: 1px;
+    background: #EAE0D6;
+    margin: 48px 0;
+  }
+  .color-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .color-swatch {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .color-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+  }
+  .color-info span:first-child { font-size: 12px; font-weight: 600; color: #2C1F14; }
+  .color-info span:last-child { font-size: 11px; color: #AE9D92; }
+  .color-item {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  /* Splash special layout */
+  .splash-container {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .splash-container .card img {
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 40px 0 20px;
+    font-size: 12px;
+    color: #D4C4B8;
+  }
+</style>
+</head>
+<body>
+
+<h1>🎨 品牌素材预览</h1>
+<p class="subtitle">Iris 🎨 出品 · 手绘暖色风格 · 2026-03-23</p>
+
+<!-- 配色参考 -->
+<div class="section">
+  <div class="section-title">🎨 品牌配色</div>
+  <div class="section-desc">暖杏橙 · 奶油白 · 淡珊瑚粉 · 深暖棕</div>
+  <div class="color-bar">
+    <div class="color-item">
+      <div class="color-swatch" style="background:#E8855A"></div>
+      <div class="color-info"><span>暖杏橙</span><span>#E8855A</span></div>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background:#FDF8F3; border:1px solid #EAE0D6"></div>
+      <div class="color-info"><span>奶油白</span><span>#FDF8F3</span></div>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background:#F2B49B"></div>
+      <div class="color-info"><span>淡珊瑚粉</span><span>#F2B49B</span></div>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background:#2C1F14"></div>
+      <div class="color-info"><span>深暖棕</span><span>#2C1F14</span></div>
+    </div>
+    <div class="color-item">
+      <div class="color-swatch" style="background:#4A3628"></div>
+      <div class="color-info"><span>暖棕</span><span>#4A3628</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 1. Logo 方案 -->
+<div class="section">
+  <div class="section-title">🏷️ App Logo 方案（四选一）</div>
+  <div class="section-desc">手绘风格 · 1:1 正方形 · 请 Master 选择最终方案</div>
+  <div class="grid grid-4">
+    <div class="card">
+      <img src="brand/logo-a-journal.png" alt="Logo A">
+      <div class="card-info">
+        <div class="card-label">方案 A · 日记本</div>
+        <div class="card-desc">手绘翻开的书本 + 星光点缀，直接传达"记录"概念</div>
+        <span class="badge badge-good">📖 经典方向</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="brand/logo-b-sun.png" alt="Logo B">
+      <div class="card-info">
+        <div class="card-label">方案 B · 小太阳</div>
+        <div class="card-desc">微笑的暖色小太阳，可爱治愈，传达温暖陪伴感</div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="brand/logo-c-bubble.png" alt="Logo C">
+      <div class="card-info">
+        <div class="card-label">方案 C · 气泡笔</div>
+        <div class="card-desc">对话气泡 + 画笔，体现 AI 对话 + 记录双重概念</div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="brand/logo-d-mascot.png" alt="Logo D">
+      <div class="card-info">
+        <div class="card-label">方案 D · 小狐狸</div>
+        <div class="card-desc">抱日记本的小狐狸吉祥物，辨识度最高，可复用形象</div>
+        <span class="badge badge-recommend">⭐ 推荐</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 2. 模块图标 -->
+<div class="section">
+  <div class="section-title">📦 模块图标</div>
+  <div class="section-desc">五大功能模块 · 手绘暖色风格</div>
+  <div class="grid grid-5">
+    <div class="card">
+      <img src="icons/module-diary.png" alt="日记">
+      <div class="card-info">
+        <div class="card-label">📔 AI 日记</div>
+        <div class="card-desc">日记本 + 笔</div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="icons/module-study.png" alt="学习">
+      <div class="card-info">
+        <div class="card-label">📚 学习伙伴</div>
+        <div class="card-desc">书本 + 番茄钟</div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="icons/module-social.png" alt="社交">
+      <div class="card-info">
+        <div class="card-label">👥 智能社交</div>
+        <div class="card-desc">两个人 + 连线</div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="icons/module-growth.png" alt="成长">
+      <div class="card-info">
+        <div class="card-label">🌱 成长轨迹</div>
+        <div class="card-desc">小树苗 + 向上</div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="icons/module-fortune.png" alt="运势">
+      <div class="card-info">
+        <div class="card-label">🔮 AI 运势</div>
+        <div class="card-desc">水晶球 + 星星</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 3. TabBar 图标 -->
+<div class="section">
+  <div class="section-title">📂 TabBar 图标</div>
+  <div class="section-desc">底部导航栏 · 极简线条风</div>
+  <div class="grid grid-5">
+    <div class="card">
+      <img src="tabbar/tab-diary.png" alt="日记tab">
+      <div class="card-info">
+        <div class="card-label">日记</div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="tabbar/tab-study.png" alt="学习tab">
+      <div class="card-info">
+        <div class="card-label">学习</div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="tabbar/tab-home.png" alt="首页tab">
+      <div class="card-info">
+        <div class="card-label">首页</div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="tabbar/tab-social.png" alt="社交tab">
+      <div class="card-info">
+        <div class="card-label">社交</div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="tabbar/tab-profile.png" alt="我的tab">
+      <div class="card-info">
+        <div class="card-label">我的</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 4. 启动页 -->
+<div class="section">
+  <div class="section-title">🖼️ 启动页插画</div>
+  <div class="section-desc">竖版 9:16 · 大学生 + AI 伙伴场景</div>
+  <div class="splash-container">
+    <div class="card">
+      <img src="illustrations/splash-screen.png" alt="启动页">
+      <div class="card-info">
+        <div class="card-label">App 启动页</div>
+        <div class="card-desc">手绘温暖场景 · 窗边写日记 · AI 小伙伴陪伴</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 5. 空状态 -->
+<div class="section">
+  <div class="section-title">🫙 空状态插画</div>
+  <div class="section-desc">无内容时的引导插画</div>
+  <div class="grid grid-2" style="max-width:600px;">
+    <div class="card">
+      <img src="illustrations/empty-no-diary.png" alt="空日记">
+      <div class="card-info">
+        <div class="card-label">还没有日记</div>
+        <div class="card-desc">空白日记本 + 笔 + 小星星</div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="illustrations/empty-no-buddy.png" alt="空搭子">
+      <div class="card-info">
+        <div class="card-label">还没有搭子</div>
+        <div class="card-desc">两个座位 + 一杯咖啡</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  「每一个像素都是笔触。让 Master 的产品成为艺术品。」— Iris 🎨
+</div>
+
+</body>
+</html>

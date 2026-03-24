@@ -1,32 +1,35 @@
-# SESSION-STATE.md — Active Working Memory
+# SESSION-STATE.md — Hot RAM
 
-## Current Task
-DiviMind v2 塔罗占卜平台 — 开发迭代中
+## Current Project
+**AIGC 比赛 — 大学生 AI 生活伙伴 App**
+- 比赛：第三届中国高校计算机大赛·AIGC创新赛（应用赛道）
+- 初赛截止：2026年5月11日
+- 技术栈：UniApp (Vue 3) + TypeScript
 
-## Key Context
-- Master: Kylin，南开大三，MiniMax 实习
-- 飞书渠道已连接
-- ACP 模式已启用，Claude Code 作为默认 agent
+## Current Status
+**前端 MVP 已完成** ✅（2026-03-23 晚）
+- 5 Sprint 全部完成，46 个源文件，11,691 行代码
+- 20 个完整页面 + 多个复用组件
+- 全部 Mock 数据驱动，`USE_MOCK = true` 一键切换
+- Dev server: `http://localhost:5177/`
 
-## DiviMind v2 Status
-- **后端** `~/projects/divi-mind-v2/backend/`：运行正常，MiniMax-M1 模型
-  - 知识库已迁移，R.I.T.E. 解读法已整合
-  - SSE 流式加了错误处理和重试
-  - 启动命令：`cd backend && python3 main.py`
-- **前端** `~/projects/divi-mind-v2/frontend/`：Vite dev server
-  - Claude Code 已修复流式体验（未 commit）
-  - 启动命令：`cd frontend && npm run dev`
-- **已知问题**：Master 反馈浏览器仍有 CORS/SSE 报错，需进一步排查
+## Open TODOs
+- [ ] 产品名称最终确定（候选：半日 > 拾光 > 同频 > 在场 > 碎碎念）
+- [ ] Logo 方案选择（4选1：A日记本/B小太阳/C气泡笔/D小狐狸，推荐D）
+- [ ] 后端搭建（Phase 2）
+- [ ] 前后端联调（Phase 3）
+- [ ] 真机测试 APK 打包（Phase 4）
+- [ ] 竞品分析（PRD 待补充）
+- [ ] 队友分工规划
+- [ ] 泄露的 API key 需轮换
+- [ ] UI 细节打磨（中间写按钮图标、页面过渡动画等）
 
-## Pending Actions
-- [ ] 确认前端修复效果（Master 刷新页面测试）
-- [ ] 泄露的 API key 需要轮换
-- [ ] BB 的 Hermes 架构学习笔记待检查
+## Key Paths
+- 项目目录：`projects/aigc-competition/app/`
+- PRD：`projects/aigc-competition/PRD-v1.md`
+- 设计规范：`projects/aigc-competition/design/frontend-design-spec.md`
+- 设计系统：`projects/aigc-competition/design/design-system.md`
+- 服务层：`src/services/config.ts`（USE_MOCK 开关）
 
-## Recent Decisions
-- [2026-03-22] Hermes Agent 架构 10 个核心模式融合到 skill + AGENTS.md
-- [2026-03-22] DiviMind 塔罗解读升级：R.I.T.E. 框架 + 知识库注入
-- [2026-03-22] 后端 SSE 加重试机制（2 次）和异常兜底
-
----
-*Last updated: 2026-03-22 17:42*
+## Last Session
+- 2026-03-23 22:37：Master 说晚安，明天继续
