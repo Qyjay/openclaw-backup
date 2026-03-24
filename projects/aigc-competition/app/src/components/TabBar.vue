@@ -169,11 +169,20 @@ function chooseMode(mode: string) {
 
 <style lang="scss">
 .tabbar-wrapper {
-  position: relative;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9998;
+  pointer-events: none;
+}
+
+.tabbar-wrapper > * {
+  pointer-events: auto;
 }
 
 .tabbar {
-  position: fixed;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
