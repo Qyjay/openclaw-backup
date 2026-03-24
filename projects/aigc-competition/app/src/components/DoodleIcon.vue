@@ -1,6 +1,6 @@
 <template>
   <view class="doodle-icon" :style="iconStyle">
-    <image :src="svgDataUri" mode="aspectFit" :style="imgStyle" />
+    <image :src="svgDataUri" mode="aspectFit" :style="imgStyle" :width="size + 'rpx'" :height="size + 'rpx'" />
   </view>
 </template>
 
