@@ -2,6 +2,9 @@
   <view class="page page-root">
     <CustomNavBar title="分享卡片" left-icon="back" />
 
+    <!-- NavBar 占位 -->
+    <view class="nav-placeholder" :style="{ height: navPlaceholderHeight + 'px' }" />
+
     <view class="page-scroll">
       <!-- 卡片预览区 -->
       <view class="card-preview-wrap">
@@ -159,7 +162,11 @@ function handleSave() {
   uni.showToast({ title: '已保存到相册', icon: 'success' })
 }
 
+const navPlaceholderHeight = ref(64)
+
 onMounted(async () => {
+  const info = uni.getSystemInfoSync()
+  navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
   const pages = getCurrentPages()
   const current = pages[pages.length - 1]
   const options = (current as any).$page?.options ?? current.options ?? {}
@@ -170,21 +177,20 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .page {
-  position: absolute;
-  inset: 0;
-  height: 100% !important;
-  min-height: 0 !important;
-  max-height: 100% !important;
+  position: relative;
+  min-height: 100vh;
   background: #FDF8F3;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 
+.nav-placeholder {
+  flex-shrink: 0;
+}
+
 .page-scroll {
-  position: absolute;
-  top: 176rpx;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  flex: 1;
   overflow-y: auto;
   padding: 32rpx 32rpx 64rpx;
 }

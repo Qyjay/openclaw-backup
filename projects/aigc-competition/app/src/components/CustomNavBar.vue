@@ -18,16 +18,18 @@
 
       <!-- 右侧 -->
       <view class="nav-right" @click="emit('rightClick')">
-        <text v-if="rightText" class="nav-right-text">{{ rightText }}</text>
-        <text v-else-if="rightIcon" class="nav-right-icon">{{ rightIcon }}</text>
-        <view v-else />
+        <slot name="right">
+          <text v-if="rightText" class="nav-right-text">{{ rightText }}</text>
+          <text v-else-if="rightIcon" class="nav-right-icon">{{ rightIcon }}</text>
+          <view v-else />
+        </slot>
       </view>
     </view>
   </view>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
 const props = withDefaults(defineProps<{
   title: string
@@ -50,6 +52,11 @@ onMounted(() => {
   statusBarHeight.value = info.statusBarHeight ?? 20
 })
 
+// 导出总高度（px），方便父组件计算占位
+const totalHeightPx = computed(() => statusBarHeight.value + 44) // 44px ≈ 88rpx on 2x
+
+defineExpose({ statusBarHeight, totalHeightPx })
+
 function handleLeftClick() {
   if (props.leftIcon === 'back') {
     uni.navigateBack()
@@ -62,7 +69,10 @@ function handleLeftClick() {
 <style lang="scss" scoped>
 .nav-bar {
   background: #FDF8F3;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
 }
 

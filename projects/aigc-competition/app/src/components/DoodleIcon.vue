@@ -1,6 +1,7 @@
 <template>
   <view class="doodle-icon" :style="iconStyle">
     <svg
+      xmlns="http://www.w3.org/2000/svg"
       :width="size + 'rpx'"
       :height="size + 'rpx'"
       viewBox="0 0 24 24"
@@ -11,8 +12,8 @@
       stroke-linejoin="round"
       :style="filterStyle"
     >
-      <!-- 手绘滤镜定义 -->
-      <defs>
+      <!-- 手绘滤镜定义（仅 H5/非 App 环境） -->
+      <defs v-if="useFilter">
         <filter :id="filterId" x="-5%" y="-5%" width="110%" height="110%">
           <feTurbulence type="turbulence" baseFrequency="0.04" numOctaves="4" :seed="seed" />
           <feDisplacementMap in="SourceGraphic" scale="1.2" xChannelSelector="R" yChannelSelector="G" />
@@ -397,6 +398,17 @@ const props = withDefaults(defineProps<{
   filtered: true,
 })
 
+// 检测是否是 App 环境（Android WebView 对 SVG feTurbulence 兼容性差）
+const isApp = (() => {
+  try {
+    const info = uni.getSystemInfoSync()
+    const platform = info?.uniPlatform || ''
+    return platform === 'app' || platform === 'app-plus'
+  } catch {
+    return false
+  }
+})()
+
 // 每个图标有固定的 seed，避免同一页面多个相同图标 filter id 冲突
 const filterId = computed(() => `hd-${props.name}-${props.size}`)
 const seed = computed(() => {
@@ -404,6 +416,9 @@ const seed = computed(() => {
   for (const c of props.name) hash = (hash * 31 + c.charCodeAt(0)) & 0xffff
   return (hash % 20) + 1
 })
+
+// App 环境下禁用 SVG 滤镜，避免渲染失败
+const useFilter = computed(() => props.filtered && !isApp)
 
 const iconStyle = computed(() => ({
   display: 'inline-flex',
@@ -415,6 +430,6 @@ const iconStyle = computed(() => ({
 }))
 
 const filterStyle = computed(() =>
-  props.filtered ? `filter: url(#${filterId.value})` : ''
+  useFilter.value ? `filter: url(#${filterId.value})` : ''
 )
 </script>

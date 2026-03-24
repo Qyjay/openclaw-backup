@@ -13,6 +13,9 @@
       </template>
     </CustomNavBar>
 
+    <!-- NavBar 占位 -->
+    <view class="nav-placeholder" :style="{ height: navPlaceholderHeight + 'px' }" />
+
     <scroll-view class="page-scroll" scroll-y>
 
       <!-- AI 对话区 -->
@@ -193,9 +196,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onUnmounted } from 'vue'
+import { ref, computed, onUnmounted, onMounted } from 'vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
 import DoodleIcon from '@/components/DoodleIcon.vue'
+
+const navPlaceholderHeight = ref(64)
+onMounted(() => {
+  const info = uni.getSystemInfoSync()
+  navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
+})
 
 const SectionTitle = {
   props: { title: String },
@@ -336,11 +345,16 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .page {
-  position: absolute;
-  inset: 0;
-  height: 100% !important;
+  position: relative;
+  min-height: 100vh;
   background: #FDF8F3;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+}
+
+.nav-placeholder {
+  flex-shrink: 0;
 }
 
 .nav-stats-btn {
@@ -348,12 +362,8 @@ onUnmounted(() => {
 }
 
 .page-scroll {
-  position: absolute;
-  top: 88rpx;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow-y: auto;
+  flex: 1;
+  overflow: hidden;
   padding: 0 24rpx;
 }
 

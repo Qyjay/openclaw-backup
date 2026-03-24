@@ -3,6 +3,9 @@
 
     <CustomNavBar title="情绪日历" left-icon="back" />
 
+    <!-- NavBar 占位 -->
+    <view class="nav-placeholder" :style="{ height: navPlaceholderHeight + 'px' }" />
+
     <scroll-view class="page-scroll" scroll-y>
 
       <!-- 日历 -->
@@ -89,11 +92,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
 import DiaryCard from '@/components/DiaryCard.vue'
 import type { Diary } from '@/services/api/diary'
 import { mockDiaries } from '@/services/mock/diary'
+
+const navPlaceholderHeight = ref(64)
+onMounted(() => {
+  const info = uni.getSystemInfoSync()
+  navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
+})
 
 const SectionTitle = {
   props: { title: [String, Number] },
@@ -214,19 +223,21 @@ function onDiaryClick(id: string) {
 
 <style lang="scss" scoped>
 .page {
-  position: absolute;
-  inset: 0;
-  height: 100% !important;
+  position: relative;
+  min-height: 100vh;
   background: #FDF8F3;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 
+.nav-placeholder {
+  flex-shrink: 0;
+}
+
 .page-scroll {
-  position: absolute;
-  top: 88rpx;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  flex: 1;
+  overflow: hidden;
   overflow-y: auto;
   padding: 0 24rpx;
 }

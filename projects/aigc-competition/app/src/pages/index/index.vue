@@ -16,6 +16,9 @@
     <!-- 侧边栏 -->
     <SideDrawer v-model:visible="drawerVisible" />
 
+    <!-- NavBar 占位（fixed 定位后需要此占位撑开空间） -->
+    <view class="nav-placeholder" :style="{ height: navPlaceholderHeight + 'px' }" />
+
     <!-- 主内容滚动区 -->
     <scroll-view
       class="main-scroll"
@@ -131,6 +134,9 @@ const refreshing = ref(false)
 const page = ref(1)
 const noMore = ref(false)
 
+// 状态栏 + NavBar 占位高度（px）
+const navPlaceholderHeight = ref(64) // 默认值，onMounted 后更新
+
 // ── 时间判断 ──
 const now = new Date()
 const hour = now.getHours()
@@ -139,6 +145,8 @@ const greetingCardVisible = ref(true)
 
 // ── 加载数据 ──
 onMounted(async () => {
+  const info = uni.getSystemInfoSync()
+  navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
   await loadDiaries(1)
 })
 
@@ -258,20 +266,20 @@ function onActionClick(payload: { action: string; diaryId: string }) {
 
 <style lang="scss" scoped>
 .page {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  min-height: 100vh;
   background: #FDF8F3;
   display: flex;
   flex-direction: column;
 }
 
+.nav-placeholder {
+  flex-shrink: 0;
+}
+
 .main-scroll {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding-top: 88rpx; // statusBar + navBar
+  flex: 1;
+  overflow: hidden;
   padding-bottom: 120rpx;
 }
 

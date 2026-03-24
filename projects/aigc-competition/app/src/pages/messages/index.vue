@@ -2,12 +2,13 @@
   <view class="page page-root">
 
     <!-- ── 顶栏 ── -->
-    <view class="navbar">
-      <text class="navbar-title font-handwrite">消息</text>
-    </view>
+    <CustomNavBar title="消息" />
+
+    <!-- NavBar 占位 -->
+    <view class="nav-placeholder" :style="{ height: navPlaceholderHeight + 'px' }" />
 
     <!-- ── 滚动内容区 ── -->
-    <view class="page-scroll">
+    <scroll-view class="page-scroll" scroll-y>
 
       <!-- AI 伙伴置顶 -->
       <view class="ai-chat-card press-feedback" @click="openAI">
@@ -88,39 +89,25 @@
       </view>
 
       <view class="bottom-spacer" />
-    </view>
+    </scroll-view>
 
     <!-- ── TabBar ── -->
-    <view class="tabbar">
-      <view
-        v-for="(tab, index) in tabList"
-        :key="index"
-        class="tabbar-item"
-        :class="{
-          'tabbar-item--active': index === 3,
-          'tabbar-item--write': index === 2
-        }"
-        @click="switchTab(index)"
-      >
-        <view v-if="index === 2" class="tabbar-write-btn pulse-btn">
-          <DoodleIcon name="pen" color="#FFFFFF" :size="40" :filtered="false" />
-        </view>
-        <template v-else>
-          <DoodleIcon
-            :name="tab.iconName"
-            :color="index === 3 ? '#E8855A' : '#AE9D92'"
-            :size="40"
-          />
-          <text class="tabbar-label" :class="{ 'tabbar-label--active': index === 3 }">{{ tab.text }}</text>
-        </template>
-      </view>
-    </view>
+    <TabBar :current="3" />
 
   </view>
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import DoodleIcon from '@/components/DoodleIcon.vue'
+import TabBar from '@/components/TabBar.vue'
+import CustomNavBar from '@/components/CustomNavBar.vue'
+
+const navPlaceholderHeight = ref(64)
+onMounted(() => {
+  const info = uni.getSystemInfoSync()
+  navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
+})
 
 const buddyMessages = [
   {
@@ -189,57 +176,27 @@ function handleSystemNotif(notif: any) {
   }
 }
 
-const tabList = [
-  { iconName: 'book',     text: '日记' },
-  { iconName: 'discover', text: '发现' },
-  { iconName: 'pen',      text: '写' },
-  { iconName: 'chat',     text: '消息' },
-  { iconName: 'user',     text: '我的' },
-]
-
-function switchTab(index: number) {
-  if (index === 3) return
-  if (index === 2) { uni.navigateTo({ url: '/pages/write/index' }); return }
-  const paths = ['/pages/index/index', '/pages/discover/index', '', '/pages/messages/index', '/pages/profile/index']
-  uni.switchTab({ url: paths[index] })
-}
 </script>
 
 <style lang="scss" scoped>
 .page {
-  position: absolute;
-  inset: 0;
-  height: 100% !important;
-  min-height: 0 !important;
-  max-height: 100% !important;
+  position: relative;
+  min-height: 100vh;
   background: #FDF8F3;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 
-.navbar {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  height: 88rpx;
-  display: flex;
-  align-items: center;
-  padding: 0 32rpx;
-  background: rgba(253, 248, 243, 0.95);
-  backdrop-filter: blur(24rpx);
-  box-shadow: 0 1px 0 rgba(44, 31, 20, 0.06);
-}
-
-.navbar-title {
-  font-size: 36rpx;
-  font-weight: 700;
-  color: #2C1F14;
+.nav-placeholder {
+  flex-shrink: 0;
 }
 
 .page-scroll {
-  position: absolute;
-  top: 88rpx; left: 0; right: 0; bottom: 120rpx;
-  overflow-y: auto;
+  flex: 1;
+  overflow: hidden;
   -webkit-overflow-scrolling: touch;
+  padding-bottom: 120rpx;
 }
 
 /* 用 CSS var 覆盖 stagger delay */
@@ -449,55 +406,4 @@ function switchTab(index: number) {
 }
 
 .bottom-spacer { height: 40rpx; }
-
-/* ── TabBar ── */
-.tabbar {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  z-index: 200;
-  height: 120rpx;
-  padding-bottom: env(safe-area-inset-bottom);
-  background: rgba(255, 255, 255, 0.97);
-  box-shadow: 0 -1px 0 rgba(232, 133, 90, 0.1), 0 -4px 16px rgba(44, 31, 20, 0.06);
-  display: flex;
-  align-items: stretch;
-  backdrop-filter: blur(24rpx);
-  -webkit-backdrop-filter: blur(24rpx);
-}
-
-.tabbar-item {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4rpx;
-  cursor: pointer;
-  padding-top: 8rpx;
-}
-
-.tabbar-item--write { padding-top: 0; margin-top: -36rpx; }
-
-.tabbar-write-btn {
-  width: 104rpx;
-  height: 104rpx;
-  border-radius: 50% 55% 45% 52%;
-  background: linear-gradient(135deg, #E8855A 0%, #F0A882 100%);
-  box-shadow: 0 4px 16px rgba(232, 133, 90, 0.42);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.15s;
-}
-
-.tabbar-item--write:active .tabbar-write-btn { transform: scale(0.90); animation: none; }
-
-.tabbar-label {
-  font-size: 22rpx;
-  color: #AE9D92;
-  font-weight: 500;
-  line-height: 1;
-}
-
-.tabbar-label--active { color: #E8855A; font-weight: 700; }
 </style>

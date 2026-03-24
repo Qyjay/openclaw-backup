@@ -2,6 +2,9 @@
   <view class="page page-root">
     <CustomNavBar title="今日运势" left-icon="back" />
 
+    <!-- NavBar 占位 -->
+    <view class="nav-placeholder" :style="{ height: navPlaceholderHeight + 'px' }" />
+
     <view class="page-scroll">
       <!-- 主卡片 -->
       <view class="main-card">
@@ -145,28 +148,31 @@ function handleShare() {
   uni.showToast({ title: '分享功能开发中', icon: 'none' })
 }
 
+const navPlaceholderHeight = ref(64)
+
 onMounted(async () => {
+  const info = uni.getSystemInfoSync()
+  navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
   fortune.value = await generateFortune()
 })
 </script>
 
 <style lang="scss" scoped>
 .page {
-  position: absolute;
-  inset: 0;
-  height: 100% !important;
-  min-height: 0 !important;
-  max-height: 100% !important;
+  position: relative;
+  min-height: 100vh;
   background: #FDF8F3;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 
+.nav-placeholder {
+  flex-shrink: 0;
+}
+
 .page-scroll {
-  position: absolute;
-  top: 176rpx;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  flex: 1;
   overflow-y: auto;
   padding: 32rpx 32rpx 64rpx;
 }
