@@ -27,10 +27,13 @@ uni-page, uni-page-wrapper, uni-page-body {
   height: 100% !important;
   max-height: 100% !important;
   position: relative !important;
-  overflow: hidden !important;
 }
 
-view, text, input, textarea {
+view, text, input, textarea, scroll-view, swiper, image {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
   box-sizing: border-box;
 }
 

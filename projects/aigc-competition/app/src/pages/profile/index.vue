@@ -14,7 +14,7 @@
     <view class="nav-placeholder" :style="{ height: navPlaceholderHeight + 'px' }" />
 
     <!-- ── 内容滚动区 ── -->
-    <scroll-view class="page-scroll" scroll-y>
+    <scroll-view class="page-scroll" scroll-y :style="{ height: scrollHeight + 'px' }">
 
       <!-- 用户卡片 -->
       <view class="profile-card">
@@ -112,6 +112,8 @@ import TabBar from '@/components/TabBar.vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
 
 const navPlaceholderHeight = ref(64)
+const scrollHeight = ref(600)
+const debugInfo = ref({ windowHeight: 0, statusBarHeight: 0, screenHeight: 0, platform: '' })
 
 const profile = ref<UserProfile>({
   name: 'Kylin',
@@ -172,7 +174,14 @@ function handleLogout() {
 
 onMounted(async () => {
   const info = uni.getSystemInfoSync()
+  debugInfo.value = {
+    windowHeight: info.windowHeight,
+    statusBarHeight: info.statusBarHeight ?? 20,
+    screenHeight: info.screenHeight,
+    platform: info.uniPlatform || info.platform || 'unknown'
+  }
   navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
+  scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 50
   profile.value = await getUserProfile()
   achievements.value = await getAchievements()
 })
@@ -180,26 +189,17 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .page {
-  position: relative;
-  height: 100%;
   background: #FDF8F3;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
 }
 
 .nav-placeholder {
-  flex-shrink: 0;
+  width: 100%;
 }
 
-.navbar-settings { cursor: pointer; padding: 8rpx; }
-.settings-icon { font-size: 40rpx; }
-
 .page-scroll {
-  flex: 1;
-  overflow: hidden;
   -webkit-overflow-scrolling: touch;
-  padding: 32rpx 32rpx 120rpx;
+  padding: 32rpx;
+  padding-bottom: 180rpx;
 }
 
 /* ── 用户卡片 ── */
