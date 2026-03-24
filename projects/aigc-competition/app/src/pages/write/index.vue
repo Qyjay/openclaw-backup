@@ -26,7 +26,9 @@
     </CustomNavBar>
 
     <!-- ── 内容区 ── -->
-    <scroll-view class="write-body" scroll-y>
+    <!-- NavBar 占位 -->
+    <view class="nav-placeholder-write" :style="{ height: navPlaceholderHeight + 'px' }" />
+    <scroll-view class="write-body" scroll-y :style="{ height: scrollHeight + 'px' }">
       <!-- 情绪选择栏 -->
       <view class="emotion-bar">
         <view
@@ -243,7 +245,12 @@ const canDone = computed(() => {
 })
 
 // ── 生命周期 ──
+const navPlaceholderHeight = ref(64)
+const scrollHeight = ref(600)
 onMounted(() => {
+  const info = uni.getSystemInfoSync()
+  navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
+  scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 0
   const pages = getCurrentPages()
   const current = pages[pages.length - 1]
   const options = (current as any)?.options ?? {}
@@ -347,12 +354,10 @@ async function handleDone() {
 
 <style lang="scss" scoped>
 .write-page {
-  position: absolute;
-  inset: 0;
   background: #FDF8F3;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+}
+
+.nav-placeholder-write {
 }
 
 /* ── NavBar 插槽 ── */
@@ -386,8 +391,6 @@ async function handleDone() {
 
 /* ── 内容区 ── */
 .write-body {
-  flex: 1;
-  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 200rpx;
 }

@@ -8,7 +8,7 @@
     <view class="nav-placeholder" :style="{ height: navPlaceholderHeight + 'px' }" />
 
     <!-- ── 滚动内容区 ── -->
-    <scroll-view class="page-scroll" scroll-y>
+    <scroll-view class="page-scroll" scroll-y :style="{ height: scrollHeight + 'px' }">
 
       <!-- AI 伙伴置顶 -->
       <view class="ai-chat-card press-feedback" @click="openAI">
@@ -104,9 +104,11 @@ import TabBar from '@/components/TabBar.vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
 
 const navPlaceholderHeight = ref(64)
+const scrollHeight = ref(600)
 onMounted(() => {
   const info = uni.getSystemInfoSync()
   navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
+  scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 50
 })
 
 const buddyMessages = [
@@ -180,21 +182,13 @@ function handleSystemNotif(notif: any) {
 
 <style lang="scss" scoped>
 .page {
-  position: relative;
-  height: 100%;
   background: #FDF8F3;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
 }
 
 .nav-placeholder {
-  flex-shrink: 0;
 }
 
 .page-scroll {
-  flex: 1;
-  overflow: hidden;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 120rpx;
 }

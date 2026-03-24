@@ -8,7 +8,7 @@
     <view class="nav-placeholder" :style="{ height: navPlaceholderHeight + 'px' }" />
 
     <!-- 内容滚动区 -->
-    <scroll-view class="page-scroll" scroll-y>
+    <scroll-view class="page-scroll" scroll-y :style="{ height: scrollHeight + 'px' }">
 
       <!-- 运势横幅 -->
       <view class="fortune-banner doodle-box press-feedback stagger-item" @click="go('/pages/fortune/index')">
@@ -131,9 +131,11 @@ import TabBar from '@/components/TabBar.vue'
 import DoodleIcon from '@/components/DoodleIcon.vue'
 
 const navPlaceholderHeight = ref(64)
+const scrollHeight = ref(600)
 onMounted(() => {
   const info = uni.getSystemInfoSync()
   navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
+  scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 50
 })
 
 // 内部组件：段落标题（使用 render 函数，避免运行时编译）
@@ -202,21 +204,13 @@ function go(url: string) {
 
 <style lang="scss" scoped>
 .page {
-  position: relative;
-  height: 100%;
   background: #FDF8F3;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
 }
 
 .nav-placeholder {
-  flex-shrink: 0;
 }
 
 .page-scroll {
-  flex: 1;
-  overflow: hidden;
   padding: 0 16rpx 120rpx;
   -webkit-overflow-scrolling: touch;
 }

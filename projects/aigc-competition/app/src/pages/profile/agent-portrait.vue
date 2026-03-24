@@ -2,7 +2,9 @@
   <view class="page-container">
     <CustomNavBar title="AI 智能体画像" leftIcon="back" @leftClick="uni.navigateBack()" />
 
-    <scroll-view scroll-y class="scroll-area" :style="{ top: navBarHeight + 'px' }">
+    <view class="nav-placeholder" :style="{ height: navBarHeight + 'px' }" />
+
+    <scroll-view scroll-y class="scroll-area" :style="{ height: scrollHeight + 'px' }">
       <view class="content-wrap">
 
         <!-- ── AI 头像区 ── -->
@@ -101,11 +103,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
 import DoodleIcon from '@/components/DoodleIcon.vue'
 
 const navBarHeight = ref(88)
+const scrollHeight = ref(600)
+
+onMounted(() => {
+  const info = uni.getSystemInfoSync()
+  navBarHeight.value = (info.statusBarHeight ?? 20) + 44
+  scrollHeight.value = info.windowHeight - navBarHeight.value - 0
+})
 
 // ─── 兴趣标签 ───
 interface Tag {
@@ -173,16 +182,13 @@ const retentionIndex = ref(2) // 默认 180天
 <style scoped>
 /* ── 整体 ── */
 .page-container {
-  height: 100%;
   background-color: #FDF8F3;
-  position: relative;
+}
+
+.nav-placeholder {
 }
 
 .scroll-area {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 
 .content-wrap {

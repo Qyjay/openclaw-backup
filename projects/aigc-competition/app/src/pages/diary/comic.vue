@@ -5,7 +5,7 @@
     <!-- NavBar 占位 -->
     <view class="nav-placeholder" :style="{ height: navPlaceholderHeight + 'px' }" />
 
-    <view class="page-scroll">
+    <scroll-view scroll-y class="page-scroll" :style="{ height: scrollHeight + 'px' }">
       <!-- 原始日记 -->
       <view class="section-label">原始日记</view>
       <view class="diary-card">
@@ -83,7 +83,7 @@
           </view>
         </view>
       </template>
-    </view>
+    </scroll-view>
   </view>
 </template>
 
@@ -179,10 +179,12 @@ function handleSaveLocal() {
 }
 
 const navPlaceholderHeight = ref(64)
+const scrollHeight = ref(600)
 
 onMounted(async () => {
   const info = uni.getSystemInfoSync()
   navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
+  scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 0
   const pages = getCurrentPages()
   const current = pages[pages.length - 1]
   const options = (current as any).$page?.options ?? current.options ?? {}
@@ -193,21 +195,13 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .page {
-  position: relative;
-  height: 100%;
   background: #FDF8F3;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
 }
 
 .nav-placeholder {
-  flex-shrink: 0;
 }
 
 .page-scroll {
-  flex: 1;
-  overflow-y: auto;
   padding: 32rpx 32rpx 64rpx;
 }
 

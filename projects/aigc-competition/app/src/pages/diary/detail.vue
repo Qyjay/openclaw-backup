@@ -14,7 +14,7 @@
     </view>
 
     <!-- ── 主内容 ── -->
-    <scroll-view class="detail-scroll" scroll-y>
+    <scroll-view class="detail-scroll" scroll-y :style="{ height: scrollHeight + 'px' }">
       <!-- 加载中 -->
       <view v-if="loading" class="loading-state">
         <text class="loading-text">加载中...</text>
@@ -142,6 +142,7 @@ const diary = ref<Diary | null>(null)
 const loading = ref(true)
 const currentSwiper = ref(0)
 const statusBarHeight = ref(20)
+const scrollHeight = ref(600)
 
 const aiComments = [
   '又去吃酸菜鱼了！这已经是本周第3次了哦😄 要不要试试二食堂新出的麻辣烫？',
@@ -177,6 +178,7 @@ function formatDateTime(ts: number): string {
 onMounted(async () => {
   const info = uni.getSystemInfoSync()
   statusBarHeight.value = info.statusBarHeight ?? 20
+  scrollHeight.value = info.windowHeight - statusBarHeight.value - 44
 
   const pages = getCurrentPages()
   const current = pages[pages.length - 1]
@@ -233,11 +235,7 @@ function handleTool(type: string) {
 
 <style lang="scss" scoped>
 .page {
-  position: absolute;
-  inset: 0;
   background: #FDF8F3;
-  display: flex;
-  flex-direction: column;
 }
 
 /* ── 自定义顶栏 ── */
@@ -292,8 +290,6 @@ function handleTool(type: string) {
 
 /* ── 滚动区 ── */
 .detail-scroll {
-  flex: 1;
-  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 

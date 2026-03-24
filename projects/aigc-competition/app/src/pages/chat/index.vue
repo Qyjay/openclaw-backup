@@ -5,7 +5,7 @@
     <!-- NavBar 占位 -->
     <view class="nav-placeholder" :style="{ height: navPlaceholderHeight + 'px' }" />
 
-    <view class="page-content">
+    <view class="page-content" :style="{ height: scrollHeight + 'px' }">
       <!-- AI 伙伴信息卡 -->
       <view class="ai-info-card">
         <view class="ai-info-icon doodle-box-v3">
@@ -217,10 +217,12 @@ function handleQuickAction(path: string) {
 }
 
 const navPlaceholderHeight = ref(64)
+const scrollHeight = ref(600)
 
 onMounted(async () => {
   const info = uni.getSystemInfoSync()
   navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
+  scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 0
   profile.value = await getUserProfile()
   scrollToBottom()
 })
@@ -228,20 +230,13 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .page {
-  position: relative;
-  height: 100%;
   background: #FDF8F3;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
 }
 
 .nav-placeholder {
-  flex-shrink: 0;
 }
 
 .page-content {
-  flex: 1;
   display: flex;
   flex-direction: column;
   overflow: hidden;

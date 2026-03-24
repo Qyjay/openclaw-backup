@@ -2,7 +2,10 @@
   <view class="page">
     <CustomNavBar title="设置" left-icon="back" />
 
-    <scroll-view class="scroll" scroll-y>
+    <!-- NavBar 占位 -->
+    <view class="nav-placeholder" :style="{ height: navPlaceholderHeight + 'px' }" />
+
+    <scroll-view class="scroll" scroll-y :style="{ height: scrollHeight + 'px' }">
       <view class="content">
 
         <!-- ── 通知设置 ── -->
@@ -174,8 +177,16 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { reactive, ref, onMounted } from 'vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
+
+const navPlaceholderHeight = ref(64)
+const scrollHeight = ref(600)
+onMounted(() => {
+  const info = uni.getSystemInfoSync()
+  navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
+  scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 0
+})
 
 // ── 通知 ──
 const notify = reactive({
@@ -309,13 +320,13 @@ function onLogout() {
 
 <style lang="scss" scoped>
 .page {
-  height: 100%;
   background: #FDF8F3;
 }
 
+.nav-placeholder {
+}
+
 .scroll {
-  flex: 1; overflow-y: auto;
-  /* flex handles height */
 }
 
 .content {

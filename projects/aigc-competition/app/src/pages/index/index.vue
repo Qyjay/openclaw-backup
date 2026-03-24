@@ -23,6 +23,7 @@
     <scroll-view
       class="main-scroll"
       scroll-y
+      :style="{ height: scrollHeight + 'px' }"
       :refresher-enabled="true"
       :refresher-triggered="refreshing"
       @refresherrefresh="onRefresh"
@@ -136,6 +137,7 @@ const noMore = ref(false)
 
 // 状态栏 + NavBar 占位高度（px）
 const navPlaceholderHeight = ref(64) // 默认值，onMounted 后更新
+const scrollHeight = ref(600)
 
 // ── 时间判断 ──
 const now = new Date()
@@ -147,6 +149,7 @@ const greetingCardVisible = ref(true)
 onMounted(async () => {
   const info = uni.getSystemInfoSync()
   navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
+  scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 50
   await loadDiaries(1)
 })
 
@@ -266,21 +269,10 @@ function onActionClick(payload: { action: string; diaryId: string }) {
 
 <style lang="scss" scoped>
 .page {
-  position: relative;
-  height: 100%;
   background: #FDF8F3;
-  display: flex;
-  flex-direction: column;
 }
 
 .nav-placeholder {
-  flex-shrink: 0;
-}
-
-.main-scroll {
-  flex: 1;
-  overflow: hidden;
-  padding-bottom: 120rpx;
 }
 
 /* ── AI 早安/晚安卡片 ── */

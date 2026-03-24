@@ -2,7 +2,10 @@
   <view class="page">
     <CustomNavBar title="搭子匹配" left-icon="back" />
 
-    <scroll-view class="scroll" scroll-y>
+    <!-- NavBar 占位 -->
+    <view class="nav-placeholder" :style="{ height: navPlaceholderHeight + 'px' }" />
+
+    <scroll-view class="scroll" scroll-y :style="{ height: scrollHeight + 'px' }">
       <view class="content">
 
         <!-- ── 匹配推荐 ── -->
@@ -123,8 +126,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
+
+const navPlaceholderHeight = ref(64)
+const scrollHeight = ref(600)
+onMounted(() => {
+  const info = uni.getSystemInfoSync()
+  navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
+  scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 0
+})
 
 // ── 推荐用户 ──
 const recommendations = [
@@ -236,12 +247,13 @@ function onBuddyClick() {
 
 <style lang="scss" scoped>
 .page {
-  height: 100%;
   background: #FDF8F3;
 }
 
+.nav-placeholder {
+}
+
 .scroll {
-  flex: 1; overflow-y: auto;
   /* flex handles height */
 }
 

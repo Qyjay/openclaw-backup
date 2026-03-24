@@ -5,7 +5,7 @@
     <!-- NavBar 占位 -->
     <view class="nav-placeholder" :style="{ height: navPlaceholderHeight + 'px' }" />
 
-    <view class="page-scroll">
+    <scroll-view scroll-y class="page-scroll" :style="{ height: scrollHeight + 'px' }">
       <!-- 主卡片 -->
       <view class="main-card">
         <DoodleIcon name="crystal" :size="112" color="rgba(255,255,255,0.85)" class="main-crystal" />
@@ -106,7 +106,7 @@
         <DoodleIcon name="share" :size="36" color="#FFFFFF" style="margin-right: 12rpx;" />
         <text class="share-btn-text">分享运势卡</text>
       </view>
-    </view>
+    </scroll-view>
   </view>
 </template>
 
@@ -149,31 +149,25 @@ function handleShare() {
 }
 
 const navPlaceholderHeight = ref(64)
+const scrollHeight = ref(600)
 
 onMounted(async () => {
   const info = uni.getSystemInfoSync()
   navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
+  scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 0
   fortune.value = await generateFortune()
 })
 </script>
 
 <style lang="scss" scoped>
 .page {
-  position: relative;
-  height: 100%;
   background: #FDF8F3;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
 }
 
 .nav-placeholder {
-  flex-shrink: 0;
 }
 
 .page-scroll {
-  flex: 1;
-  overflow-y: auto;
   padding: 32rpx 32rpx 64rpx;
 }
 

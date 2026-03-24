@@ -2,6 +2,8 @@
   <view class="page">
     <CustomNavBar title="成长轨迹" left-icon="back" />
 
+    <view class="nav-placeholder" :style="{ height: navPlaceholderHeight + 'px' }" />
+
     <scroll-view scroll-y class="scroll-area" :style="{ height: scrollHeight + 'px' }">
       <view class="content">
 
@@ -161,25 +163,22 @@ const milestones = [
 ]
 
 // ===== 滚动高度 =====
+const navPlaceholderHeight = ref(64)
 const scrollHeight = ref(600)
 onMounted(() => {
   const info = uni.getSystemInfoSync()
-  const statusBar = info.statusBarHeight ?? 20
-  scrollHeight.value = info.windowHeight - statusBar - 44
+  navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
+  scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 0
 })
 </script>
 
 <style lang="scss" scoped>
 /* ===== 页面 ===== */
 .page {
-  height: 100%;
   background: #FDF8F3;
-  display: flex;
-  flex-direction: column;
 }
 
 .scroll-area {
-  flex: 1;
 }
 
 .content {

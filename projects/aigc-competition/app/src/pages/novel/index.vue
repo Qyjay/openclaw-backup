@@ -6,7 +6,9 @@
       @leftClick="viewMode = 'toc'"
     />
 
-    <scroll-view scroll-y class="scroll-area" :style="{ top: navBarHeight + 'px' }">
+    <view class="nav-placeholder" :style="{ height: navBarHeight + 'px' }" />
+
+    <scroll-view scroll-y class="scroll-area" :style="{ height: scrollHeight + 'px' }">
       <!-- ========== 目录视图 ========== -->
       <view v-if="viewMode === 'toc'" class="toc-view">
 
@@ -114,12 +116,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
 import DoodleIcon from '@/components/DoodleIcon.vue'
 
 // ─── 导航栏高度（预估，实际按需获取） ───
 const navBarHeight = ref(88)
+const scrollHeight = ref(600)
+
+onMounted(() => {
+  const info = uni.getSystemInfoSync()
+  navBarHeight.value = (info.statusBarHeight ?? 20) + 44
+  scrollHeight.value = info.windowHeight - navBarHeight.value - 0
+})
 
 // ─── 视图模式 ───
 const viewMode = ref<'toc' | 'reader'>('toc')
@@ -255,16 +264,13 @@ function onGenerate() {
 <style scoped>
 /* ── 整体 ── */
 .page-container {
-  height: 100%;
   background-color: #FDF8F3;
-  position: relative;
+}
+
+.nav-placeholder {
 }
 
 .scroll-area {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 
 /* ── 目录视图 ── */

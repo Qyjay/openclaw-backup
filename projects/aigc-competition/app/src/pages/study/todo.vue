@@ -11,7 +11,7 @@
     <!-- NavBar 占位 -->
     <view class="nav-placeholder" :style="{ height: navPlaceholderHeight + 'px' }" />
 
-    <scroll-view class="page-scroll" scroll-y>
+    <scroll-view class="page-scroll" scroll-y :style="{ height: scrollHeight + 'px' }">
 
       <!-- AI 自动提取 -->
       <SectionTitle title="AI 自动提取" />
@@ -134,9 +134,11 @@ import CustomNavBar from '@/components/CustomNavBar.vue'
 import DoodleIcon from '@/components/DoodleIcon.vue'
 
 const navPlaceholderHeight = ref(64)
+const scrollHeight = ref(600)
 onMounted(() => {
   const info = uni.getSystemInfoSync()
   navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
+  scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 0
 })
 
 const SectionTitle = {
@@ -232,21 +234,13 @@ function addTodo() {
 
 <style lang="scss" scoped>
 .page {
-  position: relative;
-  height: 100%;
   background: #FDF8F3;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
 }
 
 .nav-placeholder {
-  flex-shrink: 0;
 }
 
 .page-scroll {
-  flex: 1;
-  overflow: hidden;
   padding: 0 24rpx;
 }
 
