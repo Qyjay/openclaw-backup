@@ -30,11 +30,6 @@ uni-page, uni-page-wrapper, uni-page-body {
   overflow: hidden !important;
 }
 
-/* 隐藏 UniApp 原生 TabBar，我们用自定义的 */
-uni-tabbar, .uni-tabbar {
-  display: none !important;
-}
-
 view, text, input, textarea {
   box-sizing: border-box;
 }

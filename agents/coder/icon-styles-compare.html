@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>图标风格对比 — AIGC 比赛 App</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', -apple-system, sans-serif;
+    background: #FDF8F3;
+    color: #2C1F14;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: #2C1F14;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #8A7668;
+    font-size: 14px;
+    margin-bottom: 48px;
+  }
+
+  .styles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+
+  .style-card {
+    background: white;
+    border-radius: 20px;
+    padding: 32px 24px;
+    box-shadow: 0 2px 16px rgba(44,31,20,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .style-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(44,31,20,0.12);
+  }
+
+  .style-header {
+    text-align: center;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #F5EDE6;
+  }
+  .style-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .style-en { color: #AE9D92; font-size: 13px; font-weight: 400; }
+  .style-desc {
+    color: #8A7668;
+    font-size: 13px;
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+
+  .icons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .icon-box {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+  .icon-box:hover {
+    transform: scale(1.1);
+  }
+
+  .icon-box svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .icon-label {
+    font-size: 11px;
+    color: #8A7668;
+  }
+
+  /* Phosphor 风格的图标盒子 */
+  .phosphor .icon-box {
+    background: linear-gradient(135deg, #FFF5EE, #FFF0E6);
+    border: 1px solid #F2DDD0;
+  }
+  .phosphor svg { stroke: #E8855A; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Lucide 风格的图标盒子 */
+  .lucide .icon-box {
+    background: #FAFAF8;
+    border: 1px solid #E8E4DF;
+  }
+  .lucide svg { stroke: #4A3628; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Doodle 风格的图标盒子 */
+  .doodle .icon-box {
+    background: #FFFCF7;
+    border: 2px solid #E8855A;
+    border-radius: 16px;
+    /* 手绘不规则边框效果 */
+    border-radius: 14px 18px 12px 20px;
+  }
+  .doodle svg { stroke: #E8855A; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* 大预览区 */
+  .preview-section {
+    margin-top: 20px;
+  }
+  .preview-title {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .app-mockups {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .mockup-card {
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 2px 16px rgba(44,31,20,0.06);
+  }
+  .mockup-label {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #E8855A;
+  }
+
+  /* 功能入口网格模拟 */
+  .func-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .func-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .func-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .func-icon-box svg { width: 24px; height: 24px; }
+  .func-name { font-size: 10px; color: #8A7668; }
+
+  /* TabBar 模拟 */
+  .tabbar-mock {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 56px;
+    background: white;
+    border-radius: 0 0 20px 20px;
+    border-top: 1px solid #F0E8E0;
+    margin-top: 20px;
+  }
+  .tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .tab-item svg { width: 22px; height: 22px; }
+  .tab-item span { font-size: 9px; color: #AE9D92; }
+  .tab-item.active span { color: #E8855A; }
+  .tab-item.active svg { stroke: #E8855A; }
+
+  .note {
+    text-align: center;
+    color: #AE9D92;
+    font-size: 12px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #F0E8E0;
+  }
+
+  /* Doodle SVG filter for hand-drawn effect */
+  .doodle-filter { position: absolute; width: 0; height: 0; }
+</style>
+</head>
+<body>
+
+<!-- SVG filter for doodle hand-drawn effect -->
+<svg class="doodle-filter">
+  <filter id="hand-drawn">
+    <feTurbulence type="turbulence" baseFrequency="0.04" numOctaves="4" seed="1" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<h1>图标风格对比</h1>
+<p class="subtitle">为 AIGC 比赛 App 选择最合适的图标风格 · 暖杏橙配色</p>
+
+<div class="styles-grid">
+
+  <!-- ====== 1. 圆润线性 Phosphor ====== -->
+  <div class="style-card phosphor">
+    <div class="style-header">
+      <div class="style-name">圆润线性 <span class="style-en">Phosphor Style</span></div>
+      <div class="style-desc">柔和圆角 · 均匀笔触 · 温暖亲切<br>适合生活类/情感类 App</div>
+    </div>
+    <div class="icons-grid">
+      <!-- 首页 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 12L5 10M5 10L12 3L19 10M5 10V20C5 20.55 5.45 21 6 21H9M19 10L21 12M19 10V20C19 20.55 18.55 21 18 21H15M9 21C9 21 9 15 12 15C15 15 15 21 15 21M9 21H15"/>
+          </svg>
+        </div>
+        <span class="icon-label">首页</span>
+      </div>
+      <!-- 日记 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 4C4 3.45 4.45 3 5 3H17C18.1 3 19 3.9 19 5V19C19 20.1 18.1 21 17 21H5C4.45 21 4 20.55 4 20V4Z"/>
+            <path d="M8 3V21"/>
+            <path d="M12 8H15"/>
+            <path d="M12 12H15"/>
+          </svg>
+        </div>
+        <span class="icon-label">日记</span>
+      </div>
+      <!-- 搜索 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="7"/>
+            <path d="M16 16L21 21"/>
+          </svg>
+        </div>
+        <span class="icon-label">搜索</span>
+      </div>
+      <!-- 心形 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 21C12 21 3 13.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 12 5C12.09 3.81 13.76 3 15.5 3C18.58 3 21 5.42 21 8.5C21 13.5 12 21 12 21Z"/>
+          </svg>
+        </div>
+        <span class="icon-label">心情</span>
+      </div>
+      <!-- 星星 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+          </svg>
+        </div>
+        <span class="icon-label">运势</span>
+      </div>
+      <!-- 番茄 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="13" r="8"/>
+            <path d="M12 5V3"/>
+            <path d="M9 3C9 3 10 5 12 5C14 5 15 3 15 3"/>
+          </svg>
+        </div>
+        <span class="icon-label">番茄钟</span>
+      </div>
+      <!-- 对话 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 12C21 16.42 16.97 20 12 20C10.46 20 9 19.64 7.72 19L3 20L4.3 16.18C3.47 14.9 3 13.5 3 12C3 7.58 7.03 4 12 4C16.97 4 21 7.58 21 12Z"/>
+            <path d="M8 12H8.01M12 12H12.01M16 12H16.01"/>
+          </svg>
+        </div>
+        <span class="icon-label">AI 对话</span>
+      </div>
+      <!-- 用户 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M5 20C5 17 8 14.5 12 14.5C16 14.5 19 17 19 20"/>
+          </svg>
+        </div>
+        <span class="icon-label">我的</span>
+      </div>
+      <!-- 相机 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 9C3 8.45 3.45 8 4 8H7L9 5H15L17 8H20C20.55 8 21 8.45 21 9V19C21 19.55 20.55 20 20 20H4C3.45 20 3 19.55 3 19V9Z"/>
+            <circle cx="12" cy="14" r="3.5"/>
+          </svg>
+        </div>
+        <span class="icon-label">拍照</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 2. 极简线性 Lucide ====== -->
+  <div class="style-card lucide">
+    <div class="style-header">
+      <div class="style-name">极简线性 <span class="style-en">Lucide Style</span></div>
+      <div class="style-desc">几何精确 · 克制留白 · 高级质感<br>适合工具类/效率类 App</div>
+    </div>
+    <div class="icons-grid">
+      <!-- 首页 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24">
+            <path d="M15 21V13H9V21M3 12L12 3L21 12"/>
+            <path d="M5 12V21H19V12"/>
+          </svg>
+        </div>
+        <span class="icon-label">首页</span>
+      </div>
+      <!-- 日记 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24">
+            <rect x="4" y="3" width="14" height="18" rx="1"/>
+            <line x1="8" y1="3" x2="8" y2="21"/>
+            <line x1="12" y1="8" x2="15" y2="8"/>
+            <line x1="12" y1="12" x2="15" y2="12"/>
+          </svg>
+        </div>
+        <span class="icon-label">日记</span>
+      </div>
+      <!-- 搜索 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="6"/>
+            <line x1="16" y1="16" x2="21" y2="21"/>
+          </svg>
+        </div>
+        <span class="icon-label">搜索</span>
+      </div>
+      <!-- 心形 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24">
+            <path d="M19 14C20.5 12.5 22 10.28 22 8C22 5.24 19.76 3 17 3C15.36 3 13.85 3.77 12.9 5L12 6L11.1 5C10.15 3.77 8.64 3 7 3C4.24 3 2 5.24 2 8C2 10.28 3.5 12.5 5 14L12 21L19 14Z"/>
+          </svg>
+        </div>
+        <span class="icon-label">心情</span>
+      </div>
+      <!-- 星星 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24">
+            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+          </svg>
+        </div>
+        <span class="icon-label">运势</span>
+      </div>
+      <!-- 番茄/时钟 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9"/>
+            <polyline points="12,6 12,12 16,14"/>
+          </svg>
+        </div>
+        <span class="icon-label">番茄钟</span>
+      </div>
+      <!-- 对话 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 15C21 15.55 20.55 16 20 16H8L4 20V5C4 4.45 4.45 4 5 4H20C20.55 4 21 4.45 21 5V15Z"/>
+          </svg>
+        </div>
+        <span class="icon-label">AI 对话</span>
+      </div>
+      <!-- 用户 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M20 21C20 16.58 16.42 13 12 13C7.58 13 4 16.58 4 21"/>
+          </svg>
+        </div>
+        <span class="icon-label">我的</span>
+      </div>
+      <!-- 相机 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="8" width="18" height="12" rx="1"/>
+            <path d="M9 8L10 5H14L15 8"/>
+            <circle cx="12" cy="14" r="3"/>
+          </svg>
+        </div>
+        <span class="icon-label">拍照</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 3. 手绘涂鸦 Doodle ====== -->
+  <div class="style-card doodle">
+    <div class="style-header">
+      <div class="style-name">手绘涂鸦 <span class="style-en">Doodle Style</span></div>
+      <div class="style-desc">随性手绘 · 不规则线条 · 温暖有趣<br>适合日记类/创意类 App ⭐ 推荐</div>
+    </div>
+    <div class="icons-grid">
+      <!-- 首页 - 手绘风 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" style="filter:url(#hand-drawn)">
+            <path d="M3.2 12.1L5.1 10.2M5.1 10.2L11.8 3.2L18.9 10.1M5.1 10.2V19.8C5.1 20.4 5.5 20.8 6.1 20.8H9.2M18.9 10.1L20.8 12.2M18.9 10.1V19.8C18.9 20.4 18.4 20.9 17.8 20.9H14.9M9.2 20.8C9.2 20.8 9.1 15.2 12.1 15.1C15 15.2 14.9 20.9 14.9 20.9M9.2 20.8H14.9"/>
+          </svg>
+        </div>
+        <span class="icon-label">首页</span>
+      </div>
+      <!-- 日记 - 手绘风 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" style="filter:url(#hand-drawn)">
+            <path d="M4.1 4.2C4.1 3.5 4.6 3.1 5.1 3.1H16.9C18 3.1 18.9 4 18.9 5.1V18.9C18.9 20 18 20.9 16.9 20.9H5.1C4.5 20.9 4.1 20.4 4.1 19.9V4.2Z"/>
+            <path d="M8.1 3.1V20.9"/>
+            <path d="M12.2 8.1H15.1"/>
+            <path d="M12.1 12.2H14.9"/>
+            <path d="M12.2 16.1H14"/>
+          </svg>
+        </div>
+        <span class="icon-label">日记</span>
+      </div>
+      <!-- 搜索 - 手绘风 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" style="filter:url(#hand-drawn)">
+            <circle cx="10.8" cy="10.9" r="6.8"/>
+            <path d="M16.1 16.2L21.2 21.1"/>
+          </svg>
+        </div>
+        <span class="icon-label">搜索</span>
+      </div>
+      <!-- 心形 - 手绘风 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" style="filter:url(#hand-drawn)">
+            <path d="M12.1 20.8C12.1 20.8 3.2 13.6 3.1 8.6C3 5.5 5.4 3.1 8.4 3.1C10.1 3.1 11.8 3.9 12.1 5.1C12.3 3.9 14 3.1 15.7 3.1C18.7 3.1 21.1 5.5 21 8.6C20.9 13.6 12.1 20.8 12.1 20.8Z"/>
+          </svg>
+        </div>
+        <span class="icon-label">心情</span>
+      </div>
+      <!-- 星星 - 手绘风 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" style="filter:url(#hand-drawn)">
+            <path d="M12.1 2.2L15 8.3L21.8 9.3L16.9 14L18.1 20.9L12.1 17.8L6 20.9L7.2 14L2.3 9.3L9.1 8.3L12.1 2.2Z"/>
+          </svg>
+        </div>
+        <span class="icon-label">运势</span>
+      </div>
+      <!-- 番茄 - 手绘风 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" style="filter:url(#hand-drawn)">
+            <circle cx="12" cy="13.1" r="7.8"/>
+            <path d="M12.1 5.2V3.1"/>
+            <path d="M9.1 3.2C9.1 3.2 10.1 5.1 12 5.2C13.9 5.1 14.9 3.2 14.9 3.2"/>
+            <path d="M9 10L11 13"/>
+          </svg>
+        </div>
+        <span class="icon-label">番茄钟</span>
+      </div>
+      <!-- 对话 - 手绘风 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" style="filter:url(#hand-drawn)">
+            <path d="M20.9 14.9C20.9 15.5 20.4 15.9 19.9 15.9H8.1L4.1 19.9V5.1C4.1 4.5 4.5 4.1 5.1 4.1H19.9C20.5 4.1 20.9 4.5 20.9 5.1V14.9Z"/>
+            <circle cx="8.5" cy="10" r="0.8"/>
+            <circle cx="12" cy="10" r="0.8"/>
+            <circle cx="15.5" cy="10" r="0.8"/>
+          </svg>
+        </div>
+        <span class="icon-label">AI 对话</span>
+      </div>
+      <!-- 用户 - 手绘风 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" style="filter:url(#hand-drawn)">
+            <circle cx="12.1" cy="8.1" r="3.9"/>
+            <path d="M5.1 20.1C5.2 17.1 8.2 14.6 12.1 14.6C16 14.6 19 17.1 19.1 20.1"/>
+          </svg>
+        </div>
+        <span class="icon-label">我的</span>
+      </div>
+      <!-- 相机 - 手绘风 -->
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" style="filter:url(#hand-drawn)">
+            <path d="M3.2 9.1C3.2 8.5 3.6 8.1 4.2 8.1H7.1L9.1 5.1H14.9L16.9 8.1H19.9C20.5 8.1 20.9 8.5 20.9 9.1V18.9C20.9 19.5 20.5 19.9 19.9 19.9H4.2C3.6 19.9 3.2 19.5 3.2 18.9V9.1Z"/>
+            <circle cx="12" cy="13.8" r="3.3"/>
+          </svg>
+        </div>
+        <span class="icon-label">拍照</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== 应用场景模拟 ====== -->
+<div class="preview-section">
+  <h2 class="preview-title">在 App 中的实际效果</h2>
+  <div class="app-mockups">
+
+    <!-- Phosphor 模拟 -->
+    <div class="mockup-card phosphor">
+      <div class="mockup-label">Phosphor · 发现页功能入口</div>
+      <div class="func-grid">
+        <div class="func-item">
+          <div class="func-icon-box" style="background:linear-gradient(135deg,#FFF5EE,#FFE8D6)">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 5V3"/><path d="M9 3C9 3 10 5 12 5C14 5 15 3 15 3"/></svg>
+          </div>
+          <span class="func-name">番茄钟</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:linear-gradient(135deg,#F0F5FF,#E0EAFF)">
+            <svg viewBox="0 0 24 24"><path d="M17 21V13H7V21M3 12L12 3L21 12M5 12V21H19V12"/></svg>
+          </div>
+          <span class="func-name">找搭子</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:linear-gradient(135deg,#F5FFF0,#E0FFDA)">
+            <svg viewBox="0 0 24 24"><path d="M3 9C3 8.45 3.45 8 4 8H7L9 5H15L17 8H20C20.55 8 21 8.45 21 9V19C21 19.55 20.55 20 20 20H4C3.45 20 3 19.55 3 19V9Z"/><circle cx="12" cy="14" r="3.5"/></svg>
+          </div>
+          <span class="func-name">拍照记录</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:linear-gradient(135deg,#FFF5F5,#FFE0E0)">
+            <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          </div>
+          <span class="func-name">运势</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:linear-gradient(135deg,#FFF8EE,#FFE8CC)">
+            <svg viewBox="0 0 24 24"><path d="M12 21C12 21 3 13.5 3 8.5C3 5.42 5.42 3 8.5 3C10.24 3 11.91 3.81 12 5C12.09 3.81 13.76 3 15.5 3C18.58 3 21 5.42 21 8.5C21 13.5 12 21 12 21Z"/></svg>
+          </div>
+          <span class="func-name">成长轨迹</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:linear-gradient(135deg,#F8F0FF,#EDE0FF)">
+            <svg viewBox="0 0 24 24"><path d="M4 4C4 3.45 4.45 3 5 3H17C18.1 3 19 3.9 19 5V19C19 20.1 18.1 21 17 21H5C4.45 21 4 20.55 4 20V4Z"/><path d="M8 3V21"/><path d="M12 8H15"/><path d="M12 12H15"/></svg>
+          </div>
+          <span class="func-name">自传小说</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:linear-gradient(135deg,#EEFFF5,#D0FFE0)">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </div>
+          <span class="func-name">漫画</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:linear-gradient(135deg,#FFF0F5,#FFD6E8)">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12,6 12,12 16,14"/></svg>
+          </div>
+          <span class="func-name">待办</span>
+        </div>
+      </div>
+      <!-- TabBar -->
+      <div class="tabbar-mock">
+        <div class="tab-item active"><svg viewBox="0 0 24 24"><path d="M4 4C4 3.45 4.45 3 5 3H17C18.1 3 19 3.9 19 5V19C19 20.1 18.1 21 17 21H5C4.45 21 4 20.55 4 20V4Z"/><path d="M8 3V21"/><path d="M12 8H15"/><path d="M12 12H15"/></svg><span>日记</span></div>
+        <div class="tab-item"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16 16L21 21"/></svg><span>发现</span></div>
+        <div class="tab-item"><svg viewBox="0 0 24 24" style="stroke:#E8855A"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg><span></span></div>
+        <div class="tab-item"><svg viewBox="0 0 24 24"><path d="M21 12C21 16.42 16.97 20 12 20C10.46 20 9 19.64 7.72 19L3 20L4.3 16.18C3.47 14.9 3 13.5 3 12C3 7.58 7.03 4 12 4C16.97 4 21 7.58 21 12Z"/></svg><span>消息</span></div>
+        <div class="tab-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 20C5 17 8 14.5 12 14.5C16 14.5 19 17 19 20"/></svg><span>我的</span></div>
+      </div>
+    </div>
+
+    <!-- Lucide 模拟 -->
+    <div class="mockup-card lucide">
+      <div class="mockup-label">Lucide · 发现页功能入口</div>
+      <div class="func-grid">
+        <div class="func-item">
+          <div class="func-icon-box" style="background:#F5F3F0">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12,6 12,12 16,14"/></svg>
+          </div>
+          <span class="func-name">番茄钟</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:#F5F3F0">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21C20 16.58 16.42 13 12 13C7.58 13 4 16.58 4 21"/></svg>
+          </div>
+          <span class="func-name">找搭子</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:#F5F3F0">
+            <svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="1"/><path d="M9 8L10 5H14L15 8"/><circle cx="12" cy="14" r="3"/></svg>
+          </div>
+          <span class="func-name">拍照记录</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:#F5F3F0">
+            <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          </div>
+          <span class="func-name">运势</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:#F5F3F0">
+            <svg viewBox="0 0 24 24"><path d="M22 12H18L15 21L9 3L6 12H2"/></svg>
+          </div>
+          <span class="func-name">成长轨迹</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:#F5F3F0">
+            <svg viewBox="0 0 24 24"><rect x="4" y="3" width="14" height="18" rx="1"/><line x1="8" y1="3" x2="8" y2="21"/><line x1="12" y1="8" x2="15" y2="8"/><line x1="12" y1="12" x2="15" y2="12"/></svg>
+          </div>
+          <span class="func-name">自传小说</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:#F5F3F0">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </div>
+          <span class="func-name">漫画</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:#F5F3F0">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="16" height="16" rx="1"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="12" y2="17"/></svg>
+          </div>
+          <span class="func-name">待办</span>
+        </div>
+      </div>
+      <!-- TabBar -->
+      <div class="tabbar-mock">
+        <div class="tab-item active"><svg viewBox="0 0 24 24" style="stroke:#4A3628"><rect x="4" y="3" width="14" height="18" rx="1"/><line x1="8" y1="3" x2="8" y2="21"/></svg><span>日记</span></div>
+        <div class="tab-item"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><line x1="16" y1="16" x2="21" y2="21"/></svg><span>发现</span></div>
+        <div class="tab-item"><svg viewBox="0 0 24 24" style="stroke:#4A3628"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg><span></span></div>
+        <div class="tab-item"><svg viewBox="0 0 24 24"><path d="M21 15C21 15.55 20.55 16 20 16H8L4 20V5C4 4.45 4.45 4 5 4H20C20.55 4 21 4.45 21 5V15Z"/></svg><span>消息</span></div>
+        <div class="tab-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21C20 16.58 16.42 13 12 13C7.58 13 4 16.58 4 21"/></svg><span>我的</span></div>
+      </div>
+    </div>
+
+    <!-- Doodle 模拟 -->
+    <div class="mockup-card doodle">
+      <div class="mockup-label">Doodle · 发现页功能入口 ⭐</div>
+      <div class="func-grid">
+        <div class="func-item">
+          <div class="func-icon-box" style="background:#FFF8F0;border:1.5px solid #F2B49B;border-radius:10px 14px 12px 16px">
+            <svg viewBox="0 0 24 24" style="filter:url(#hand-drawn)"><circle cx="12" cy="13.1" r="7.8"/><path d="M12.1 5.2V3.1"/><path d="M9.1 3.2C9.1 3.2 10.1 5.1 12 5.2C13.9 5.1 14.9 3.2 14.9 3.2"/></svg>
+          </div>
+          <span class="func-name">番茄钟</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:#F0F8FF;border:1.5px solid #B4CCE8;border-radius:14px 10px 16px 12px">
+            <svg viewBox="0 0 24 24" style="filter:url(#hand-drawn);stroke:#6B8EB4"><circle cx="12.1" cy="8.1" r="3.9"/><path d="M5.1 20.1C5.2 17.1 8.2 14.6 12.1 14.6C16 14.6 19 17.1 19.1 20.1"/></svg>
+          </div>
+          <span class="func-name">找搭子</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:#F0FFF5;border:1.5px solid #9BC8A8;border-radius:12px 16px 10px 14px">
+            <svg viewBox="0 0 24 24" style="filter:url(#hand-drawn);stroke:#6BA87B"><path d="M3.2 9.1C3.2 8.5 3.6 8.1 4.2 8.1H7.1L9.1 5.1H14.9L16.9 8.1H19.9C20.5 8.1 20.9 8.5 20.9 9.1V18.9C20.9 19.5 20.5 19.9 19.9 19.9H4.2C3.6 19.9 3.2 19.5 3.2 18.9V9.1Z"/><circle cx="12" cy="13.8" r="3.3"/></svg>
+          </div>
+          <span class="func-name">拍照记录</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:#FFF5F8;border:1.5px solid #E8A0B4;border-radius:16px 12px 14px 10px">
+            <svg viewBox="0 0 24 24" style="filter:url(#hand-drawn);stroke:#D4728A"><path d="M12.1 2.2L15 8.3L21.8 9.3L16.9 14L18.1 20.9L12.1 17.8L6 20.9L7.2 14L2.3 9.3L9.1 8.3L12.1 2.2Z"/></svg>
+          </div>
+          <span class="func-name">运势</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:#FFF8EE;border:1.5px solid #E8C49B;border-radius:10px 16px 14px 12px">
+            <svg viewBox="0 0 24 24" style="filter:url(#hand-drawn)"><path d="M12.1 20.8C12.1 20.8 3.2 13.6 3.1 8.6C3 5.5 5.4 3.1 8.4 3.1C10.1 3.1 11.8 3.9 12.1 5.1C12.3 3.9 14 3.1 15.7 3.1C18.7 3.1 21.1 5.5 21 8.6C20.9 13.6 12.1 20.8 12.1 20.8Z"/></svg>
+          </div>
+          <span class="func-name">成长轨迹</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:#F8F0FF;border:1.5px solid #C4A8E8;border-radius:14px 10px 12px 16px">
+            <svg viewBox="0 0 24 24" style="filter:url(#hand-drawn);stroke:#9B72C8"><path d="M4.1 4.2C4.1 3.5 4.6 3.1 5.1 3.1H16.9C18 3.1 18.9 4 18.9 5.1V18.9C18.9 20 18 20.9 16.9 20.9H5.1C4.5 20.9 4.1 20.4 4.1 19.9V4.2Z"/><path d="M8.1 3.1V20.9"/><path d="M12.2 8.1H15.1"/><path d="M12.1 12.2H14.9"/></svg>
+          </div>
+          <span class="func-name">自传小说</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:#EEFFF5;border:1.5px solid #9BC8A8;border-radius:12px 14px 16px 10px">
+            <svg viewBox="0 0 24 24" style="filter:url(#hand-drawn);stroke:#5CA06E"><rect x="3.1" y="3.1" width="6.8" height="6.8" rx="1"/><rect x="14.1" y="3.1" width="6.8" height="6.8" rx="1"/><rect x="3.1" y="14.1" width="6.8" height="6.8" rx="1"/><rect x="14.1" y="14.1" width="6.8" height="6.8" rx="1"/></svg>
+          </div>
+          <span class="func-name">漫画</span>
+        </div>
+        <div class="func-item">
+          <div class="func-icon-box" style="background:#FFF0F5;border:1.5px solid #E8B4C4;border-radius:16px 10px 12px 14px">
+            <svg viewBox="0 0 24 24" style="filter:url(#hand-drawn);stroke:#C87290"><path d="M9 11L11 13L15 9"/><rect x="3.1" y="5.1" width="15.8" height="15.8" rx="1"/></svg>
+          </div>
+          <span class="func-name">待办</span>
+        </div>
+      </div>
+      <!-- TabBar -->
+      <div class="tabbar-mock" style="border-top:2px solid #F0E8E0;border-radius:0 0 20px 20px">
+        <div class="tab-item active"><svg viewBox="0 0 24 24" style="filter:url(#hand-drawn)"><path d="M4.1 4.2C4.1 3.5 4.6 3.1 5.1 3.1H16.9C18 3.1 18.9 4 18.9 5.1V18.9C18.9 20 18 20.9 16.9 20.9H5.1C4.5 20.9 4.1 20.4 4.1 19.9V4.2Z"/><path d="M8.1 3.1V20.9"/></svg><span>日记</span></div>
+        <div class="tab-item"><svg viewBox="0 0 24 24" style="filter:url(#hand-drawn);stroke:#AE9D92"><circle cx="10.8" cy="10.9" r="6.8"/><path d="M16.1 16.2L21.2 21.1"/></svg><span>发现</span></div>
+        <div class="tab-item"><svg viewBox="0 0 24 24" style="filter:url(#hand-drawn)"><circle cx="12" cy="12" r="9.5"/><line x1="12" y1="7.5" x2="12" y2="16.5"/><line x1="7.5" y1="12" x2="16.5" y2="12"/></svg><span></span></div>
+        <div class="tab-item"><svg viewBox="0 0 24 24" style="filter:url(#hand-drawn);stroke:#AE9D92"><path d="M20.9 14.9C20.9 15.5 20.4 15.9 19.9 15.9H8.1L4.1 19.9V5.1C4.1 4.5 4.5 4.1 5.1 4.1H19.9C20.5 4.1 20.9 4.5 20.9 5.1V14.9Z"/></svg><span>消息</span></div>
+        <div class="tab-item"><svg viewBox="0 0 24 24" style="filter:url(#hand-drawn);stroke:#AE9D92"><circle cx="12.1" cy="8.1" r="3.9"/><path d="M5.1 20.1C5.2 17.1 8.2 14.6 12.1 14.6C16 14.6 19 17.1 19.1 20.1"/></svg><span>我的</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<p class="note">
+  圆润线性：温暖友好，适合大众 · 极简线性：干净高级，偏工具化 · 手绘涂鸦：独特有趣，与日记/创意强契合 ⭐<br>
+  配色基于设计系统 v1.2（暖杏橙 #E8855A + 奶油白 #FDF8F3）
+</p>
+
+</body>
+</html>

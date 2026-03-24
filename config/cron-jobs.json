@@ -8,7 +8,7 @@
       "name": "daily-backup",
       "enabled": true,
       "createdAtMs": 1773914973121,
-      "updatedAtMs": 1774238458655,
+      "updatedAtMs": 1774324853051,
       "schedule": {
         "kind": "cron",
         "expr": "0 12 * * *",
@@ -26,14 +26,14 @@
         "to": "o9cq804suUfmf3KqmbiDCfZhMcGk@im.wechat"
       },
       "state": {
-        "nextRunAtMs": 1774324800000,
-        "lastRunAtMs": 1774238400013,
+        "nextRunAtMs": 1774411200000,
+        "lastRunAtMs": 1774324800021,
         "lastRunStatus": "error",
         "lastStatus": "error",
-        "lastDurationMs": 58642,
+        "lastDurationMs": 53030,
         "lastDeliveryStatus": "unknown",
-        "consecutiveErrors": 1,
-        "lastError": "Error: weixin: accountId is required (no default account)"
+        "consecutiveErrors": 2,
+        "lastError": "AxiosError: Request failed with status code 400"
       }
     }
   ]

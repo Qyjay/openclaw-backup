@@ -1,5 +1,5 @@
 <template>
-  <teleport to="body">
+  <view class="drawer-teleport-wrapper">
     <transition name="drawer">
       <view v-if="visible" class="drawer-overlay" @click="close">
         <view class="drawer-panel" @click.stop>
@@ -62,7 +62,7 @@
         </view>
       </view>
     </transition>
-  </teleport>
+  </view>
 </template>
 
 <script setup lang="ts">
@@ -95,6 +95,15 @@ function navigate(page: string) {
 </script>
 
 <style lang="scss" scoped>
+.drawer-teleport-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: 9998;
+}
+
 .drawer-overlay {
   position: fixed;
   inset: 0;

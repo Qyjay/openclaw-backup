@@ -150,7 +150,7 @@ function switchTab(index: number) {
     return
   }
   activeIndex.value = index
-  uni.switchTab({ url: tabs[index].path })
+  uni.redirectTo({ url: tabs[index].path })
 }
 
 function closeActionSheet() {
