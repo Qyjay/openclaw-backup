@@ -236,13 +236,13 @@ function onBuddyClick() {
 
 <style lang="scss" scoped>
 .page {
-  min-height: 100vh;
+  height: 100%;
   background: #FDF8F3;
 }
 
 .scroll {
-  height: calc(100vh - 88rpx);
-  height: calc(100vh - var(--navbar-height, 88rpx));
+  flex: 1; overflow-y: auto;
+  /* flex handles height */
 }
 
 .content {

@@ -224,7 +224,7 @@ function onDiaryClick(id: string) {
 <style lang="scss" scoped>
 .page {
   position: relative;
-  min-height: 100vh;
+  height: 100%;
   background: #FDF8F3;
   display: flex;
   flex-direction: column;

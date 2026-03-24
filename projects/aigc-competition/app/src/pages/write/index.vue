@@ -352,7 +352,7 @@ async function handleDone() {
   background: #FDF8F3;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 }
 
 /* ── NavBar 插槽 ── */

@@ -206,7 +206,7 @@ function handleAchClick(ach: Achievement) {
 <style lang="scss" scoped>
 /* ===== 页面 ===== */
 .page {
-  min-height: 100vh;
+  height: 100%;
   background: #FDF8F3;
   display: flex;
   flex-direction: column;

@@ -255,7 +255,7 @@ function onGenerate() {
 <style scoped>
 /* ── 整体 ── */
 .page-container {
-  min-height: 100vh;
+  height: 100%;
   background-color: #FDF8F3;
   position: relative;
 }

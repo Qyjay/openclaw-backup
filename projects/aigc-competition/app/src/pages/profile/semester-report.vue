@@ -13,14 +13,14 @@ import CustomNavBar from '@/components/CustomNavBar.vue'
 
 <style lang="scss" scoped>
 .page {
-  min-height: 100vh;
+  height: 100%;
   background: #FDF8F3;
 }
 .content {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 176rpx);
+  flex: 1; overflow-y: auto;
 }
 .placeholder {
   font-size: 30rpx;

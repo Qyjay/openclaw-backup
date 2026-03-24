@@ -12,7 +12,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
   background: #FDF8F3;
   gap: 16rpx;
   .placeholder-emoji { font-size: 80rpx; }
