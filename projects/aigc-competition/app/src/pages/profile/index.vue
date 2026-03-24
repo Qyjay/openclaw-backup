@@ -147,7 +147,6 @@ const expHint = computed(() => `再写 ${nextLevelXP.value - currentXP.value} XP
 const menuItems = [
   { key: 'skill',   iconName: 'sparkle',  iconColor: '#5BBF8E', name: '技能树',     iconBg: 'rgba(91, 175, 133, 0.12)', path: '' },
   { key: 'report',  iconName: 'book',     iconColor: '#6B8EC4', name: '学期报告',   iconBg: 'rgba(123, 184, 212, 0.12)', path: '/pages/novel/index' },
-  { key: 'privacy', iconName: 'lock',     iconColor: '#AE9D92', name: '隐私设置',   iconBg: 'rgba(174, 157, 146, 0.12)', path: '/pages/profile/settings' },
   { key: 'about',   iconName: 'settings', iconColor: '#E8C44E', name: '关于 App',   iconBg: 'rgba(230, 184, 112, 0.12)', path: '/pages/settings/about' },
 ]
 
