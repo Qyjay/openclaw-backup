@@ -12,7 +12,7 @@
 
         <!-- 封面卡片 -->
         <view class="cover-card">
-          <text class="cover-emoji">📖</text>
+          <DoodleIcon name="bookopen" :size="88" color="rgba(255,255,255,0.85)" class="cover-emoji" />
           <text class="cover-title">《Kylin的大学日记》</text>
           <text class="cover-subtitle">基于 127 篇日记自动生成</text>
           <view class="cover-divider" />
@@ -50,7 +50,7 @@
             </view>
 
             <view v-else class="chapter-locked-inner">
-              <text class="lock-icon">🔒</text>
+              <DoodleIcon name="lock" :size="48" color="#AE9D92" class="lock-icon" />
               <view class="chapter-lock-content">
                 <text class="chapter-lock-title">第{{ chapter.id }}章 · {{ chapter.title }}</text>
                 <text class="chapter-lock-hint">继续写日记解锁更多章节...</text>
@@ -62,7 +62,7 @@
         <!-- 生成下一章按钮 -->
         <view class="generate-btn-wrap">
           <view class="generate-btn" @click="onGenerate">
-            <text class="generate-btn-text">✨ 生成下一章</text>
+            <text class="generate-btn-text">生成下一章</text>
           </view>
         </view>
 
@@ -116,6 +116,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
+import DoodleIcon from '@/components/DoodleIcon.vue'
 
 // ─── 导航栏高度（预估，实际按需获取） ───
 const navBarHeight = ref(88)
@@ -284,7 +285,9 @@ function onGenerate() {
 }
 
 .cover-emoji {
-  font-size: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 20rpx;
 }
 
@@ -304,7 +307,7 @@ function onGenerate() {
 
 .cover-divider {
   width: 80rpx;
-  height: 1px;
+  height: 2rpx;
   background: rgba(255, 255, 255, 0.25);
   margin-bottom: 24rpx;
 }
@@ -429,7 +432,9 @@ function onGenerate() {
 }
 
 .lock-icon {
-  font-size: 36rpx;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .chapter-lock-content {

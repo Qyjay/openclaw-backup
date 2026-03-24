@@ -3,29 +3,37 @@
     <!-- ActionSheet -->
     <transition name="sheet">
       <view v-if="showActionSheet" class="action-sheet-overlay" @click="closeActionSheet">
-        <view class="action-sheet-panel" @click.stop>
+        <view class="action-sheet-panel doodle-box" @click.stop>
           <view class="action-sheet-header">
-            <text class="action-sheet-title">选择记录方式</text>
+            <text class="action-sheet-title font-handwrite">选择记录方式</text>
           </view>
           <view class="action-sheet-options">
-            <view class="action-option" @click="chooseMode('photo')">
-              <text class="action-icon">📸</text>
+            <view class="action-option press-feedback" @click="chooseMode('photo')">
+              <view class="action-icon-wrap func-color-study doodle-box-v3">
+                <DoodleIcon name="camera" color="#6BA87B" :size="44" />
+              </view>
               <text class="action-label">拍照记录</text>
             </view>
-            <view class="action-option" @click="chooseMode('album')">
-              <text class="action-icon">🖼️</text>
+            <view class="action-option press-feedback" @click="chooseMode('album')">
+              <view class="action-icon-wrap func-color-social doodle-box-v2">
+                <DoodleIcon name="palette" color="#6B8EB4" :size="44" />
+              </view>
               <text class="action-label">从相册选择</text>
             </view>
-            <view class="action-option" @click="chooseMode('text')">
-              <text class="action-icon">✍️</text>
+            <view class="action-option press-feedback" @click="chooseMode('text')">
+              <view class="action-icon-wrap func-color-diary doodle-box">
+                <DoodleIcon name="pen" color="#E8855A" :size="44" />
+              </view>
               <text class="action-label">文字记录</text>
             </view>
-            <view class="action-option" @click="chooseMode('voice')">
-              <text class="action-icon">🎤</text>
+            <view class="action-option press-feedback" @click="chooseMode('voice')">
+              <view class="action-icon-wrap func-color-novel doodle-box-v4">
+                <DoodleIcon name="voice" color="#9B72C8" :size="44" />
+              </view>
               <text class="action-label">语音记录</text>
             </view>
           </view>
-          <view class="action-sheet-cancel" @click="closeActionSheet">
+          <view class="action-sheet-cancel press-feedback" @click="closeActionSheet">
             <text class="cancel-text">取消</text>
           </view>
         </view>
@@ -34,6 +42,7 @@
 
     <!-- TabBar -->
     <view class="tabbar">
+      <!-- 选中指示器背景 -->
       <view
         v-for="(item, index) in tabs"
         :key="index"
@@ -44,24 +53,21 @@
         }"
         @click="switchTab(index)"
       >
-        <!-- 写日记：中间凸起圆形按钮 -->
-        <view v-if="index === 2" class="tabbar-write-btn">
-          <text class="tabbar-write-icon">✏️</text>
+        <!-- 写日记：中间凸起圆形按钮 + 脉冲动画 -->
+        <view v-if="index === 2" class="tabbar-write-btn pulse-btn">
+          <DoodleIcon name="pen" color="#FFFFFF" :size="44" :filtered="false" />
         </view>
 
         <!-- 普通 tab -->
         <template v-else>
           <view class="tabbar-icon-wrap">
-            <image
-              v-if="item.icon"
-              class="tabbar-icon-img"
-              :class="{ 'tabbar-icon-img--active': activeIndex === index }"
-              :src="item.icon"
-              mode="aspectFit"
+            <DoodleIcon
+              :name="item.iconName"
+              :color="activeIndex === index ? '#E8855A' : '#AE9D92'"
+              :size="44"
             />
-            <text v-else class="tabbar-icon-emoji" :class="{ 'tabbar-icon-emoji--active': activeIndex === index }">
-              {{ item.emoji }}
-            </text>
+            <!-- 选中小圆点 -->
+            <view v-if="activeIndex === index" class="active-dot" />
           </view>
           <text
             class="tabbar-label"
@@ -76,6 +82,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { onShow } from '@dcloudio/uni-app'
+import DoodleIcon from './DoodleIcon.vue'
 
 const props = defineProps<{
   current?: number
@@ -130,16 +137,15 @@ watch(() => props.current, (v) => {
 })
 
 const tabs = [
-  { emoji: '📔', text: '日记',  path: '/pages/index/index',    icon: '/static/tabbar/tab-diary.png' },
-  { emoji: '🧭', text: '发现',  path: '/pages/discover/index',  icon: '' },
-  { emoji: '✏️', text: '写',    path: '/pages/write/index',     icon: '' },
-  { emoji: '💬', text: '消息',  path: '/pages/messages/index',  icon: '' },
-  { emoji: '👤', text: '我的',  path: '/pages/profile/index',   icon: '/static/tabbar/tab-profile.png' },
+  { iconName: 'book',     text: '日记',  path: '/pages/index/index' },
+  { iconName: 'discover', text: '发现',  path: '/pages/discover/index' },
+  { iconName: 'pen',      text: '写',    path: '/pages/write/index' },
+  { iconName: 'chat',     text: '消息',  path: '/pages/messages/index' },
+  { iconName: 'user',     text: '我的',  path: '/pages/profile/index' },
 ]
 
 function switchTab(index: number) {
   if (index === 2) {
-    // 写日记：显示 ActionSheet
     showActionSheet.value = true
     return
   }
@@ -174,14 +180,14 @@ function chooseMode(mode: string) {
   left: 0;
   right: 0;
   z-index: 9999;
-  height: 60px;
+  height: 120rpx;
   padding-bottom: env(safe-area-inset-bottom);
   background: rgba(255, 255, 255, 0.97);
-  box-shadow: 0 -1px 6px rgba(26, 26, 46, 0.08);
+  box-shadow: 0 -1px 0 rgba(232, 133, 90, 0.1), 0 -4px 16px rgba(44, 31, 20, 0.06);
   display: flex;
   align-items: stretch;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(24rpx);
+  -webkit-backdrop-filter: blur(24rpx);
 }
 
 .tabbar-item {
@@ -190,45 +196,33 @@ function chooseMode(mode: string) {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 4rpx;
   cursor: pointer;
-  padding-top: 4px;
+  padding-top: 8rpx;
+  position: relative;
 }
 
 .tabbar-icon-wrap {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 44rpx;
   height: 44rpx;
+  position: relative;
 }
 
-.tabbar-icon-img {
-  width: 44rpx;
-  height: 44rpx;
-  opacity: 0.4;
-  transition: opacity 0.2s, transform 0.2s;
-}
-
-.tabbar-icon-img--active {
-  opacity: 1;
-  transform: scale(1.12);
-}
-
-.tabbar-icon-emoji {
-  font-size: 22px;
-  opacity: 0.45;
-  transition: opacity 0.2s, transform 0.2s;
-  line-height: 1;
-}
-
-.tabbar-icon-emoji--active {
-  opacity: 1;
-  transform: scale(1.12);
+.active-dot {
+  position: absolute;
+  bottom: -8rpx;
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50% 60% 40% 55%;  /* 手绘感不完美圆 */
+  background: #E8855A;
 }
 
 .tabbar-label {
-  font-size: 11px;
+  font-size: 22rpx;
   color: #AE9D92;
   font-weight: 500;
   transition: color 0.2s;
@@ -237,6 +231,7 @@ function chooseMode(mode: string) {
 
 .tabbar-label--active {
   color: #E8855A;
+  font-weight: 700;
 }
 
 /* 写日记：中间凸起 */
@@ -246,11 +241,11 @@ function chooseMode(mode: string) {
 }
 
 .tabbar-write-btn {
-  width: 96rpx;
-  height: 96rpx;
-  border-radius: 9999px;
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 50% 55% 45% 52%;  /* 手绘感不完美圆 */
   background: linear-gradient(135deg, #E8855A 0%, #F0A882 100%);
-  box-shadow: 0 4rpx 16rpx rgba(232, 133, 90, 0.35);
+  box-shadow: 0 4rpx 16rpx rgba(232, 133, 90, 0.40), 0 0 0 3px rgba(232, 133, 90, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -260,12 +255,7 @@ function chooseMode(mode: string) {
 .tabbar-item--write:active .tabbar-write-btn {
   transform: scale(0.92);
   box-shadow: 0 2rpx 8rpx rgba(232, 133, 90, 0.25);
-}
-
-.tabbar-write-icon {
-  font-size: 26px;
-  line-height: 1;
-  filter: brightness(0) invert(1);
+  animation: none;
 }
 
 /* ActionSheet */
@@ -282,7 +272,7 @@ function chooseMode(mode: string) {
 .action-sheet-panel {
   width: 100%;
   background: #FFFFFF;
-  border-radius: 24rpx 24rpx 0 0;
+  border-radius: 24rpx 24rpx 0 0 !important;
   padding-bottom: env(safe-area-inset-bottom);
   overflow: hidden;
 }
@@ -294,7 +284,7 @@ function chooseMode(mode: string) {
 }
 
 .action-sheet-title {
-  font-size: 15px;
+  font-size: 30rpx;
   color: #2C1F14;
   font-weight: 600;
 }
@@ -310,7 +300,7 @@ function chooseMode(mode: string) {
   display: flex;
   align-items: center;
   gap: 16rpx;
-  padding: 28rpx 16rpx;
+  padding: 20rpx 16rpx;
   border-radius: 16rpx;
   transition: background 0.15s;
 }
@@ -319,12 +309,19 @@ function chooseMode(mode: string) {
   background: rgba(232, 133, 90, 0.08);
 }
 
-.action-icon {
-  font-size: 24px;
+.action-icon-wrap {
+  width: 88rpx;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-width: 1.5px;
+  border-style: solid;
+  flex-shrink: 0;
 }
 
 .action-label {
-  font-size: 16px;
+  font-size: 32rpx;
   color: #2C1F14;
   font-weight: 500;
 }
@@ -339,7 +336,7 @@ function chooseMode(mode: string) {
 }
 
 .cancel-text {
-  font-size: 16px;
+  font-size: 32rpx;
   color: #4A3628;
   font-weight: 500;
 }

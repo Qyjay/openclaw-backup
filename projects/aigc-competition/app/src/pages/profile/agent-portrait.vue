@@ -7,7 +7,7 @@
 
         <!-- ── AI 头像区 ── -->
         <view class="card avatar-card">
-          <text class="avatar-emoji">🤖</text>
+          <DoodleIcon name="robot" :size="120" color="#E8855A" class="avatar-emoji" />
           <text class="avatar-tagline">AI 伙伴 · 已陪伴 23 天</text>
           <text class="avatar-understand">了解你 85%</text>
           <view class="progress-track">
@@ -57,7 +57,7 @@
           <text class="card-section-title">── 日记风格偏好 ──</text>
           <view class="pref-list">
             <view v-for="pref in diaryPrefs" :key="pref.label" class="pref-row">
-              <text class="pref-emoji">{{ pref.emoji }}</text>
+              <DoodleIcon :name="pref.iconName" :size="40" :color="pref.iconColor" class="pref-icon" />
               <text class="pref-label">{{ pref.label }}</text>
               <text class="pref-value">{{ pref.value }}</text>
             </view>
@@ -103,6 +103,7 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
+import DoodleIcon from '@/components/DoodleIcon.vue'
 
 const navBarHeight = ref(88)
 
@@ -150,11 +151,11 @@ function traitColor(val: number): string {
 
 // ─── 日记风格偏好 ───
 const diaryPrefs = [
-  { emoji: '🍳', label: '最爱话题',  value: '美食 (35%)' },
-  { emoji: '📚', label: '常记时段',  value: '21:00-22:00' },
-  { emoji: '📝', label: '平均字数',  value: '156字/篇' },
-  { emoji: '📸', label: '配图率',    value: '68%' },
-  { emoji: '😊', label: '主旋律',    value: '积极向上' },
+  { iconName: 'heart',  iconColor: '#E8855A', label: '最爱话题',  value: '美食 (35%)' },
+  { iconName: 'book',   iconColor: '#6B8EC4', label: '常记时段',  value: '21:00-22:00' },
+  { iconName: 'pen',    iconColor: '#5BBF8E', label: '平均字数',  value: '156字/篇' },
+  { iconName: 'camera', iconColor: '#AE9D92', label: '配图率',    value: '68%' },
+  { iconName: 'star',   iconColor: '#E8C44E', label: '主旋律',    value: '积极向上' },
 ]
 
 // ─── 隐私开关 ───
@@ -217,8 +218,10 @@ const retentionIndex = ref(2) // 默认 180天
 }
 
 .avatar-emoji {
-  font-size: 80rpx;
   margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .avatar-tagline {
@@ -355,10 +358,12 @@ const retentionIndex = ref(2) // 默认 180天
   border-bottom: none;
 }
 
-.pref-emoji {
-  font-size: 32rpx;
+.pref-icon {
+  display: flex;
+  align-items: center;
   width: 48rpx;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .pref-label {

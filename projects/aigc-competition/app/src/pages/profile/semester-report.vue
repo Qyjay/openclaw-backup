@@ -20,10 +20,10 @@ import CustomNavBar from '@/components/CustomNavBar.vue'
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 88px);
+  height: calc(100vh - 176rpx);
 }
 .placeholder {
-  font-size: 15px;
+  font-size: 30rpx;
   color: #AE9D92;
 }
 </style>

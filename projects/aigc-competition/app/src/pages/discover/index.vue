@@ -8,11 +8,14 @@
     <scroll-view class="page-scroll" scroll-y>
 
       <!-- 运势横幅 -->
-      <view class="fortune-banner" @click="go('/pages/fortune/index')">
+      <view class="fortune-banner doodle-box press-feedback stagger-item" @click="go('/pages/fortune/index')">
         <view class="fortune-banner-bg" />
         <view class="fortune-banner-content">
           <view class="fortune-banner-left">
-            <text class="fortune-title">🔮 今日运势</text>
+            <view class="fortune-title-row">
+              <DoodleIcon name="crystal" color="#D4728A" :size="40" />
+              <text class="fortune-title">今日运势</text>
+            </view>
             <view class="fortune-stars-row">
               <text class="fortune-label">学业</text>
               <text class="fortune-stars">
@@ -25,12 +28,12 @@
             </view>
             <text class="fortune-desc">"今天适合去图书馆"  </text>
             <view class="fortune-cta">
-              <text>查看</text>
+              <text>查看详情</text>
               <text style="margin-left: 4rpx">→</text>
             </view>
           </view>
           <view class="fortune-orb">
-            <text class="fortune-orb-emoji">🔮</text>
+            <DoodleIcon name="crystal" color="#D4728A" :size="96" />
           </view>
         </view>
       </view>
@@ -39,12 +42,15 @@
       <SectionTitle title="AI 创作工具" />
       <view class="feature-grid">
         <view
-          v-for="item in aiTools"
+          v-for="(item, idx) in aiTools"
           :key="item.key"
-          class="feature-item"
+          class="feature-item press-feedback stagger-item"
+          :style="{ '--delay': (idx * 0.06) + 's' }"
           @click="handleClick(item.key, item.toast)"
         >
-          <text class="feature-emoji">{{ item.emoji }}</text>
+          <view class="func-icon-box" :class="[item.boxClass, item.radiusClass]" :style="{ borderColor: item.borderColor }">
+            <DoodleIcon :name="item.iconName" :color="item.iconColor" :size="52" />
+          </view>
           <text class="feature-name">{{ item.name }}</text>
         </view>
       </view>
@@ -53,13 +59,19 @@
       <SectionTitle title="学习工具" />
       <view class="feature-grid">
         <view
-          v-for="item in studyTools"
+          v-for="(item, idx) in studyTools"
           :key="item.key"
-          class="feature-item"
+          class="feature-item press-feedback stagger-item"
+          :style="{ '--delay': (idx * 0.06) + 's' }"
           @click="handleClick(item.key, item.toast)"
         >
-          <text class="feature-emoji">{{ item.emoji }}</text>
+          <view class="func-icon-box" :class="[item.boxClass, item.radiusClass]" :style="{ borderColor: item.borderColor }">
+            <DoodleIcon :name="item.iconName" :color="item.iconColor" :size="52" />
+          </view>
           <text class="feature-name">{{ item.name }}</text>
+          <view v-if="item.toast" class="coming-badge">
+            <text class="coming-text">{{ item.toast }}</text>
+          </view>
         </view>
       </view>
 
@@ -67,12 +79,15 @@
       <SectionTitle title="社交与成长" />
       <view class="feature-grid">
         <view
-          v-for="item in socialGrowth"
+          v-for="(item, idx) in socialGrowth"
           :key="item.key"
-          class="feature-item"
+          class="feature-item press-feedback stagger-item"
+          :style="{ '--delay': (idx * 0.06) + 's' }"
           @click="handleClick(item.key, item.toast)"
         >
-          <text class="feature-emoji">{{ item.emoji }}</text>
+          <view class="func-icon-box" :class="[item.boxClass, item.radiusClass]" :style="{ borderColor: item.borderColor }">
+            <DoodleIcon :name="item.iconName" :color="item.iconColor" :size="52" />
+          </view>
           <text class="feature-name">{{ item.name }}</text>
         </view>
       </view>
@@ -81,13 +96,19 @@
       <SectionTitle title="更多" />
       <view class="feature-grid">
         <view
-          v-for="item in moreItems"
+          v-for="(item, idx) in moreItems"
           :key="item.key"
-          class="feature-item"
+          class="feature-item press-feedback stagger-item"
+          :style="{ '--delay': (idx * 0.06) + 's' }"
           @click="handleClick(item.key, item.toast)"
         >
-          <text class="feature-emoji">{{ item.emoji }}</text>
+          <view class="func-icon-box" :class="[item.boxClass, item.radiusClass]" :style="{ borderColor: item.borderColor }">
+            <DoodleIcon :name="item.iconName" :color="item.iconColor" :size="52" />
+          </view>
           <text class="feature-name">{{ item.name }}</text>
+          <view v-if="item.toast" class="coming-badge">
+            <text class="coming-text">{{ item.toast }}</text>
+          </view>
         </view>
       </view>
 
@@ -95,56 +116,57 @@
     </scroll-view>
 
     <!-- TabBar -->
-    <TabBar />
+    <TabBar :current="1" />
   </view>
 </template>
 
 <script setup lang="ts">
 import CustomNavBar from '@/components/CustomNavBar.vue'
 import TabBar from '@/components/TabBar.vue'
+import DoodleIcon from '@/components/DoodleIcon.vue'
 
 // 内部组件：段落标题
 const SectionTitle = {
   props: { title: String },
-  template: `<view class="section-title-wrap"><text class="section-title">{{ title }}</text></view>`,
+  template: `<view class="section-title-wrap"><text class="section-title section-title-underline">{{ title }}</text></view>`,
 }
 
-// ── 数据 ──
+// ── 功能数据（按规范配色表） ──
 const aiTools = [
-  { key: 'comic',       emoji: '🎬', name: '漫画生成', toast: '' },
-  { key: 'share-card',  emoji: '📤', name: '分享卡片', toast: '' },
-  { key: 'style-engine',emoji: '✍️', name: '文风引擎', toast: '' },
+  { key: 'comic',        iconName: 'grid',    iconColor: '#5CA06E', borderColor: '#9BC8A8', boxClass: 'func-color-comic',   radiusClass: 'doodle-box-v3', name: '漫画生成', toast: '' },
+  { key: 'share-card',   iconName: 'share',   iconColor: '#D4728A', borderColor: '#E8A0B4', boxClass: 'func-color-fortune', radiusClass: 'doodle-box-v4', name: '分享卡片', toast: '' },
+  { key: 'style-engine', iconName: 'wand',    iconColor: '#9B72C8', borderColor: '#C4A8E8', boxClass: 'func-color-novel',   radiusClass: 'doodle-box-v2', name: '文风引擎', toast: '' },
 ]
 
 const studyTools = [
-  { key: 'pomodoro',    emoji: '🍅', name: '番茄钟',   toast: '' },
-  { key: 'todo',        emoji: '📋', name: '待办清单', toast: '' },
-  { key: 'classnote',   emoji: '📸', name: '课堂笔记', toast: '复赛上线' },
+  { key: 'pomodoro',   iconName: 'tomato',   iconColor: '#E8855A', borderColor: '#F2B49B', boxClass: 'func-color-diary',  radiusClass: 'doodle-box',    name: '番茄钟',   toast: '' },
+  { key: 'todo',       iconName: 'list',     iconColor: '#C87290', borderColor: '#E8B4C4', boxClass: 'func-color-todo',   radiusClass: 'doodle-box-v4', name: '待办清单', toast: '' },
+  { key: 'classnote',  iconName: 'camera',   iconColor: '#6BA87B', borderColor: '#9BC8A8', boxClass: 'func-color-study',  radiusClass: 'doodle-box-v3', name: '课堂笔记', toast: '复赛上线' },
 ]
 
 const socialGrowth = [
-  { key: 'match',        emoji: '👥', name: '找搭子',   toast: '' },
-  { key: 'growth',       emoji: '🌱', name: '成长轨迹', toast: '' },
-  { key: 'achievements',emoji: '🏆', name: '成就系统', toast: '' },
+  { key: 'match',        iconName: 'handshake', iconColor: '#6B8EB4', borderColor: '#B4CCE8', boxClass: 'func-color-social',  radiusClass: 'doodle-box-v2', name: '找搭子',   toast: '' },
+  { key: 'growth',       iconName: 'chart',     iconColor: '#C8A86B', borderColor: '#E8C49B', boxClass: 'func-color-growth',  radiusClass: 'doodle-box',    name: '成长轨迹', toast: '' },
+  { key: 'achievements', iconName: 'trophy',    iconColor: '#C8A86B', borderColor: '#E8C49B', boxClass: 'func-color-growth',  radiusClass: 'doodle-box-v3', name: '成就系统', toast: '' },
 ]
 
 const moreItems = [
-  { key: 'novel',   emoji: '📖', name: '自传小说', toast: '' },
-  { key: 'audio',   emoji: '🎙️', name: '有声日记', toast: '开发中' },
-  { key: 'bgm',     emoji: '🎵', name: '日记BGM',  toast: '开发中' },
+  { key: 'novel',  iconName: 'novel', iconColor: '#9B72C8', borderColor: '#C4A8E8', boxClass: 'func-color-novel', radiusClass: 'doodle-box-v2', name: '自传小说', toast: '' },
+  { key: 'audio',  iconName: 'voice', iconColor: '#9B72C8', borderColor: '#C4A8E8', boxClass: 'func-color-novel', radiusClass: 'doodle-box-v4', name: '有声日记', toast: '开发中' },
+  { key: 'bgm',    iconName: 'music', iconColor: '#9B72C8', borderColor: '#C4A8E8', boxClass: 'func-color-novel', radiusClass: 'doodle-box',    name: '日记BGM',  toast: '开发中' },
 ]
 
 // ── 路由 ──
 const routes: Record<string, string> = {
-  comic:        '/pages/diary/comic',
-  'share-card': '/pages/diary/share-card',
+  comic:          '/pages/diary/comic',
+  'share-card':   '/pages/diary/share-card',
   'style-engine': '/pages/diary/style-engine',
-  pomodoro:     '/pages/study/pomodoro',
-  todo:         '/pages/study/todo',
-  match:        '/pages/social/match',
-  growth:       '/pages/growth/index',
-  achievements: '/pages/growth/achievements',
-  novel:        '/pages/novel/index',
+  pomodoro:       '/pages/study/pomodoro',
+  todo:           '/pages/study/todo',
+  match:          '/pages/social/match',
+  growth:         '/pages/growth/index',
+  achievements:   '/pages/growth/achievements',
+  novel:          '/pages/novel/index',
 }
 
 function handleClick(key: string, toast?: string) {
@@ -175,10 +197,10 @@ function go(url: string) {
 
 .page-scroll {
   position: absolute;
-  top: 44px;
+  top: 88rpx;
   left: 0;
   right: 0;
-  bottom: 60px;
+  bottom: 120rpx;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   padding: 0 16rpx 0;
@@ -186,16 +208,14 @@ function go(url: string) {
 
 /* ── 运势横幅 ── */
 .fortune-banner {
-  border-radius: 24rpx;
   background: linear-gradient(135deg, #FDF0E8 0%, #F7CDB5 100%);
   margin: 16rpx 0 24rpx;
   padding: 28rpx 24rpx;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+  box-shadow: 2px 4px 0 rgba(232, 133, 90, 0.12), 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
   cursor: pointer;
-  transition: transform 0.15s;
-  &:active { transform: scale(0.98); }
+  border: 3rpx solid rgba(232, 133, 90, 0.2);
 }
 
 .fortune-banner-bg {
@@ -215,12 +235,17 @@ function go(url: string) {
 
 .fortune-banner-left { flex: 1; }
 
+.fortune-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  margin-bottom: 8rpx;
+}
+
 .fortune-title {
   font-size: 34rpx;
   font-weight: 700;
   color: #2C1F14;
-  display: block;
-  margin-bottom: 8rpx;
 }
 
 .fortune-stars-row {
@@ -260,19 +285,15 @@ function go(url: string) {
 }
 
 .fortune-orb {
-  width: 96rpx;
-  height: 96rpx;
+  width: 80rpx;
+  height: 80rpx;
   border-radius: 50%;
-  background: rgba(232, 133, 90, 0.15);
+  background: rgba(212, 114, 138, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   margin-left: 16rpx;
-}
-
-.fortune-orb-emoji {
-  font-size: 48rpx;
 }
 
 /* ── 段落标题 ── */
@@ -282,7 +303,7 @@ function go(url: string) {
 
 .section-title {
   font-size: 30rpx;
-  font-weight: 600;
+  font-weight: 700;
   color: #2C1F14;
 }
 
@@ -293,31 +314,60 @@ function go(url: string) {
   margin-bottom: 8rpx;
 }
 
+/* 用 CSS var 覆盖 stagger delay */
+.stagger-item {
+  animation-delay: var(--delay, 0s) !important;
+}
+
 .feature-item {
   flex: 1;
-  height: 180rpx;
+  min-height: 160rpx;
   background: #FFFFFF;
-  border-radius: 24rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+  border-radius: 18rpx 14rpx 20rpx 12rpx;
+  box-shadow: 1px 2px 0 rgba(232, 133, 90, 0.08), 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(232, 133, 90, 0.08);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 8rpx;
   cursor: pointer;
-  transition: transform 0.15s;
-  &:active { transform: scale(0.96); }
+  padding: 16rpx 8rpx;
+  position: relative;
+  overflow: visible;
 }
 
-.feature-emoji {
-  font-size: 48rpx;
-  line-height: 1;
+.func-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56rpx;
+  height: 56rpx;
+  border-width: 1.5px;
+  border-style: solid;
+  margin-bottom: 2rpx;
 }
 
 .feature-name {
-  font-size: 26rpx;
+  font-size: 24rpx;
   color: #4A3628;
   text-align: center;
+  font-weight: 500;
+}
+
+.coming-badge {
+  position: absolute;
+  top: -6rpx;
+  right: -6rpx;
+  background: #C87290;
+  border-radius: 8rpx 10rpx 8rpx 6rpx;
+  padding: 2rpx 8rpx;
+}
+
+.coming-text {
+  font-size: 18rpx;
+  color: #FFFFFF;
+  font-weight: 600;
 }
 
 .bottom-spacer {

@@ -334,10 +334,10 @@ function onLogout() {
 
 .card-title {
   display: block;
-  font-size: 12px;
+  font-size: 24rpx;
   color: #AE9D92;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 2rpx;
   text-align: center;
   padding: 24rpx 0 16rpx;
 }
@@ -357,7 +357,7 @@ function onLogout() {
 }
 
 .row-label {
-  font-size: 15px;
+  font-size: 30rpx;
   color: #2C1F14;
   font-weight: 500;
   flex: 1;
@@ -370,12 +370,12 @@ function onLogout() {
 }
 
 .row-value {
-  font-size: 14px;
+  font-size: 28rpx;
   color: #AE9D92;
 }
 
 .row-arrow {
-  font-size: 18px;
+  font-size: 36rpx;
   color: #AE9D92;
   line-height: 1;
   margin-left: 4rpx;
@@ -410,7 +410,7 @@ function onLogout() {
 }
 
 .logout-text {
-  font-size: 16px;
+  font-size: 32rpx;
   color: #D4645C;
   font-weight: 600;
 }

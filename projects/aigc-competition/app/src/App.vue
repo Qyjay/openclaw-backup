@@ -8,6 +8,10 @@
 <style lang="scss">
 // 引入手绘风格规范（§11）
 @import './common/styles/handdrawn.scss';
+// 设计系统基础
+@import './common/design-tokens.scss';
+@import './common/animations.scss';
+@import './common/doodle.scss';
 
 /* 全局字体 & 重置 */
 page {

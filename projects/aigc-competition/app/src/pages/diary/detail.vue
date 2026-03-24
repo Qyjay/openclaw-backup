@@ -72,7 +72,7 @@
             <view class="header-line" />
           </view>
           <view class="ai-comment-card">
-            <text class="ai-avatar-icon">🤖</text>
+            <DoodleIcon name="robot" :size="56" color="#E8855A" class="ai-avatar-icon" />
             <view class="ai-comment-body">
               <text class="ai-label">AI 说：</text>
               <text class="ai-comment-text">"{{ aiComment }}"</text>
@@ -89,32 +89,32 @@
           </view>
           <view class="tools-grid">
             <view class="tool-item" @click="handleTool('comic')">
-              <text class="tool-icon">🎬</text>
+              <DoodleIcon name="palette" :size="48" color="#E8855A" class="tool-icon" />
               <text class="tool-label">生成</text>
               <text class="tool-name">漫画</text>
             </view>
             <view class="tool-item" @click="handleTool('share')">
-              <text class="tool-icon">📤</text>
+              <DoodleIcon name="share" :size="48" color="#5BBF8E" class="tool-icon" />
               <text class="tool-label">分享</text>
               <text class="tool-name">卡片</text>
             </view>
             <view class="tool-item" @click="handleTool('style')">
-              <text class="tool-icon">✍️</text>
+              <DoodleIcon name="pen" :size="48" color="#6B8EC4" class="tool-icon" />
               <text class="tool-label">切换</text>
               <text class="tool-name">文风</text>
             </view>
             <view class="tool-item" @click="handleTool('tts')">
-              <text class="tool-icon">🎙️</text>
+              <DoodleIcon name="music" :size="48" color="#AE9D92" class="tool-icon" />
               <text class="tool-label">有声</text>
               <text class="tool-name">朗读</text>
             </view>
             <view class="tool-item" @click="handleTool('bgm')">
-              <text class="tool-icon">🎵</text>
+              <DoodleIcon name="sparkle" :size="48" color="#E8C44E" class="tool-icon" />
               <text class="tool-label">生成</text>
               <text class="tool-name">BGM</text>
             </view>
             <view class="tool-item" @click="handleTool('capsule')">
-              <text class="tool-icon">⏰</text>
+              <DoodleIcon name="calendar" :size="48" color="#D4645C" class="tool-icon" />
               <text class="tool-label">时光</text>
               <text class="tool-name">胶囊</text>
             </view>
@@ -136,6 +136,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { getDiaryDetail } from '@/services/api/diary'
 import type { Diary } from '@/services/api/diary'
+import DoodleIcon from '@/components/DoodleIcon.vue'
 
 const diary = ref<Diary | null>(null)
 const loading = ref(true)
@@ -251,13 +252,13 @@ function handleTool(type: string) {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 44px;
-  padding: 0 16px;
+  height: 88rpx;
+  padding: 0 32rpx;
 }
 
 .nav-left,
 .nav-right {
-  width: 60px;
+  width: 120rpx;
   display: flex;
   align-items: center;
 }
@@ -266,7 +267,7 @@ function handleTool(type: string) {
 .nav-right { justify-content: flex-end; }
 
 .nav-back {
-  font-size: 22px;
+  font-size: 44rpx;
   color: #2C1F14;
   line-height: 1;
   cursor: pointer;
@@ -274,7 +275,7 @@ function handleTool(type: string) {
 }
 
 .nav-title {
-  font-size: 17px;
+  font-size: 34rpx;
   font-weight: 600;
   color: #2C1F14;
   flex: 1;
@@ -282,9 +283,9 @@ function handleTool(type: string) {
 }
 
 .nav-more {
-  font-size: 22px;
+  font-size: 44rpx;
   color: #2C1F14;
-  letter-spacing: -2px;
+  letter-spacing: -4rpx;
   cursor: pointer;
   &:active { opacity: 0.6; }
 }
@@ -352,7 +353,7 @@ function handleTool(type: string) {
   font-size: 24rpx;
   color: #FFFFFF;
   background: rgba(0, 0, 0, 0.35);
-  border-radius: 9999px;
+  border-radius: 19998rpx;
   padding: 4rpx 16rpx;
 }
 
@@ -437,9 +438,9 @@ function handleTool(type: string) {
 }
 
 .ai-avatar-icon {
-  font-size: 36rpx;
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
-  line-height: 1.4;
 }
 
 .ai-comment-body {
@@ -487,7 +488,9 @@ function handleTool(type: string) {
 }
 
 .tool-icon {
-  font-size: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tool-label {

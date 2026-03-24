@@ -5,7 +5,7 @@
     <view class="page-scroll">
       <!-- 主卡片 -->
       <view class="main-card">
-        <text class="main-crystal">🔮</text>
+        <DoodleIcon name="crystal" :size="112" color="rgba(255,255,255,0.85)" class="main-crystal" />
         <view class="main-stars">
           <text
             v-for="i in 5"
@@ -23,7 +23,7 @@
       <view class="analysis-card">
         <view class="analysis-item">
           <view class="analysis-header">
-            <text class="analysis-emoji">📚</text>
+            <DoodleIcon name="book" :size="36" color="#6B8EC4" class="analysis-emoji" />
             <text class="analysis-name">学业运</text>
             <view class="analysis-stars">
               <text
@@ -39,7 +39,7 @@
         <view class="analysis-divider" />
         <view class="analysis-item">
           <view class="analysis-header">
-            <text class="analysis-emoji">💝</text>
+            <DoodleIcon name="heart" :size="36" color="#E8A4B8" class="analysis-emoji" />
             <text class="analysis-name">社交运</text>
             <view class="analysis-stars">
               <text
@@ -55,7 +55,7 @@
         <view class="analysis-divider" />
         <view class="analysis-item">
           <view class="analysis-header">
-            <text class="analysis-emoji">💪</text>
+            <DoodleIcon name="run" :size="36" color="#5BBF8E" class="analysis-emoji" />
             <text class="analysis-name">健康运</text>
             <view class="analysis-stars">
               <text
@@ -67,11 +67,11 @@
             </view>
           </view>
           <text class="analysis-desc">注意休息，适量运动</text>
-        </View>
+        </view>
         <view class="analysis-divider" />
         <!-- 幸运指引 -->
         <view class="luck-section">
-          <text class="luck-title">🍀 幸运指引</text>
+          <text class="luck-title">幸运指引</text>
           <view class="luck-items">
             <view class="luck-item">
               <text class="luck-label">幸运色</text>
@@ -100,7 +100,8 @@
 
       <!-- 分享按钮 -->
       <view class="share-btn" @click="handleShare">
-        <text class="share-btn-text">📤 分享运势卡</text>
+        <DoodleIcon name="share" :size="36" color="#FFFFFF" style="margin-right: 12rpx;" />
+        <text class="share-btn-text">分享运势卡</text>
       </view>
     </view>
   </view>
@@ -111,6 +112,7 @@ import { ref, computed, onMounted } from 'vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
 import { generateFortune } from '@/services/api/ai'
 import type { Fortune } from '@/services/api/ai'
+import DoodleIcon from '@/components/DoodleIcon.vue'
 
 const fortune = ref<Fortune>({
   overall: 4,
@@ -161,35 +163,35 @@ onMounted(async () => {
 
 .page-scroll {
   position: absolute;
-  top: 88px;
+  top: 176rpx;
   left: 0;
   right: 0;
   bottom: 0;
   overflow-y: auto;
-  padding: 16px 16px 32px;
+  padding: 32rpx 32rpx 64rpx;
 }
 
 .main-card {
   background: linear-gradient(135deg, #2C1F14 0%, #5C3D2E 50%, #E8855A 100%);
   border-radius: 32rpx;
-  padding: 32px 24px 28px;
+  padding: 64rpx 48rpx 56rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 20rpx;
   box-shadow: 0 8px 32px rgba(44, 31, 20, 0.25);
-  margin-bottom: 20px;
+  margin-bottom: 40rpx;
 }
 
-.main-crystal { font-size: 80rpx; line-height: 1; }
+.main-crystal { display: flex; align-items: center; justify-content: center; line-height: 1; }
 
 .main-stars {
   display: flex;
-  gap: 4px;
+  gap: 8rpx;
 }
 
 .star-icon {
-  font-size: 22px;
+  font-size: 44rpx;
   color: rgba(255, 255, 255, 0.3);
 }
 
@@ -198,24 +200,24 @@ onMounted(async () => {
 }
 
 .main-title {
-  font-size: 16px;
+  font-size: 32rpx;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.90);
 }
 
 .main-score {
-  font-size: 28px;
+  font-size: 56rpx;
   font-weight: 700;
   color: #FFFFFF;
-  letter-spacing: 1px;
+  letter-spacing: 2rpx;
 }
 
 .section-label {
-  font-size: 13px;
+  font-size: 26rpx;
   font-weight: 600;
   color: #AE9D92;
-  margin-bottom: 10px;
-  margin-top: 4px;
+  margin-bottom: 20rpx;
+  margin-top: 8rpx;
 }
 
 .analysis-card {
@@ -223,24 +225,24 @@ onMounted(async () => {
   border-radius: 24rpx;
   box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 40rpx;
 }
 
 .analysis-item {
-  padding: 16px 18px;
+  padding: 32rpx 36rpx;
 }
 
 .analysis-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 6px;
+  gap: 16rpx;
+  margin-bottom: 12rpx;
 }
 
-.analysis-emoji { font-size: 18px; }
+.analysis-emoji { display: flex; align-items: center; }
 
 .analysis-name {
-  font-size: 15px;
+  font-size: 30rpx;
   font-weight: 600;
   color: #2C1F14;
   flex: 1;
@@ -248,11 +250,11 @@ onMounted(async () => {
 
 .analysis-stars {
   display: flex;
-  gap: 1px;
+  gap: 2rpx;
 }
 
 .mini-star {
-  font-size: 13px;
+  font-size: 26rpx;
   color: #E8DDD5;
 }
 
@@ -261,28 +263,28 @@ onMounted(async () => {
 }
 
 .analysis-desc {
-  font-size: 13px;
+  font-size: 26rpx;
   color: #857268;
-  padding-left: 26px;
+  padding-left: 52rpx;
 }
 
 .analysis-divider {
-  height: 1px;
+  height: 2rpx;
   background: rgba(44, 31, 20, 0.05);
-  margin: 0 18px;
+  margin: 0 36rpx;
 }
 
 .luck-section {
-  padding: 16px 18px;
+  padding: 32rpx 36rpx;
   background: #FDF8F3;
 }
 
 .luck-title {
-  font-size: 14px;
+  font-size: 28rpx;
   font-weight: 600;
   color: #2C1F14;
   display: block;
-  margin-bottom: 12px;
+  margin-bottom: 24rpx;
 }
 
 .luck-items {
@@ -294,29 +296,29 @@ onMounted(async () => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 12rpx;
 }
 
 .luck-label {
-  font-size: 11px;
+  font-size: 22rpx;
   color: #AE9D92;
 }
 
 .luck-color-wrap {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 12rpx;
 }
 
 .luck-color-dot {
-  width: 14px;
-  height: 14px;
+  width: 28rpx;
+  height: 28rpx;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .luck-value {
-  font-size: 14px;
+  font-size: 28rpx;
   font-weight: 600;
   color: #2C1F14;
 }
@@ -324,13 +326,13 @@ onMounted(async () => {
 .suggest-card {
   background: #FDF0E8;
   border-radius: 16rpx;
-  padding: 18px 20px;
-  margin-bottom: 20px;
+  padding: 36rpx 40rpx;
+  margin-bottom: 40rpx;
   border-left: 4rpx solid #E8855A;
 }
 
 .suggest-quote {
-  font-size: 14px;
+  font-size: 28rpx;
   color: #4A3628;
   line-height: 1.8;
 }
@@ -338,7 +340,7 @@ onMounted(async () => {
 .share-btn {
   background: linear-gradient(135deg, #E8855A, #F0A882);
   border-radius: 40rpx;
-  padding: 15px;
+  padding: 30rpx;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -347,7 +349,7 @@ onMounted(async () => {
 }
 
 .share-btn-text {
-  font-size: 16px;
+  font-size: 32rpx;
   font-weight: 600;
   color: #FFFFFF;
 }

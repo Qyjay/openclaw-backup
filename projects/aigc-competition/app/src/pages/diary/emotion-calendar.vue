@@ -223,7 +223,7 @@ function onDiaryClick(id: string) {
 
 .page-scroll {
   position: absolute;
-  top: 44px;
+  top: 88rpx;
   left: 0;
   right: 0;
   bottom: 0;

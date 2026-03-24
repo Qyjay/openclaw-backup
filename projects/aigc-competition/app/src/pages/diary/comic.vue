@@ -23,7 +23,7 @@
           :class="{ 'style-item--active': selectedStyle === style.id }"
           @click="selectedStyle = style.id"
         >
-          <text class="style-emoji">{{ style.emoji }}</text>
+          <DoodleIcon :name="style.iconName" :size="44" :color="selectedStyle === style.id ? style.iconColor : '#AE9D92'" class="style-emoji" />
           <text class="style-name">{{ style.name }}</text>
           <text class="style-desc">{{ style.desc }}</text>
         </view>
@@ -67,15 +67,15 @@
         <!-- 底部操作按钮 -->
         <view v-if="!isGenerating" class="action-btns">
           <view class="action-btn" @click="handleShare">
-            <text class="action-icon">📤</text>
+            <DoodleIcon name="share" :size="44" color="#E8855A" class="action-icon" />
             <text class="action-label">分享</text>
           </view>
           <view class="action-btn" @click="handleSaveLocal">
-            <text class="action-icon">💾</text>
+            <DoodleIcon name="camera" :size="44" color="#5BBF8E" class="action-icon" />
             <text class="action-label">保存到相册</text>
           </view>
           <view class="action-btn" @click="handleRegenerate">
-            <text class="action-icon">🔄</text>
+            <DoodleIcon name="sparkle" :size="44" color="#6B8EC4" class="action-icon" />
             <text class="action-label">重新生成</text>
           </view>
         </view>
@@ -89,14 +89,15 @@ import { ref, onMounted } from 'vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
 import { getDiaryDetail } from '@/services/api/diary'
 import type { Diary } from '@/services/api/diary'
+import DoodleIcon from '@/components/DoodleIcon.vue'
 
 const comicStyles = [
-  { id: 'jp-fresh', emoji: '🌸', name: '日漫清新', desc: '治愈系少女风' },
-  { id: 'jp-hot', emoji: '🎌', name: '日漫热血', desc: '少年漫风格' },
-  { id: 'cn-wuxia', emoji: '🇨🇳', name: '国漫武侠', desc: '水墨风格' },
-  { id: 'watercolor', emoji: '🎨', name: '水彩治愈', desc: '手绘水彩' },
-  { id: 'pixel', emoji: '👾', name: '像素复古', desc: '8bit像素风' },
-  { id: 'chibi', emoji: '🧸', name: 'Q版可爱', desc: 'SD比例' },
+  { id: 'jp-fresh',   iconName: 'sparkle',  iconColor: '#E8A4B8', name: '日漫清新', desc: '治愈系少女风' },
+  { id: 'jp-hot',     iconName: 'star',     iconColor: '#E8855A', name: '日漫热血', desc: '少年漫风格' },
+  { id: 'cn-wuxia',   iconName: 'palette',  iconColor: '#4A3628', name: '国漫武侠', desc: '水墨风格' },
+  { id: 'watercolor', iconName: 'palette',  iconColor: '#6B8EC4', name: '水彩治愈', desc: '手绘水彩' },
+  { id: 'pixel',      iconName: 'robot',    iconColor: '#5BBF8E', name: '像素复古', desc: '8bit像素风' },
+  { id: 'chibi',      iconName: 'heart',    iconColor: '#E8C44E', name: 'Q版可爱', desc: 'SD比例' },
 ]
 
 const selectedStyle = ref('jp-fresh')
@@ -196,20 +197,20 @@ onMounted(async () => {
 
 .page-scroll {
   position: absolute;
-  top: 88px;
+  top: 176rpx;
   left: 0;
   right: 0;
   bottom: 0;
   overflow-y: auto;
-  padding: 16px 16px 32px;
+  padding: 32rpx 32rpx 64rpx;
 }
 
 .section-label {
-  font-size: 13px;
+  font-size: 26rpx;
   font-weight: 600;
   color: #AE9D92;
-  margin-bottom: 10px;
-  margin-top: 16px;
+  margin-bottom: 20rpx;
+  margin-top: 32rpx;
   &:first-child { margin-top: 0; }
 }
 
@@ -223,19 +224,19 @@ onMounted(async () => {
 .diary-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
+  gap: 16rpx;
+  margin-bottom: 20rpx;
 }
 
-.diary-emoji { font-size: 18px; }
+.diary-emoji { font-size: 36rpx; }
 
 .diary-time {
-  font-size: 12px;
+  font-size: 24rpx;
   color: #AE9D92;
 }
 
 .diary-content {
-  font-size: 14px;
+  font-size: 28rpx;
   color: #4A3628;
   line-height: 1.7;
 }
@@ -248,7 +249,7 @@ onMounted(async () => {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 8rpx;
   width: 160rpx;
   background: #FFFFFF;
   border-radius: 20rpx;
@@ -265,28 +266,28 @@ onMounted(async () => {
   background: #FDF0E8;
 }
 
-.style-emoji { font-size: 28px; }
+.style-emoji { display: flex; align-items: center; justify-content: center; }
 
 .style-name {
-  font-size: 13px;
+  font-size: 26rpx;
   font-weight: 600;
   color: #2C1F14;
-  margin-top: 2px;
+  margin-top: 4rpx;
 }
 
 .style-desc {
-  font-size: 11px;
+  font-size: 22rpx;
   color: #AE9D92;
 }
 
 .generate-btn-wrap {
-  margin-top: 20px;
+  margin-top: 40rpx;
 }
 
 .generate-btn {
   background: linear-gradient(135deg, #E8855A, #F0A882);
   border-radius: 40rpx;
-  padding: 14px;
+  padding: 28rpx;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -298,7 +299,7 @@ onMounted(async () => {
 }
 
 .generate-btn-text {
-  font-size: 16px;
+  font-size: 32rpx;
   font-weight: 600;
   color: #FFFFFF;
 }
@@ -308,7 +309,7 @@ onMounted(async () => {
   border-radius: 24rpx;
   overflow: hidden;
   box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
-  min-height: 200px;
+  min-height: 400rpx;
 }
 
 .loading-wrap {
@@ -316,14 +317,14 @@ onMounted(async () => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px;
-  gap: 16px;
+  padding: 80rpx;
+  gap: 32rpx;
 }
 
 .loading-spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid rgba(232, 133, 90, 0.20);
+  width: 80rpx;
+  height: 80rpx;
+  border: 6rpx solid rgba(232, 133, 90, 0.20);
   border-top-color: #E8855A;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
@@ -334,7 +335,7 @@ onMounted(async () => {
 }
 
 .loading-text {
-  font-size: 14px;
+  font-size: 28rpx;
   color: #AE9D92;
 }
 
@@ -362,35 +363,35 @@ onMounted(async () => {
 }
 
 .panel-caption-text {
-  font-size: 11px;
+  font-size: 22rpx;
   color: #FFFFFF;
   line-height: 1.5;
 }
 
 .action-btns {
   display: flex;
-  gap: 10px;
-  margin-top: 16px;
+  gap: 20rpx;
+  margin-top: 32rpx;
 }
 
 .action-btn {
   flex: 1;
   background: #FFFFFF;
   border-radius: 20rpx;
-  padding: 12px 8px;
+  padding: 24rpx 16rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 8rpx;
   box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
   cursor: pointer;
   &:active { background: #F5F0EB; }
 }
 
-.action-icon { font-size: 20px; }
+.action-icon { display: flex; align-items: center; justify-content: center; }
 
 .action-label {
-  font-size: 12px;
+  font-size: 24rpx;
   color: #4A3628;
 }
 </style>

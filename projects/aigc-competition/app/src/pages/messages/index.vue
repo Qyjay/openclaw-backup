@@ -10,10 +10,10 @@
     <view class="page-scroll">
 
       <!-- AI 伙伴置顶 -->
-      <view class="ai-chat-card" @click="openAI">
+      <view class="ai-chat-card press-feedback" @click="openAI">
         <view class="ai-left">
-          <view class="ai-avatar">
-            <text class="ai-avatar-icon">🤖</text>
+          <view class="ai-avatar doodle-box">
+            <DoodleIcon name="robot" color="#FFFFFF" :size="48" :filtered="false" />
           </view>
           <view class="ai-info">
             <view class="ai-name-row">
@@ -37,13 +37,14 @@
 
       <view class="buddy-list">
         <view
-          v-for="buddy in buddyMessages"
+          v-for="(buddy, idx) in buddyMessages"
           :key="buddy.id"
-          class="buddy-item"
+          class="buddy-item press-feedback stagger-item"
+          :style="{ '--delay': (idx * 0.08) + 's' }"
           @click="openBuddy(buddy)"
         >
           <view class="buddy-avatar" :style="{ background: buddy.avatarBg }">
-            <text class="buddy-avatar-emoji">{{ buddy.emoji }}</text>
+            <DoodleIcon :name="buddy.iconName" color="#FFFFFF" :size="44" :filtered="false" />
           </view>
           <view class="buddy-info">
             <view class="buddy-name-row">
@@ -67,13 +68,14 @@
 
       <view class="system-list">
         <view
-          v-for="notif in systemNotifications"
+          v-for="(notif, idx) in systemNotifications"
           :key="notif.id"
-          class="system-item"
+          class="system-item press-feedback stagger-item"
+          :style="{ '--delay': (idx * 0.1) + 's' }"
           @click="handleSystemNotif(notif)"
         >
-          <view class="system-icon-wrap">
-            <text class="system-icon">{{ notif.emoji }}</text>
+          <view class="system-icon-wrap doodle-box-v2" :style="{ background: notif.bgColor }">
+            <DoodleIcon :name="notif.iconName" :color="notif.iconColor" :size="40" />
           </view>
           <view class="system-info">
             <view class="system-name-row">
@@ -100,11 +102,15 @@
         }"
         @click="switchTab(index)"
       >
-        <view v-if="index === 2" class="tabbar-write-btn">
-          <text class="tabbar-write-icon">✏️</text>
+        <view v-if="index === 2" class="tabbar-write-btn pulse-btn">
+          <DoodleIcon name="pen" color="#FFFFFF" :size="40" :filtered="false" />
         </view>
         <template v-else>
-          <text class="tabbar-icon-emoji" :class="{ 'tabbar-icon-emoji--active': index === 3 }">{{ tab.emoji }}</text>
+          <DoodleIcon
+            :name="tab.iconName"
+            :color="index === 3 ? '#E8855A' : '#AE9D92'"
+            :size="40"
+          />
           <text class="tabbar-label" :class="{ 'tabbar-label--active': index === 3 }">{{ tab.text }}</text>
         </template>
       </view>
@@ -114,10 +120,12 @@
 </template>
 
 <script setup lang="ts">
+import DoodleIcon from '@/components/DoodleIcon.vue'
+
 const buddyMessages = [
   {
     id: 1,
-    emoji: '🧑‍🎓',
+    iconName: 'bookopen',
     avatarBg: 'linear-gradient(135deg, #7BB8D4, #A8D4E8)',
     name: '学习搭子 · 小明',
     lastMsg: '明天一起去图书馆吗？',
@@ -126,7 +134,7 @@ const buddyMessages = [
   },
   {
     id: 2,
-    emoji: '🏃',
+    iconName: 'run',
     avatarBg: 'linear-gradient(135deg, #F2B49B, #F7CDB5)',
     name: '运动搭子 · 小红',
     lastMsg: '晨跑 6:30，老地方见！',
@@ -135,7 +143,7 @@ const buddyMessages = [
   },
   {
     id: 3,
-    emoji: '🍳',
+    iconName: 'heart',
     avatarBg: 'linear-gradient(135deg, #5BAF85, #8ECFAD)',
     name: '美食搭子 · 小华',
     lastMsg: '发现了一家新开的奶茶店！',
@@ -147,7 +155,9 @@ const buddyMessages = [
 const systemNotifications = [
   {
     id: 1,
-    emoji: '🏆',
+    iconName: 'trophy',
+    iconColor: '#C8A86B',
+    bgColor: '#FFF8EE',
     type: '成就解锁 · 今天',
     content: '"连续7天写日记" 成就已解锁！',
     time: '今天',
@@ -155,7 +165,9 @@ const systemNotifications = [
   },
   {
     id: 2,
-    emoji: '🌱',
+    iconName: 'chart',
+    iconColor: '#6BA87B',
+    bgColor: '#F0FFF5',
     type: '成长提醒 · 昨天',
     content: '本周成长值 +125，排名上升 3 位',
     time: '昨天',
@@ -178,11 +190,11 @@ function handleSystemNotif(notif: any) {
 }
 
 const tabList = [
-  { emoji: '📔', text: '日记' },
-  { emoji: '🧭', text: '发现' },
-  { emoji: '✏️', text: '写' },
-  { emoji: '💬', text: '消息' },
-  { emoji: '👤', text: '我的' },
+  { iconName: 'book',     text: '日记' },
+  { iconName: 'discover', text: '发现' },
+  { iconName: 'pen',      text: '写' },
+  { iconName: 'chat',     text: '消息' },
+  { iconName: 'user',     text: '我的' },
 ]
 
 function switchTab(index: number) {
@@ -208,26 +220,31 @@ function switchTab(index: number) {
   position: absolute;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  height: 44px;
+  height: 88rpx;
   display: flex;
   align-items: center;
-  padding: 0 16px;
+  padding: 0 32rpx;
   background: rgba(253, 248, 243, 0.95);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(24rpx);
   box-shadow: 0 1px 0 rgba(44, 31, 20, 0.06);
 }
 
 .navbar-title {
-  font-size: 18px;
+  font-size: 36rpx;
   font-weight: 700;
   color: #2C1F14;
 }
 
 .page-scroll {
   position: absolute;
-  top: 44px; left: 0; right: 0; bottom: 60px;
+  top: 88rpx; left: 0; right: 0; bottom: 120rpx;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+}
+
+/* 用 CSS var 覆盖 stagger delay */
+.stagger-item {
+  animation-delay: var(--delay, 0s) !important;
 }
 
 /* ── AI 伙伴置顶卡 ── */
@@ -235,37 +252,33 @@ function switchTab(index: number) {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 12px 16px;
-  padding: 14px 16px;
+  margin: 24rpx 32rpx;
+  padding: 28rpx 32rpx;
   background: #FFFFFF;
-  border-radius: 16px;
-  border-left: 4rpx solid #E8855A;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-radius: 32rpx 40rpx 28rpx 36rpx;
+  border-left: 6rpx solid #E8855A;
+  box-shadow: 2px 3px 0 rgba(232, 133, 90, 0.08), 0 2px 8px rgba(0, 0, 0, 0.05);
   cursor: pointer;
-  &:active { background: #FEF8F5; }
 }
 
 .ai-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 24rpx;
   flex: 1;
   min-width: 0;
 }
 
 .ai-avatar {
-  width: 46px;
-  height: 46px;
-  border-radius: 9999px;
-  background: linear-gradient(135deg, #E8855A, #F0A882);
+  width: 92rpx;
+  height: 92rpx;
+  background: linear-gradient(135deg, #E8855A, #F0A882) !important;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(232, 133, 90, 0.30);
+  box-shadow: 2px 2px 0 rgba(232, 133, 90, 0.25);
 }
-
-.ai-avatar-icon { font-size: 22px; }
 
 .ai-info {
   flex: 1;
@@ -275,24 +288,24 @@ function switchTab(index: number) {
 .ai-name-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
+  gap: 16rpx;
+  margin-bottom: 8rpx;
 }
 
 .ai-name {
-  font-size: 15px;
+  font-size: 30rpx;
   font-weight: 600;
   color: #2C1F14;
 }
 
 .ai-time {
-  font-size: 11px;
+  font-size: 22rpx;
   color: #AE9D92;
   flex-shrink: 0;
 }
 
 .ai-preview {
-  font-size: 13px;
+  font-size: 26rpx;
   color: #857268;
   white-space: nowrap;
   overflow: hidden;
@@ -303,32 +316,32 @@ function switchTab(index: number) {
 .unread-badge {
   flex-shrink: 0;
   background: #E8855A;
-  border-radius: 9999px;
-  min-width: 20px;
-  height: 20px;
+  border-radius: 19998rpx;
+  min-width: 40rpx;
+  height: 40rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 5px;
+  padding: 0 10rpx;
 }
 
-.unread-num { font-size: 11px; color: #FFFFFF; font-weight: 700; }
+.unread-num { font-size: 22rpx; color: #FFFFFF; font-weight: 700; }
 
 /* ── 分隔 ── */
 .section-sep {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 16px 10px;
+  gap: 20rpx;
+  padding: 28rpx 32rpx 20rpx;
 }
 
 .sep-line {
   flex: 1;
-  height: 1px;
+  height: 2rpx;
   background: linear-gradient(90deg, transparent, #D4C4B8, transparent);
 }
 
-.sep-label { font-size: 12px; color: #857268; white-space: nowrap; }
+.sep-label { font-size: 24rpx; color: #857268; white-space: nowrap; }
 
 .font-handwrite {
   font-family: 'ZcoolKuaiLe', 'ZCOOL KuaiLe', 'STXingkai', 'KaiTi', 'PingFang SC', sans-serif !important;
@@ -336,35 +349,33 @@ function switchTab(index: number) {
 
 /* ── 搭子消息列表 ── */
 .buddy-list {
-  margin: 0 16px;
+  margin: 0 32rpx;
   background: #FFFFFF;
-  border-radius: 16px;
+  border-radius: 32rpx 40rpx 28rpx 36rpx;
   overflow: hidden;
-  box-shadow: 0 1px 6px rgba(44, 31, 20, 0.06);
+  box-shadow: 2px 3px 0 rgba(232, 133, 90, 0.06), 0 1px 6px rgba(44, 31, 20, 0.05);
 }
 
 .buddy-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 14px 16px;
+  gap: 24rpx;
+  padding: 28rpx 32rpx;
   border-bottom: 1px solid rgba(44, 31, 20, 0.05);
   cursor: pointer;
   &:last-child { border-bottom: none; }
-  &:active { background: rgba(232, 133, 90, 0.04); }
 }
 
 .buddy-avatar {
-  width: 46px;
-  height: 46px;
-  border-radius: 9999px;
+  width: 92rpx;
+  height: 92rpx;
+  border-radius: 28rpx 36rpx 24rpx 32rpx;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 1px 2px 0 rgba(0, 0, 0, 0.08);
 }
-
-.buddy-avatar-emoji { font-size: 22px; }
 
 .buddy-info { flex: 1; min-width: 0; }
 
@@ -372,14 +383,14 @@ function switchTab(index: number) {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 4px;
+  margin-bottom: 8rpx;
 }
 
-.buddy-name { font-size: 15px; font-weight: 600; color: #2C1F14; }
-.buddy-time { font-size: 11px; color: #AE9D92; }
+.buddy-name { font-size: 30rpx; font-weight: 600; color: #2C1F14; }
+.buddy-time { font-size: 22rpx; color: #AE9D92; }
 
 .buddy-preview {
-  font-size: 13px;
+  font-size: 26rpx;
   color: #AE9D92;
   white-space: nowrap;
   overflow: hidden;
@@ -389,36 +400,32 @@ function switchTab(index: number) {
 
 /* ── 系统通知 ── */
 .system-list {
-  margin: 0 16px;
+  margin: 0 32rpx;
   background: #F5F0EB;
-  border-radius: 16px;
+  border-radius: 32rpx 40rpx 28rpx 36rpx;
   overflow: hidden;
-  box-shadow: 0 1px 4px rgba(44, 31, 20, 0.04);
+  box-shadow: 1px 2px 0 rgba(44, 31, 20, 0.04);
 }
 
 .system-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 14px 16px;
+  gap: 24rpx;
+  padding: 28rpx 32rpx;
   border-bottom: 1px solid rgba(44, 31, 20, 0.05);
   cursor: pointer;
   &:last-child { border-bottom: none; }
-  &:active { background: rgba(232, 133, 90, 0.05); }
 }
 
 .system-icon-wrap {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: #FFFFFF;
+  width: 80rpx;
+  height: 80rpx;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  border: 1px solid rgba(232, 133, 90, 0.15);
 }
-
-.system-icon { font-size: 20px; }
 
 .system-info { flex: 1; min-width: 0; }
 
@@ -426,14 +433,14 @@ function switchTab(index: number) {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 4px;
+  margin-bottom: 8rpx;
 }
 
-.system-name { font-size: 13px; color: #4A3628; font-weight: 600; }
-.system-time { font-size: 11px; color: #AE9D92; }
+.system-name { font-size: 26rpx; color: #4A3628; font-weight: 600; }
+.system-time { font-size: 22rpx; color: #AE9D92; }
 
 .system-content {
-  font-size: 13px;
+  font-size: 26rpx;
   color: #857268;
   white-space: nowrap;
   overflow: hidden;
@@ -441,21 +448,21 @@ function switchTab(index: number) {
   display: block;
 }
 
-.bottom-spacer { height: 20px; }
+.bottom-spacer { height: 40rpx; }
 
 /* ── TabBar ── */
 .tabbar {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   z-index: 200;
-  height: 60px;
+  height: 120rpx;
   padding-bottom: env(safe-area-inset-bottom);
   background: rgba(255, 255, 255, 0.97);
-  box-shadow: 0 -1px 6px rgba(26, 26, 46, 0.08);
+  box-shadow: 0 -1px 0 rgba(232, 133, 90, 0.1), 0 -4px 16px rgba(44, 31, 20, 0.06);
   display: flex;
   align-items: stretch;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(24rpx);
+  -webkit-backdrop-filter: blur(24rpx);
 }
 
 .tabbar-item {
@@ -464,17 +471,17 @@ function switchTab(index: number) {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 4rpx;
   cursor: pointer;
-  padding-top: 4px;
+  padding-top: 8rpx;
 }
 
-.tabbar-item--write { padding-top: 0; margin-top: -18px; }
+.tabbar-item--write { padding-top: 0; margin-top: -36rpx; }
 
 .tabbar-write-btn {
-  width: 52px;
-  height: 52px;
-  border-radius: 9999px;
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 50% 55% 45% 52%;
   background: linear-gradient(135deg, #E8855A 0%, #F0A882 100%);
   box-shadow: 0 4px 16px rgba(232, 133, 90, 0.42);
   display: flex;
@@ -483,23 +490,14 @@ function switchTab(index: number) {
   transition: transform 0.15s;
 }
 
-.tabbar-item--write:active .tabbar-write-btn { transform: scale(0.90); }
-.tabbar-write-icon { font-size: 22px; filter: brightness(0) invert(1); }
-
-.tabbar-icon-emoji {
-  font-size: 20px;
-  opacity: 0.45;
-  line-height: 1;
-}
-
-.tabbar-icon-emoji--active { opacity: 1; }
+.tabbar-item--write:active .tabbar-write-btn { transform: scale(0.90); animation: none; }
 
 .tabbar-label {
-  font-size: 11px;
+  font-size: 22rpx;
   color: #AE9D92;
   font-weight: 500;
   line-height: 1;
 }
 
-.tabbar-label--active { color: #E8855A; }
+.tabbar-label--active { color: #E8855A; font-weight: 700; }
 </style>

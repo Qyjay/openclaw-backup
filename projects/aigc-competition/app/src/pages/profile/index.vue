@@ -5,7 +5,7 @@
     <view class="navbar">
       <text class="navbar-title font-handwrite">我的</text>
       <view class="navbar-settings" @click="openSettings">
-        <text class="settings-icon">⚙️</text>
+        <DoodleIcon name="settings" :size="44" color="#4A3628" />
       </view>
     </view>
 
@@ -26,7 +26,8 @@
           <text class="profile-name">{{ profile.name }}</text>
           <text class="profile-school">{{ profile.school }} · {{ profile.major }} · 大三</text>
           <view class="profile-title-badge">
-            <text class="profile-title-text">🌟 探索者</text>
+            <DoodleIcon name="star" :size="28" color="#FFFFFF" style="margin-right: 8rpx;" />
+            <text class="profile-title-text">探索者</text>
           </view>
         </view>
         <text class="deco-star profile-deco-1">✦</text>
@@ -36,19 +37,19 @@
       <!-- 数据统计卡 -->
       <view class="stats-card">
         <view class="stat-item" @click="navTo('/pages/index/index')">
-          <text class="stat-icon">📔</text>
+          <DoodleIcon name="book" :size="44" color="#E8855A" class="stat-icon" />
           <text class="stat-num font-mono">{{ profile.diaryCount }}</text>
           <text class="stat-label">日记</text>
         </view>
         <view class="stat-divider" />
         <view class="stat-item" @click="navTo('/pages/social/index')">
-          <text class="stat-icon">👥</text>
+          <DoodleIcon name="user" :size="44" color="#5BBF8E" class="stat-icon" />
           <text class="stat-num font-mono">{{ buddyCount }}</text>
           <text class="stat-label">搭子</text>
         </view>
         <view class="stat-divider" />
         <view class="stat-item" @click="navTo('/pages/growth/achievements')">
-          <text class="stat-icon">🏆</text>
+          <DoodleIcon name="trophy" :size="44" color="#E8C44E" class="stat-icon" />
           <text class="stat-num font-mono">{{ achievementCount }}</text>
           <text class="stat-label">成就</text>
         </view>
@@ -75,7 +76,7 @@
           @click="handleMenu(item)"
         >
           <view class="menu-icon-wrap" :style="{ background: item.iconBg }">
-            <text class="menu-icon">{{ item.icon }}</text>
+            <DoodleIcon :name="item.iconName" :size="40" :color="item.iconColor" />
           </view>
           <text class="menu-name">{{ item.name }}</text>
           <text class="menu-arrow">›</text>
@@ -103,10 +104,14 @@
         @click="switchTab(index)"
       >
         <view v-if="index === 2" class="tabbar-write-btn">
-          <text class="tabbar-write-icon">✏️</text>
+          <DoodleIcon name="pen" :size="44" color="#FFFFFF" />
         </view>
         <template v-else>
-          <text class="tabbar-icon-emoji" :class="{ 'tabbar-icon-emoji--active': index === 4 }">{{ tab.emoji }}</text>
+          <DoodleIcon
+            :name="tab.iconName"
+            :size="44"
+            :color="index === 4 ? '#E8855A' : '#AE9D92'"
+          />
           <text class="tabbar-label" :class="{ 'tabbar-label--active': index === 4 }">{{ tab.text }}</text>
         </template>
       </view>
@@ -121,6 +126,7 @@ import { getUserProfile } from '@/services/api/user'
 import { getAchievements } from '@/services/api/user'
 import type { UserProfile } from '@/services/api/user'
 import type { Achievement } from '@/services/api/user'
+import DoodleIcon from '@/components/DoodleIcon.vue'
 
 const profile = ref<UserProfile>({
   name: 'Kylin',
@@ -146,11 +152,11 @@ const expPercent = computed(() => Math.round((currentXP.value / nextLevelXP.valu
 const expHint = computed(() => `再写 ${nextLevelXP.value - currentXP.value} XP 升至 Lv.${profile.value.level + 1} 🌟`)
 
 const menuItems = [
-  { key: 'stats',   icon: '📊', name: '我的数据',   iconBg: 'rgba(232, 133, 90, 0.10)', path: '/pages/growth/index' },
-  { key: 'skill',   icon: '🌳', name: '技能树',     iconBg: 'rgba(91, 175, 133, 0.12)', path: '' },
-  { key: 'report',  icon: '📄', name: '学期报告',   iconBg: 'rgba(123, 184, 212, 0.12)', path: '/pages/novel/index' },
-  { key: 'privacy', icon: '🔒', name: '隐私设置',   iconBg: 'rgba(174, 157, 146, 0.12)', path: '/pages/profile/settings' },
-  { key: 'about',   icon: 'ℹ️', name: '关于 App',   iconBg: 'rgba(230, 184, 112, 0.12)', path: '/pages/settings/about' },
+  { key: 'stats',   iconName: 'chart',    iconColor: '#E8855A', name: '我的数据',   iconBg: 'rgba(232, 133, 90, 0.10)', path: '/pages/growth/index' },
+  { key: 'skill',   iconName: 'sparkle',  iconColor: '#5BBF8E', name: '技能树',     iconBg: 'rgba(91, 175, 133, 0.12)', path: '' },
+  { key: 'report',  iconName: 'book',     iconColor: '#6B8EC4', name: '学期报告',   iconBg: 'rgba(123, 184, 212, 0.12)', path: '/pages/novel/index' },
+  { key: 'privacy', iconName: 'lock',     iconColor: '#AE9D92', name: '隐私设置',   iconBg: 'rgba(174, 157, 146, 0.12)', path: '/pages/profile/settings' },
+  { key: 'about',   iconName: 'settings', iconColor: '#E8C44E', name: '关于 App',   iconBg: 'rgba(230, 184, 112, 0.12)', path: '/pages/settings/about' },
 ]
 
 function handleMenu(item: any) {
@@ -180,11 +186,11 @@ function handleLogout() {
 }
 
 const tabList = [
-  { emoji: '📔', text: '日记' },
-  { emoji: '🧭', text: '发现' },
-  { emoji: '✏️', text: '写' },
-  { emoji: '💬', text: '消息' },
-  { emoji: '👤', text: '我的' },
+  { iconName: 'book',    text: '日记' },
+  { iconName: 'search',  text: '发现' },
+  { iconName: 'pen',     text: '写' },
+  { iconName: 'chat',    text: '消息' },
+  { iconName: 'user',    text: '我的' },
 ]
 
 function switchTab(index: number) {
@@ -215,37 +221,37 @@ onMounted(async () => {
   position: absolute;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  height: 44px;
+  height: 88rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px;
+  padding: 0 32rpx;
   background: rgba(253, 248, 243, 0.95);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(24rpx);
   box-shadow: 0 1px 0 rgba(44, 31, 20, 0.06);
 }
 
-.navbar-title { font-size: 18px; font-weight: 700; color: #2C1F14; }
-.navbar-settings { cursor: pointer; padding: 4px; }
-.settings-icon { font-size: 20px; }
+.navbar-title { font-size: 36rpx; font-weight: 700; color: #2C1F14; }
+.navbar-settings { cursor: pointer; padding: 8rpx; }
+.settings-icon { font-size: 40rpx; }
 
 .page-scroll {
   position: absolute;
-  top: 44px; left: 0; right: 0; bottom: 60px;
+  top: 88rpx; left: 0; right: 0; bottom: 120rpx;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 16px 16px 0;
+  padding: 32rpx 32rpx 0;
 }
 
 /* ── 用户卡片 ── */
 .profile-card {
   background: linear-gradient(135deg, #E8855A 0%, #F0A882 70%, #F7CDB5 100%);
-  border-radius: 20px;
-  padding: 24px 20px;
+  border-radius: 40rpx;
+  padding: 48rpx 40rpx;
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 14px;
+  gap: 32rpx;
+  margin-bottom: 28rpx;
   position: relative;
   overflow: hidden;
   box-shadow: 0 6px 20px rgba(232, 133, 90, 0.28);
@@ -257,69 +263,69 @@ onMounted(async () => {
 }
 
 .profile-avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 9999px;
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 19998rpx;
   background: rgba(255,255,255,0.30);
-  border: 2.5px solid rgba(255,255,255,0.60);
+  border: 5rpx solid rgba(255,255,255,0.60);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
-.profile-avatar-img { width: 100%; height: 100%; border-radius: 9999px; }
+.profile-avatar-img { width: 100%; height: 100%; border-radius: 19998rpx; }
 
 .profile-level-badge {
   position: absolute;
-  bottom: -4px;
-  right: -6px;
+  bottom: -8rpx;
+  right: -12rpx;
   background: #FFFFFF;
-  border-radius: 9999px;
-  padding: 2px 8px;
+  border-radius: 19998rpx;
+  padding: 4rpx 16rpx;
   box-shadow: 0 1px 4px rgba(44, 31, 20, 0.15);
 }
 
-.profile-level-text { font-size: 11px; color: #E8855A; font-weight: 700; }
+.profile-level-text { font-size: 22rpx; color: #E8855A; font-weight: 700; }
 
 .profile-info { flex: 1; }
 
 .profile-name {
-  font-size: 20px;
+  font-size: 40rpx;
   font-weight: 700;
   color: #FFFFFF;
   display: block;
-  margin-bottom: 3px;
+  margin-bottom: 6rpx;
 }
 
 .profile-school {
-  font-size: 12px;
+  font-size: 24rpx;
   color: rgba(255,255,255,0.88);
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 16rpx;
 }
 
 .profile-title-badge {
   background: rgba(255,255,255,0.22);
-  border-radius: 9999px;
-  padding: 3px 10px;
+  border-radius: 19998rpx;
+  padding: 6rpx 20rpx;
   display: inline-flex;
 }
 
-.profile-title-text { font-size: 12px; color: #FFFFFF; font-weight: 600; }
+.profile-title-text { font-size: 24rpx; color: #FFFFFF; font-weight: 600; }
 
 .deco-star { position: absolute; color: rgba(255,255,255,0.50); pointer-events: none; }
-.profile-deco-1 { top: 12px; right: 18px; font-size: 16px; }
-.profile-deco-2 { bottom: 14px; right: 36px; font-size: 10px; }
+.profile-deco-1 { top: 24rpx; right: 36rpx; font-size: 32rpx; }
+.profile-deco-2 { bottom: 28rpx; right: 72rpx; font-size: 20rpx; }
 
 /* ── 统计卡 ── */
 .stats-card {
   background: #FFFFFF;
-  border-radius: 16px;
-  padding: 16px;
+  border-radius: 32rpx;
+  padding: 32rpx;
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 24rpx;
   box-shadow: 0 1px 6px rgba(44, 31, 20, 0.06);
 }
 
@@ -328,27 +334,27 @@ onMounted(async () => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 8rpx;
   cursor: pointer;
   &:active { opacity: 0.7; }
 }
 
-.stat-icon { font-size: 22px; }
-.stat-num { font-size: 22px; font-weight: 700; color: #2C1F14; font-family: "DIN Alternate", monospace; }
-.stat-label { font-size: 12px; color: #857268; }
+.stat-icon { display: flex; align-items: center; justify-content: center; }
+.stat-num { font-size: 44rpx; font-weight: 700; color: #2C1F14; font-family: "DIN Alternate", monospace; }
+.stat-label { font-size: 24rpx; color: #857268; }
 
 .stat-divider {
-  width: 1px;
-  height: 36px;
+  width: 2rpx;
+  height: 72rpx;
   background: rgba(44, 31, 20, 0.08);
 }
 
 /* ── 经验条 ── */
 .exp-card {
   background: #FFFFFF;
-  border-radius: 16px;
-  padding: 14px 16px;
-  margin-bottom: 12px;
+  border-radius: 32rpx;
+  padding: 28rpx 32rpx;
+  margin-bottom: 24rpx;
   box-shadow: 0 1px 6px rgba(44, 31, 20, 0.06);
 }
 
@@ -356,43 +362,43 @@ onMounted(async () => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 20rpx;
 }
 
-.exp-label { font-size: 14px; font-weight: 600; color: #2C1F14; }
-.exp-value { font-size: 12px; color: #857268; font-family: "DIN Alternate", monospace; }
+.exp-label { font-size: 28rpx; font-weight: 600; color: #2C1F14; }
+.exp-value { font-size: 24rpx; color: #857268; font-family: "DIN Alternate", monospace; }
 
 .exp-bar-bg {
-  height: 8px;
+  height: 16rpx;
   background: #F5EDE4;
-  border-radius: 9999px;
+  border-radius: 19998rpx;
   overflow: hidden;
-  margin-bottom: 8px;
+  margin-bottom: 16rpx;
 }
 
 .exp-bar-fill {
   height: 100%;
   background: linear-gradient(90deg, #E8855A, #F0A882);
-  border-radius: 9999px;
+  border-radius: 19998rpx;
   transition: width 0.8s ease;
 }
 
-.exp-hint { font-size: 12px; color: #AE9D92; }
+.exp-hint { font-size: 24rpx; color: #AE9D92; }
 
 /* ── 功能列表 ── */
 .menu-card {
   background: #FFFFFF;
-  border-radius: 16px;
+  border-radius: 32rpx;
   overflow: hidden;
-  margin-bottom: 16px;
+  margin-bottom: 32rpx;
   box-shadow: 0 1px 6px rgba(44, 31, 20, 0.06);
 }
 
 .menu-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 15px 16px;
+  gap: 24rpx;
+  padding: 30rpx 32rpx;
   border-bottom: 1px solid rgba(44, 31, 20, 0.05);
   cursor: pointer;
   &:last-child { border-bottom: none; }
@@ -400,31 +406,29 @@ onMounted(async () => {
 }
 
 .menu-icon-wrap {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 20rpx;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
-
-.menu-icon { font-size: 18px; }
-.menu-name { flex: 1; font-size: 15px; color: #2C1F14; font-weight: 500; }
-.menu-arrow { font-size: 18px; color: #AE9D92; }
+.menu-name { flex: 1; font-size: 30rpx; color: #2C1F14; font-weight: 500; }
+.menu-arrow { font-size: 36rpx; color: #AE9D92; }
 
 /* ── 退出 ── */
 .logout-btn {
   background: #FFFFFF;
-  border-radius: 14px;
-  padding: 15px;
+  border-radius: 28rpx;
+  padding: 30rpx;
   text-align: center;
   cursor: pointer;
-  margin-bottom: 24px;
+  margin-bottom: 48rpx;
   &:active { background: #FEF3EE; }
 }
 
-.logout-text { font-size: 15px; color: #D95C4A; font-weight: 500; }
+.logout-text { font-size: 30rpx; color: #D95C4A; font-weight: 500; }
 
 .font-handwrite {
   font-family: 'ZcoolKuaiLe', 'ZCOOL KuaiLe', 'STXingkai', 'KaiTi', 'PingFang SC', sans-serif !important;
@@ -435,21 +439,21 @@ onMounted(async () => {
   font-variant-numeric: tabular-nums;
 }
 
-.bottom-spacer { height: 20px; }
+.bottom-spacer { height: 40rpx; }
 
 /* ── TabBar ── */
 .tabbar {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   z-index: 200;
-  height: 60px;
+  height: 120rpx;
   padding-bottom: env(safe-area-inset-bottom);
   background: rgba(255, 255, 255, 0.97);
   box-shadow: 0 -1px 6px rgba(26, 26, 46, 0.08);
   display: flex;
   align-items: stretch;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(24rpx);
+  -webkit-backdrop-filter: blur(24rpx);
 }
 
 .tabbar-item {
@@ -458,17 +462,17 @@ onMounted(async () => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 4rpx;
   cursor: pointer;
-  padding-top: 4px;
+  padding-top: 8rpx;
 }
 
-.tabbar-item--write { padding-top: 0; margin-top: -18px; }
+.tabbar-item--write { padding-top: 0; margin-top: -36rpx; }
 
 .tabbar-write-btn {
-  width: 52px;
-  height: 52px;
-  border-radius: 9999px;
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 19998rpx;
   background: linear-gradient(135deg, #E8855A 0%, #F0A882 100%);
   box-shadow: 0 4px 16px rgba(232, 133, 90, 0.42);
   display: flex;
@@ -478,10 +482,10 @@ onMounted(async () => {
 }
 
 .tabbar-item--write:active .tabbar-write-btn { transform: scale(0.90); }
-.tabbar-write-icon { font-size: 22px; filter: brightness(0) invert(1); }
+.tabbar-write-icon { font-size: 44rpx; filter: brightness(0) invert(1); }
 
 .tabbar-icon-emoji {
-  font-size: 20px;
+  font-size: 40rpx;
   opacity: 0.45;
   line-height: 1;
 }
@@ -489,7 +493,7 @@ onMounted(async () => {
 .tabbar-icon-emoji--active { opacity: 1; }
 
 .tabbar-label {
-  font-size: 11px;
+  font-size: 22rpx;
   color: #AE9D92;
   font-weight: 500;
   line-height: 1;

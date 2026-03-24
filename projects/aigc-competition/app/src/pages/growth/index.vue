@@ -8,7 +8,7 @@
         <!-- ===== 等级卡片 ===== -->
         <view class="card level-card">
           <view class="level-header">
-            <text class="level-star">🌟</text>
+            <DoodleIcon name="star" :size="56" color="#E8855A" class="level-star" />
             <text class="level-title">探索者 Lv.12</text>
           </view>
 
@@ -90,7 +90,12 @@
             :class="{ 'milestone-locked': !m.done }"
           >
             <view class="milestone-left">
-              <text class="milestone-icon">{{ m.done ? '🎯' : '🔒' }}</text>
+              <DoodleIcon
+                :name="m.done ? 'target' : 'lock'"
+                :size="40"
+                :color="m.done ? '#5BBF8E' : '#AE9D92'"
+                class="milestone-icon"
+              />
               <view
                 class="milestone-dot"
                 :style="{ background: m.done ? '#5BBF8E' : '#D0C8C0' }"
@@ -113,6 +118,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
+import DoodleIcon from '@/components/DoodleIcon.vue'
 
 // ===== XP / 等级 =====
 const currentXP = 2450
@@ -207,7 +213,8 @@ onMounted(() => {
 }
 
 .level-star {
-  font-size: 44rpx;
+  display: flex;
+  align-items: center;
 }
 
 .level-title {
@@ -403,7 +410,9 @@ onMounted(() => {
 }
 
 .milestone-icon {
-  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .milestone-dot {

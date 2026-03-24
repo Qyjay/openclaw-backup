@@ -261,10 +261,10 @@ function onBuddyClick() {
 
 .section-title {
   display: block;
-  font-size: 12px;
+  font-size: 24rpx;
   color: #AE9D92;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 2rpx;
   text-align: center;
   padding: 24rpx 0 20rpx;
 }
@@ -318,7 +318,7 @@ function onBuddyClick() {
 }
 
 .rec-avatar-emoji {
-  font-size: 44px;
+  font-size: 88rpx;
   line-height: 1;
 }
 
@@ -330,18 +330,18 @@ function onBuddyClick() {
 }
 
 .rec-name {
-  font-size: 20px;
+  font-size: 40rpx;
   color: #2C1F14;
   font-weight: 700;
 }
 
 .rec-meta {
-  font-size: 13px;
+  font-size: 26rpx;
   color: #4A3628;
 }
 
 .rec-grade {
-  font-size: 12px;
+  font-size: 24rpx;
   color: #AE9D92;
 }
 
@@ -358,13 +358,13 @@ function onBuddyClick() {
 }
 
 .rec-score-num {
-  font-size: 18px;
+  font-size: 36rpx;
   color: #FFFFFF;
   font-weight: 700;
 }
 
 .rec-score-unit {
-  font-size: 11px;
+  font-size: 22rpx;
   color: rgba(255, 255, 255, 0.85);
 }
 
@@ -376,7 +376,7 @@ function onBuddyClick() {
 }
 
 .rec-match-label {
-  font-size: 13px;
+  font-size: 26rpx;
   color: #AE9D92;
   width: 64rpx;
   flex-shrink: 0;
@@ -398,7 +398,7 @@ function onBuddyClick() {
 }
 
 .rec-match-score {
-  font-size: 13px;
+  font-size: 26rpx;
   color: #E8855A;
   font-weight: 600;
   width: 56rpx;
@@ -420,7 +420,7 @@ function onBuddyClick() {
 }
 
 .rec-tag-text {
-  font-size: 12px;
+  font-size: 24rpx;
   color: #E8855A;
   font-weight: 500;
 }
@@ -436,11 +436,11 @@ function onBuddyClick() {
 }
 
 .rec-study-icon {
-  font-size: 16px;
+  font-size: 32rpx;
 }
 
 .rec-study-text {
-  font-size: 13px;
+  font-size: 26rpx;
   color: #4A3628;
 }
 
@@ -476,7 +476,7 @@ function onBuddyClick() {
 }
 
 .rec-btn-text {
-  font-size: 15px;
+  font-size: 30rpx;
   color: #FFFFFF;
   font-weight: 600;
 }
@@ -514,7 +514,7 @@ function onBuddyClick() {
 }
 
 .buddy-avatar-emoji {
-  font-size: 36px;
+  font-size: 72rpx;
   line-height: 1;
 }
 
@@ -526,13 +526,13 @@ function onBuddyClick() {
 }
 
 .buddy-name {
-  font-size: 15px;
+  font-size: 30rpx;
   color: #2C1F14;
   font-weight: 600;
 }
 
 .buddy-type {
-  font-size: 12px;
+  font-size: 24rpx;
   color: #AE9D92;
 }
 
@@ -544,7 +544,7 @@ function onBuddyClick() {
 }
 
 .buddy-last {
-  font-size: 12px;
+  font-size: 24rpx;
   color: #AE9D92;
 }
 
@@ -569,7 +569,7 @@ function onBuddyClick() {
 }
 
 .buddy-status-text {
-  font-size: 11px;
+  font-size: 22rpx;
   color: #AE9D92;
 }
 

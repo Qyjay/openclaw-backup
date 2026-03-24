@@ -70,13 +70,13 @@ function handleLeftClick() {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 44px;
-  padding: 0 16px;
+  height: 88rpx;
+  padding: 0 32rpx;
 }
 
 .nav-left,
 .nav-right {
-  width: 60px;
+  width: 120rpx;
   display: flex;
   align-items: center;
 }
@@ -90,20 +90,20 @@ function handleLeftClick() {
 }
 
 .nav-avatar {
-  width: 36px;
-  height: 36px;
+  width: 72rpx;
+  height: 72rpx;
   border-radius: 50%;
-  border: 2px solid #E8855A;
+  border: 4rpx solid #E8855A;
 }
 
 .nav-back {
-  font-size: 22px;
+  font-size: 44rpx;
   color: #2C1F14;
   line-height: 1;
 }
 
 .nav-title {
-  font-size: 17px;
+  font-size: 34rpx;
   font-weight: 600;
   color: #2C1F14;
   flex: 1;
@@ -111,12 +111,12 @@ function handleLeftClick() {
 }
 
 .nav-right-text {
-  font-size: 15px;
+  font-size: 30rpx;
   color: #E8855A;
   font-weight: 500;
 }
 
 .nav-right-icon {
-  font-size: 20px;
+  font-size: 40rpx;
 }
 </style>

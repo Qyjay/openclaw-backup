@@ -3,10 +3,15 @@
     <CustomNavBar
       title="日记"
       left-icon="avatar"
-      right-icon="🔍"
       @left-click="drawerVisible = true"
       @right-click="onSearch"
-    />
+    >
+      <template #right>
+        <view class="nav-search-btn" @click="onSearch">
+          <DoodleIcon name="search" color="#8A7668" :size="40" />
+        </view>
+      </template>
+    </CustomNavBar>
 
     <!-- 侧边栏 -->
     <SideDrawer v-model:visible="drawerVisible" />
@@ -21,28 +26,28 @@
       @scrolltolower="onLoadMore"
     >
       <!-- ── AI 早安/晚安卡片 ── -->
-      <view v-if="greetingCardVisible" class="greeting-card">
+      <view v-if="greetingCardVisible" class="greeting-card stagger-item">
         <view class="greeting-inner" :class="isMorning ? 'greeting-morning' : 'greeting-night'">
           <view class="greeting-header">
-            <text class="greeting-icon">{{ isMorning ? '☀️' : '🌙' }}</text>
-            <text class="greeting-title">{{ isMorning ? '早上好 Kylin！' : '晚安 Kylin 🌙' }}</text>
-            <view class="greeting-close" @click="greetingCardVisible = false">
-              <text class="close-icon">✕</text>
+            <DoodleIcon :name="isMorning ? 'sun' : 'moon'" :color="isMorning ? '#C8A86B' : '#9B72C8'" :size="22" />
+            <text class="greeting-title">{{ isMorning ? '早上好 Kylin！' : '晚安 Kylin' }}</text>
+            <view class="greeting-close press-feedback" @click="greetingCardVisible = false">
+              <DoodleIcon name="cross" color="#AE9D92" :size="16" />
             </view>
           </view>
 
           <template v-if="isMorning">
             <text class="greeting-desc">今天有数据结构课，雅思倒计时 43 天</text>
-            <view class="greeting-todo">
-              <text class="todo-icon">📋</text>
+            <view class="greeting-todo press-feedback">
+              <DoodleIcon name="list" color="#E8855A" :size="36" />
               <text class="todo-label">今日待办 (3)</text>
               <text class="todo-arrow"> 查看详情 → </text>
             </view>
           </template>
 
           <template v-else>
-            <text class="greeting-desc">今日共写了 2 篇日记，情绪以😊开心为主</text>
-            <text class="greeting-night-tip">早点休息，明天又是新的一天 ✨</text>
+            <text class="greeting-desc">今日共写了 2 篇日记，整体情绪以开心为主</text>
+            <text class="greeting-night-tip">早点休息，明天又是新的一天</text>
           </template>
         </view>
       </view>
@@ -63,9 +68,9 @@
             :key="diary.id"
           >
             <!-- AI 洞察卡：穿插在第2和第5条日记后 -->
-            <view v-if="shouldShowInsight(gIndex, dIndex)" class="ai-insight-card">
+            <view v-if="shouldShowInsight(gIndex, dIndex)" class="ai-insight-card-style stagger-item">
               <view class="insight-header">
-                <text class="insight-icon">✨</text>
+                <DoodleIcon name="sparkle" color="#C8A86B" :size="36" />
                 <text class="insight-title">AI 洞察</text>
               </view>
               <text class="insight-text">{{ getInsightText(gIndex, dIndex) }}</text>
@@ -91,10 +96,12 @@
 
       <!-- ── 空状态 ── -->
       <view v-if="!loading && diaries.length === 0" class="empty-state">
-        <text class="empty-emoji">📸</text>
+        <view class="empty-icon-wrap doodle-box func-color-diary">
+          <DoodleIcon name="camera" color="#E8855A" :size="48" />
+        </view>
         <text class="empty-title">还没有日记</text>
         <text class="empty-sub">拍张照片，开始你的第一篇日记</text>
-        <view class="empty-btn" @click="goWrite">
+        <view class="empty-btn press-feedback" @click="goWrite">
           <text class="empty-btn-text">写日记</text>
         </view>
       </view>
@@ -113,6 +120,7 @@ import CustomNavBar from '@/components/CustomNavBar.vue'
 import SideDrawer from '@/components/SideDrawer.vue'
 import DiaryCard from '@/components/DiaryCard.vue'
 import TabBar from '@/components/TabBar.vue'
+import DoodleIcon from '@/components/DoodleIcon.vue'
 import { getDiaries } from '@/services/api/diary'
 import type { Diary } from '@/services/api/diary'
 
@@ -264,7 +272,7 @@ function onActionClick(payload: { action: string; diaryId: string }) {
   right: 0;
   bottom: 0;
   padding-top: 88rpx; // statusBar + navBar
-  padding-bottom: 60px;
+  padding-bottom: 120rpx;
 }
 
 /* ── AI 早安/晚安卡片 ── */
@@ -273,9 +281,11 @@ function onActionClick(payload: { action: string; diaryId: string }) {
 }
 
 .greeting-inner {
-  border-radius: 24rpx;
+  border-radius: 32rpx 40rpx 28rpx 36rpx;
   padding: 24rpx;
   position: relative;
+  border: 1px solid rgba(232, 133, 90, 0.12);
+  box-shadow: 2px 3px 0 rgba(232, 133, 90, 0.08);
 }
 
 .greeting-morning {
@@ -293,10 +303,6 @@ function onActionClick(payload: { action: string; diaryId: string }) {
   margin-bottom: 8rpx;
 }
 
-.greeting-icon {
-  font-size: 36rpx;
-}
-
 .greeting-title {
   font-size: 32rpx;
   font-weight: 600;
@@ -306,12 +312,6 @@ function onActionClick(payload: { action: string; diaryId: string }) {
 
 .greeting-close {
   padding: 4rpx 8rpx;
-  &:active { opacity: 0.6; }
-}
-
-.close-icon {
-  font-size: 24rpx;
-  color: #4A3628;
 }
 
 .greeting-desc {
@@ -330,7 +330,6 @@ function onActionClick(payload: { action: string; diaryId: string }) {
   padding: 10rpx 16rpx;
 }
 
-.todo-icon { font-size: 28rpx; }
 .todo-label { font-size: 26rpx; color: #4A3628; flex: 1; }
 .todo-arrow { font-size: 24rpx; color: #E8855A; }
 
@@ -366,13 +365,9 @@ function onActionClick(payload: { action: string; diaryId: string }) {
   padding: 0 4rpx;
 }
 
-/* ── AI 洞察卡 ── */
-.ai-insight-card {
-  background: rgba(232, 133, 90, 0.07);
-  border: 1px solid rgba(232, 133, 90, 0.16);
-  border-radius: 20rpx;
-  padding: 20rpx 24rpx;
-  margin-bottom: 24rpx;
+/* ── AI 洞察卡（使用全局 .ai-insight-card-style） ── */
+.ai-insight-card-style {
+  margin: 0 24rpx 24rpx;
 }
 
 .insight-header {
@@ -381,8 +376,6 @@ function onActionClick(payload: { action: string; diaryId: string }) {
   gap: 6rpx;
   margin-bottom: 8rpx;
 }
-
-.insight-icon { font-size: 28rpx; }
 
 .insight-title {
   font-size: 26rpx;
@@ -418,8 +411,13 @@ function onActionClick(payload: { action: string; diaryId: string }) {
   gap: 12rpx;
 }
 
-.empty-emoji {
-  font-size: 96rpx;
+.empty-icon-wrap {
+  width: 96rpx;
+  height: 96rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3rpx solid #F2B49B;
   margin-bottom: 8rpx;
 }
 
@@ -439,16 +437,20 @@ function onActionClick(payload: { action: string; diaryId: string }) {
 .empty-btn {
   margin-top: 24rpx;
   background: linear-gradient(135deg, #E8855A, #F0A882);
-  border-radius: 24rpx;
+  border-radius: 28rpx 36rpx 24rpx 40rpx;
   padding: 16rpx 48rpx;
-  box-shadow: 0 4rpx 16rpx rgba(232, 133, 90, 0.3);
-  &:active { opacity: 0.85; }
+  box-shadow: 2px 3px 0 rgba(232, 133, 90, 0.2);
 }
 
 .empty-btn-text {
   font-size: 30rpx;
   color: #FFFFFF;
   font-weight: 600;
+}
+
+/* ── nav search ── */
+.nav-search-btn {
+  padding: 8rpx;
 }
 
 /* ── 底部留白 ── */

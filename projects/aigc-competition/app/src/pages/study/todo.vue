@@ -14,7 +14,7 @@
       <SectionTitle title="AI 自动提取" />
       <view class="card ai-card">
         <view class="card-header">
-          <text class="card-header-icon">🤖</text>
+          <DoodleIcon name="robot" :size="48" color="#E8855A" class="card-header-icon" />
           <text class="card-header-label">从日记和对话中识别：</text>
         </view>
         <view
@@ -128,6 +128,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
+import DoodleIcon from '@/components/DoodleIcon.vue'
 
 const SectionTitle = {
   props: { title: String },
@@ -231,7 +232,7 @@ function addTodo() {
 
 .page-scroll {
   position: absolute;
-  top: 44px;
+  top: 88rpx;
   left: 0;
   right: 0;
   bottom: 0;
@@ -267,7 +268,7 @@ function addTodo() {
   border-bottom: 1rpx solid #F5F0EB;
 }
 
-.card-header-icon { font-size: 30rpx; }
+.card-header-icon { display: flex; align-items: center; }
 .card-header-label { font-size: 26rpx; color: #4A3628; font-weight: 500; }
 
 /* ── 待办项 ── */

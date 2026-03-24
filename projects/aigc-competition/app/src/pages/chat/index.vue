@@ -5,7 +5,9 @@
     <view class="page-content">
       <!-- AI 伙伴信息卡 -->
       <view class="ai-info-card">
-        <text class="ai-info-icon">🤖</text>
+        <view class="ai-info-icon doodle-box-v3">
+          <DoodleIcon name="robot" color="#FFFFFF" :size="44" :filtered="false" />
+        </view>
         <view class="ai-info-text">
           <text class="ai-info-title">你的 AI 伙伴</text>
           <text class="ai-info-sub">已陪你写了 {{ profile.diaryCount }} 篇日记</text>
@@ -29,8 +31,8 @@
             :class="msg.role === 'user' ? 'message-wrap--user' : 'message-wrap--ai'"
           >
             <!-- AI avatar -->
-            <view v-if="msg.role === 'assistant'" class="msg-avatar">
-              <text class="msg-avatar-text">🤖</text>
+            <view v-if="msg.role === 'assistant'" class="msg-avatar doodle-box-v3">
+              <DoodleIcon name="robot" color="#FFFFFF" :size="32" :filtered="false" />
             </view>
 
             <view class="message-bubble" :class="msg.role === 'user' ? 'bubble--user' : 'bubble--ai'">
@@ -42,8 +44,8 @@
 
           <!-- AI thinking indicator -->
           <view v-if="isThinking" class="message-wrap message-wrap--ai">
-            <view class="msg-avatar">
-              <text class="msg-avatar-text">🤖</text>
+            <view class="msg-avatar doodle-box-v3">
+              <DoodleIcon name="robot" color="#FFFFFF" :size="32" :filtered="false" />
             </view>
             <view class="message-bubble bubble--ai">
               <view class="thinking-dots">
@@ -62,10 +64,12 @@
           <view
             v-for="action in quickActions"
             :key="action.label"
-            class="quick-btn"
+            class="quick-btn press-feedback"
             @click="handleQuickAction(action.path)"
           >
-            <text class="quick-icon">{{ action.icon }}</text>
+            <view class="quick-icon-wrap">
+              <DoodleIcon :name="action.iconName" :color="action.iconColor" :size="28" />
+            </view>
             <text class="quick-label">{{ action.label }}</text>
           </view>
         </scroll-view>
@@ -74,8 +78,8 @@
       <!-- 输入栏 -->
       <view class="input-bar">
         <view class="input-row">
-          <view class="attach-btn" @click="handleAttach">
-            <text class="attach-icon">📎</text>
+          <view class="attach-btn press-feedback" @click="handleAttach">
+            <DoodleIcon name="attach" color="#AE9D92" :size="36" />
           </view>
           <input
             v-model="inputText"
@@ -86,11 +90,11 @@
             :adjust-position="true"
             @confirm="handleSend"
           />
-          <view class="voice-btn" @click="handleVoice">
-            <text class="voice-icon">🎤</text>
+          <view class="voice-btn press-feedback" @click="handleVoice">
+            <DoodleIcon name="voice" color="#AE9D92" :size="36" />
           </view>
           <view class="send-btn" :class="{ 'send-btn--active': inputText.trim() }" @click="handleSend">
-            <text class="send-icon">➤</text>
+            <DoodleIcon name="send" color="#FFFFFF" :size="36" :filtered="false" />
           </view>
         </view>
       </view>
@@ -101,15 +105,16 @@
 <script setup lang="ts">
 import { ref, nextTick, onMounted } from 'vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
+import DoodleIcon from '@/components/DoodleIcon.vue'
 import { getUserProfile } from '@/services/api/user'
 import type { UserProfile } from '@/services/api/user'
 import type { ChatMessage } from '@/services/api/ai'
 
 const quickActions = [
-  { icon: '📝', label: '写日记', path: '/pages/write/index' },
-  { icon: '🔮', label: '看运势', path: '/pages/fortune/index' },
-  { icon: '🍅', label: '开始番茄', path: '/pages/study/pomodoro' },
-  { icon: '📊', label: '看成长', path: '/pages/growth/index' },
+  { iconName: 'pen',     iconColor: '#E8855A', label: '写日记', path: '/pages/write/index' },
+  { iconName: 'crystal', iconColor: '#D4728A', label: '看运势', path: '/pages/fortune/index' },
+  { iconName: 'tomato',  iconColor: '#E8855A', label: '开始番茄', path: '/pages/study/pomodoro' },
+  { iconName: 'chart',   iconColor: '#C8A86B', label: '看成长', path: '/pages/growth/index' },
 ]
 
 const aiReplies = [
@@ -227,7 +232,7 @@ onMounted(async () => {
 
 .page-content {
   position: absolute;
-  top: 88px;
+  top: 176rpx;
   left: 0;
   right: 0;
   bottom: 0;
@@ -239,28 +244,38 @@ onMounted(async () => {
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
+  gap: 24rpx;
+  padding: 24rpx 32rpx;
   background: #FFFFFF;
   border-bottom: 1px solid rgba(44, 31, 20, 0.06);
 }
 
-.ai-info-icon { font-size: 28px; }
+.ai-info-icon {
+  width: 80rpx;
+  height: 80rpx;
+  background: linear-gradient(135deg, #E8855A, #F0A882) !important;
+  border-color: transparent !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 1px 2px 0 rgba(232, 133, 90, 0.2);
+}
 
 .ai-info-text {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4rpx;
 }
 
 .ai-info-title {
-  font-size: 15px;
+  font-size: 30rpx;
   font-weight: 600;
   color: #2C1F14;
 }
 
 .ai-info-sub {
-  font-size: 12px;
+  font-size: 24rpx;
   color: #AE9D92;
 }
 
@@ -270,16 +285,16 @@ onMounted(async () => {
 }
 
 .messages-inner {
-  padding: 16px 16px 8px;
+  padding: 32rpx 32rpx 16rpx;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 48rpx;
 }
 
 .message-wrap {
   display: flex;
   align-items: flex-end;
-  gap: 8px;
+  gap: 16rpx;
 }
 
 .message-wrap--ai {
@@ -291,21 +306,20 @@ onMounted(async () => {
 }
 
 .msg-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #E8855A, #F0A882);
+  width: 64rpx;
+  height: 64rpx;
+  background: linear-gradient(135deg, #E8855A, #F0A882) !important;
+  border-color: transparent !important;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: 1px 2px 0 rgba(232, 133, 90, 0.15);
 }
-
-.msg-avatar-text { font-size: 16px; }
 
 .message-bubble {
   max-width: 70%;
-  padding: 10px 14px;
+  padding: 20rpx 28rpx;
   line-height: 1.6;
 }
 
@@ -320,7 +334,7 @@ onMounted(async () => {
 }
 
 .bubble-text {
-  font-size: 15px;
+  font-size: 30rpx;
   color: #2C1F14;
   word-break: break-all;
 }
@@ -331,14 +345,14 @@ onMounted(async () => {
 
 .thinking-dots {
   display: flex;
-  gap: 5px;
-  padding: 4px 0;
+  gap: 10rpx;
+  padding: 8rpx 0;
   align-items: center;
 }
 
 .dot {
-  width: 7px;
-  height: 7px;
+  width: 14rpx;
+  height: 14rpx;
   border-radius: 50%;
   background: #AE9D92;
   animation: bounce 1.2s ease infinite;
@@ -349,36 +363,41 @@ onMounted(async () => {
 
 @keyframes bounce {
   0%, 60%, 100% { transform: translateY(0); }
-  30% { transform: translateY(-5px); }
+  30% { transform: translateY(-10rpx); }
 }
 
 .quick-actions {
   flex-shrink: 0;
   background: #FFFFFF;
   border-top: 1px solid rgba(44, 31, 20, 0.06);
-  padding: 8px 0;
+  padding: 16rpx 0;
 }
 
 .quick-scroll {
   white-space: nowrap;
-  padding: 0 12px;
+  padding: 0 24rpx;
 }
 
 .quick-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 12rpx;
   background: #FDF8F3;
   border-radius: 20rpx;
-  padding: 8px 14px;
-  margin-right: 8px;
+  padding: 16rpx 28rpx;
+  margin-right: 16rpx;
   cursor: pointer;
+  border: 1px solid rgba(232, 133, 90, 0.1);
 }
 
-.quick-icon { font-size: 14px; }
+.quick-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .quick-label {
-  font-size: 13px;
+  font-size: 26rpx;
   color: #4A3628;
   white-space: nowrap;
 }
@@ -387,19 +406,19 @@ onMounted(async () => {
   flex-shrink: 0;
   background: #FFFFFF;
   border-top: 1px solid rgba(44, 31, 20, 0.06);
-  padding: 10px 12px;
-  padding-bottom: calc(10px + env(safe-area-inset-bottom));
+  padding: 20rpx 24rpx;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
 }
 
 .input-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 16rpx;
 }
 
 .attach-btn, .voice-btn {
-  width: 36px;
-  height: 36px;
+  width: 72rpx;
+  height: 72rpx;
   border-radius: 50%;
   background: #F5F0EB;
   display: flex;
@@ -409,27 +428,25 @@ onMounted(async () => {
   cursor: pointer;
 }
 
-.attach-icon, .voice-icon { font-size: 16px; }
-
 .input-field {
   flex: 1;
-  height: 40px;
+  height: 80rpx;
   background: #F5F0EB;
-  border-radius: 20px;
-  padding: 0 16px;
-  font-size: 15px;
+  border-radius: 40rpx;
+  padding: 0 32rpx;
+  font-size: 30rpx;
   color: #2C1F14;
 }
 
 .input-placeholder {
   color: #AE9D92;
-  font-size: 15px;
+  font-size: 30rpx;
 }
 
 .send-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50% 55% 45% 52%;
   background: #E8DDD5;
   display: flex;
   align-items: center;
@@ -441,11 +458,5 @@ onMounted(async () => {
 
 .send-btn--active {
   background: #E8855A;
-}
-
-.send-icon {
-  font-size: 18px;
-  color: #FFFFFF;
-  font-weight: 700;
 }
 </style>

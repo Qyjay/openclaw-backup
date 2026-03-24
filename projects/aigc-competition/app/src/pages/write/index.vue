@@ -8,8 +8,8 @@
     >
       <!-- 左插槽：关闭按钮 -->
       <template #left>
-        <view class="nav-close" @click="handleClose">
-          <text class="close-text">✕</text>
+        <view class="nav-close press-feedback" @click="handleClose">
+          <DoodleIcon name="cross" color="#2C1F14" :size="36" />
         </view>
       </template>
       <!-- 右插槽：完成按钮 -->
@@ -19,7 +19,8 @@
           :class="{ disabled: !canDone }"
           @click="handleDone"
         >
-          <text class="done-text" :class="{ 'done-text--active': canDone }">完成✓</text>
+          <text class="done-text" :class="{ 'done-text--active': canDone }">完成</text>
+          <DoodleIcon name="check" :color="canDone ? '#FFFFFF' : '#AE9D92'" :size="28" />
         </view>
       </template>
     </CustomNavBar>
@@ -31,11 +32,12 @@
         <view
           v-for="em in emotions"
           :key="em.key"
-          class="emotion-item"
+          class="emotion-item press-feedback"
           :class="{ active: selectedEmotion.key === em.key }"
           @click="selectedEmotion = em"
         >
           <text class="emotion-emoji" :class="{ 'emoji-active': selectedEmotion.key === em.key }">{{ em.emoji }}</text>
+          <text class="emotion-label" :class="{ 'label-active': selectedEmotion.key === em.key }">{{ em.label }}</text>
           <view v-if="selectedEmotion.key === em.key" class="emotion-dot" />
         </view>
       </view>
@@ -50,12 +52,12 @@
           >
             <image class="photo-img" :src="img" mode="aspectFill" />
             <view class="photo-delete" @click="removePhoto(i)">
-              <text class="delete-icon">✕</text>
+              <DoodleIcon name="cross" color="#FFFFFF" :size="12" :filtered="false" />
             </view>
           </view>
           <!-- 添加按钮 -->
-          <view class="photo-add" @click="addPhoto">
-            <text class="add-icon">+</text>
+          <view class="photo-add press-feedback" @click="addPhoto">
+            <DoodleIcon name="plus" color="#AE9D92" :size="24" />
             <text class="add-text">添加</text>
           </view>
         </scroll-view>
@@ -76,7 +78,10 @@
 
       <!-- 位置+天气 -->
       <view class="meta-row">
-        <text class="meta-text">📍 南开大学  ☁️ 多云 18°C</text>
+        <DoodleIcon name="pin" color="#AE9D92" :size="14" />
+        <text class="meta-text"> 南开大学</text>
+        <DoodleIcon name="cloud" color="#AE9D92" :size="14" style="margin-left: 12rpx" />
+        <text class="meta-text"> 多云 18°C</text>
       </view>
 
       <!-- 标签栏 -->
@@ -97,15 +102,20 @@
 
     <!-- ── AI 工具栏（固定底部） ── -->
     <view class="ai-toolbar">
-      <view class="toolbar-btn ai-btn" @click="handleAIGenerate">
-        <text v-if="aiLoading" class="ai-loading-icon">⏳</text>
-        <text v-else class="ai-btn-text">✨AI生成</text>
+      <view class="toolbar-btn ai-btn press-feedback" @click="handleAIGenerate">
+        <DoodleIcon v-if="aiLoading" name="loading" color="#FFFFFF" :size="18" class="spin-anim" :filtered="false" />
+        <template v-else>
+          <DoodleIcon name="sparkle" color="#FFFFFF" :size="32" :filtered="false" />
+          <text class="ai-btn-text">AI生成</text>
+        </template>
       </view>
-      <view class="toolbar-btn style-btn" @click="showStylePicker = true">
-        <text class="style-btn-text">✍️文风</text>
+      <view class="toolbar-btn style-btn press-feedback" @click="showStylePicker = true">
+        <DoodleIcon name="wand" color="#E8855A" :size="16" />
+        <text class="style-btn-text">文风</text>
       </view>
-      <view class="toolbar-btn voice-btn" @click="handleVoice">
-        <text class="voice-btn-text">🎤语音</text>
+      <view class="toolbar-btn voice-btn press-feedback" @click="handleVoice">
+        <DoodleIcon name="voice" color="#E8855A" :size="16" />
+        <text class="voice-btn-text">语音</text>
       </view>
     </view>
 
@@ -114,8 +124,8 @@
       <view class="tag-sheet" @click.stop>
         <view class="sheet-title-row">
           <text class="sheet-title">选择标签</text>
-          <view class="sheet-close" @click="showTagPicker = false">
-            <text>✕</text>
+          <view class="sheet-close press-feedback" @click="showTagPicker = false">
+            <DoodleIcon name="cross" color="#AE9D92" :size="16" />
           </view>
         </view>
         <view class="tag-grid">
@@ -140,8 +150,8 @@
       <view class="style-sheet" @click.stop>
         <view class="sheet-title-row">
           <text class="sheet-title">选择文风</text>
-          <view class="sheet-close" @click="showStylePicker = false">
-            <text>✕</text>
+          <view class="sheet-close press-feedback" @click="showStylePicker = false">
+            <DoodleIcon name="cross" color="#AE9D92" :size="16" />
           </view>
         </view>
         <view class="style-grid">
@@ -179,6 +189,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
+import DoodleIcon from '@/components/DoodleIcon.vue'
 
 interface Emotion {
   key: string
@@ -378,7 +389,7 @@ async function handleDone() {
   flex: 1;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 100px;
+  padding-bottom: 200rpx;
 }
 
 /* ── 情绪选择栏 ── */
@@ -395,12 +406,16 @@ async function handleDone() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4rpx;
-  padding: 8rpx;
-  border-radius: 16rpx;
+  gap: 2rpx;
+  padding: 8rpx 4rpx;
+  border-radius: 10rpx 14rpx 10rpx 12rpx;
   cursor: pointer;
   transition: transform 0.15s;
   &:active { transform: scale(0.9); }
+
+  &.active {
+    background: rgba(232, 133, 90, 0.08);
+  }
 
   &.active .emotion-emoji {
     transform: scale(1.3);
@@ -408,15 +423,27 @@ async function handleDone() {
 }
 
 .emotion-emoji {
-  font-size: 48rpx;
+  font-size: 42rpx;
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+.emotion-label {
+  font-size: 18rpx;
+  color: #AE9D92;
+  line-height: 1;
+}
+
+.label-active {
+  color: #E8855A;
+  font-weight: 600;
+}
+
 .emotion-dot {
-  width: 8rpx;
-  height: 8rpx;
-  border-radius: 50%;
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: 50% 60% 40% 55%;
   background: #E8855A;
+  margin-top: 2rpx;
 }
 
 /* ── 照片区域 ── */
@@ -592,32 +619,28 @@ async function handleDone() {
 
 .ai-btn {
   background: linear-gradient(135deg, #E8855A, #F0A882);
-  box-shadow: 0 4rpx 12rpx rgba(232, 133, 90, 0.3);
+  box-shadow: 2px 3px 0 rgba(232, 133, 90, 0.2);
+  gap: 6rpx;
 }
 
 .ai-btn-text {
   color: #FFFFFF;
-}
-
-.ai-loading-icon {
   font-size: 28rpx;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  font-weight: 600;
 }
 
 .style-btn,
 .voice-btn {
-  border: 2rpx solid #E8855A;
+  border: 3rpx solid #E8855A;
   background: transparent;
+  gap: 6rpx;
 }
 
 .style-btn-text,
 .voice-btn-text {
   color: #E8855A;
+  font-size: 28rpx;
+  font-weight: 600;
 }
 
 /* ── 标签选择弹窗 ── */

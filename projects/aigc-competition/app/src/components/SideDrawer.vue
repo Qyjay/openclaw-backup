@@ -117,56 +117,56 @@ function navigate(page: string) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 24px 24px;
-  gap: 8px;
+  padding: 80rpx 48rpx 48rpx;
+  gap: 16rpx;
 }
 
 .user-avatar {
-  width: 72px;
-  height: 72px;
+  width: 144rpx;
+  height: 144rpx;
   border-radius: 50%;
-  border: 3px solid #E8855A;
+  border: 6rpx solid #E8855A;
 }
 
 .user-info {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 8rpx;
 }
 
 .user-name {
-  font-size: 18px;
+  font-size: 36rpx;
   font-weight: 700;
   color: #2C1F14;
 }
 
 .user-school {
-  font-size: 13px;
+  font-size: 26rpx;
   color: #4A3628;
 }
 
 .user-stats {
-  font-size: 12px;
+  font-size: 24rpx;
   color: #AE9D92;
-  margin-top: 4px;
+  margin-top: 8rpx;
 }
 
 .divider {
-  height: 1px;
+  height: 2rpx;
   background: rgba(0, 0, 0, 0.06);
-  margin: 8px 16px;
+  margin: 16rpx 32rpx;
 }
 
 .nav-list {
-  padding: 8px 0;
+  padding: 16rpx 0;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 14px 24px;
+  gap: 24rpx;
+  padding: 28rpx 48rpx;
   transition: background 0.15s;
 }
 
@@ -175,36 +175,36 @@ function navigate(page: string) {
 }
 
 .nav-icon {
-  font-size: 20px;
+  font-size: 40rpx;
 }
 
 .nav-label {
-  font-size: 15px;
+  font-size: 30rpx;
   color: #2C1F14;
   font-weight: 500;
 }
 
 .insight-card {
-  padding: 20px 24px;
+  padding: 40rpx 48rpx;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 12rpx;
 }
 
 .insight-title {
-  font-size: 15px;
+  font-size: 30rpx;
   font-weight: 600;
   color: #2C1F14;
 }
 
 .insight-stars {
-  font-size: 16px;
+  font-size: 32rpx;
   color: #E8855A;
-  letter-spacing: 2px;
+  letter-spacing: 4rpx;
 }
 
 .insight-tip {
-  font-size: 13px;
+  font-size: 26rpx;
   color: #4A3628;
 }
 

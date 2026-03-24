@@ -91,10 +91,12 @@
 
       <!-- 操作按钮 -->
       <view class="cta-primary" @click="handleShare">
-        <text class="cta-primary-text">📤 分享到...</text>
+        <DoodleIcon name="share" :size="36" color="#FFFFFF" style="margin-right: 12rpx;" />
+        <text class="cta-primary-text">分享到...</text>
       </view>
       <view class="cta-secondary" @click="handleSave">
-        <text class="cta-secondary-text">💾 保存图片</text>
+        <DoodleIcon name="camera" :size="36" color="#4A3628" style="margin-right: 12rpx;" />
+        <text class="cta-secondary-text">保存图片</text>
       </view>
     </view>
   </view>
@@ -105,6 +107,7 @@ import { ref, computed, onMounted } from 'vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
 import { getDiaryDetail } from '@/services/api/diary'
 import type { Diary } from '@/services/api/diary'
+import DoodleIcon from '@/components/DoodleIcon.vue'
 
 const templates = [
   { id: 'warm', name: '暖阳', bg: 'linear-gradient(135deg, #FDF0E8, #F7CDB5)', textColor: '#2C1F14' },
@@ -178,18 +181,18 @@ onMounted(async () => {
 
 .page-scroll {
   position: absolute;
-  top: 88px;
+  top: 176rpx;
   left: 0;
   right: 0;
   bottom: 0;
   overflow-y: auto;
-  padding: 16px 16px 32px;
+  padding: 32rpx 32rpx 64rpx;
 }
 
 .card-preview-wrap {
   display: flex;
   justify-content: center;
-  margin: 8px 0 16px;
+  margin: 16rpx 0 32rpx;
 }
 
 .card-preview {
@@ -219,20 +222,20 @@ onMounted(async () => {
 .card-divider {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 16rpx;
   width: 100%;
   margin-bottom: 32rpx;
 }
 
 .divider-line {
   flex: 1;
-  height: 1px;
+  height: 2rpx;
   background: currentColor;
   opacity: 0.25;
 }
 
 .divider-dot {
-  font-size: 12px;
+  font-size: 24rpx;
   opacity: 0.4;
 }
 
@@ -251,7 +254,7 @@ onMounted(async () => {
   flex-direction: column;
   align-items: center;
   gap: 12rpx;
-  margin-top: 16px;
+  margin-top: 32rpx;
 }
 
 .card-meta {
@@ -272,7 +275,7 @@ onMounted(async () => {
 }
 
 .card-location {
-  margin-top: 4px;
+  margin-top: 8rpx;
 }
 
 .card-location-text {
@@ -281,7 +284,7 @@ onMounted(async () => {
 }
 
 .card-brand {
-  margin-top: 8px;
+  margin-top: 16rpx;
 }
 
 .card-brand-text {
@@ -290,11 +293,11 @@ onMounted(async () => {
 }
 
 .section-label {
-  font-size: 13px;
+  font-size: 26rpx;
   font-weight: 600;
   color: #AE9D92;
-  margin-bottom: 10px;
-  margin-top: 8px;
+  margin-bottom: 20rpx;
+  margin-top: 16rpx;
 }
 
 .template-scroll {
@@ -305,8 +308,8 @@ onMounted(async () => {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  margin-right: 12px;
+  gap: 12rpx;
+  margin-right: 24rpx;
   cursor: pointer;
 }
 
@@ -323,7 +326,7 @@ onMounted(async () => {
 }
 
 .template-name {
-  font-size: 12px;
+  font-size: 24rpx;
   color: #4A3628;
 }
 
@@ -331,31 +334,31 @@ onMounted(async () => {
   background: #FFFFFF;
   border-radius: 16rpx;
   box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
-  margin-bottom: 20px;
+  margin-bottom: 40rpx;
 }
 
 .custom-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 16px;
+  padding: 28rpx 32rpx;
 }
 
 .custom-label {
-  font-size: 15px;
+  font-size: 30rpx;
   color: #2C1F14;
   font-weight: 500;
 }
 
 .font-size-btns {
   display: flex;
-  gap: 8px;
+  gap: 16rpx;
 }
 
 .font-btn {
   background: #F5F0EB;
-  border-radius: 8px;
-  padding: 6px 12px;
+  border-radius: 16rpx;
+  padding: 12rpx 24rpx;
   cursor: pointer;
   border: 1px solid transparent;
   transition: all 0.2s;
@@ -367,7 +370,7 @@ onMounted(async () => {
 }
 
 .font-btn-text {
-  font-size: 13px;
+  font-size: 26rpx;
   color: #4A3628;
   font-weight: 500;
 }
@@ -377,25 +380,25 @@ onMounted(async () => {
 }
 
 .custom-divider {
-  height: 1px;
+  height: 2rpx;
   background: rgba(44, 31, 20, 0.05);
-  margin: 0 16px;
+  margin: 0 32rpx;
 }
 
 .cta-primary {
   background: linear-gradient(135deg, #E8855A, #F0A882);
   border-radius: 40rpx;
-  padding: 15px;
+  padding: 30rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: 20rpx;
   box-shadow: 0 4px 16px rgba(232, 133, 90, 0.35);
   &:active { transform: scale(0.98); }
 }
 
 .cta-primary-text {
-  font-size: 16px;
+  font-size: 32rpx;
   font-weight: 600;
   color: #FFFFFF;
 }
@@ -403,7 +406,7 @@ onMounted(async () => {
 .cta-secondary {
   background: #FFFFFF;
   border-radius: 40rpx;
-  padding: 15px;
+  padding: 30rpx;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -412,7 +415,7 @@ onMounted(async () => {
 }
 
 .cta-secondary-text {
-  font-size: 16px;
+  font-size: 32rpx;
   font-weight: 500;
   color: #4A3628;
 }

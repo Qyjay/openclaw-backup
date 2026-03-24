@@ -39,7 +39,10 @@
 
       <!-- Competition Info -->
       <view class="section-title">
-        <text class="section-title-text">🏆 比赛信息</text>
+        <view class="section-title-row">
+          <DoodleIcon name="trophy" color="#C8A86B" :size="36" />
+          <text class="section-title-text">比赛信息</text>
+        </view>
       </view>
       <view class="info-card">
         <view class="info-row">
@@ -65,11 +68,16 @@
 
       <!-- Features -->
       <view class="section-title">
-        <text class="section-title-text">✨ 核心功能</text>
+        <view class="section-title-row">
+          <DoodleIcon name="sparkle" color="#C8A86B" :size="36" />
+          <text class="section-title-text">核心功能</text>
+        </view>
       </view>
       <view class="feature-grid">
-        <view class="feature-item" v-for="f in features" :key="f.icon">
-          <text class="feature-icon">{{ f.icon }}</text>
+        <view class="feature-item press-feedback" v-for="f in features" :key="f.iconName">
+          <view class="feature-icon-wrap doodle-box-v2" :class="f.boxClass">
+            <DoodleIcon :name="f.iconName" :color="f.iconColor" :size="48" />
+          </view>
           <text class="feature-name">{{ f.name }}</text>
         </view>
       </view>
@@ -85,14 +93,15 @@
 
 <script setup lang="ts">
 import CustomNavBar from '@/components/CustomNavBar.vue'
+import DoodleIcon from '@/components/DoodleIcon.vue'
 
 const features = [
-  { icon: '📔', name: 'AI 日记' },
-  { icon: '🎨', name: '心情漫画' },
-  { icon: '🔮', name: 'AI 运势' },
-  { icon: '🍅', name: '番茄钟' },
-  { icon: '🤖', name: 'AI 对话' },
-  { icon: '📊', name: '成长数据' },
+  { iconName: 'book',    iconColor: '#E8855A', boxClass: 'func-color-diary',  name: 'AI 日记' },
+  { iconName: 'grid',    iconColor: '#5CA06E', boxClass: 'func-color-comic',  name: '心情漫画' },
+  { iconName: 'crystal', iconColor: '#D4728A', boxClass: 'func-color-fortune',name: 'AI 运势' },
+  { iconName: 'tomato',  iconColor: '#E8855A', boxClass: 'func-color-diary',  name: '番茄钟' },
+  { iconName: 'robot',   iconColor: '#9B72C8', boxClass: 'func-color-novel',  name: 'AI 对话' },
+  { iconName: 'chart',   iconColor: '#C8A86B', boxClass: 'func-color-growth', name: '成长数据' },
 ]
 </script>
 
@@ -109,26 +118,26 @@ const features = [
 
 .page-scroll {
   position: absolute;
-  top: 88px;
+  top: 176rpx;
   left: 0;
   right: 0;
   bottom: 0;
   overflow-y: auto;
-  padding: 20px 16px;
+  padding: 40rpx 32rpx;
 }
 
 .logo-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 24px 0 32px;
+  gap: 16rpx;
+  padding: 48rpx 0 64rpx;
 }
 
 .logo-wrap {
-  width: 80px;
-  height: 80px;
-  border-radius: 20px;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 40rpx;
   background: linear-gradient(135deg, #E8855A, #F0A882);
   display: flex;
   align-items: center;
@@ -140,34 +149,34 @@ const features = [
 .logo-img { width: 100%; height: 100%; }
 
 .app-name {
-  font-size: 24px;
+  font-size: 48rpx;
   font-weight: 700;
   color: #2C1F14;
 }
 
 .app-slogan {
-  font-size: 14px;
+  font-size: 28rpx;
   color: #857268;
 }
 
 .version-badge {
   background: rgba(232, 133, 90, 0.10);
-  border-radius: 9999px;
-  padding: 4px 14px;
-  margin-top: 4px;
+  border-radius: 19998rpx;
+  padding: 8rpx 28rpx;
+  margin-top: 8rpx;
 }
 
 .version-text {
-  font-size: 13px;
+  font-size: 26rpx;
   color: #E8855A;
   font-weight: 600;
 }
 
 .info-card {
   background: #FFFFFF;
-  border-radius: 16px;
-  padding: 4px 0;
-  margin-bottom: 16px;
+  border-radius: 32rpx;
+  padding: 8rpx 0;
+  margin-bottom: 32rpx;
   box-shadow: 0 1px 6px rgba(44, 31, 20, 0.06);
 }
 
@@ -175,31 +184,37 @@ const features = [
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 16px;
+  padding: 28rpx 32rpx;
 }
 
 .info-label {
-  font-size: 14px;
+  font-size: 28rpx;
   color: #4A3628;
 }
 
 .info-value {
-  font-size: 14px;
+  font-size: 28rpx;
   color: #857268;
 }
 
 .info-divider {
-  height: 1px;
+  height: 2rpx;
   background: rgba(44, 31, 20, 0.05);
-  margin: 0 16px;
+  margin: 0 32rpx;
 }
 
 .section-title {
-  margin-bottom: 10px;
+  margin-bottom: 20rpx;
+}
+
+.section-title-row {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
 }
 
 .section-title-text {
-  font-size: 16px;
+  font-size: 32rpx;
   font-weight: 600;
   color: #2C1F14;
 }
@@ -207,25 +222,34 @@ const features = [
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-bottom: 32px;
+  gap: 20rpx;
+  margin-bottom: 64rpx;
 }
 
 .feature-item {
   background: #FFFFFF;
-  border-radius: 12px;
-  padding: 16px 8px;
+  border-radius: 28rpx 36rpx 24rpx 32rpx;
+  padding: 32rpx 16rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  box-shadow: 0 1px 4px rgba(44, 31, 20, 0.05);
+  gap: 16rpx;
+  box-shadow: 1px 2px 0 rgba(232, 133, 90, 0.08), 0 1px 4px rgba(44, 31, 20, 0.05);
+  border: 1px solid rgba(232, 133, 90, 0.08);
 }
 
-.feature-icon { font-size: 24px; }
+.feature-icon-wrap {
+  width: 96rpx;
+  height: 96rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-width: 1.5px;
+  border-style: solid;
+}
 
 .feature-name {
-  font-size: 12px;
+  font-size: 24rpx;
   color: #4A3628;
   text-align: center;
 }
@@ -234,12 +258,12 @@ const features = [
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  padding: 16px 0 32px;
+  gap: 8rpx;
+  padding: 32rpx 0 64rpx;
 }
 
 .footer-text {
-  font-size: 12px;
+  font-size: 24rpx;
   color: #AE9D92;
 }
 </style>

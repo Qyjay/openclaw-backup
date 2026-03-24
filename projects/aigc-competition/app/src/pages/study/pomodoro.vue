@@ -4,16 +4,23 @@
     <CustomNavBar
       title="番茄钟 Pro"
       left-icon="back"
-      right-icon="📊"
       @right-click="showStats = !showStats"
-    />
+    >
+      <template #right>
+        <view class="nav-stats-btn" @click="showStats = !showStats">
+          <DoodleIcon name="chart" color="#8A7668" :size="40" />
+        </view>
+      </template>
+    </CustomNavBar>
 
     <scroll-view class="page-scroll" scroll-y>
 
       <!-- AI 对话区 -->
       <view class="ai-chat-card">
         <view class="ai-bubble bot">
-          <text class="bubble-icon">🤖</text>
+          <view class="bot-avatar doodle-box-v3">
+            <DoodleIcon name="robot" color="#FFFFFF" :size="18" :filtered="false" />
+          </view>
           <text class="bubble-text">{{ aiMessages[currentAiIndex].text }}</text>
         </view>
 
@@ -22,14 +29,18 @@
             <text class="bubble-text">{{ taskInput }}</text>
           </view>
           <view v-if="phase !== 'completed'" class="ai-bubble bot">
-            <text class="bubble-icon">🤖</text>
+            <view class="bot-avatar doodle-box-v3">
+              <DoodleIcon name="robot" color="#FFFFFF" :size="36" :filtered="false" />
+            </view>
             <text class="bubble-text">{{ aiEncouragement }}</text>
           </view>
         </template>
 
         <template v-if="phase === 'completed'">
           <view class="ai-bubble bot">
-            <text class="bubble-icon">🤖</text>
+            <view class="bot-avatar doodle-box-v3">
+              <DoodleIcon name="robot" color="#FFFFFF" :size="36" :filtered="false" />
+            </view>
             <text class="bubble-text">做得好！要记录结果吗？</text>
           </view>
         </template>
@@ -83,24 +94,27 @@
         <!-- 控制按钮 -->
         <view class="timer-controls">
           <template v-if="phase === 'ready'">
-            <view class="btn-primary btn-large" @click="startCountdown">
-              <text>▶ 开始专注</text>
+            <view class="btn-primary btn-large press-feedback" @click="startCountdown">
+              <DoodleIcon name="check" color="#FFFFFF" :size="36" :filtered="false" />
+              <text>开始专注</text>
             </view>
           </template>
           <template v-else-if="phase === 'running'">
-            <view class="btn-warn" @click="pauseTimer">
-              <text>⏸ 暂停</text>
+            <view class="btn-warn press-feedback" @click="pauseTimer">
+              <text>暂停</text>
             </view>
-            <view class="btn-ghost" @click="giveUp">
-              <text>✕ 放弃</text>
+            <view class="btn-ghost press-feedback" @click="giveUp">
+              <DoodleIcon name="cross" color="#AE9D92" :size="32" />
+              <text>放弃</text>
             </view>
           </template>
           <template v-else-if="phase === 'paused'">
-            <view class="btn-primary btn-large" @click="resumeTimer">
-              <text>▶ 继续</text>
+            <view class="btn-primary btn-large press-feedback" @click="resumeTimer">
+              <text>继续</text>
             </view>
-            <view class="btn-ghost" @click="giveUp">
-              <text>✕ 放弃</text>
+            <view class="btn-ghost press-feedback" @click="giveUp">
+              <DoodleIcon name="cross" color="#AE9D92" :size="32" />
+              <text>放弃</text>
             </view>
           </template>
           <template v-else-if="phase === 'completed'">
@@ -112,8 +126,9 @@
                 placeholder-class="input-placeholder"
               />
             </view>
-            <view class="btn-primary btn-large" @click="recordResult">
-              <text>✓ 记录</text>
+            <view class="btn-primary btn-large press-feedback" @click="recordResult">
+              <DoodleIcon name="check" color="#FFFFFF" :size="36" :filtered="false" />
+              <text>记录</text>
             </view>
           </template>
         </view>
@@ -137,17 +152,22 @@
           <!-- 分类标签 -->
           <view class="tag-chips">
             <view class="tag-chip tag-chip--success">
-              <text>🎯 雅思阅读</text>
+              <DoodleIcon name="target" color="#6BA87B" :size="14" />
+              <text> 雅思阅读</text>
               <text class="chip-count">×3</text>
             </view>
             <view class="tag-chip tag-chip--info">
-              <text>📊 编程</text>
+              <DoodleIcon name="bookopen" color="#6B8EB4" :size="14" />
+              <text> 编程</text>
               <text class="chip-count">×1</text>
             </view>
           </view>
 
           <!-- 本周趋势柱状图 -->
-          <text class="stats-sub-title">📈 本周趋势</text>
+          <view class="stats-sub-title-row">
+            <DoodleIcon name="chart" color="#C8A86B" :size="16" />
+            <text class="stats-sub-title"> 本周趋势</text>
+          </view>
           <view class="bar-chart">
             <view
               v-for="day in weekData"
@@ -175,6 +195,7 @@
 <script setup lang="ts">
 import { ref, computed, onUnmounted } from 'vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
+import DoodleIcon from '@/components/DoodleIcon.vue'
 
 const SectionTitle = {
   props: { title: String },
@@ -322,9 +343,13 @@ onUnmounted(() => {
   overflow: hidden;
 }
 
+.nav-stats-btn {
+  padding: 8rpx;
+}
+
 .page-scroll {
   position: absolute;
-  top: 44px;
+  top: 88rpx;
   left: 0;
   right: 0;
   bottom: 0;
@@ -350,7 +375,17 @@ onUnmounted(() => {
 .ai-bubble.bot { align-self: flex-start; }
 .ai-bubble.user { align-self: flex-end; flex-direction: row-reverse; }
 
-.bubble-icon { font-size: 32rpx; flex-shrink: 0; margin-top: 2rpx; }
+.bot-avatar {
+  width: 32rpx;
+  height: 32rpx;
+  background: linear-gradient(135deg, #E8855A, #F0A882);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rpx;
+}
+
 .bubble-text {
   background: #FFFFFF;
   border-radius: 20rpx;
@@ -500,17 +535,16 @@ onUnmounted(() => {
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
 }
 
-/* ── 按钮 ── */
 .btn-primary {
   background: #E8855A;
-  border-radius: 48rpx;
+  border-radius: 28rpx 36rpx 24rpx 32rpx;
   padding: 20rpx 56rpx;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.15s;
-  &:active { opacity: 0.85; }
+  gap: 8rpx;
+  box-shadow: 2px 3px 0 rgba(232, 133, 90, 0.2);
   text { font-size: 32rpx; font-weight: 600; color: #FFFFFF; }
 }
 
@@ -521,26 +555,26 @@ onUnmounted(() => {
 
 .btn-warn {
   background: #E8A94E;
-  border-radius: 48rpx;
+  border-radius: 28rpx 36rpx 24rpx 32rpx;
   padding: 20rpx 48rpx;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  &:active { opacity: 0.85; }
+  gap: 8rpx;
   text { font-size: 32rpx; font-weight: 600; color: #FFFFFF; }
 }
 
 .btn-ghost {
   background: transparent;
-  border: 2rpx solid #D4C4B8;
-  border-radius: 48rpx;
+  border: 3rpx solid #D4C4B8;
+  border-radius: 28rpx 36rpx 24rpx 32rpx;
   padding: 18rpx 48rpx;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  &:active { opacity: 0.7; }
+  gap: 8rpx;
   text { font-size: 32rpx; color: #AE9D92; }
 }
 
@@ -622,11 +656,16 @@ onUnmounted(() => {
   color: #2C1F14;
 }
 
+.stats-sub-title-row {
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+  margin-bottom: 16rpx;
+}
+
 .stats-sub-title {
   font-size: 28rpx;
   color: #4A3628;
-  display: block;
-  margin-bottom: 16rpx;
 }
 
 .bar-chart {
