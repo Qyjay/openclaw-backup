@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.22",
-    "lastTouchedAt": "2026-03-23T12:38:18.271Z"
+    "lastTouchedAt": "2026-03-24T02:15:48.879Z"
   },
   "wizard": {
     "lastRunAt": "2026-02-02T08:28:08.796Z",
@@ -290,6 +290,24 @@
           "name": "Babette Lucy",
           "emoji": "🔮",
           "avatar": "avatars/bb.png"
+        }
+      },
+      {
+        "id": "scribe",
+        "name": "Muse",
+        "workspace": "~/.openclaw/workspace-scribe",
+        "agentDir": "~/.openclaw/agents/scribe/agent",
+        "model": {
+          "primary": "claude-api/claude-sonnet-4-6"
+        },
+        "skills": [
+          "ai-prompt-optimizer-cn",
+          "multi-search-engine",
+          "google-trends"
+        ],
+        "identity": {
+          "name": "Muse",
+          "emoji": "✍️"
         }
       }
     ]
