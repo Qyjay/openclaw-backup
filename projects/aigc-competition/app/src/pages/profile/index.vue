@@ -17,7 +17,7 @@
     <scroll-view class="page-scroll" scroll-y :style="{ height: scrollHeight + 'px' }">
 
       <!-- 用户卡片 -->
-      <view class="profile-card">
+      <view class="profile-card" @click="goEditProfile">
         <view class="profile-avatar-wrap">
           <view class="profile-avatar">
             <image class="profile-avatar-img" src="/static/brand/logo-d-mascot.png" mode="aspectFill" />
@@ -33,6 +33,9 @@
             <DoodleIcon name="star" :size="28" color="#FFFFFF" style="margin-right: 8rpx;" />
             <text class="profile-title-text">探索者</text>
           </view>
+        </view>
+        <view class="profile-edit-icon">
+          <DoodleIcon name="pen" :size="36" color="rgba(255,255,255,0.85)" />
         </view>
         <text class="deco-star profile-deco-1">✦</text>
         <text class="deco-star profile-deco-2">✧</text>
@@ -158,6 +161,10 @@ function navTo(path: string) {
   uni.navigateTo({ url: path })
 }
 
+function goEditProfile() {
+  uni.navigateTo({ url: '/pages/profile/edit' })
+}
+
 function openSettings() {
   uni.navigateTo({ url: '/pages/profile/settings' })
 }
@@ -276,6 +283,19 @@ onMounted(async () => {
 .deco-star { position: absolute; color: rgba(255,255,255,0.50); pointer-events: none; }
 .profile-deco-1 { top: 24rpx; right: 36rpx; font-size: 32rpx; }
 .profile-deco-2 { bottom: 28rpx; right: 72rpx; font-size: 20rpx; }
+
+.profile-edit-icon {
+  position: absolute;
+  top: 24rpx;
+  right: 28rpx;
+  width: 56rpx;
+  height: 56rpx;
+  background: rgba(255,255,255,0.18);
+  border-radius: 19998rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* ── 统计卡 ── */
 .stats-card {

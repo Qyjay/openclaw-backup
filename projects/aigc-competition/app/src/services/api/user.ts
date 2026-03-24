@@ -90,3 +90,9 @@ export async function getSemesterReport(): Promise<SemesterReport> {
   const res = await uni.request({ url: `${API_BASE_URL}/user/semester-report` })
   return res.data as any
 }
+
+export async function updateUserProfile(data: Partial<UserProfile>): Promise<UserProfile> {
+  if (USE_MOCK) return mock.updateUserProfile(data)
+  const res = await uni.request({ url: `${API_BASE_URL}/user/profile`, method: 'POST', data })
+  return res.data as any
+}

@@ -102,6 +102,10 @@ export function updateSettings(data: Partial<Settings>): Settings {
   return { ...getSettings(), ...data }
 }
 
+export function updateUserProfile(data: Partial<UserProfile>): UserProfile {
+  return { ...getUserProfile(), ...data }
+}
+
 export function getSemesterReport(): SemesterReport {
   return {
     totalDiaries: 127,
