@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev:custom": "uni -p",
+    "test": "node scripts/test-units.js",
     "dev:h5": "uni",
     "dev:h5:ssr": "uni --ssr",
     "dev:mp-alipay": "uni -p mp-alipay",
