@@ -41,5 +41,9 @@ export async function deleteAnniversary(id: string): Promise<void> {
 
 export async function getTodayAnniversaries(): Promise<TodayAnniversary> {
   if (USE_MOCK) return mock.getTodayAnniversaries()
-  return request<TodayAnniversary>({ url: '/anniversaries/today' })
+  const res = await request<{ today: any[]; on_this_day: any[] }>({ url: '/anniversaries/today' })
+  return {
+    anniversaries: res.today || [],
+    thisDateInHistory: (res.on_this_day || []).map((d: any) => ({ diary: d, yearsAgo: 0 })),
+  }
 }

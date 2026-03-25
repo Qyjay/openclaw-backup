@@ -249,11 +249,13 @@ async function loadAnniversaryData() {
       getTodayAnniversaries(),
       getTodaySummary(today),
     ])
-    todayAnniversaries.value = todayData.anniversaries
-    todayHistory.value = todayData.thisDateInHistory
+    todayAnniversaries.value = todayData?.anniversaries || []
+    todayHistory.value = todayData?.thisDateInHistory || []
     todaySummary.value = summary
   } catch {
-    // silently ignore
+    todayAnniversaries.value = []
+    todayHistory.value = []
+    todaySummary.value = null
   }
 }
 
