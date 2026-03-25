@@ -664,8 +664,8 @@ function forceClose() {
   right: 0;
   z-index: 100;
   background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(8rpx);
+  -webkit-backdrop-filter: blur(8rpx);
   box-shadow: 0 -2rpx 12rpx rgba(0, 0, 0, 0.06);
   padding: 16rpx 24rpx;
   padding-bottom: calc(16rpx + env(safe-area-inset-bottom));

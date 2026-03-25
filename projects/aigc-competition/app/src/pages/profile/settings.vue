@@ -8,6 +8,52 @@
     <scroll-view class="scroll" scroll-y :style="{ height: scrollHeight + 'px' }">
       <view class="content">
 
+        <!-- ── AI 写作偏好 ── -->
+        <view class="card">
+          <text class="card-title">── AI 写作偏好 ──</text>
+
+          <view class="row" @click="showStylePickerFn">
+            <text class="row-label">写作风格</text>
+            <view class="row-right">
+              <text class="row-value">{{ writingStyles[writingStyleIndex] }}▼</text>
+            </view>
+          </view>
+
+          <!-- 风格标签选择 -->
+          <view class="style-tags-wrap">
+            <text class="style-tags-label">风格标签（可多选）</text>
+            <view class="style-tags">
+              <view
+                v-for="tag in styleTagOptions"
+                :key="tag"
+                class="style-tag"
+                :class="{ 'style-tag-selected': selectedStyleTags.includes(tag) }"
+                @click="toggleStyleTag(tag)"
+              >
+                <text class="style-tag-text">{{ tag }}</text>
+              </view>
+            </view>
+          </view>
+
+          <view class="row row-border">
+            <text class="row-label">个性化提示词</text>
+          </view>
+          <view class="prompt-input-wrap">
+            <textarea
+              v-model="customPrompt"
+              class="prompt-input"
+              placeholder="输入你希望AI写作时遵循的风格描述..."
+              :placeholder-style="'color: #D4C4B8; font-size: 26rpx;'"
+              maxlength="200"
+            />
+            <text class="prompt-count">{{ customPrompt.length }}/200</text>
+          </view>
+
+          <view class="save-prompt-btn press-feedback" @click="saveWritingPrefs">
+            <text class="save-prompt-text">保存偏好设置</text>
+          </view>
+        </view>
+
         <!-- ── 通知设置 ── -->
         <view class="card">
           <text class="card-title">── 通知设置 ──</text>
@@ -188,6 +234,36 @@ onMounted(() => {
   scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 0
 })
 
+// ── AI 写作偏好 ──
+const writingStyles = ['文艺', '幽默', '简洁', '温暖', '中二', '古风', '科幻', '电影']
+const writingStyleIndex = ref(2)
+const styleTagOptions = ['善用比喻', '多用细节', '情感充沛', '简短干练', '哲理感', '画面感强', '幽默自嘲', '诗意唯美']
+const selectedStyleTags = ref<string[]>(['情感充沛', '画面感强'])
+const customPrompt = ref('')
+
+function showStylePickerFn() {
+  uni.showActionSheet({
+    itemList: writingStyles,
+    success: (res) => {
+      writingStyleIndex.value = res.tapIndex
+      uni.showToast({ title: `已选择「${writingStyles[res.tapIndex]}」风格`, icon: 'none' })
+    }
+  })
+}
+
+function toggleStyleTag(tag: string) {
+  const idx = selectedStyleTags.value.indexOf(tag)
+  if (idx >= 0) {
+    selectedStyleTags.value.splice(idx, 1)
+  } else {
+    selectedStyleTags.value.push(tag)
+  }
+}
+
+function saveWritingPrefs() {
+  uni.showToast({ title: '写作偏好已保存 ✓', icon: 'success' })
+}
+
 // ── 通知 ──
 const notify = reactive({
   diary: true,
@@ -361,6 +437,87 @@ function onLogout() {
   padding: 32rpx 0;
   min-height: 104rpx;
   box-sizing: border-box;
+}
+
+/* ── AI 写作偏好 ── */
+.style-tags-wrap {
+  padding: 0 0 20rpx;
+  border-top: 1rpx solid rgba(174, 157, 146, 0.1);
+}
+
+.style-tags-label {
+  font-size: 24rpx;
+  color: #AE9D92;
+  display: block;
+  margin: 16rpx 0 12rpx;
+}
+
+.style-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.style-tag {
+  padding: 8rpx 20rpx;
+  border-radius: 20rpx;
+  background: #F5F0EB;
+  border: 2rpx solid #EAE0D6;
+  cursor: pointer;
+  &:active { transform: scale(0.95); }
+}
+
+.style-tag-selected {
+  background: #FDF0E8;
+  border-color: #E8855A;
+}
+
+.style-tag-text {
+  font-size: 24rpx;
+  color: #4A3628;
+  .style-tag-selected & { color: #E8855A; font-weight: 600; }
+}
+
+.prompt-input-wrap {
+  border-top: 1rpx solid rgba(174, 157, 146, 0.1);
+  padding: 16rpx 0;
+  position: relative;
+}
+
+.prompt-input {
+  width: 100%;
+  min-height: 120rpx;
+  font-size: 28rpx;
+  color: #4A3628;
+  line-height: 1.6;
+  background: #FDF8F3;
+  border-radius: 12rpx;
+  padding: 16rpx;
+  box-sizing: border-box;
+  border: 2rpx solid #EAE0D6;
+}
+
+.prompt-count {
+  font-size: 22rpx;
+  color: #AE9D92;
+  display: block;
+  text-align: right;
+  margin-top: 6rpx;
+}
+
+.save-prompt-btn {
+  background: linear-gradient(135deg, #E8855A, #F0A882);
+  border-radius: 20rpx;
+  padding: 20rpx;
+  text-align: center;
+  margin: 0 0 24rpx;
+  &:active { opacity: 0.85; }
+}
+
+.save-prompt-text {
+  font-size: 28rpx;
+  color: #FFFFFF;
+  font-weight: 600;
 }
 
 .row-border {

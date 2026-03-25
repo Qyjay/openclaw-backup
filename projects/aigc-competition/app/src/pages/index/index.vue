@@ -29,6 +29,39 @@
       @refresherrefresh="onRefresh"
       @scrolltolower="onLoadMore"
     >
+      <!-- ── 今日纪念日提醒 ── -->
+      <view v-if="todayAnniversaries.length > 0" class="anniversary-card stagger-item press-feedback" @click="goAnniversary">
+        <view class="ann-card-left">
+          <text class="ann-card-icon">🎉</text>
+          <view class="ann-card-info">
+            <text class="ann-card-title">今日纪念日</text>
+            <text class="ann-card-name">{{ todayAnniversaries[0].title }}</text>
+          </view>
+        </view>
+        <text class="ann-card-arrow">›</text>
+      </view>
+
+      <!-- ── 那年今日 ── -->
+      <view v-if="todayHistory.length > 0" class="memory-card stagger-item press-feedback">
+        <view class="memory-header">
+          <text class="memory-icon">📅</text>
+          <text class="memory-title">{{ todayHistory[0].yearsAgo }}年前的今天</text>
+        </view>
+        <text class="memory-excerpt">"{{ todayHistory[0].diary.content ? todayHistory[0].diary.content.slice(0, 40) + '...' : '查看回忆' }}"</text>
+      </view>
+
+      <!-- ── 素材快捷入口 ── -->
+      <view class="material-quick-entry stagger-item">
+        <view class="material-entry-left">
+          <text class="material-entry-icon">📝</text>
+          <text class="material-entry-text">今日已记录 {{ todayMaterialCount }} 条素材</text>
+        </view>
+        <view class="material-entry-btn press-feedback" @click="goWrite">
+          <DoodleIcon name="plus" color="#E8855A" :size="28" />
+          <text class="material-entry-add">添加</text>
+        </view>
+      </view>
+
       <!-- ── AI 早安/晚安卡片 ── -->
       <view v-if="greetingCardVisible" class="greeting-card stagger-item">
         <view class="greeting-inner" :class="isMorning ? 'greeting-morning' : 'greeting-night'">
@@ -127,6 +160,9 @@ import TabBar from '@/components/TabBar.vue'
 import DoodleIcon from '@/components/DoodleIcon.vue'
 import { getDiaries } from '@/services/api/diary'
 import type { Diary } from '@/services/api/diary'
+import { getTodayAnniversaries } from '@/services/api/anniversary'
+import type { Anniversary } from '@/services/api/anniversary'
+import { getMaterials } from '@/services/api/material'
 
 const drawerVisible = ref(false)
 const diaries = ref<Diary[]>([])
@@ -134,6 +170,11 @@ const loading = ref(false)
 const refreshing = ref(false)
 const page = ref(1)
 const noMore = ref(false)
+
+// 纪念日
+const todayAnniversaries = ref<Anniversary[]>([])
+const todayMaterialCount = ref(0)
+const todayHistory = ref<Array<{ diary: any; yearsAgo: number }>>([])
 
 // 状态栏 + NavBar 占位高度（px）
 const navPlaceholderHeight = ref(64) // 默认值，onMounted 后更新
@@ -151,7 +192,23 @@ onMounted(async () => {
   navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
   scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 50
   await loadDiaries(1)
+  loadAnniversaryData()
 })
+
+async function loadAnniversaryData() {
+  try {
+    const today = new Date().toISOString().slice(0, 10)
+    const [todayData, materials] = await Promise.all([
+      getTodayAnniversaries(),
+      getMaterials(today),
+    ])
+    todayAnniversaries.value = todayData.anniversaries
+    todayHistory.value = todayData.thisDateInHistory
+    todayMaterialCount.value = materials.length
+  } catch {
+    // silently ignore
+  }
+}
 
 async function loadDiaries(p: number, append = false) {
   loading.value = true
@@ -235,6 +292,10 @@ function getInsightText(groupIndex: number, diaryIndex: number): string {
   return insightTexts[idx]
 }
 
+function goAnniversary() {
+  uni.navigateTo({ url: '/pages/anniversary/index' })
+}
+
 // ── 跳转 ──
 function goDetail(id: string) {
   uni.navigateTo({ url: `/pages/diary/detail?id=${id}` })
@@ -278,6 +339,128 @@ function onActionClick(payload: { action: string; diaryId: string }) {
 /* ── AI 早安/晚安卡片 ── */
 .greeting-card {
   margin: 16rpx 24rpx 0;
+}
+
+/* ── 纪念日提醒卡 ── */
+.anniversary-card {
+  margin: 16rpx 24rpx 0;
+  background: linear-gradient(135deg, #FDF0E8, #FFF5EE);
+  border-radius: 20rpx 24rpx 18rpx 22rpx;
+  padding: 20rpx 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2rpx solid rgba(232, 133, 90, 0.2);
+  box-shadow: 2px 3px 0 rgba(232, 133, 90, 0.08);
+  &:active { opacity: 0.85; }
+}
+
+.ann-card-left {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.ann-card-icon {
+  font-size: 40rpx;
+}
+
+.ann-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.ann-card-title {
+  font-size: 24rpx;
+  color: #AE9D92;
+}
+
+.ann-card-name {
+  font-size: 30rpx;
+  color: #E8855A;
+  font-weight: 600;
+}
+
+.ann-card-arrow {
+  font-size: 40rpx;
+  color: #E8855A;
+}
+
+/* ── 那年今日 ── */
+.memory-card {
+  margin: 12rpx 24rpx 0;
+  background: rgba(174, 157, 146, 0.08);
+  border-radius: 16rpx 20rpx 14rpx 18rpx;
+  padding: 16rpx 24rpx;
+  border: 1rpx dashed #D4C4B8;
+  &:active { opacity: 0.85; }
+}
+
+.memory-header {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  margin-bottom: 8rpx;
+}
+
+.memory-icon {
+  font-size: 28rpx;
+}
+
+.memory-title {
+  font-size: 24rpx;
+  color: #AE9D92;
+  font-weight: 500;
+}
+
+.memory-excerpt {
+  font-size: 28rpx;
+  color: #4A3628;
+  line-height: 1.5;
+}
+
+/* ── 素材快捷入口 ── */
+.material-quick-entry {
+  margin: 12rpx 24rpx 0;
+  background: #FFFFFF;
+  border-radius: 16rpx 20rpx 14rpx 18rpx;
+  padding: 16rpx 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.material-entry-left {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.material-entry-icon {
+  font-size: 32rpx;
+}
+
+.material-entry-text {
+  font-size: 26rpx;
+  color: #4A3628;
+}
+
+.material-entry-btn {
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+  background: rgba(232, 133, 90, 0.1);
+  border-radius: 16rpx;
+  padding: 10rpx 20rpx;
+  &:active { opacity: 0.7; }
+}
+
+.material-entry-add {
+  font-size: 26rpx;
+  color: #E8855A;
+  font-weight: 600;
 }
 
 .greeting-inner {

@@ -47,9 +47,33 @@
           </view>
         </view>
 
-        <!-- 正文 -->
+        <!-- 编辑按钮 -->
+        <view v-if="canEdit && !isEditing" class="edit-hint-row">
+          <view class="edit-hint-btn press-feedback" @click="startEdit">
+            <DoodleIcon name="pen" color="#E8855A" :size="28" />
+            <text class="edit-hint-text">编辑（剩余 {{ remainingEdits }} 次）</text>
+          </view>
+        </view>
+
+        <!-- 正文（只读/编辑） -->
         <view class="content-section">
-          <text class="diary-content">{{ diary.content }}</text>
+          <text v-if="!isEditing" class="diary-content">{{ diary.content }}</text>
+          <view v-else class="edit-section">
+            <textarea
+              v-model="editContent"
+              class="edit-textarea"
+              :auto-height="true"
+              maxlength="-1"
+            />
+            <view class="edit-actions">
+              <view class="edit-cancel press-feedback" @click="cancelEdit">
+                <text class="edit-cancel-text">取消</text>
+              </view>
+              <view class="edit-save press-feedback" :class="{ saving: editSaving }" @click="saveEdit">
+                <text class="edit-save-text">{{ editSaving ? '保存中...' : '保存修改' }}</text>
+              </view>
+            </view>
+          </view>
         </view>
 
         <!-- 位置+天气 -->
@@ -61,6 +85,27 @@
         <view v-if="diary.tags && diary.tags.length > 0" class="tags-row">
           <view v-for="tag in diary.tags" :key="tag" class="tag-chip">
             <text class="tag-text">#{{ tag }}</text>
+          </view>
+        </view>
+
+        <!-- ── 情绪趋势 ── -->
+        <view v-if="emotionTrend.length > 0" class="emotion-trend-section">
+          <view class="section-header">
+            <view class="header-line" />
+            <text class="header-label">情绪趋势</text>
+            <view class="header-line" />
+          </view>
+          <view class="emotion-trend-card">
+            <view class="emotion-chart">
+              <view v-for="(point, i) in emotionTrend" :key="i" class="chart-col">
+                <view class="chart-bar-wrap">
+                  <view class="chart-bar" :style="{ height: (point.score * 80) + 'rpx' }" />
+                </view>
+                <text class="chart-time">{{ point.hour }}时</text>
+                <text class="chart-emoji-icon">{{ getEmotionEmoji(point.label) }}</text>
+              </view>
+            </view>
+            <text class="dominant-info">主要情绪：{{ diary.emotionSummary?.dominant ?? '开心' }}</text>
           </view>
         </view>
 
@@ -93,13 +138,18 @@
               <text class="tool-label">生成</text>
               <text class="tool-name">漫画</text>
             </view>
+            <view class="tool-item" @click="handleTool('novel')">
+              <DoodleIcon name="pen" :size="48" color="#6B8EC4" class="tool-icon" />
+              <text class="tool-label">生成</text>
+              <text class="tool-name">小说</text>
+            </view>
             <view class="tool-item" @click="handleTool('share')">
               <DoodleIcon name="share" :size="48" color="#5BBF8E" class="tool-icon" />
               <text class="tool-label">分享</text>
               <text class="tool-name">卡片</text>
             </view>
             <view class="tool-item" @click="handleTool('style')">
-              <DoodleIcon name="pen" :size="48" color="#6B8EC4" class="tool-icon" />
+              <DoodleIcon name="wand" :size="48" color="#C8A86B" class="tool-icon" />
               <text class="tool-label">切换</text>
               <text class="tool-name">文风</text>
             </view>
@@ -107,11 +157,6 @@
               <DoodleIcon name="music" :size="48" color="#AE9D92" class="tool-icon" />
               <text class="tool-label">有声</text>
               <text class="tool-name">朗读</text>
-            </view>
-            <view class="tool-item" @click="handleTool('bgm')">
-              <DoodleIcon name="sparkle" :size="48" color="#E8C44E" class="tool-icon" />
-              <text class="tool-label">生成</text>
-              <text class="tool-name">BGM</text>
             </view>
             <view class="tool-item" @click="handleTool('capsule')">
               <DoodleIcon name="calendar" :size="48" color="#D4645C" class="tool-icon" />
@@ -134,7 +179,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import { getDiaryDetail } from '@/services/api/diary'
+import { getDiaryDetail, updateDiary, generateDerivative, getEmotionTrend } from '@/services/api/diary'
 import type { Diary } from '@/services/api/diary'
 import DoodleIcon from '@/components/DoodleIcon.vue'
 
@@ -143,6 +188,14 @@ const loading = ref(true)
 const currentSwiper = ref(0)
 const statusBarHeight = ref(20)
 const scrollHeight = ref(600)
+
+// 编辑状态
+const isEditing = ref(false)
+const editContent = ref('')
+const editSaving = ref(false)
+
+// 情绪趋势
+const emotionTrend = ref<Array<{ hour: number; label: string; score: number }>>([])
 
 const aiComments = [
   '又去吃酸菜鱼了！这已经是本周第3次了哦😄 要不要试试二食堂新出的麻辣烫？',
@@ -168,11 +221,29 @@ const navTitle = computed(() => {
   return `${m}月${day}日 ${w}`
 })
 
+const canEdit = computed(() => {
+  if (!diary.value) return false
+  return diary.value.editCount < diary.value.maxEdits
+})
+
+const remainingEdits = computed(() => {
+  if (!diary.value) return 0
+  return diary.value.maxEdits - diary.value.editCount
+})
+
 function formatDateTime(ts: number): string {
   const d = new Date(ts)
   const h = String(d.getHours()).padStart(2, '0')
   const min = String(d.getMinutes()).padStart(2, '0')
   return `${h}:${min}`
+}
+
+function getEmotionEmoji(label: string): string {
+  const map: Record<string, string> = {
+    '开心': '😊', '幸福': '🥰', '平静': '😌', '疲惫': '😴',
+    '满足': '😎', '难过': '😢', '烦躁': '😤', '兴奋': '🤩',
+  }
+  return map[label] ?? '😊'
 }
 
 onMounted(async () => {
@@ -187,6 +258,17 @@ onMounted(async () => {
 
   loading.value = true
   diary.value = await getDiaryDetail(id)
+
+  // Load emotion trend
+  if (diary.value) {
+    try {
+      const trend = await getEmotionTrend(diary.value.id)
+      emotionTrend.value = trend.trend
+    } catch {
+      emotionTrend.value = diary.value.emotionSummary?.trend ?? []
+    }
+  }
+
   loading.value = false
 })
 
@@ -194,11 +276,61 @@ function goBack() {
   uni.navigateBack()
 }
 
+function startEdit() {
+  if (!diary.value || !canEdit.value) return
+  editContent.value = diary.value.content
+  isEditing.value = true
+}
+
+async function saveEdit() {
+  if (!diary.value || editSaving.value) return
+  editSaving.value = true
+  try {
+    const updated = await updateDiary(diary.value.id, editContent.value)
+    diary.value = updated
+    isEditing.value = false
+    uni.showToast({ title: '修改成功 ✓', icon: 'success' })
+  } catch {
+    uni.showToast({ title: '保存失败', icon: 'none' })
+  } finally {
+    editSaving.value = false
+  }
+}
+
+function cancelEdit() {
+  isEditing.value = false
+}
+
+async function handleGenerateDerivative(type: 'comic' | 'novel' | 'share_card') {
+  if (!diary.value) return
+  uni.showLoading({ title: 'AI 生成中...', mask: true })
+  try {
+    await generateDerivative(diary.value.id, type)
+    uni.hideLoading()
+    const labels: Record<string, string> = { comic: '漫画', novel: '小说', share_card: '分享卡片' }
+    uni.showToast({ title: `${labels[type]}生成成功 ✨`, icon: 'success' })
+    if (type === 'comic') {
+      uni.navigateTo({ url: `/pages/diary/comic?id=${diary.value.id}` })
+    } else if (type === 'share_card') {
+      uni.navigateTo({ url: `/pages/diary/share-card?id=${diary.value.id}` })
+    }
+  } catch {
+    uni.hideLoading()
+    uni.showToast({ title: '生成失败，请重试', icon: 'none' })
+  }
+}
+
 function showMoreMenu() {
+  if (!diary.value) return
+  const items = canEdit.value ? [`编辑日记（剩余${remainingEdits.value}次）`, '删除日记', '标记重要'] : ['删除日记', '标记重要']
   uni.showActionSheet({
-    itemList: ['编辑日记', '删除日记', '标记重要'],
-    success: () => {
-      uni.showToast({ title: '操作成功', icon: 'none' })
+    itemList: items,
+    success: (res) => {
+      if (canEdit.value && res.tapIndex === 0) {
+        startEdit()
+      } else {
+        uni.showToast({ title: '操作成功', icon: 'none' })
+      }
     }
   })
 }
@@ -212,9 +344,11 @@ function handleTool(type: string) {
   const id = diary.value.id
 
   if (type === 'comic') {
-    uni.navigateTo({ url: `/pages/diary/comic?id=${id}` })
+    handleGenerateDerivative('comic')
   } else if (type === 'share') {
-    uni.navigateTo({ url: `/pages/diary/share-card?id=${id}` })
+    handleGenerateDerivative('share_card')
+  } else if (type === 'novel') {
+    handleGenerateDerivative('novel')
   } else if (type === 'style') {
     const styles = ['简洁', '文艺', '搞笑', '中二', '武侠', '古风', '科幻', '电影']
     uni.showActionSheet({
@@ -351,6 +485,140 @@ function handleTool(type: string) {
   background: rgba(0, 0, 0, 0.35);
   border-radius: 19998rpx;
   padding: 4rpx 16rpx;
+}
+
+/* ── 编辑提示 ── */
+.edit-hint-row {
+  padding: 12rpx 24rpx 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.edit-hint-btn {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  background: rgba(232, 133, 90, 0.08);
+  border-radius: 16rpx;
+  padding: 10rpx 20rpx;
+  &:active { opacity: 0.7; }
+}
+
+.edit-hint-text {
+  font-size: 24rpx;
+  color: #E8855A;
+  font-weight: 500;
+}
+
+/* 编辑区 */
+.edit-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.edit-textarea {
+  width: 100%;
+  min-height: 300rpx;
+  font-size: 32rpx;
+  color: #4A3628;
+  line-height: 1.8;
+  border: 2rpx solid #E8855A;
+  border-radius: 12rpx;
+  padding: 16rpx;
+  box-sizing: border-box;
+  background: #FFFDF9;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 12rpx;
+  justify-content: flex-end;
+}
+
+.edit-cancel {
+  padding: 14rpx 28rpx;
+  background: #F5F0EB;
+  border-radius: 16rpx;
+  &:active { opacity: 0.8; }
+}
+
+.edit-cancel-text {
+  font-size: 28rpx;
+  color: #4A3628;
+}
+
+.edit-save {
+  padding: 14rpx 28rpx;
+  background: linear-gradient(135deg, #E8855A, #F0A882);
+  border-radius: 16rpx;
+  &:active { opacity: 0.85; }
+
+  &.saving {
+    background: #D4C4B8;
+  }
+}
+
+.edit-save-text {
+  font-size: 28rpx;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+/* ── 情绪趋势 ── */
+.emotion-trend-section {
+  padding: 24rpx 24rpx 0;
+}
+
+.emotion-trend-card {
+  background: #F5F0EB;
+  border-radius: 16rpx;
+  padding: 20rpx;
+}
+
+.emotion-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: 8rpx;
+  margin-bottom: 12rpx;
+}
+
+.chart-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rpx;
+}
+
+.chart-bar-wrap {
+  height: 80rpx;
+  display: flex;
+  align-items: flex-end;
+  width: 32rpx;
+}
+
+.chart-bar {
+  width: 100%;
+  background: linear-gradient(to top, #E8855A, #F2B49B);
+  border-radius: 4rpx 4rpx 0 0;
+  min-height: 8rpx;
+}
+
+.chart-time {
+  font-size: 18rpx;
+  color: #AE9D92;
+  white-space: nowrap;
+}
+
+.chart-emoji-icon {
+  font-size: 24rpx;
+}
+
+.dominant-info {
+  font-size: 26rpx;
+  color: #4A3628;
+  font-weight: 500;
 }
 
 /* ── 正文 ── */

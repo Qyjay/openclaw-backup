@@ -59,6 +59,16 @@
               </view>
             </view>
           </view>
+
+          <!-- Streaming message -->
+          <view v-if="isStreaming" id="streaming-msg" class="message-wrap message-wrap--ai">
+            <view class="msg-avatar doodle-box-v3">
+              <DoodleIcon name="robot" color="#FFFFFF" :size="32" :filtered="false" />
+            </view>
+            <view class="message-bubble bubble--ai">
+              <text class="bubble-text">{{ streamingContent }}<text class="cursor-blink">|</text></text>
+            </view>
+          </view>
         </view>
       </scroll-view>
 
@@ -112,24 +122,14 @@ import CustomNavBar from '@/components/CustomNavBar.vue'
 import DoodleIcon from '@/components/DoodleIcon.vue'
 import { getUserProfile } from '@/services/api/user'
 import type { UserProfile } from '@/services/api/user'
+import { chat, getChatHistory } from '@/services/api/ai'
 import type { ChatMessage } from '@/services/api/ai'
 
 const quickActions = [
-  { iconName: 'pen',     iconColor: '#E8855A', label: '写日记', path: '/pages/write/index' },
+  { iconName: 'pen',     iconColor: '#E8855A', label: '记录素材', path: '/pages/write/index' },
   { iconName: 'crystal', iconColor: '#D4728A', label: '看运势', path: '/pages/fortune/index' },
   { iconName: 'tomato',  iconColor: '#E8855A', label: '开始番茄', path: '/pages/study/pomodoro' },
-  { iconName: 'chart',   iconColor: '#C8A86B', label: '看成长', path: '/pages/growth/index' },
-]
-
-const aiReplies = [
-  '这个想法很有意思！要不要写进日记里？',
-  '看得出你今天状态不错～继续加油！',
-  '嗯嗯，我理解你的感受。需要聊聊吗？',
-  '哈哈，这太有趣了！你的生活很精彩呀～',
-  '好的，我记住了。这对了解你很有帮助。',
-  '太棒了！继续保持这个状态 💪',
-  '有什么想记录下来的吗？我可以帮你～',
-  '听起来很棒！我很期待你今天的日记 ✨',
+  { iconName: 'calendar', iconColor: '#C8A86B', label: '纪念日', path: '/pages/anniversary/index' },
 ]
 
 const profile = ref<UserProfile>({
@@ -145,26 +145,11 @@ const profile = ref<UserProfile>({
 
 const interestTags = ref(23)
 
-const messages = ref<ChatMessage[]>([
-  {
-    role: 'assistant',
-    content: '嗨 Kylin！今天过得怎么样？看到你昨天的雅思阅读全对了，太棒了！🎉',
-    timestamp: Date.now() - 60000,
-  },
-  {
-    role: 'user',
-    content: '今天有点累，在图书馆待了一下午',
-    timestamp: Date.now() - 30000,
-  },
-  {
-    role: 'assistant',
-    content: '辛苦了！图书馆一下午说明很专注呢。要不要记一篇简短的日记？',
-    timestamp: Date.now(),
-  },
-])
-
+const messages = ref<ChatMessage[]>([])
 const inputText = ref('')
 const isThinking = ref(false)
+const isStreaming = ref(false)
+const streamingContent = ref('')
 const scrollIntoId = ref('')
 
 async function scrollToBottom() {
@@ -172,13 +157,13 @@ async function scrollToBottom() {
   const lastIdx = messages.value.length - 1
   scrollIntoId.value = ''
   setTimeout(() => {
-    scrollIntoId.value = `msg-${lastIdx}`
+    scrollIntoId.value = isStreaming.value ? 'streaming-msg' : `msg-${lastIdx}`
   }, 50)
 }
 
-function handleSend() {
+async function handleSend() {
   const text = inputText.value.trim()
-  if (!text) return
+  if (!text || isThinking.value || isStreaming.value) return
 
   messages.value.push({
     role: 'user',
@@ -189,16 +174,34 @@ function handleSend() {
   isThinking.value = true
   scrollToBottom()
 
-  setTimeout(() => {
+  try {
+    const response = await chat(text)
     isThinking.value = false
-    const reply = aiReplies[Math.floor(Math.random() * aiReplies.length)]
+
+    // Simulate SSE streaming typewriter effect
+    isStreaming.value = true
+    streamingContent.value = ''
+    scrollToBottom()
+
+    for (let i = 0; i < response.length; i++) {
+      await new Promise(resolve => setTimeout(resolve, 30))
+      streamingContent.value = response.slice(0, i + 1)
+      if (i % 8 === 0) scrollToBottom()
+    }
+
+    isStreaming.value = false
     messages.value.push({
       role: 'assistant',
-      content: reply,
+      content: streamingContent.value,
       timestamp: Date.now(),
     })
+    streamingContent.value = ''
     scrollToBottom()
-  }, 2000)
+  } catch {
+    isThinking.value = false
+    isStreaming.value = false
+    uni.showToast({ title: '发送失败', icon: 'none' })
+  }
 }
 
 function handleAttach() {
@@ -210,7 +213,21 @@ function handleVoice() {
 }
 
 function handleMenu() {
-  uni.showToast({ title: '更多功能开发中', icon: 'none' })
+  uni.showActionSheet({
+    itemList: ['帮我写日记', '最近有什么纪念日', '看看我的情绪报告', '清除对话'],
+    success: async (res) => {
+      const commands = ['帮我写日记', '最近有什么纪念日', '看看我的情绪报告', '']
+      if (res.tapIndex === 3) {
+        messages.value = []
+        return
+      }
+      const cmd = commands[res.tapIndex]
+      if (cmd) {
+        inputText.value = cmd
+        await handleSend()
+      }
+    }
+  })
 }
 
 function handleQuickAction(path: string) {
@@ -219,16 +236,27 @@ function handleQuickAction(path: string) {
 
 const navPlaceholderHeight = ref(64)
 const scrollHeight = ref(600)
-// AI 信息卡约 100px + 快捷操作约 80px + 输入栏约 60px = 240px
 const msgScrollHeight = ref(400)
 
 onMounted(async () => {
   const info = uni.getSystemInfoSync()
   navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
   scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 0
-  // 消息区高度 = 总内容区 - AI信息卡(约80) - 快捷操作(约70) - 底部输入栏(约60) - 间距
   msgScrollHeight.value = scrollHeight.value - 210
   profile.value = await getUserProfile()
+
+  try {
+    const history = await getChatHistory(1, 20)
+    messages.value = history.list
+  } catch {
+    messages.value = [
+      {
+        role: 'assistant',
+        content: '嗨 Kylin！今天过得怎么样？你可以和我聊天、说「帮我写日记」或「最近有什么纪念日」哦 😊',
+        timestamp: Date.now(),
+      }
+    ]
+  }
   scrollToBottom()
 })
 </script>
