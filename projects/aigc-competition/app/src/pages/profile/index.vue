@@ -207,7 +207,7 @@ onMounted(async () => {
 .page-scroll {
   -webkit-overflow-scrolling: touch;
   padding: 32rpx;
-  padding-bottom: 180rpx;
+  padding-bottom: 130rpx;
 }
 
 /* ── 用户卡片 ── */

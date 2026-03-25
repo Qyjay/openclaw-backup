@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastTouchedVersion": "2026.3.22",
-    "lastTouchedAt": "2026-03-24T02:15:48.879Z"
+    "lastTouchedVersion": "2026.3.23-2",
+    "lastTouchedAt": "2026-03-24T10:16:38.033Z"
   },
   "wizard": {
     "lastRunAt": "2026-02-02T08:28:08.796Z",
@@ -10,6 +10,7 @@
     "lastRunMode": "local"
   },
   "update": {
+    "channel": "stable",
     "auto": {
       "enabled": true
     }
@@ -318,12 +319,6 @@
       "match": {
         "channel": "feishu"
       }
-    },
-    {
-      "agentId": "coder",
-      "match": {
-        "channel": "openclaw-weixin"
-      }
     }
   ],
   "messages": {
@@ -362,41 +357,22 @@
     }
   },
   "plugins": {
+    "allow": [
+      "feishu",
+      "minimax",
+      "acpx"
+    ],
     "entries": {
-      "minimax-portal-auth": {
-        "enabled": true
-      },
       "feishu": {
-        "enabled": true
-      },
-      "acpx": {
-        "enabled": true,
-        "config": {
-          "permissionMode": "approve-all",
-          "nonInteractivePermissions": "deny"
-        }
-      },
-      "openclaw-weixin": {
         "enabled": true
       },
       "minimax": {
         "enabled": true
+      },
+      "acpx": {
+        "enabled": true
       }
     },
-    "installs": {
-      "openclaw-weixin": {
-        "source": "npm",
-        "spec": "@tencent-weixin/openclaw-weixin",
-        "installPath": "/Users/minimax/.openclaw/extensions/openclaw-weixin",
-        "version": "1.0.2",
-        "resolvedName": "@tencent-weixin/openclaw-weixin",
-        "resolvedVersion": "1.0.2",
-        "resolvedSpec": "@tencent-weixin/openclaw-weixin@1.0.2",
-        "integrity": "sha512-kYPEowHB/0VWt9nQFee/AS6Fb+jbnu38wjkgZDBdKTuJoBL0IBW2obQ0ymgFKBFJJL9rDwnFrb/17ORGZD/X8Q==",
-        "shasum": "244baf0a873683a9c350d0f0b5bc055c07b0eb39",
-        "resolvedAt": "2026-03-22T09:37:34.474Z",
-        "installedAt": "2026-03-22T09:37:37.838Z"
-      }
-    }
+    "installs": {}
   }
 }
