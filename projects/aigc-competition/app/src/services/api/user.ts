@@ -94,10 +94,12 @@ export async function updateUserProfile(data: Partial<UserProfile>): Promise<Use
 
 export async function updateStyleTags(tags: string[]): Promise<void> {
   if (USE_MOCK) return mock.updateStyleTags(tags)
-  return request<void>({ url: '/user/style-tags', method: 'PUT', data: { tags } })
+  // 后端暂无独立接口，通过 updateProfile 保存
+  await request<void>({ url: '/user/profile', method: 'POST', data: { style_tags: tags } })
 }
 
 export async function updateCustomStylePrompt(prompt: string): Promise<void> {
   if (USE_MOCK) return mock.updateCustomStylePrompt(prompt)
-  return request<void>({ url: '/user/style-prompt', method: 'PUT', data: { prompt } })
+  // 后端暂无独立接口，通过 updateProfile 保存
+  await request<void>({ url: '/user/profile', method: 'POST', data: { custom_style_prompt: prompt } })
 }

@@ -46,7 +46,8 @@ export async function generateDiary(date: string, weather?: string): Promise<Dia
 
 export async function getDiaries(page = 1, pageSize = 10): Promise<{ list: Diary[]; total: number }> {
   if (USE_MOCK) return mock.getDiaries(page, pageSize)
-  return request<{ list: Diary[]; total: number }>({ url: `/diaries?page=${page}&pageSize=${pageSize}` })
+  const res = await request<{ items: Diary[]; total: number }>({ url: `/diaries?page=${page}&page_size=${pageSize}` })
+  return { list: res.items || [], total: res.total || 0 }
 }
 
 export async function getDiaryDetail(id: string): Promise<Diary> {
@@ -76,13 +77,13 @@ export async function generateDerivative(id: string, type: 'comic' | 'novel' | '
 
 export async function getDerivatives(diaryId?: string): Promise<DiaryDerivative[]> {
   if (USE_MOCK) return mock.getDerivatives(diaryId)
-  const url = diaryId ? `/diaries/derivatives?diaryId=${diaryId}` : '/diaries/derivatives'
+  const url = diaryId ? `/derivatives?diary_id=${diaryId}` : '/derivatives'
   return request<DiaryDerivative[]>({ url })
 }
 
 export async function setDerivativeShare(id: string, scope: string): Promise<void> {
   if (USE_MOCK) return mock.setDerivativeShare(id, scope)
-  return request<void>({ url: `/diaries/derivatives/${id}/share`, method: 'PUT', data: { scope } })
+  return request<void>({ url: `/derivatives/${id}/share`, method: 'POST', data: { scope } })
 }
 
 export interface TodaySummary {

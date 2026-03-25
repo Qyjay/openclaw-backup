@@ -257,7 +257,13 @@ onMounted(async () => {
   const id = options.id ?? '1'
 
   loading.value = true
-  diary.value = await getDiaryDetail(id)
+  try {
+    diary.value = await getDiaryDetail(id)
+  } catch {
+    loading.value = false
+    uni.showToast({ title: '日记加载失败', icon: 'none' })
+    return
+  }
 
   // Load emotion trend
   if (diary.value) {

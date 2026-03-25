@@ -278,14 +278,20 @@ async function handleGenerateDiary() {
 
 async function loadDiaries(p: number, append = false) {
   loading.value = true
-  const { list } = await getDiaries(p, 20)
-  if (append) {
-    diaries.value.push(...list)
-  } else {
-    diaries.value = list
+  try {
+    const { list } = await getDiaries(p, 20)
+    if (append) {
+      diaries.value.push(...list)
+    } else {
+      diaries.value = list
+    }
+    noMore.value = list.length < 20
+  } catch {
+    if (!append) diaries.value = []
+    noMore.value = true
+  } finally {
+    loading.value = false
   }
-  noMore.value = list.length < 20
-  loading.value = false
 }
 
 async function onRefresh() {

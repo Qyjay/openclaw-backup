@@ -20,12 +20,13 @@ export interface ChatMessage {
 
 export async function chat(message: string): Promise<string> {
   if (USE_MOCK) return mock.chat(message)
-  return request<string>({ url: '/ai/chat', method: 'POST', data: { message } })
+  return request<string>({ url: '/chat', method: 'POST', data: { message } })
 }
 
 export async function getChatHistory(page = 1, pageSize = 20): Promise<{ list: ChatMessage[]; total: number }> {
   if (USE_MOCK) return mock.getChatHistory(page, pageSize)
-  return request<{ list: ChatMessage[]; total: number }>({ url: `/ai/chat/history?page=${page}&pageSize=${pageSize}` })
+  const res = await request<{ items: any[]; total: number }>({ url: `/chat/history?limit=${pageSize}` })
+  return { list: res.items || [], total: res.total || 0 }
 }
 
 export async function textToSpeech(text: string, voice?: string): Promise<string> {

@@ -243,7 +243,11 @@ onMounted(async () => {
   navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
   scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 0
   msgScrollHeight.value = scrollHeight.value - 210
-  profile.value = await getUserProfile()
+  try {
+    profile.value = await getUserProfile()
+  } catch {
+    // keep default values
+  }
 
   try {
     const history = await getChatHistory(1, 20)

@@ -190,8 +190,16 @@ onMounted(async () => {
   }
   navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
   scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 50
-  profile.value = await getUserProfile()
-  achievements.value = await getAchievements()
+  try {
+    profile.value = await getUserProfile()
+  } catch {
+    // keep default values
+  }
+  try {
+    achievements.value = await getAchievements()
+  } catch {
+    achievements.value = []
+  }
 })
 </script>
 

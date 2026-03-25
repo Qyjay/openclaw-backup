@@ -155,7 +155,11 @@ onMounted(async () => {
   const info = uni.getSystemInfoSync()
   navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
   scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 0
-  fortune.value = await generateFortune()
+  try {
+    fortune.value = await generateFortune()
+  } catch {
+    // keep default null, UI shows skeleton/empty state
+  }
 })
 </script>
 

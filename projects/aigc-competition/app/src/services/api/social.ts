@@ -70,14 +70,16 @@ export async function createMatchRequest(data: Partial<MatchRequest>): Promise<M
   return request<MatchRequest>({ url: '/social/match-requests', method: 'POST', data })
 }
 
-export async function getMessages(): Promise<Message[]> {
+export async function getMessages(matchId: string, limit = 50, before?: string): Promise<Message[]> {
   if (USE_MOCK) return mock.getMessages()
-  return request<Message[]>({ url: '/social/messages' })
+  const query = before ? `?limit=${limit}&before=${before}` : `?limit=${limit}`
+  return request<Message[]>({ url: `/social/messages/${matchId}${query}` })
 }
 
 export async function getMatchRecommendations(): Promise<MatchRecommendation[]> {
   if (USE_MOCK) return mock.getMatchRecommendations()
-  return request<MatchRecommendation[]>({ url: '/social/recommendations' })
+  // 后端暂无此接口，返回空数组
+  return []
 }
 
 export async function getMatchReport(matchId: string): Promise<MatchReport> {
@@ -92,20 +94,20 @@ export async function respondMatch(requestId: string, accept: boolean): Promise<
 
 export async function applyBuddy(targetId: string, reason: string): Promise<BuddyRequest> {
   if (USE_MOCK) return mock.applyBuddy(targetId, reason)
-  return request<BuddyRequest>({ url: '/social/buddy-requests', method: 'POST', data: { targetId, reason } })
+  return request<BuddyRequest>({ url: '/social/buddy', method: 'POST', data: { target_user_id: targetId } })
 }
 
 export async function respondBuddy(requestId: string, accept: boolean): Promise<void> {
   if (USE_MOCK) return mock.respondBuddy(requestId, accept)
-  return request<void>({ url: `/social/buddy-requests/${requestId}/respond`, method: 'POST', data: { accept } })
+  return request<void>({ url: `/social/buddy/${requestId}/respond`, method: 'POST', data: { accept } })
 }
 
 export async function getUserPortrait(): Promise<UserPortrait> {
   if (USE_MOCK) return mock.getUserPortrait()
-  return request<UserPortrait>({ url: '/social/portrait' })
+  return request<UserPortrait>({ url: '/user/portrait' })
 }
 
 export async function refreshPortrait(): Promise<UserPortrait> {
   if (USE_MOCK) return mock.refreshPortrait()
-  return request<UserPortrait>({ url: '/social/portrait/refresh', method: 'POST' })
+  return request<UserPortrait>({ url: '/user/portrait/refresh', method: 'POST' })
 }

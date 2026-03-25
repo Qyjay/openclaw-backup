@@ -186,13 +186,17 @@ onMounted(async () => {
   // Reserve space for save bar (88rpx ≈ 44px + safe area)
   scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 44 - safeAreaBottom.value - 10
 
-  const profile = await getUserProfile()
-  form.name = profile.name
-  form.school = profile.school
-  form.major = profile.major
-  form.avatar = profile.avatar
-  form.bio = ''
-  form.grade = '大三'
+  try {
+    const profile = await getUserProfile()
+    form.name = profile.name
+    form.school = profile.school
+    form.major = profile.major
+    form.avatar = profile.avatar
+    form.bio = ''
+    form.grade = '大三'
+  } catch {
+    // keep default form values
+  }
 })
 
 function chooseAvatar() {
