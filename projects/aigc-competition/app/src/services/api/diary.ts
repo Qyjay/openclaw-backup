@@ -84,3 +84,17 @@ export async function setDerivativeShare(id: string, scope: string): Promise<voi
   if (USE_MOCK) return mock.setDerivativeShare(id, scope)
   return request<void>({ url: `/diaries/derivatives/${id}/share`, method: 'PUT', data: { scope } })
 }
+
+export interface TodaySummary {
+  date: string
+  material_count: number
+  materials: Array<{ id: string; type: string; content: string; createdAt: number; emotion?: { label: string; emoji: string; score: number } }>
+  has_diary: boolean
+  diary_id: string | null
+  diary_status: string | null
+}
+
+export async function getTodaySummary(date: string): Promise<TodaySummary> {
+  if (USE_MOCK) return mock.getTodaySummary(date)
+  return request<TodaySummary>({ url: `/diaries/today-summary?date=${date}` })
+}

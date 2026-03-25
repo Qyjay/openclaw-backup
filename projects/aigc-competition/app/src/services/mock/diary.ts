@@ -281,3 +281,27 @@ export function setDerivativeShare(id: string, scope: string): void {
     deriv.shareScope = scope as DiaryDerivative['shareScope']
   }
 }
+
+export function getTodaySummary(date: string): {
+  date: string
+  material_count: number
+  materials: Array<{ id: string; type: string; content: string; createdAt: number; emotion?: { label: string; emoji: string; score: number } }>
+  has_diary: boolean
+  diary_id: string | null
+  diary_status: string | null
+} {
+  // Check if there's a diary for today
+  const todayDiary = mockDiaries.find(d => d.date === date)
+  return {
+    date,
+    material_count: 3,
+    materials: [
+      { id: 'mat1', type: 'text', content: '今天在食堂吃到了超好吃的红烧肉，幸福感爆棚！', createdAt: Date.now() - 3600000 * 4, emotion: { label: '开心', emoji: '😊', score: 0.88 } },
+      { id: 'mat2', type: 'image', content: '图书馆阅览室的窗外，夕阳染红了天空', createdAt: Date.now() - 3600000 * 2, emotion: { label: '平静', emoji: '😌', score: 0.72 } },
+      { id: 'mat3', type: 'voice', content: '今天终于把那道算法题做出来了', createdAt: Date.now() - 3600000, emotion: { label: '激动', emoji: '🎉', score: 0.91 } },
+    ],
+    has_diary: !!todayDiary,
+    diary_id: todayDiary?.id ?? null,
+    diary_status: todayDiary?.status ?? null,
+  }
+}

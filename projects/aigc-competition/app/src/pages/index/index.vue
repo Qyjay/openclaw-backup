@@ -50,15 +50,60 @@
         <text class="memory-excerpt">"{{ todayHistory[0].diary.content ? todayHistory[0].diary.content.slice(0, 40) + '...' : '查看回忆' }}"</text>
       </view>
 
-      <!-- ── 素材快捷入口 ── -->
-      <view class="material-quick-entry stagger-item">
-        <view class="material-entry-left">
-          <text class="material-entry-icon">📝</text>
-          <text class="material-entry-text">今日已记录 {{ todayMaterialCount }} 条素材</text>
+      <!-- ── 今日素材入口 + 时间线 ── -->
+      <view class="today-section stagger-item">
+        <!-- 头部：素材计数 + 添加按钮 -->
+        <view class="today-header">
+          <view class="today-header-left">
+            <text class="today-icon">📝</text>
+            <text class="today-count-text">
+              今日已记录 {{ todaySummary ? todaySummary.material_count : 0 }} 条素材
+            </text>
+          </view>
+          <view class="material-entry-btn press-feedback" @click="goWrite">
+            <DoodleIcon name="plus" color="#E8855A" :size="28" />
+            <text class="material-entry-add">添加</text>
+          </view>
         </view>
-        <view class="material-entry-btn press-feedback" @click="goWrite">
-          <DoodleIcon name="plus" color="#E8855A" :size="28" />
-          <text class="material-entry-add">添加</text>
+
+        <!-- 素材时间线（有素材时显示） -->
+        <view v-if="todaySummary && todaySummary.materials.length > 0" class="today-timeline">
+          <view
+            v-for="(mat, idx) in todaySummary.materials"
+            :key="mat.id"
+            class="timeline-entry"
+          >
+            <view class="tl-dot-col">
+              <view class="tl-dot" />
+              <view v-if="idx < todaySummary!.materials.length - 1" class="tl-line" />
+            </view>
+            <view class="tl-content">
+              <text class="tl-time">{{ formatMatTime(mat.createdAt) }}</text>
+              <text class="tl-type-icon">{{ matTypeIcon(mat.type) }}</text>
+              <text class="tl-text" :class="{ 'tl-text-clamp': mat.content.length > 20 }">{{ mat.content || '图片素材' }}</text>
+              <text v-if="mat.emotion" class="tl-emotion">{{ mat.emotion.emoji }}</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- 生成日记按钮 -->
+        <view
+          v-if="todaySummary && todaySummary.material_count > 0 && !todaySummary.has_diary"
+          class="generate-diary-btn press-feedback"
+          :class="{ generating: generatingDiary }"
+          @click="handleGenerateDiary"
+        >
+          <text class="gen-icon">✨</text>
+          <text class="gen-text">{{ generatingDiary ? 'AI 生成中...' : '生成今日日记' }}</text>
+        </view>
+
+        <!-- 已有日记时显示查看按钮 -->
+        <view
+          v-if="todaySummary && todaySummary.has_diary"
+          class="view-diary-btn press-feedback"
+          @click="goDetail(todaySummary!.diary_id!)"
+        >
+          <text class="view-diary-text">查看今日日记 →</text>
         </view>
       </view>
 
@@ -158,11 +203,10 @@ import SideDrawer from '@/components/SideDrawer.vue'
 import DiaryCard from '@/components/DiaryCard.vue'
 import TabBar from '@/components/TabBar.vue'
 import DoodleIcon from '@/components/DoodleIcon.vue'
-import { getDiaries } from '@/services/api/diary'
-import type { Diary } from '@/services/api/diary'
+import { getDiaries, generateDiary, getTodaySummary } from '@/services/api/diary'
+import type { Diary, TodaySummary } from '@/services/api/diary'
 import { getTodayAnniversaries } from '@/services/api/anniversary'
 import type { Anniversary } from '@/services/api/anniversary'
-import { getMaterials } from '@/services/api/material'
 
 const drawerVisible = ref(false)
 const diaries = ref<Diary[]>([])
@@ -173,8 +217,11 @@ const noMore = ref(false)
 
 // 纪念日
 const todayAnniversaries = ref<Anniversary[]>([])
-const todayMaterialCount = ref(0)
 const todayHistory = ref<Array<{ diary: any; yearsAgo: number }>>([])
+
+// 今日摘要
+const todaySummary = ref<TodaySummary | null>(null)
+const generatingDiary = ref(false)
 
 // 状态栏 + NavBar 占位高度（px）
 const navPlaceholderHeight = ref(64) // 默认值，onMounted 后更新
@@ -198,15 +245,34 @@ onMounted(async () => {
 async function loadAnniversaryData() {
   try {
     const today = new Date().toISOString().slice(0, 10)
-    const [todayData, materials] = await Promise.all([
+    const [todayData, summary] = await Promise.all([
       getTodayAnniversaries(),
-      getMaterials(today),
+      getTodaySummary(today),
     ])
     todayAnniversaries.value = todayData.anniversaries
     todayHistory.value = todayData.thisDateInHistory
-    todayMaterialCount.value = materials.length
+    todaySummary.value = summary
   } catch {
     // silently ignore
+  }
+}
+
+async function handleGenerateDiary() {
+  if (generatingDiary.value) return
+  generatingDiary.value = true
+  uni.showLoading({ title: 'AI 生成日记中...', mask: true })
+  try {
+    const today = new Date().toISOString().slice(0, 10)
+    const diary = await generateDiary(today, '多云 18°C')
+    uni.hideLoading()
+    generatingDiary.value = false
+    uni.navigateTo({
+      url: `/pages/diary/preview?id=${diary.id}&title=${encodeURIComponent(diary.title)}&content=${encodeURIComponent(diary.content)}&editCount=${diary.editCount}&maxEdits=${diary.maxEdits}`
+    })
+  } catch {
+    uni.hideLoading()
+    generatingDiary.value = false
+    uni.showToast({ title: '生成失败，请重试', icon: 'none' })
   }
 }
 
@@ -226,7 +292,7 @@ async function onRefresh() {
   refreshing.value = true
   page.value = 1
   noMore.value = false
-  await loadDiaries(1)
+  await Promise.all([loadDiaries(1), loadAnniversaryData()])
   refreshing.value = false
   uni.showToast({ title: '刷新成功', icon: 'success' })
 }
@@ -294,6 +360,19 @@ function getInsightText(groupIndex: number, diaryIndex: number): string {
 
 function goAnniversary() {
   uni.navigateTo({ url: '/pages/anniversary/index' })
+}
+
+function formatMatTime(ts: number): string {
+  const d = new Date(ts)
+  const h = String(d.getHours()).padStart(2, '0')
+  const min = String(d.getMinutes()).padStart(2, '0')
+  return `${h}:${min}`
+}
+
+function matTypeIcon(type: string): string {
+  if (type === 'image') return '📷'
+  if (type === 'voice') return '🎤'
+  return '📝'
 }
 
 // ── 跳转 ──
@@ -420,31 +499,157 @@ function onActionClick(payload: { action: string; diaryId: string }) {
   line-height: 1.5;
 }
 
-/* ── 素材快捷入口 ── */
-.material-quick-entry {
+/* ── 今日素材入口 + 时间线 ── */
+.today-section {
   margin: 12rpx 24rpx 0;
   background: #FFFFFF;
-  border-radius: 16rpx 20rpx 14rpx 18rpx;
-  padding: 16rpx 24rpx;
+  border-radius: 20rpx 24rpx 16rpx 22rpx;
+  padding: 20rpx 24rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.06);
+}
+
+.today-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 16rpx;
 }
 
-.material-entry-left {
+.today-header-left {
   display: flex;
   align-items: center;
-  gap: 12rpx;
+  gap: 10rpx;
 }
 
-.material-entry-icon {
+.today-icon {
   font-size: 32rpx;
 }
 
-.material-entry-text {
+.today-count-text {
   font-size: 26rpx;
   color: #4A3628;
+}
+
+/* 素材时间线 */
+.today-timeline {
+  margin-bottom: 16rpx;
+  padding-left: 8rpx;
+}
+
+.timeline-entry {
+  display: flex;
+  gap: 14rpx;
+  min-height: 40rpx;
+}
+
+.tl-dot-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  padding-top: 6rpx;
+}
+
+.tl-dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background: #E8855A;
+  flex-shrink: 0;
+}
+
+.tl-line {
+  width: 2rpx;
+  flex: 1;
+  min-height: 20rpx;
+  background: repeating-linear-gradient(
+    to bottom,
+    #D4C4B8 0,
+    #D4C4B8 6rpx,
+    transparent 6rpx,
+    transparent 12rpx
+  );
+  margin-top: 6rpx;
+  margin-bottom: 6rpx;
+}
+
+.tl-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  padding-bottom: 12rpx;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.tl-time {
+  font-size: 22rpx;
+  color: #AE9D92;
+  flex-shrink: 0;
+}
+
+.tl-type-icon {
+  font-size: 22rpx;
+  flex-shrink: 0;
+}
+
+.tl-text {
+  font-size: 26rpx;
+  color: #4A3628;
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.tl-text-clamp {
+  text-overflow: ellipsis;
+}
+
+.tl-emotion {
+  font-size: 24rpx;
+  flex-shrink: 0;
+}
+
+/* 生成日记按钮 */
+.generate-diary-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+  background: linear-gradient(135deg, #E8855A, #F0A882);
+  border-radius: 20rpx;
+  padding: 20rpx;
+  &:active { opacity: 0.85; }
+
+  &.generating {
+    background: #D4C4B8;
+  }
+}
+
+.gen-icon {
+  font-size: 32rpx;
+}
+
+.gen-text {
+  font-size: 30rpx;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+/* 查看日记按钮 */
+.view-diary-btn {
+  background: rgba(232, 133, 90, 0.08);
+  border-radius: 16rpx;
+  padding: 16rpx;
+  text-align: center;
+  &:active { opacity: 0.8; }
+}
+
+.view-diary-text {
+  font-size: 28rpx;
+  color: #E8855A;
+  font-weight: 600;
 }
 
 .material-entry-btn {
