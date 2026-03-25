@@ -10,6 +10,8 @@ export function getUserProfile(): UserProfile {
     streakDays: 23,
     pomodoroCount: 247,
     avatar: 'https://picsum.photos/seed/avatar/200/200',
+    styleTags: ['文艺', '治愈'],
+    customStylePrompt: '用温暖细腻的文字记录生活，捕捉每个平凡瞬间里的美好。',
   }
 }
 
@@ -104,6 +106,14 @@ export function updateSettings(data: Partial<Settings>): Settings {
 
 export function updateUserProfile(data: Partial<UserProfile>): UserProfile {
   return { ...getUserProfile(), ...data }
+}
+
+export function updateStyleTags(_tags: string[]): void {
+  // mock: no-op
+}
+
+export function updateCustomStylePrompt(_prompt: string): void {
+  // mock: no-op
 }
 
 export function getSemesterReport(): SemesterReport {

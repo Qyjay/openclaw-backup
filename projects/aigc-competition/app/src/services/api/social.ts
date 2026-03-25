@@ -1,4 +1,5 @@
-import { USE_MOCK, API_BASE_URL } from '../config'
+import { USE_MOCK } from '../config'
+import { request } from '../request'
 import * as mock from '../mock/social'
 
 export interface Match {
@@ -26,20 +27,85 @@ export interface Message {
   timestamp: number
 }
 
+export interface MatchRecommendation {
+  id: string
+  userId: string
+  nickname: string
+  avatar: string
+  school: string
+  commonInterests: string[]
+  compatibility: number  // 0-100
+}
+
+export interface MatchReport {
+  compatibility: number
+  analysis: string
+  commonPoints: string[]
+  differences: string[]
+}
+
+export interface BuddyRequest {
+  id: string
+  fromUid: string
+  toUid: string
+  reason: string
+  status: 'pending' | 'accepted' | 'rejected'
+  createdAt: number
+}
+
+export interface UserPortrait {
+  preferences: Array<{ category: string; items: string[] }>
+  personality: string[]
+  relations: Array<{ name: string; relation: string }>
+  interests: string[]
+}
+
 export async function getMatches(): Promise<Match[]> {
   if (USE_MOCK) return mock.getMatches()
-  const res = await uni.request({ url: `${API_BASE_URL}/social/matches` })
-  return res.data as any
+  return request<Match[]>({ url: '/social/matches' })
 }
 
 export async function createMatchRequest(data: Partial<MatchRequest>): Promise<MatchRequest> {
   if (USE_MOCK) return mock.createMatchRequest(data)
-  const res = await uni.request({ url: `${API_BASE_URL}/social/match-requests`, method: 'POST', data })
-  return res.data as any
+  return request<MatchRequest>({ url: '/social/match-requests', method: 'POST', data })
 }
 
 export async function getMessages(): Promise<Message[]> {
   if (USE_MOCK) return mock.getMessages()
-  const res = await uni.request({ url: `${API_BASE_URL}/social/messages` })
-  return res.data as any
+  return request<Message[]>({ url: '/social/messages' })
+}
+
+export async function getMatchRecommendations(): Promise<MatchRecommendation[]> {
+  if (USE_MOCK) return mock.getMatchRecommendations()
+  return request<MatchRecommendation[]>({ url: '/social/recommendations' })
+}
+
+export async function getMatchReport(matchId: string): Promise<MatchReport> {
+  if (USE_MOCK) return mock.getMatchReport(matchId)
+  return request<MatchReport>({ url: `/social/matches/${matchId}/report` })
+}
+
+export async function respondMatch(requestId: string, accept: boolean): Promise<void> {
+  if (USE_MOCK) return mock.respondMatch(requestId, accept)
+  return request<void>({ url: `/social/match-requests/${requestId}/respond`, method: 'POST', data: { accept } })
+}
+
+export async function applyBuddy(targetId: string, reason: string): Promise<BuddyRequest> {
+  if (USE_MOCK) return mock.applyBuddy(targetId, reason)
+  return request<BuddyRequest>({ url: '/social/buddy-requests', method: 'POST', data: { targetId, reason } })
+}
+
+export async function respondBuddy(requestId: string, accept: boolean): Promise<void> {
+  if (USE_MOCK) return mock.respondBuddy(requestId, accept)
+  return request<void>({ url: `/social/buddy-requests/${requestId}/respond`, method: 'POST', data: { accept } })
+}
+
+export async function getUserPortrait(): Promise<UserPortrait> {
+  if (USE_MOCK) return mock.getUserPortrait()
+  return request<UserPortrait>({ url: '/social/portrait' })
+}
+
+export async function refreshPortrait(): Promise<UserPortrait> {
+  if (USE_MOCK) return mock.refreshPortrait()
+  return request<UserPortrait>({ url: '/social/portrait/refresh', method: 'POST' })
 }

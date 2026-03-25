@@ -1,4 +1,5 @@
-import { USE_MOCK, API_BASE_URL } from '../config'
+import { USE_MOCK } from '../config'
+import { request } from '../request'
 import * as mock from '../mock/ai'
 
 export interface Fortune {
@@ -17,44 +18,22 @@ export interface ChatMessage {
   timestamp: number
 }
 
-export async function chat(messages: ChatMessage[]): Promise<string> {
-  if (USE_MOCK) return mock.chat(messages)
-  const res = await uni.request({ url: `${API_BASE_URL}/ai/chat`, method: 'POST', data: { messages } })
-  return res.data as any
+export async function chat(message: string): Promise<string> {
+  if (USE_MOCK) return mock.chat(message)
+  return request<string>({ url: '/ai/chat', method: 'POST', data: { message } })
+}
+
+export async function getChatHistory(page = 1, pageSize = 20): Promise<{ list: ChatMessage[]; total: number }> {
+  if (USE_MOCK) return mock.getChatHistory(page, pageSize)
+  return request<{ list: ChatMessage[]; total: number }>({ url: `/ai/chat/history?page=${page}&pageSize=${pageSize}` })
+}
+
+export async function textToSpeech(text: string, voice?: string): Promise<string> {
+  if (USE_MOCK) return mock.textToSpeech(text, voice)
+  return request<string>({ url: '/ai/tts', method: 'POST', data: { text, voice } })
 }
 
 export async function generateFortune(): Promise<Fortune> {
   if (USE_MOCK) return mock.generateFortune()
-  const res = await uni.request({ url: `${API_BASE_URL}/ai/fortune` })
-  return res.data as any
-}
-
-export async function generateComic(diaryId: string, style: string): Promise<string> {
-  if (USE_MOCK) return mock.generateComic(diaryId, style)
-  const res = await uni.request({ url: `${API_BASE_URL}/ai/comic`, method: 'POST', data: { diaryId, style } })
-  return res.data as any
-}
-
-export async function generateShareCard(diaryId: string, template: string): Promise<string> {
-  if (USE_MOCK) return mock.generateShareCard(diaryId, template)
-  const res = await uni.request({ url: `${API_BASE_URL}/ai/share-card`, method: 'POST', data: { diaryId, template } })
-  return res.data as any
-}
-
-export async function generateBGM(diaryId: string): Promise<string> {
-  if (USE_MOCK) return mock.generateBGM(diaryId)
-  const res = await uni.request({ url: `${API_BASE_URL}/ai/bgm`, method: 'POST', data: { diaryId } })
-  return res.data as any
-}
-
-export async function textToSpeech(text: string, voice: string): Promise<string> {
-  if (USE_MOCK) return mock.textToSpeech(text, voice)
-  const res = await uni.request({ url: `${API_BASE_URL}/ai/tts`, method: 'POST', data: { text, voice } })
-  return res.data as any
-}
-
-export async function generateNovelChapter(): Promise<string> {
-  if (USE_MOCK) return mock.generateNovelChapter()
-  const res = await uni.request({ url: `${API_BASE_URL}/ai/novel-chapter`, method: 'POST' })
-  return res.data as any
+  return request<Fortune>({ url: '/ai/fortune' })
 }

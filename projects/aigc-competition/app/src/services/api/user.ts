@@ -1,4 +1,5 @@
-import { USE_MOCK, API_BASE_URL } from '../config'
+import { USE_MOCK } from '../config'
+import { request } from '../request'
 import * as mock from '../mock/user'
 
 export interface UserProfile {
@@ -10,6 +11,8 @@ export interface UserProfile {
   streakDays: number
   pomodoroCount: number
   avatar: string
+  styleTags?: string[]
+  customStylePrompt?: string
 }
 
 export interface Achievement {
@@ -51,48 +54,50 @@ export interface SemesterReport {
 
 export async function getUserProfile(): Promise<UserProfile> {
   if (USE_MOCK) return mock.getUserProfile()
-  const res = await uni.request({ url: `${API_BASE_URL}/user/profile` })
-  return res.data as any
+  return request<UserProfile>({ url: '/user/profile' })
 }
 
 export async function getAgentPortrait(): Promise<string> {
   if (USE_MOCK) return mock.getAgentPortrait()
-  const res = await uni.request({ url: `${API_BASE_URL}/user/agent-portrait` })
-  return res.data as any
+  return request<string>({ url: '/user/agent-portrait' })
 }
 
 export async function getGrowthData(): Promise<GrowthData> {
   if (USE_MOCK) return mock.getGrowthData()
-  const res = await uni.request({ url: `${API_BASE_URL}/user/growth` })
-  return res.data as any
+  return request<GrowthData>({ url: '/user/growth' })
 }
 
 export async function getAchievements(): Promise<Achievement[]> {
   if (USE_MOCK) return mock.getAchievements()
-  const res = await uni.request({ url: `${API_BASE_URL}/user/achievements` })
-  return res.data as any
+  return request<Achievement[]>({ url: '/user/achievements' })
 }
 
 export async function getSettings(): Promise<Settings> {
   if (USE_MOCK) return mock.getSettings()
-  const res = await uni.request({ url: `${API_BASE_URL}/user/settings` })
-  return res.data as any
+  return request<Settings>({ url: '/user/settings' })
 }
 
 export async function updateSettings(data: Partial<Settings>): Promise<Settings> {
   if (USE_MOCK) return mock.updateSettings(data)
-  const res = await uni.request({ url: `${API_BASE_URL}/user/settings`, method: 'POST', data })
-  return res.data as any
+  return request<Settings>({ url: '/user/settings', method: 'POST', data })
 }
 
 export async function getSemesterReport(): Promise<SemesterReport> {
   if (USE_MOCK) return mock.getSemesterReport()
-  const res = await uni.request({ url: `${API_BASE_URL}/user/semester-report` })
-  return res.data as any
+  return request<SemesterReport>({ url: '/user/semester-report' })
 }
 
 export async function updateUserProfile(data: Partial<UserProfile>): Promise<UserProfile> {
   if (USE_MOCK) return mock.updateUserProfile(data)
-  const res = await uni.request({ url: `${API_BASE_URL}/user/profile`, method: 'POST', data })
-  return res.data as any
+  return request<UserProfile>({ url: '/user/profile', method: 'POST', data })
+}
+
+export async function updateStyleTags(tags: string[]): Promise<void> {
+  if (USE_MOCK) return mock.updateStyleTags(tags)
+  return request<void>({ url: '/user/style-tags', method: 'PUT', data: { tags } })
+}
+
+export async function updateCustomStylePrompt(prompt: string): Promise<void> {
+  if (USE_MOCK) return mock.updateCustomStylePrompt(prompt)
+  return request<void>({ url: '/user/style-prompt', method: 'PUT', data: { prompt } })
 }

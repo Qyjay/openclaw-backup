@@ -1,40 +1,86 @@
-import { USE_MOCK, API_BASE_URL } from '../config'
+import { USE_MOCK } from '../config'
+import { request } from '../request'
 import * as mock from '../mock/diary'
 
 export interface Diary {
   id: string
+  title: string
   content: string
-  images: string[]
+  date: string  // "2026-03-25"
+  weather: string
+  specialDate: string
+  emotionSummary: {
+    dominant: string
+    trend: Array<{ hour: number; label: string; score: number }>
+  }
+  materialIds: string[]
+  style: string
+  editCount: number
+  maxEdits: number
+  status: 'draft' | 'published'
+  createdAt: number
+  updatedAt: number
+  // legacy fields (backward compat with existing pages)
   emotion: { emoji: string; label: string; score: number }
+  images: string[]
   tags: string[]
   location: string
-  weather: string
-  style: string
-  createdAt: number
   hasComic: boolean
   hasBGM: boolean
 }
 
+export interface DiaryDerivative {
+  id: string
+  diaryId: string
+  type: 'comic' | 'novel' | 'share_card'
+  content: string
+  mediaUrl: string
+  shareScope: 'private' | 'friends' | 'public'
+  createdAt: number
+}
+
+export async function generateDiary(date: string, weather?: string): Promise<Diary> {
+  if (USE_MOCK) return mock.generateDiary(date, weather)
+  return request<Diary>({ url: '/diaries/generate', method: 'POST', data: { date, weather } })
+}
+
 export async function getDiaries(page = 1, pageSize = 10): Promise<{ list: Diary[]; total: number }> {
   if (USE_MOCK) return mock.getDiaries(page, pageSize)
-  const res = await uni.request({ url: `${API_BASE_URL}/diaries?page=${page}&pageSize=${pageSize}` })
-  return res.data as any
+  return request<{ list: Diary[]; total: number }>({ url: `/diaries?page=${page}&pageSize=${pageSize}` })
 }
 
 export async function getDiaryDetail(id: string): Promise<Diary> {
   if (USE_MOCK) return mock.getDiaryDetail(id)
-  const res = await uni.request({ url: `${API_BASE_URL}/diaries/${id}` })
-  return res.data as any
+  return request<Diary>({ url: `/diaries/${id}` })
 }
 
-export async function createDiary(data: Partial<Diary>): Promise<Diary> {
-  if (USE_MOCK) return mock.createDiary(data)
-  const res = await uni.request({ url: `${API_BASE_URL}/diaries`, method: 'POST', data })
-  return res.data as any
+export async function updateDiary(id: string, content: string): Promise<Diary> {
+  if (USE_MOCK) return mock.updateDiary(id, content)
+  return request<Diary>({ url: `/diaries/${id}`, method: 'PUT', data: { content } })
 }
 
-export async function generateDiaryAI(images: string[], text: string, style: string): Promise<string> {
-  if (USE_MOCK) return mock.generateDiaryAI(images, text, style)
-  const res = await uni.request({ url: `${API_BASE_URL}/ai/generate-diary`, method: 'POST', data: { images, text, style } })
-  return res.data as any
+export async function getEmotionTrend(id: string): Promise<{ dominant: string; trend: Array<{ hour: number; label: string; score: number }> }> {
+  if (USE_MOCK) return mock.getEmotionTrend(id)
+  return request<{ dominant: string; trend: Array<{ hour: number; label: string; score: number }> }>({ url: `/diaries/${id}/emotion-trend` })
+}
+
+export async function extractInfo(id: string): Promise<{ anniversaries: any[]; relations: any[]; preferences: any[] }> {
+  if (USE_MOCK) return mock.extractInfo(id)
+  return request<{ anniversaries: any[]; relations: any[]; preferences: any[] }>({ url: `/diaries/${id}/extract`, method: 'POST' })
+}
+
+export async function generateDerivative(id: string, type: 'comic' | 'novel' | 'share_card'): Promise<DiaryDerivative> {
+  if (USE_MOCK) return mock.generateDerivative(id, type)
+  return request<DiaryDerivative>({ url: `/diaries/${id}/derivative`, method: 'POST', data: { type } })
+}
+
+export async function getDerivatives(diaryId?: string): Promise<DiaryDerivative[]> {
+  if (USE_MOCK) return mock.getDerivatives(diaryId)
+  const url = diaryId ? `/diaries/derivatives?diaryId=${diaryId}` : '/diaries/derivatives'
+  return request<DiaryDerivative[]>({ url })
+}
+
+export async function setDerivativeShare(id: string, scope: string): Promise<void> {
+  if (USE_MOCK) return mock.setDerivativeShare(id, scope)
+  return request<void>({ url: `/diaries/derivatives/${id}/share`, method: 'PUT', data: { scope } })
 }

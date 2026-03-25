@@ -1,166 +1,187 @@
 <template>
   <view class="write-page">
     <!-- ── CustomNavBar ── -->
-    <CustomNavBar
-      title="新日记"
-      left-icon="none"
-      @left-click="handleClose"
-    >
-      <!-- 左插槽：关闭按钮 -->
+    <CustomNavBar title="记录此刻" left-icon="none" @left-click="handleClose">
       <template #left>
         <view class="nav-close press-feedback" @click="handleClose">
           <DoodleIcon name="cross" color="#2C1F14" :size="36" />
         </view>
       </template>
-      <!-- 右插槽：完成按钮 -->
       <template #right>
-        <view
-          class="nav-done"
-          :class="{ disabled: !canDone }"
-          @click="handleDone"
-        >
-          <text class="done-text" :class="{ 'done-text--active': canDone }">完成</text>
-          <DoodleIcon name="check" :color="canDone ? '#FFFFFF' : '#AE9D92'" :size="28" />
+        <view class="nav-style-btn press-feedback" @click="showStylePicker = true">
+          <text class="style-label">{{ currentStyle }}</text>
+          <text class="style-arrow"> ▾</text>
         </view>
       </template>
     </CustomNavBar>
 
-    <!-- ── 内容区 ── -->
     <!-- NavBar 占位 -->
-    <view class="nav-placeholder-write" :style="{ height: navPlaceholderHeight + 'px' }" />
-    <scroll-view class="write-body" scroll-y :style="{ height: scrollHeight + 'px' }">
-      <!-- 情绪选择栏 -->
-      <view class="emotion-bar">
-        <view
-          v-for="em in emotions"
-          :key="em.key"
-          class="emotion-item press-feedback"
-          :class="{ active: selectedEmotion.key === em.key }"
-          @click="selectedEmotion = em"
-        >
-          <text class="emotion-emoji" :class="{ 'emoji-active': selectedEmotion.key === em.key }">{{ em.emoji }}</text>
-          <text class="emotion-label" :class="{ 'label-active': selectedEmotion.key === em.key }">{{ em.label }}</text>
-          <view v-if="selectedEmotion.key === em.key" class="emotion-dot" />
-        </view>
-      </view>
+    <view class="nav-placeholder" :style="{ height: navPlaceholderHeight + 'px' }" />
 
-      <!-- 照片区域（横向滚动） -->
-      <view class="photo-section">
-        <scroll-view class="photo-scroll" scroll-x>
-          <view
-            v-for="(img, i) in photos"
-            :key="i"
-            class="photo-item"
-          >
-            <image class="photo-img" :src="img" mode="aspectFill" />
-            <view class="photo-delete" @click="removePhoto(i)">
-              <DoodleIcon name="cross" color="#FFFFFF" :size="12" :filtered="false" />
-            </view>
-          </view>
-          <!-- 添加按钮 -->
-          <view class="photo-add press-feedback" @click="addPhoto">
-            <DoodleIcon name="plus" color="#AE9D92" :size="24" />
-            <text class="add-text">添加</text>
-          </view>
-        </scroll-view>
-      </view>
-
-      <!-- 文本输入区 -->
-      <view class="textarea-section">
-        <textarea
-          v-model="content"
-          class="content-textarea"
-          :placeholder="placeholderText"
-          :placeholder-style="'color: #AE9D92; font-size: 32rpx;'"
-          :auto-height="true"
-          :min-height="300"
-          maxlength="-1"
-        />
-      </view>
-
-      <!-- 位置+天气 -->
-      <view class="meta-row">
-        <DoodleIcon name="pin" color="#AE9D92" :size="14" />
-        <text class="meta-text"> 南开大学</text>
-        <DoodleIcon name="cloud" color="#AE9D92" :size="14" style="margin-left: 12rpx" />
-        <text class="meta-text"> 多云 18°C</text>
-      </view>
-
-      <!-- 标签栏 -->
-      <view class="tag-bar">
-        <view
-          v-for="tag in selectedTags"
-          :key="tag"
-          class="tag-chip tag-selected"
-          @click="removeTag(tag)"
-        >
-          <text class="tag-text">#{{ tag }}</text>
-        </view>
-        <view class="tag-add-btn" @click="showTagPicker = true">
-          <text class="tag-add-text">+添加</text>
-        </view>
-      </view>
-    </scroll-view>
-
-    <!-- ── AI 工具栏（固定底部） ── -->
-    <view class="ai-toolbar">
-      <view class="toolbar-btn ai-btn press-feedback" @click="handleAIGenerate">
-        <DoodleIcon v-if="aiLoading" name="loading" color="#FFFFFF" :size="18" class="spin-anim" :filtered="false" />
-        <template v-else>
-          <DoodleIcon name="sparkle" color="#FFFFFF" :size="32" :filtered="false" />
-          <text class="ai-btn-text">AI生成</text>
-        </template>
-      </view>
-      <view class="toolbar-btn style-btn press-feedback" @click="showStylePicker = true">
-        <DoodleIcon name="wand" color="#E8855A" :size="16" />
-        <text class="style-btn-text">文风</text>
-      </view>
-      <view class="toolbar-btn voice-btn press-feedback" @click="handleVoice">
-        <DoodleIcon name="voice" color="#E8855A" :size="16" />
-        <text class="voice-btn-text">语音</text>
+    <!-- ── 日期天气行 ── -->
+    <view class="date-bar">
+      <text class="date-text">{{ todayLabel }}</text>
+      <view class="weather-info">
+        <DoodleIcon name="cloud" color="#AE9D92" :size="24" />
+        <text class="weather-text"> 多云 18°C</text>
       </view>
     </view>
 
-    <!-- ── 标签选择弹窗 ── -->
-    <view v-if="showTagPicker" class="tag-overlay" @click="showTagPicker = false">
-      <view class="tag-sheet" @click.stop>
-        <view class="sheet-title-row">
-          <text class="sheet-title">选择标签</text>
-          <view class="sheet-close press-feedback" @click="showTagPicker = false">
-            <DoodleIcon name="cross" color="#AE9D92" :size="16" />
+    <!-- ── 素材时间线 ── -->
+    <scroll-view
+      class="timeline-scroll"
+      scroll-y
+      :style="{ height: timelineHeight + 'px' }"
+      :scroll-into-view="scrollIntoId"
+    >
+      <view class="timeline-inner">
+        <!-- 素材卡片列表 -->
+        <view
+          v-for="(item, index) in materials"
+          :key="item.id"
+          class="material-item"
+          :id="`mat-${item.id}`"
+        >
+          <!-- 时间线节点 -->
+          <view class="timeline-node">
+            <view class="node-dot" />
+            <view v-if="index < materials.length - 1" class="node-line" />
+          </view>
+
+          <!-- 素材卡片 -->
+          <view class="material-card">
+            <!-- 时间戳 -->
+            <text class="mat-time">{{ formatTime(item.createdAt) }}</text>
+
+            <!-- 图片素材 -->
+            <view v-if="item.type === 'image'" class="mat-image-wrap">
+              <image class="mat-image" :src="item.mediaUrl || item.content" mode="aspectFill" />
+            </view>
+
+            <!-- 文字素材 -->
+            <view v-else-if="item.type === 'text'" class="mat-text-wrap">
+              <text class="mat-text-content">{{ item.content }}</text>
+            </view>
+
+            <!-- 语音素材 -->
+            <view v-else-if="item.type === 'voice'" class="mat-voice-wrap">
+              <DoodleIcon name="voice" color="#E8855A" :size="32" />
+              <text class="mat-voice-text">{{ item.content || '语音内容...' }}</text>
+            </view>
+
+            <!-- 位置行 -->
+            <view v-if="item.location && item.location.address" class="mat-location">
+              <DoodleIcon name="pin" color="#AE9D92" :size="20" />
+              <text class="mat-location-text">{{ item.location.address }}</text>
+            </view>
+
+            <!-- 情绪标签 -->
+            <view class="mat-footer">
+              <view v-if="item.emotion && item.emotion.label" class="mat-emotion">
+                <text class="emotion-emoji">{{ item.emotion.emoji }}</text>
+                <text class="emotion-label">{{ item.emotion.label }}</text>
+                <text class="emotion-score">{{ (item.emotion.score * 100).toFixed(0) }}%</text>
+              </view>
+              <view v-else class="mat-emotion-loading">
+                <text class="emotion-loading-text">情绪分析中...</text>
+              </view>
+
+              <!-- 润色按钮（仅文字素材） -->
+              <view v-if="item.type === 'text'" class="polish-btn press-feedback" @click="handlePolish(item)">
+                <text class="polish-text">润色</text>
+              </view>
+
+              <!-- 删除按钮 -->
+              <view class="mat-delete press-feedback" @click="deleteMaterial(index)">
+                <DoodleIcon name="cross" color="#AE9D92" :size="20" />
+              </view>
+            </view>
           </view>
         </view>
-        <view class="tag-grid">
-          <view
-            v-for="tag in allTags"
-            :key="tag"
-            class="tag-option"
-            :class="{ selected: selectedTags.includes(tag) }"
-            @click="toggleTag(tag)"
-          >
-            <text class="tag-option-text">#{{ tag }}</text>
+
+        <!-- 空状态 -->
+        <view v-if="materials.length === 0" class="empty-state">
+          <DoodleIcon name="pen" color="#D4C4B8" :size="80" />
+          <text class="empty-text">点击下方按钮记录此刻</text>
+          <text class="empty-sub">可以添加照片、语音或文字</text>
+        </view>
+
+        <view class="timeline-bottom-spacer" />
+      </view>
+    </scroll-view>
+
+    <!-- ── 底部操作栏 ── -->
+    <view class="bottom-bar">
+      <!-- 素材类型按钮 -->
+      <view class="media-btns">
+        <view class="media-btn press-feedback" @click="addPhoto">
+          <text class="media-icon">📷</text>
+          <text class="media-label">拍照</text>
+        </view>
+        <view class="media-btn press-feedback" @click="addVoice">
+          <text class="media-icon">🎤</text>
+          <text class="media-label">语音</text>
+        </view>
+        <view class="media-btn press-feedback" @click="showTextInput = true">
+          <text class="media-icon">📝</text>
+          <text class="media-label">文字</text>
+        </view>
+      </view>
+
+      <!-- 生成日记按钮 -->
+      <view
+        class="generate-btn press-feedback"
+        :class="{ disabled: materials.length === 0 }"
+        @click="handleGenerate"
+      >
+        <DoodleIcon v-if="generating" name="loading" color="#FFFFFF" :size="32" class="spin-anim" :filtered="false" />
+        <template v-else>
+          <DoodleIcon name="sparkle" color="#FFFFFF" :size="36" :filtered="false" />
+          <text class="generate-text">生成今日日记</text>
+        </template>
+      </view>
+    </view>
+
+    <!-- ── 文字输入弹窗 ── -->
+    <view v-if="showTextInput" class="overlay" @click="showTextInput = false">
+      <view class="text-sheet" @click.stop>
+        <view class="sheet-header">
+          <text class="sheet-title">添加文字素材</text>
+          <view class="sheet-close press-feedback" @click="showTextInput = false">
+            <DoodleIcon name="cross" color="#AE9D92" :size="28" />
           </view>
         </view>
-        <view class="tag-confirm-btn" @click="showTagPicker = false">
-          <text class="tag-confirm-text">确定</text>
+        <textarea
+          v-model="textInput"
+          class="text-input"
+          placeholder="写下此刻的感受..."
+          :placeholder-style="'color: #AE9D92; font-size: 30rpx;'"
+          :auto-height="true"
+          maxlength="500"
+        />
+        <view class="sheet-footer">
+          <text class="char-count">{{ textInput.length }}/500</text>
+          <view class="add-btn press-feedback" @click="addText">
+            <text class="add-btn-text">添加</text>
+          </view>
         </view>
       </view>
     </view>
 
     <!-- ── 文风选择弹窗 ── -->
-    <view v-if="showStylePicker" class="style-overlay" @click="showStylePicker = false">
+    <view v-if="showStylePicker" class="overlay" @click="showStylePicker = false">
       <view class="style-sheet" @click.stop>
-        <view class="sheet-title-row">
+        <view class="sheet-header">
           <text class="sheet-title">选择文风</text>
           <view class="sheet-close press-feedback" @click="showStylePicker = false">
-            <DoodleIcon name="cross" color="#AE9D92" :size="16" />
+            <DoodleIcon name="cross" color="#AE9D92" :size="28" />
           </view>
         </view>
         <view class="style-grid">
           <view
             v-for="s in styles"
             :key="s"
-            class="style-option"
+            class="style-option press-feedback"
             :class="{ selected: currentStyle === s }"
             @click="selectStyle(s)"
           >
@@ -171,15 +192,15 @@
     </view>
 
     <!-- ── 关闭确认弹窗 ── -->
-    <view v-if="showCloseConfirm" class="confirm-overlay" @click="showCloseConfirm = false">
+    <view v-if="showCloseConfirm" class="overlay" @click="showCloseConfirm = false">
       <view class="confirm-sheet" @click.stop>
-        <text class="confirm-title">放弃编辑？</text>
-        <text class="confirm-desc">你编辑的内容尚未保存，确定要退出吗？</text>
+        <text class="confirm-title">放弃记录？</text>
+        <text class="confirm-desc">已添加 {{ materials.length }} 条素材，确定要退出吗？</text>
         <view class="confirm-btns">
-          <view class="confirm-cancel" @click="showCloseConfirm = false">
-            <text class="cancel-text">取消</text>
+          <view class="confirm-cancel press-feedback" @click="showCloseConfirm = false">
+            <text class="cancel-text">继续记录</text>
           </view>
-          <view class="confirm-sure" @click="forceClose">
+          <view class="confirm-sure press-feedback" @click="forceClose">
             <text class="sure-text">放弃</text>
           </view>
         </view>
@@ -189,135 +210,194 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, nextTick } from 'vue'
 import CustomNavBar from '@/components/CustomNavBar.vue'
 import DoodleIcon from '@/components/DoodleIcon.vue'
+import { createMaterial, extractEmotion, polishText } from '@/services/api/material'
+import type { RawMaterial } from '@/services/api/material'
+import { generateDiary } from '@/services/api/diary'
 
-interface Emotion {
-  key: string
-  emoji: string
-  label: string
-}
+const styles = ['文艺', '幽默', '简洁', '温暖', '中二', '古风', '科幻', '电影']
 
-const emotions: Emotion[] = [
-  { key: 'happy',   emoji: '😊', label: '开心' },
-  { key: 'sad',     emoji: '😢', label: '难过' },
-  { key: 'angry',   emoji: '😤', label: '烦躁' },
-  { key: 'tired',   emoji: '😴', label: '疲惫' },
-  { key: 'blessed', emoji: '🥰', label: '幸福' },
-  { key: 'funny',   emoji: '😂', label: '搞笑' },
-  { key: 'think',   emoji: '🤔', label: '思考' },
-  { key: 'cool',    emoji: '😎', label: '自信' },
-]
-
-const styles = ['简洁', '文艺', '搞笑', '中二', '武侠', '古风', '科幻', '电影']
-
-const allTags = ['美食', '学习', '运动', '社交', '心情', '摄影', '音乐', '旅行', '读书', '游戏']
-
-// ── 状态 ──
-const mode = ref('text')
-const selectedEmotion = ref<Emotion>(emotions[0])
-const photos = ref<string[]>([
-  'https://picsum.photos/seed/newdiary1/400/400',
-  'https://picsum.photos/seed/newdiary2/400/400',
-])
-const content = ref('')
-const selectedTags = ref<string[]>(['美食'])
+const materials = ref<RawMaterial[]>([])
 const currentStyle = ref('简洁')
-const aiLoading = ref(false)
-const showTagPicker = ref(false)
+const generating = ref(false)
+const showTextInput = ref(false)
 const showStylePicker = ref(false)
 const showCloseConfirm = ref(false)
+const textInput = ref('')
+const scrollIntoId = ref('')
 
-// ── Computed ──
-const placeholderText = computed(() => {
-  const map: Record<string, string> = {
-    photo: 'AI 会根据照片生成日记，你也可以补充几句...',
-    album: 'AI 会根据照片生成日记，你也可以补充几句...',
-    text: '写下此刻的心情...',
-    voice: '语音转文字中...',
-  }
-  return map[mode.value] ?? '写下此刻的心情...'
-})
-
-const canDone = computed(() => {
-  return content.value.trim().length > 0 || photos.value.length > 0
-})
-
-// ── 生命周期 ──
 const navPlaceholderHeight = ref(64)
-const scrollHeight = ref(600)
+const timelineHeight = ref(500)
+
+const todayLabel = computed(() => {
+  const d = new Date()
+  const m = d.getMonth() + 1
+  const day = d.getDate()
+  const w = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'][d.getDay()]
+  return `${m}月${day}日 ${w}`
+})
+
 onMounted(() => {
   const info = uni.getSystemInfoSync()
   navPlaceholderHeight.value = (info.statusBarHeight ?? 20) + 44
-  scrollHeight.value = info.windowHeight - navPlaceholderHeight.value - 0
-  const pages = getCurrentPages()
-  const current = pages[pages.length - 1]
-  const options = (current as any)?.options ?? {}
-  if (options.mode) mode.value = options.mode
+  // date-bar 约60rpx ≈ 30px, bottom-bar 约 180rpx ≈ 90px
+  const dateBarH = 50
+  const bottomBarH = 180
+  timelineHeight.value = info.windowHeight - navPlaceholderHeight.value - dateBarH - bottomBarH
 })
 
-// ── 方法 ──
-function addPhoto() {
-  // 在 H5 环境使用 input[type=file] 模拟
-  // 实际调用 uni.chooseImage
+function formatTime(ts: number): string {
+  const d = new Date(ts)
+  const h = String(d.getHours()).padStart(2, '0')
+  const min = String(d.getMinutes()).padStart(2, '0')
+  return `${h}:${min}`
+}
+
+function scrollToBottom() {
+  nextTick(() => {
+    if (materials.value.length === 0) return
+    const last = materials.value[materials.value.length - 1]
+    scrollIntoId.value = ''
+    setTimeout(() => {
+      scrollIntoId.value = `mat-${last.id}`
+    }, 100)
+  })
+}
+
+async function afterAddMaterial(mat: RawMaterial) {
+  // Show material without emotion first
+  materials.value.push(mat)
+  scrollToBottom()
+
+  // Auto-extract emotion
+  try {
+    const emotion = await extractEmotion(mat.id)
+    const idx = materials.value.findIndex(m => m.id === mat.id)
+    if (idx >= 0) {
+      materials.value[idx] = { ...materials.value[idx], emotion }
+    }
+  } catch {
+    // silently ignore
+  }
+}
+
+async function addPhoto() {
   uni.chooseImage({
-    count: 9,
-    success: (res) => {
-      photos.value.push(...res.tempFilePaths)
+    count: 1,
+    success: async (res) => {
+      const url = res.tempFilePaths[0]
+      const today = new Date().toISOString().slice(0, 10)
+      try {
+        const mat = await createMaterial({ type: 'image', mediaUrl: url, date: today })
+        await afterAddMaterial(mat)
+      } catch {
+        uni.showToast({ title: '添加失败', icon: 'none' })
+      }
     },
-    fail: () => {
-      // H5 fallback: simulate adding a mock image
-      photos.value.push(`https://picsum.photos/seed/${Date.now()}/400/400`)
-      uni.showToast({ title: '已添加照片（模拟）', icon: 'none' })
+    fail: async () => {
+      // H5 fallback: mock image
+      const mockUrl = `https://picsum.photos/seed/${Date.now()}/400/400`
+      const today = new Date().toISOString().slice(0, 10)
+      try {
+        const mat = await createMaterial({ type: 'image', mediaUrl: mockUrl, date: today })
+        await afterAddMaterial(mat)
+      } catch {
+        uni.showToast({ title: '添加失败', icon: 'none' })
+      }
     }
   })
 }
 
-function removePhoto(index: number) {
-  photos.value.splice(index, 1)
+async function addVoice() {
+  // In H5 fallback: simulate voice transcription
+  uni.showLoading({ title: '录音中...', mask: true })
+  await new Promise(resolve => setTimeout(resolve, 1500))
+  uni.hideLoading()
+  const transcription = '今天天气真好，阳光明媚，心情不错'
+  const today = new Date().toISOString().slice(0, 10)
+  try {
+    const mat = await createMaterial({ type: 'voice', content: transcription, date: today })
+    await afterAddMaterial(mat)
+    uni.showToast({ title: '语音已转文字', icon: 'success' })
+  } catch {
+    uni.showToast({ title: '添加失败', icon: 'none' })
+  }
 }
 
-function removeTag(tag: string) {
-  const idx = selectedTags.value.indexOf(tag)
-  if (idx >= 0) selectedTags.value.splice(idx, 1)
+async function addText() {
+  const text = textInput.value.trim()
+  if (!text) {
+    uni.showToast({ title: '请输入内容', icon: 'none' })
+    return
+  }
+  showTextInput.value = false
+  const today = new Date().toISOString().slice(0, 10)
+  try {
+    const mat = await createMaterial({ type: 'text', content: text, date: today })
+    textInput.value = ''
+    await afterAddMaterial(mat)
+  } catch {
+    uni.showToast({ title: '添加失败', icon: 'none' })
+  }
 }
 
-function toggleTag(tag: string) {
-  const idx = selectedTags.value.indexOf(tag)
-  if (idx >= 0) {
-    selectedTags.value.splice(idx, 1)
-  } else {
-    selectedTags.value.push(tag)
+async function handlePolish(item: RawMaterial) {
+  uni.showLoading({ title: '润色中...', mask: true })
+  try {
+    const result = await polishText(item.id, currentStyle.value)
+    const idx = materials.value.findIndex(m => m.id === item.id)
+    if (idx >= 0) {
+      materials.value[idx] = { ...materials.value[idx], content: result.polished }
+    }
+    uni.showToast({ title: '润色完成 ✨', icon: 'success' })
+  } catch {
+    uni.showToast({ title: '润色失败', icon: 'none' })
+  } finally {
+    uni.hideLoading()
+  }
+}
+
+function deleteMaterial(index: number) {
+  materials.value.splice(index, 1)
+}
+
+async function handleGenerate() {
+  if (materials.value.length === 0) {
+    uni.showToast({ title: '请先添加素材', icon: 'none' })
+    return
+  }
+  if (generating.value) return
+
+  generating.value = true
+  uni.showLoading({ title: 'AI 生成日记中...', mask: true })
+
+  try {
+    const today = new Date().toISOString().slice(0, 10)
+    const diary = await generateDiary(today, '多云 18°C')
+    uni.hideLoading()
+    generating.value = false
+
+    // Navigate to preview page
+    uni.navigateTo({
+      url: `/pages/diary/preview?id=${diary.id}&title=${encodeURIComponent(diary.title)}&content=${encodeURIComponent(diary.content)}&editCount=${diary.editCount}&maxEdits=${diary.maxEdits}`
+    })
+  } catch {
+    uni.hideLoading()
+    generating.value = false
+    uni.showToast({ title: '生成失败，请重试', icon: 'none' })
   }
 }
 
 function selectStyle(s: string) {
   currentStyle.value = s
   showStylePicker.value = false
-  uni.showToast({ title: `已切换为 ${s} 风格`, icon: 'none' })
-}
-
-async function handleAIGenerate() {
-  if (aiLoading.value) return
-  aiLoading.value = true
-  uni.showLoading({ title: 'AI 生成中...', mask: true })
-
-  await new Promise(resolve => setTimeout(resolve, 2000))
-
-  content.value = '今天阳光正好，和朋友约在了学校旁边那家熟悉的咖啡馆。点了一杯拿铁，聊了很多关于未来的事情。窗外梧桐树的影子斑驳地落在桌面上，这一刻的时光仿佛被拉得很长很长。我们聊梦想、聊申请、聊雅思，也聊一些无聊的八卦，笑得肚子疼。这种简单而真实的快乐，大概就是大学生活最珍贵的部分吧。✨'
-  aiLoading.value = false
-  uni.hideLoading()
-  uni.showToast({ title: 'AI 生成完成 ✨', icon: 'success' })
-}
-
-function handleVoice() {
-  uni.showToast({ title: '语音功能开发中', icon: 'none' })
+  uni.showToast({ title: `已切换为 ${s} 文风`, icon: 'none' })
 }
 
 function handleClose() {
-  const hasContent = content.value.trim().length > 0 || photos.value.length > 0
-  if (hasContent) {
+  if (materials.value.length > 0) {
     showCloseConfirm.value = true
   } else {
     uni.navigateBack()
@@ -327,329 +407,325 @@ function handleClose() {
 function forceClose() {
   uni.navigateBack()
 }
-
-async function handleDone() {
-  if (!canDone.value) return
-
-  // 如果有图片但没文字，先 AI 生成
-  if (photos.value.length > 0 && !content.value.trim()) {
-    uni.showLoading({ title: 'AI 生成日记中...', mask: true })
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    content.value = '今天的日记，由照片和心情组成。南开大学的校园里，阳光洒在梧桐树叶上，一切都显得那么宁静而美好。用心感受每一个平凡的瞬间，这就是记录的意义吧。🌿'
-    uni.hideLoading()
-  }
-
-  console.log('📔 日记保存数据：', {
-    content: content.value,
-    photos: photos.value,
-    emotion: selectedEmotion.value,
-    tags: selectedTags.value,
-    style: currentStyle.value,
-  })
-
-  uni.showToast({ title: '日记已保存 ✓', icon: 'success' })
-  setTimeout(() => uni.navigateBack(), 800)
-}
 </script>
 
 <style lang="scss" scoped>
 .write-page {
   background: #FDF8F3;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-.nav-placeholder-write {
-}
+.nav-placeholder {}
 
 /* ── NavBar 插槽 ── */
 .nav-close {
   padding: 8rpx 16rpx;
-  &:active { opacity: 0.6; }
 }
 
-.close-text {
-  font-size: 32rpx;
-  color: #2C1F14;
-  font-weight: 300;
-}
-
-.nav-done {
+.nav-style-btn {
+  display: flex;
+  align-items: center;
   padding: 8rpx 16rpx;
+  background: rgba(232, 133, 90, 0.1);
   border-radius: 20rpx;
-  background: #D4C4B8;
-  transition: background 0.2s;
 }
 
-.nav-done:not(.disabled) {
-  background: #E8855A;
-}
-
-.done-text {
-  font-size: 28rpx;
-  color: #FFFFFF;
-  font-weight: 600;
-}
-
-/* ── 内容区 ── */
-.write-body {
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 200rpx;
-}
-
-/* ── 情绪选择栏 ── */
-.emotion-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 20rpx 8rpx;
-  background: #FFFFFF;
-  margin-bottom: 2rpx;
-}
-
-.emotion-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rpx;
-  padding: 8rpx 4rpx;
-  border-radius: 10rpx 14rpx 10rpx 12rpx;
-  cursor: pointer;
-  transition: transform 0.15s;
-  &:active { transform: scale(0.9); }
-
-  &.active {
-    background: rgba(232, 133, 90, 0.08);
-  }
-
-  &.active .emotion-emoji {
-    transform: scale(1.3);
-  }
-}
-
-.emotion-emoji {
-  font-size: 42rpx;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.emotion-label {
-  font-size: 18rpx;
-  color: #AE9D92;
-  line-height: 1;
-}
-
-.label-active {
+.style-label {
+  font-size: 26rpx;
   color: #E8855A;
   font-weight: 600;
 }
 
-.emotion-dot {
-  width: 6rpx;
-  height: 6rpx;
-  border-radius: 50% 60% 40% 55%;
-  background: #E8855A;
-  margin-top: 2rpx;
-}
-
-/* ── 照片区域 ── */
-.photo-section {
-  background: #FFFFFF;
-  padding: 16rpx 0 16rpx 16rpx;
-  margin-bottom: 2rpx;
-}
-
-.photo-scroll {
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-}
-
-.photo-item {
-  position: relative;
-  display: inline-block;
-  margin-right: 12rpx;
-  flex-shrink: 0;
-}
-
-.photo-img {
-  width: 160rpx;
-  height: 160rpx;
-  border-radius: 12rpx;
-  display: block;
-}
-
-.photo-delete {
-  position: absolute;
-  top: -8rpx;
-  right: -8rpx;
-  width: 36rpx;
-  height: 36rpx;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &:active { background: rgba(0, 0, 0, 0.7); }
-}
-
-.delete-icon {
-  font-size: 20rpx;
-  color: #FFFFFF;
-  line-height: 1;
-}
-
-.photo-add {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 160rpx;
-  height: 160rpx;
-  border-radius: 12rpx;
-  border: 2rpx dashed #D4C4B8;
-  flex-shrink: 0;
-  cursor: pointer;
-  &:active { background: rgba(232, 133, 90, 0.05); }
-}
-
-.add-icon {
-  font-size: 40rpx;
-  color: #AE9D92;
-  line-height: 1;
-}
-
-.add-text {
+.style-arrow {
   font-size: 22rpx;
-  color: #AE9D92;
-  margin-top: 4rpx;
+  color: #E8855A;
 }
 
-/* ── 文本输入 ── */
-.textarea-section {
+/* ── 日期天气行 ── */
+.date-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16rpx 32rpx;
   background: #FFFFFF;
-  padding: 16rpx 24rpx;
-  margin-bottom: 2rpx;
+  border-bottom: 1px solid rgba(44, 31, 20, 0.04);
 }
 
-.content-textarea {
-  width: 100%;
-  min-height: 300rpx;
-  font-size: 32rpx;
-  color: #4A3628;
-  line-height: 1.6;
-  background: transparent;
-  border: none;
-  outline: none;
-  resize: none;
+.date-text {
+  font-size: 28rpx;
+  color: #2C1F14;
+  font-weight: 600;
 }
 
-/* ── 位置天气 ── */
-.meta-row {
-  background: #FFFFFF;
-  padding: 12rpx 24rpx;
-  margin-bottom: 2rpx;
+.weather-info {
+  display: flex;
+  align-items: center;
+  gap: 4rpx;
 }
 
-.meta-text {
+.weather-text {
   font-size: 26rpx;
   color: #AE9D92;
 }
 
-/* ── 标签栏 ── */
-.tag-bar {
+/* ── 时间线 ── */
+.timeline-scroll {
+  flex: 1;
+}
+
+.timeline-inner {
+  padding: 24rpx 24rpx 0 24rpx;
+}
+
+.material-item {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8rpx;
-  padding: 12rpx 24rpx;
-  background: #FFFFFF;
+  gap: 16rpx;
+  margin-bottom: 24rpx;
+}
+
+/* 时间线节点 */
+.timeline-node {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  flex-shrink: 0;
+  padding-top: 8rpx;
 }
 
-.tag-chip {
-  padding: 6rpx 16rpx;
-  border-radius: 20rpx;
+.node-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50% 60% 40% 55%;
+  background: #E8855A;
+  flex-shrink: 0;
 }
 
-.tag-selected {
+.node-line {
+  width: 2rpx;
+  flex: 1;
+  min-height: 40rpx;
+  background: repeating-linear-gradient(
+    to bottom,
+    #D4C4B8 0,
+    #D4C4B8 8rpx,
+    transparent 8rpx,
+    transparent 16rpx
+  );
+  margin-top: 8rpx;
+}
+
+/* 素材卡片 */
+.material-card {
+  flex: 1;
+  background: #FFFFFF;
+  border-radius: 16rpx 20rpx 16rpx 18rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+  padding: 20rpx 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+  min-width: 0;
+}
+
+.mat-time {
+  font-size: 22rpx;
+  color: #AE9D92;
+}
+
+.mat-image {
+  width: 100%;
+  height: 320rpx;
+  border-radius: 12rpx;
+  display: block;
+}
+
+.mat-image-wrap {
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+
+.mat-text-content {
+  font-size: 30rpx;
+  color: #4A3628;
+  line-height: 1.6;
+}
+
+.mat-voice-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
   background: #FDF0E8;
-  &:active { opacity: 0.7; }
+  border-radius: 12rpx;
+  padding: 16rpx 20rpx;
 }
 
-.tag-text {
-  font-size: 24rpx;
-  color: #E8855A;
+.mat-voice-text {
+  font-size: 28rpx;
+  color: #4A3628;
+  flex: 1;
 }
 
-.tag-add-btn {
-  padding: 6rpx 16rpx;
-  border-radius: 20rpx;
-  border: 1rpx dashed #D4C4B8;
-  &:active { background: rgba(232, 133, 90, 0.05); }
+.mat-location {
+  display: flex;
+  align-items: center;
+  gap: 4rpx;
 }
 
-.tag-add-text {
+.mat-location-text {
   font-size: 24rpx;
   color: #AE9D92;
 }
 
-/* ── AI 工具栏（固定底部） ── */
-.ai-toolbar {
+.mat-footer {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.mat-emotion {
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+  flex: 1;
+}
+
+.emotion-emoji {
+  font-size: 28rpx;
+}
+
+.emotion-label {
+  font-size: 24rpx;
+  color: #E8855A;
+  font-weight: 600;
+}
+
+.emotion-score {
+  font-size: 22rpx;
+  color: #AE9D92;
+}
+
+.mat-emotion-loading {
+  flex: 1;
+}
+
+.emotion-loading-text {
+  font-size: 22rpx;
+  color: #D4C4B8;
+}
+
+.polish-btn {
+  background: rgba(232, 133, 90, 0.1);
+  border-radius: 12rpx;
+  padding: 6rpx 16rpx;
+}
+
+.polish-text {
+  font-size: 24rpx;
+  color: #E8855A;
+  font-weight: 600;
+}
+
+.mat-delete {
+  padding: 4rpx;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 0;
+  gap: 16rpx;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #AE9D92;
+  font-weight: 500;
+}
+
+.empty-sub {
+  font-size: 26rpx;
+  color: #D4C4B8;
+}
+
+.timeline-bottom-spacer {
+  height: 24rpx;
+}
+
+/* ── 底部操作栏 ── */
+.bottom-bar {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  display: flex;
-  align-items: center;
-  gap: 16rpx;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 -2rpx 12rpx rgba(0, 0, 0, 0.06);
   padding: 16rpx 24rpx;
   padding-bottom: calc(16rpx + env(safe-area-inset-bottom));
-  background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(12rpx);
-  -webkit-backdrop-filter: blur(12rpx);
-  box-shadow: 0 -2rpx 12rpx rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
 }
 
-.toolbar-btn {
-  flex: 1;
+.media-btns {
+  display: flex;
+  gap: 16rpx;
+  justify-content: center;
+}
+
+.media-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rpx;
+  padding: 12rpx 32rpx;
+  background: #FDF8F3;
+  border-radius: 16rpx;
+  border: 2rpx solid rgba(232, 133, 90, 0.15);
+  &:active { opacity: 0.7; }
+}
+
+.media-icon {
+  font-size: 40rpx;
+}
+
+.media-label {
+  font-size: 22rpx;
+  color: #4A3628;
+}
+
+.generate-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 72rpx;
-  border-radius: 36rpx;
-  font-size: 28rpx;
-  font-weight: 600;
-  &:active { opacity: 0.85; }
-}
-
-.ai-btn {
+  gap: 10rpx;
   background: linear-gradient(135deg, #E8855A, #F0A882);
-  box-shadow: 2px 3px 0 rgba(232, 133, 90, 0.2);
-  gap: 6rpx;
+  border-radius: 44rpx;
+  height: 88rpx;
+  box-shadow: 2px 3px 0 rgba(232, 133, 90, 0.25);
+  &:active { opacity: 0.85; }
+
+  &.disabled {
+    background: #D4C4B8;
+    box-shadow: none;
+  }
 }
 
-.ai-btn-text {
+.generate-text {
+  font-size: 32rpx;
   color: #FFFFFF;
-  font-size: 28rpx;
-  font-weight: 600;
+  font-weight: 700;
 }
 
-.style-btn,
-.voice-btn {
-  border: 3rpx solid #E8855A;
-  background: transparent;
-  gap: 6rpx;
-}
-
-.style-btn-text,
-.voice-btn-text {
-  color: #E8855A;
-  font-size: 28rpx;
-  font-weight: 600;
-}
-
-/* ── 标签选择弹窗 ── */
-.tag-overlay,
-.style-overlay,
-.confirm-overlay {
+/* ── 弹窗 ── */
+.overlay {
   position: fixed;
   inset: 0;
   z-index: 9999;
@@ -659,15 +735,16 @@ async function handleDone() {
   justify-content: center;
 }
 
-.tag-sheet,
-.style-sheet {
+.text-sheet,
+.style-sheet,
+.confirm-sheet {
   width: 100%;
   background: #FFFFFF;
   border-radius: 24rpx 24rpx 0 0;
   padding: 24rpx 32rpx calc(32rpx + env(safe-area-inset-bottom));
 }
 
-.sheet-title-row {
+.sheet-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -685,27 +762,57 @@ async function handleDone() {
   &:active { opacity: 0.6; }
 }
 
-.sheet-close text {
-  font-size: 28rpx;
+.text-input {
+  width: 100%;
+  min-height: 200rpx;
+  font-size: 30rpx;
+  color: #2C1F14;
+  line-height: 1.6;
+  border: 2rpx solid #EAE0D6;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  background: #FDF8F3;
+}
+
+.sheet-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16rpx;
+}
+
+.char-count {
+  font-size: 24rpx;
   color: #AE9D92;
 }
 
-.tag-grid,
+.add-btn {
+  background: linear-gradient(135deg, #E8855A, #F0A882);
+  border-radius: 20rpx;
+  padding: 16rpx 40rpx;
+  &:active { opacity: 0.85; }
+}
+
+.add-btn-text {
+  font-size: 30rpx;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
 .style-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 12rpx;
-  margin-bottom: 20rpx;
 }
 
-.tag-option,
 .style-option {
-  padding: 10rpx 20rpx;
+  padding: 12rpx 24rpx;
   border-radius: 20rpx;
   border: 2rpx solid #EAE0D6;
   background: #F5F0EB;
-  cursor: pointer;
-  transition: all 0.15s;
+  min-width: 128rpx;
+  text-align: center;
   &:active { transform: scale(0.95); }
 
   &.selected {
@@ -714,49 +821,24 @@ async function handleDone() {
   }
 }
 
-.tag-option-text,
 .style-option-text {
-  font-size: 26rpx;
+  font-size: 28rpx;
   color: #4A3628;
   .selected & { color: #E8855A; font-weight: 600; }
 }
 
-.style-option {
-  min-width: 140rpx;
-  text-align: center;
-}
-
-.tag-confirm-btn {
-  background: linear-gradient(135deg, #E8855A, #F0A882);
-  border-radius: 20rpx;
-  padding: 20rpx;
-  text-align: center;
-  &:active { opacity: 0.85; }
-}
-
-.tag-confirm-text {
-  font-size: 30rpx;
-  color: #FFFFFF;
-  font-weight: 600;
-}
-
-/* ── 关闭确认弹窗 ── */
 .confirm-sheet {
-  width: 100%;
-  background: #FFFFFF;
-  border-radius: 24rpx 24rpx 0 0;
-  padding: 40rpx 32rpx calc(32rpx + env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
-  gap: 12rpx;
+  gap: 16rpx;
+  padding-top: 40rpx;
 }
 
 .confirm-title {
-  font-size: 34rpx;
-  font-weight: 600;
+  font-size: 36rpx;
+  font-weight: 700;
   color: #2C1F14;
   text-align: center;
-  margin-bottom: 4rpx;
 }
 
 .confirm-desc {
@@ -769,14 +851,14 @@ async function handleDone() {
 .confirm-btns {
   display: flex;
   gap: 16rpx;
-  margin-top: 12rpx;
+  margin-top: 8rpx;
 }
 
 .confirm-cancel {
   flex: 1;
   background: #F5F0EB;
   border-radius: 20rpx;
-  padding: 20rpx;
+  padding: 24rpx;
   text-align: center;
   &:active { opacity: 0.8; }
 }
@@ -791,7 +873,7 @@ async function handleDone() {
   flex: 1;
   background: #E8855A;
   border-radius: 20rpx;
-  padding: 20rpx;
+  padding: 24rpx;
   text-align: center;
   &:active { opacity: 0.85; }
 }
@@ -800,5 +882,15 @@ async function handleDone() {
   font-size: 30rpx;
   color: #FFFFFF;
   font-weight: 600;
+}
+
+/* spin 动画 */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin-anim {
+  animation: spin 1s linear infinite;
 }
 </style>

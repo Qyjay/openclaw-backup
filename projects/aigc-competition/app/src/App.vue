@@ -1,4 +1,6 @@
 <script setup lang="ts">
+// 全局启动 — 登录检查由 login 页面自身处理
+// 如需在其他页面拦截未登录，可在对应页面 onLoad 中检查
 </script>
 
 <template>
