@@ -4,6 +4,10 @@
 > Leader: Seneschal 👑
 > 始于: 2026-03-19
 
+## 2026-03-26
+
+- `12:00` 📦 **每日自动备份** — 全量备份完成，含 workspace / config / agents (coder, scribe, riji)，已推送到 GitHub。备份脚本已同步至仓库 scripts 目录。
+
 ## 2026-03-25
 
 - **12:00** 🗄️ 每日自动备份完成 — workspace、skills、配置、cron、Agents (coder, scribe) 全量推送至 GitHub
