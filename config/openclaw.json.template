@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.23-2",
-    "lastTouchedAt": "2026-03-24T10:16:38.033Z"
+    "lastTouchedAt": "2026-03-25T08:36:03.310Z"
   },
   "wizard": {
     "lastRunAt": "2026-02-02T08:28:08.796Z",
@@ -310,6 +310,40 @@
           "name": "Muse",
           "emoji": "✍️"
         }
+      },
+      {
+        "id": "riji",
+        "name": "日迹 AI",
+        "workspace": "~/.openclaw/workspace-riji",
+        "agentDir": "~/.openclaw/agents/riji/agent",
+        "model": {
+          "primary": "minimax-tokenplan/MiniMax-M2.7-highspeed",
+          "fallbacks": [
+            "minimax-internal/minimax-m2.7"
+          ]
+        },
+        "identity": {
+          "name": "日迹",
+          "emoji": "📔"
+        },
+        "tools": {
+          "allow": [
+            "memory_search",
+            "memory_get",
+            "web_search"
+          ],
+          "deny": [
+            "exec",
+            "write",
+            "edit",
+            "browser",
+            "canvas",
+            "nodes",
+            "cron",
+            "gateway",
+            "sessions_spawn"
+          ]
+        }
       }
     ]
   },
@@ -354,6 +388,13 @@
     "tailscale": {
       "mode": "off",
       "resetOnExit": false
+    },
+    "http": {
+      "endpoints": {
+        "chatCompletions": {
+          "enabled": true
+        }
+      }
     }
   },
   "plugins": {
