@@ -1,251 +1,341 @@
-# 雅思口语核心背诵手册 — 精简版
+# IELTS Speaking Core Cheatsheet — Bilingual Edition
 
-> **使用方法：** 不要逐字背诵。看关键词 → 用自己的话讲出来 → 对照答案文件查漏补缺。
-
----
-
-# Part A：10 个核心故事卡片
-
-## 故事 1 ☀ 好友 Leo — 规划王 & 救火队长
-
-**关键词：** Leo / 大一同宿舍楼 / 通识课认识 / 每周日晚做下周计划 / 从不慌张
-
-**故事 A — PPT 救火：**
-大二小组项目 → 答辩前夜 PPT 损坏 → 全组慌了 → Leo 说「先别急」→ 找到云端旧版备份 → 分工：两人恢复数据 + 两人重建幻灯片 → 三小时搞定 → 第二天答辩拿了第一
-
-**故事 B — 帮我扛过最难的学期：**
-大三上实习 + 课业并行 → 压力爆表 → Leo 主动帮做时间管理表 → 替我分担了一部分小组作业 → 那段时间靠他撑过来的
-
-**可覆盖话题：** 擅长做计划的人 / 机智解决问题的人 / 乐于助人的人 / 重要的好朋友 / 学习朋友好习惯
+> **How to use:** Glance at the English keywords → speak for 2 minutes without reading the full answer → check the answer files only when stuck.
 
 ---
 
-## 故事 2 🎤 高中第一次独唱
+# Part A: 10 Core Story Cards
 
-**关键词：** 校园文艺汇演 / 被朋友怂恿报名 / 上台前腿软手抖 / 想逃 / 开口唱第一句后找到感觉 / 全场安静 / 掌声雷动 / 找到真正热爱的事 / 之后经常上台
+## Story 1 ☀ Best Friend Leo — The Planner & Crisis Solver
 
-**情感弧线：** 恐惧 → 豁出去 → 沉浸 → 成就感 → 人生转折
+**Keywords:** Leo (Li Hao) / freshman year at Nankai / same dorm building / bonded in an elective course / plans every Sunday night / never panics
 
-**可覆盖话题：** 第一次尝试的兴奋活动 / 微笑的场合 / 发挥想象力（换角度讲「如何克服紧张」）
+**Story A — The PPT Rescue:**
+> Sophomore year, group project → presentation file **corrupted** the night before → everyone **freaked out** → Leo stayed calm: "Let's not panic" → found an **auto-saved backup** on the cloud → split the work: two people **recovered core data** from the old version, two others **rebuilt slides** using a backup template → finished in three hours → **nailed the presentation** next day, came first in class
 
----
+**Key phrases to memorise:**
+- "He's the kind of person who stays level-headed when everyone else is losing it."
+- "Instead of panicking, he broke the problem into smaller, manageable pieces."
+- "That experience taught me that calmness is a superpower."
 
-## 故事 3 💔 鼓励失恋的朋友
+**Story B — Carried Me Through the Hardest Semester:**
+> Junior year, internship + coursework **running in parallel** → overwhelming pressure → Leo **proactively** made me a detailed schedule → even **covered part of a group assignment** for me → "I genuinely don't know how I would've survived that semester without him."
 
-**关键词：** 大学好友被分手 → 消沉两周不出门 → 没说大道理 → 每天去拉他出来吃饭打球 → 某晚操场散步长谈 → 「这段感情教会了你一些东西，所以不是浪费」 → 慢慢恢复 → 后来特别感谢我
+**Key phrases:**
+- "He didn't wait for me to ask — he just stepped in."
+- "That's what separates a good friend from a great one."
 
-**可覆盖话题：** 给别人建议 / 鼓励别人做不愿做的事
-
----
-
-## 故事 4 🏔️ 父母的打拼 & 家乡恩施
-
-**关键词：** 湖北恩施乡村 → 没学历没人脉 → 来北京白手起家 → 靠勤劳和诚实 → 生活好了不忘本 → 帮老家亲戚邻居 → 过年带礼物给村里老人
-
-**恩施标签：** 大峡谷（东方科罗拉多）/ 恩施玉露（富硒茶）/ 土家族吊脚楼 / 山清水秀 / 合渣（传统豆腐菜）
-
-**可覆盖话题：** 为家人骄傲 / 鼓励你保护自然的人（高中地理老师 + 家乡山水）/ 自然之地 / 在家族企业工作的人（远房亲戚的土家餐馆）
+**Covers:** person who plans well / solved a problem smartly / helpful person / important friend / learning a friend's good habit
 
 ---
 
-## 故事 5 🚂 南京之行 & 山里迷路
+## Story 2 🎤 First Solo Performance — High School Talent Show
 
-**南京：** 大二暑假 / 和前女友 / 中山陵 + 夫子庙 + 秦淮河夜景 + 先锋书店 / 安静美好的回忆
+**Keywords:** school talent show / **talked into signing up** by friends / backstage: legs shaking, hands trembling, almost **backed out** / opened my mouth, sang the first line → gradually **found my groove** / audience went silent → **erupted in applause** / turning point: discovered what I truly loved / kept performing after that
 
-**迷路：** 八九岁暑假回恩施 / 和表哥去后山探险 / 好奇心走了没走过的小路 / 一个多小时后完全迷路 / 表哥注意到溪流方向 →「顺着水流走」 → 两小时后回到村子 / 被家人骂了一顿
+**Key phrases:**
+- "My heart was pounding so hard I could hear it over the background music."
+- "The moment I heard the applause, something clicked — I knew this was what I wanted to do."
+- "Looking back, that three-minute performance shaped the person I am today."
+- "It was terrifying and exhilarating in equal measure."
 
-**可覆盖话题：** 想再去一次的远行 / 迷路 / 自行车or汽车旅行（编一个公路旅行想法）
+**Emotional arc:** Fear → leap of faith → flow state → overwhelming joy → life-changing moment
 
----
-
-## 故事 6 🎸 吉他 & 音乐人生
-
-**关键词：** 小时候拉小提琴（父母送去学的）→ 长大后自学吉他 → 卧室有个小录音室（话筒 + 笔记本 + 吉他）→ 心情好弹、心情不好也弹 → Yamaha LL6 原本预算 2000 结果花了 5000 → 店里试了十几把被音色征服 → 从不后悔
-
-**抖音走红：** 随手拍了一条弹唱视频 → 意外几万赞 → 评论说「被治愈了」→ 第一次意识到音乐能触达这么多人
-
-**可覆盖话题：** 生活中离不开的东西 / 花费超过预期的物品 / 童年喜欢的玩具（乐器就是玩具）/ 社交媒体趣事 / 擅长音乐的朋友（讲自己）/ 不享受的音乐活动（大一某次校园音乐节体验差）
+**Covers:** first exciting activity / occasion when people were smiling / using imagination (overcoming stage fright)
 
 ---
 
-## 故事 7 📖 The Alchemist & 学习成长
+## Story 3 💔 Encouraging a Heartbroken Friend
 
-**书：** 高中时读的《牧羊少年奇幻之旅》 / 「当你真心渴望某样东西时，整个宇宙都会联合起来帮助你」 / 迷茫的高中时期给了追梦的勇气
+**Keywords:** uni friend got **dumped** → two weeks of **shutting himself in** / skipping classes / I didn't lecture him → just **showed up every day**: dragged him out for meals, basketball / one night, long walk around the campus track → shared my own experiences → told him: **"The relationship taught you something, so it wasn't wasted"** → he slowly **bounced back** → later thanked me sincerely
 
-**实习成就：** MiniMax 新媒体推广 / 从零策划内容方向 / 抖音小红书运营 / 三个月涨粉数万 / 学会独立思考和项目管理
+**Key phrases:**
+- "I figured the last thing he needed was a lecture — he needed a friend who'd just be there."
+- "Sometimes the best advice isn't about what to say, but about showing up consistently."
+- "He told me months later that those daily walks meant more to him than any wise words could."
 
-**App：** 豆包（AI 学习助手）/ 微信（社交沟通）
-
-**可覆盖话题：** 有用的书 / 最近读过的故事 / 完美工作 / App or 程序 / 感兴趣的科学学科（AI）/ 别人帮忙下做的决定（选软件工程专业）/ 想提升的天赋（社交能力）
-
----
-
-## 故事 8 🎬 影视 & 名人
-
-**姚明：** 从小看 NBA / 球技 + 退役后推动篮球改革 + 公益 + 保护野生动物 / 2 米 26 却从不居高临下 / 谦逊和幽默 / 想问他「如何在公众压力下保持真实」
-
-**喜欢的电影 — Spider-Verse：** 每一帧都像漫画 / Miles Morales 的成长故事 / 音乐好听 / 视觉革命
-
-**失望的电影 — Ant-Man Quantumania：** 期待高（引出 Kang）/ 剧情混乱 / 反派塑造不够 / 笑点尬 / 漫威质量下滑
-
-**可覆盖话题：** 想见的名人 / 钦佩的运动员 / 近期观影 / 让你失望的电影 / 喜欢画画的孩子（表姐女儿，6 岁）
+**Covers:** giving advice / encouraging someone to do something they didn't want to
 
 ---
 
-## 故事 9 🔌 特殊经历合集
+## Story 4 🏔️ Family Pride & Hometown Enshi
 
-**停电：** 大二期末考试周 → 宿舍突然停电 → 正赶论文 → 笔记本有电池继续写 → 手机手电筒照着 → 室友点蜡烛聊天 → 反而成了温馨回忆
+**Keywords:** parents from a **rural village** in Enshi, Hubei → came to Beijing with **no degree, no connections** → built a life from scratch through **hard work and honesty** → never forgot their roots → still help relatives and neighbours back home → bring gifts for elderly villagers every Chinese New Year
 
-**摔坏手表：** 小时候摔坏爸爸的手表 → 表面碎了 → 非常害怕被骂 → 爸爸说「东西坏了可以修，人没事就好」→ 记到现在
+**Enshi tags:** Grand Canyon ("Eastern Colorado") / Enshi Yulu tea (selenium-rich, top-10 in China) / Tujia ethnic minority / stilted houses (吊脚楼) / karst landscapes, caves, rivers / fresh mountain air
 
-**第一次用外语：** 大一天津五大道 → 日本游客问路 → 英语 + 比划 → 磕磕绊绊五分钟 → 成功指路 → 对方连连鞠躬 thank you → 成就感至今难忘
+**Key phrases:**
+- "What makes me proudest isn't what they achieved — it's who they remained."
+- "They came from nothing, but they never let success change their character."
+- "My father always says: 'The mountain that raised you deserves your respect.'"
 
-**禁用手机：** 高考考场 → 手机统一上交 → 一开始不习惯 → 后来发现反而更专注
+**Geography teacher (for nature protection topic):**
+> High school geography teacher → took us on field trips to Enshi Grand Canyon → said: "The land beneath your feet raised you. Don't forget to protect it when you leave." → changed my attitude toward nature
 
-**可覆盖话题：** 突然停电 / 弄坏东西 / 第一次用外语 / 禁用手机的场合 / 别人向你道歉（可编一个同学误会的故事）
-
----
-
-## 故事 10 🌏 想去日本 & 科技 & 消费
-
-**日本：** 从小看动漫（火影、海贼王、进击的巨人）→ 想去秋叶原逛周边 + 京都看红叶 → 铁道文化 + 便利店文化 → 正宗拉面寿司 → 计划短期 2-3 周
-
-**AI 眼镜：** Meta Ray-Ban 类 → 实时翻译（出国用）+ AI 助手（不用掏手机）+ 拍照录像 → 价格约 3000-4000 元
-
-**商场 — 大悦城 Joy City：** 离南开不远 → 周末和朋友去 → B1 美食街性价比高 → 顶楼电影院
-
-**可覆盖话题：** 外国的短期停留 / 想拥有的科技产品 / 商场 / 有趣的建筑（天津滨海图书馆）/ 购物服务
+**Covers:** proud of family / person who encouraged nature protection / natural place (Grand Canyon) / family business worker (distant relative's Tujia restaurant serving 合渣 hezhā and smoked meat)
 
 ---
 
-# Part B：核心句式 & 语法武器库
+## Story 5 🚂 Nanjing Trip & Getting Lost in the Mountains
 
-## 1. 话语标记词（替代 and / but / so）
+**Nanjing:** Sophomore summer / with my then-girlfriend / Sun Yat-sen Mausoleum, Confucius Temple, **Qinhuai River night scenery** (lanterns reflected on water), **Librairie Avant-Garde** (spent an entire afternoon reading) / a quiet, beautiful memory
 
-### 开头类（用于回答第一句）
-| 标记词 | 适用场景 | 示例 |
-|--------|----------|------|
-| Actually, ... | 纠正预期/补充信息 | Actually, I'm quite into it. |
-| To be honest, ... | 坦率表达 | To be honest, I wasn't a fan at first. |
-| Well, ... | 自然思考过渡 | Well, it really depends on my mood. |
-| I'd say ... | 表达观点（比 I think 高级） | I'd say it's more about the experience. |
-| Funnily enough, ... | 引出意外事实 | Funnily enough, I only started last year. |
-| The thing is, ... | 解释核心原因 | The thing is, I never planned for it. |
+**Key phrases:**
+- "The Qinhuai River at night was absolutely magical — the lanterns cast these golden reflections on the water."
+- "We spent an entire afternoon in Librairie Avant-Garde, just reading in comfortable silence."
+- "Even though things didn't work out between us, the trip itself remains one of my fondest memories."
 
-### 转折类
-| 标记词 | 替代 | 示例 |
-|--------|------|------|
-| That said, ... | but | That said, it's not without its drawbacks. |
+**Getting lost (age 8-9):**
+Summer holiday in Enshi → exploring the mountains behind the village with my cousin → found an **unfamiliar trail**, curiosity took over → walked for over an hour → **completely disoriented** → started to panic → cousin noticed the **direction of a stream**: "If we follow the water, it'll lead us back to the village" → **two hours later**, finally home → got scolded by the family → still one of my most vivid childhood memories
+
+**Key phrases:**
+- "Curiosity got the better of us, and before we knew it, nothing looked familiar."
+- "My cousin kept his cool and said something I've never forgotten: 'Water always finds its way home.'"
+- "We got an earful from our grandparents, but honestly, I'd do it all over again."
+
+**Covers:** trip you'd like to take again / getting lost / bicycle-motorcycle-car trip (adapt to a road trip idea)
+
+---
+
+## Story 6 🎸 Guitar & Musical Life
+
+**Timeline:** Violin as a child (parents enrolled me) → self-taught guitar in high school → **bedroom recording setup**: mic, laptop, guitar, posters on the wall → play every day, good mood or bad
+
+**The Yamaha LL6 (over-budget purchase):**
+> Planned to spend 2,000 yuan → went to the guitar shop, tried over a dozen → **fell in love with the tone** of a Yamaha LL6 → 4,500 yuan + case + tuner = nearly 5,000 → "I was shocked at the receipt, but every time I strum it, I know it was worth every penny."
+
+**Douyin going viral:**
+> Posted a casual guitar-and-singing video → **unexpectedly hit tens of thousands of likes** → comments said "this healed me" → first time realising music can **reach people you've never met**
+
+**Key phrases:**
+- "That guitar isn't just an instrument — it's my therapist, my diary, and my best creative partner."
+- "I never intended it to go viral. I was just messing around in my bedroom studio."
+- "The comments section was full of strangers telling me my music made their day better. That hit differently."
+
+**Covers:** something you can't live without / item that cost more than expected / childhood toy (instruments were my toys) / social media fun / friend good at music (talk about myself) / unenjoyable music event (freshman campus music festival — deafening EDM, terrible speakers, nothing like real music)
+
+---
+
+## Story 7 📖 The Alchemist & Growth
+
+**The book:**
+> Read *The Alchemist* by Paulo Coelho in high school → "When you want something, all the universe conspires in helping you achieve it" → **struck a deep chord** during a confusing period → gave me the courage to chase dreams instead of playing it safe
+
+**Key phrases:**
+- "I must've read that one line a hundred times, and it still gives me goosebumps."
+- "It reframed failure for me — it's not the opposite of success, it's part of the journey."
+
+**Internship achievement:**
+> MiniMax new media project → planned content strategy **from scratch** → ran accounts on Douyin and Xiaohongshu → **gained tens of thousands of followers** in three months → learned to think independently and manage a project end-to-end
+
+**Apps:** WeChat (social lifeline) + Doubao (AI assistant — like ChatGPT, for research, English practice, debugging code)
+
+**Ideal job:** Flexible hours (start after 10am) / harmonious colleagues (feel like friends) / open culture (can pitch ideas to managers anytime) / values personal growth over pure KPI
+
+**Key phrases:**
+- "My dream workplace is one where hierarchy doesn't kill creativity."
+- "I'd rather earn less in a place that respects my ideas than grind in a place that treats me like a cog."
+
+**Covers:** useful book / recent story / perfect job / app or program / science field of interest (AI) / decision made with someone's help (choosing software engineering) / talent you want to improve (social confidence with strangers)
+
+---
+
+## Story 8 🎬 Movies & Celebrities
+
+**Yao Ming:**
+> Watched him play NBA since childhood / not just athletic excellence — **post-retirement** contributions: reforming Chinese basketball, wildlife protection, charity / 2.26m tall but **never condescending** / humble and witty / want to ask him: "How do you stay authentic under enormous public pressure?"
+
+**Key phrases:**
+- "What impresses me most isn't the rings or records — it's how he carried himself off the court."
+- "He proved that true greatness is about what you do after the spotlight fades."
+
+**Spider-Man: Across the Spider-Verse (liked):**
+> Every frame looks like a **comic book come to life** / Miles Morales' growth story is deeply relatable / the soundtrack is phenomenal / "It redefined what animation can be."
+
+**Ant-Man: Quantumania (disappointed):**
+> High expectations (supposed to introduce Kang) → plot was **all over the place** → villain felt underdeveloped → forced humour → "It felt like a two-hour trailer for something better that never came."
+
+**Drawing child:** Cousin's daughter, 6 years old, sits quietly in a corner at every family gathering drawing anime characters
+
+**Covers:** famous person to meet / sportsperson you admire / recent movie / disappointing movie / child who loves drawing
+
+---
+
+## Story 9 🔌 Special Experiences Collection
+
+**Power outage:**
+> Sophomore finals week → dorm **suddenly went dark** → I was racing to finish a paper → laptop had battery, so I kept typing → used phone flashlight → roommates lit candles and started chatting → **ended up being one of the warmest evenings** of that semester
+
+**Breaking dad's watch:**
+> As a kid → accidentally **knocked dad's watch off the table** → face shattered → **terrified** of being scolded → dad just said: **"Things can be fixed. As long as you're okay, that's all that matters."** → never forgot those words
+
+**First time using English:**
+> Freshman year → Tianjin's Five Great Avenues → a Japanese tourist asked for directions → communicated in **broken English plus gestures** for five minutes → **successfully gave directions** → he bowed repeatedly saying "thank you" → unforgettable sense of accomplishment
+
+**Phone ban:**
+> Gaokao exam hall → phones **collected into a bag** at the front → uncomfortable at first → later realised: no phone = **sharper focus**
+
+**Key phrases:**
+- "That blackout taught me that sometimes the best memories come from the most inconvenient moments."
+- "My dad's words stuck with me: things are replaceable, people aren't."
+- "It was clumsy and awkward, but when he bowed and said thank you, I felt ten feet tall."
+
+**Covers:** power outage / breaking something / first time using a foreign language / phone ban / someone apologising (can adapt to a classmate misunderstanding story)
+
+---
+
+## Story 10 🌏 Japan, Tech & Shopping
+
+**Japan:**
+> Grew up on anime: Naruto, One Piece, Attack on Titan → want to visit **Akihabara** (anime merchandise), **Kyoto** (temples + autumn leaves 红叶) → experience **rail culture** and **convenience store culture** → authentic ramen and sushi → plan: 2-3 weeks, **cultural immersion** not permanent relocation
+
+**AI glasses:**
+> Meta Ray-Ban style → real-time translation (perfect for travel), AI assistant (ask questions without pulling out phone), take photos/videos, play music → ~3,000-4,000 yuan → "Imagine walking through Kyoto and having every sign translated in real time — that's the future I want on my face."
+
+**Joy City (大悦城):**
+> Near Nankai campus → go with friends on weekends → B1 food court (great value), top floor cinema + restaurants → "It's our default hangout spot — we always end up there even when we have no plan."
+
+**Covers:** foreign country for short stay / tech product you want / shopping mall / interesting building (Tianjin Binhai Library — "The Eye") / shopping service experience
+
+---
+
+# Part B: Grammar & Sentence Weapons
+
+## 1. Discourse Markers (rotate these — never use the same one twice in a row)
+
+### Opening a response
+| Marker | When to use | Example |
+|--------|-------------|---------|
+| Actually, ... | Correcting expectations | Actually, I'm quite into it. |
+| To be honest, ... | Being candid | To be honest, I wasn't a fan at first. |
+| Well, ... | Natural thinking pause | Well, it really depends on my mood. |
+| I'd say ... | Giving an opinion | I'd say it's more about the experience. |
+| Funnily enough, ... | Introducing an unexpected fact | Funnily enough, I only started last year. |
+| The thing is, ... | Explaining the core reason | The thing is, I never planned for it. |
+| I reckon ... | Casual opinion (BrE vibe) | I reckon most people feel the same way. |
+
+### Contrasting / conceding
+| Marker | Replaces | Example |
+|--------|----------|---------|
+| That said, ... | but | That said, it's not without drawbacks. |
 | Having said that, ... | but | Having said that, I can see the appeal. |
 | On the flip side, ... | however | On the flip side, it taught me a lot. |
-| Mind you, ... | but (口语化) | Mind you, it wasn't easy at all. |
+| Mind you, ... | but (casual) | Mind you, it wasn't easy at all. |
+| Admittedly, ... | I agree that... but | Admittedly, there are risks involved. |
 
-### 补充类
-| 标记词 | 替代 | 示例 |
-|--------|------|------|
+### Adding information
+| Marker | Replaces | Example |
+|--------|----------|---------|
 | On top of that, ... | and also | On top of that, it saved me money. |
 | What's more, ... | and | What's more, it changed my perspective. |
 | Not to mention ... | also | Not to mention the social benefits. |
-| Come to think of it, ... | actually | Come to think of it, it was quite fun. |
+| Come to think of it, ... | actually, now I remember | Come to think of it, there was another time... |
 
-### 举例类
-| 标记词 | 替代 | 示例 |
-|--------|------|------|
+### Giving examples
+| Marker | Replaces | Example |
+|--------|----------|---------|
 | Take ... for instance, | for example | Take my friend Leo, for instance. |
 | A case in point would be ... | for example | A case in point would be my own experience. |
 | To give you an idea, ... | for example | To give you an idea, I once spent... |
 
-### 总结类
-| 标记词 | 替代 | 示例 |
-|--------|------|------|
+### Wrapping up
+| Marker | Replaces | Example |
+|--------|----------|---------|
 | All things considered, ... | overall | All things considered, it was worthwhile. |
-| At the end of the day, ... | in conclusion | At the end of the day, it comes down to... |
+| At the end of the day, ... | in conclusion | At the end of the day, it comes down to effort. |
 | Ultimately, ... | finally | Ultimately, it shaped who I am. |
 
 ---
 
-## 2. 高分句式模板（直接套用）
+## 2. High-Score Sentence Templates
 
-### 🔹 表达观点（Part 3 必备）
+### 🔹 Expressing opinions (Part 3 essentials)
 ```
-I'm inclined to think that + 观点
-From my perspective, + 观点
-I'd go so far as to say that + 强观点
-On balance, I'd say + 平衡观点
-```
-
-### 🔹 让步 + 转折（Part 3 高分结构）
-```
-Admittedly, [对立观点], but I still believe [你的观点].
-I see the argument for [对立面], but in my experience, [你的立场].
-While there's some truth to [对方], I think the bigger picture is [你的观点].
+I'm inclined to think that...
+From my perspective, ...
+I'd go so far as to say that...
+On balance, I'd say...
+The way I see it, ...
 ```
 
-### 🔹 假设 / 条件句（展示语法多样性）
+### 🔹 Concession + pivot (instant Band 7 structure)
+```
+Admittedly, [opposing view], but I still believe [your view].
+I see the argument for [X], but in my experience, [Y].
+While there's some truth to [X], the bigger picture is [Y].
+[X] has its merits, no question — but [Y] outweighs it in my view.
+```
+
+### 🔹 Conditionals (show grammar range)
 ```
 If I had to choose, I'd probably go with...
-Had I known about it earlier, I would've...
-If it weren't for [某人/某事], I probably wouldn't have...
+Had I known earlier, I would've...
+If it weren't for [person/event], I probably wouldn't have...
+Suppose I had the chance, I'd definitely...
 ```
 
-### 🔹 过去 vs 现在对比（Part 1 & Part 2 常用）
+### 🔹 Past vs. present contrast (Part 1 & Part 2)
 ```
-I used to [过去], but these days I tend to [现在].
-Back when I was younger, I would [过去]. Now, though, I...
-It's funny — I never used to care about [X], but over the years I've really come to appreciate it.
+I used to [past], but these days I tend to [present].
+Back when I was younger, I would [past]. Now, though, ...
+It's funny — I never used to care about [X], but I've really come to appreciate it.
+Growing up, I was [X]. Over the years, I've become more [Y].
 ```
 
-### 🔹 叙事推进（Part 2 专用）
+### 🔹 Narrative progression (Part 2 backbone)
 ```
 Looking back, ... / Fast forward to now, ... / Going forward, ...
 At that point, I had no idea that...
 What really struck me was...
 That's when it hit me that...
 The whole experience left me feeling...
+Before I knew it, ...
 ```
 
-### 🔹 情感强化词（让答案有温度）
+### 🔹 Emotional intensifiers (bring answers to life)
 ```
 genuinely rewarding / deeply satisfying / incredibly frustrating
 absolutely stunning / thoroughly enjoyable / utterly exhausting
 it blew my mind / it was a real eye-opener / it struck a chord with me
-I was over the moon / I couldn't help but smile / it gave me goosebumps
+I was over the moon / it gave me goosebumps / I couldn't help but smile
 ```
 
 ---
 
-## 3. 万能替换词表（摆脱 very good / very bad）
+## 3. Vocabulary Upgrades (stop saying very + adjective)
 
-| 要说的意思 | ❌ 别用 | ✅ 用这个 |
-|-----------|---------|----------|
-| 很好 | very good | exceptional, outstanding, remarkable |
-| 很差 | very bad | dreadful, appalling, dire |
-| 很重要 | very important | crucial, vital, indispensable |
-| 很有趣 | very interesting | fascinating, intriguing, captivating |
-| 很难 | very difficult | challenging, demanding, daunting |
-| 喜欢 | like | be drawn to, gravitate towards, be keen on |
-| 改变 | change | transform, reshape, revolutionise |
-| 很多 | many | a considerable number of, a growing proportion |
-| 认为 | think | reckon, figure, be inclined to believe |
-| 帮助 | help | lend a hand, come to one's rescue, give a boost |
-| 开始 | start | kick off, embark on, set out to |
-| 得到 | get | acquire, gain, pick up |
-| 展示 | show | demonstrate, showcase, highlight |
+| Meaning | ❌ Don't say | ✅ Say this |
+|---------|-------------|-----------|
+| Very good | very good | exceptional, outstanding, remarkable |
+| Very bad | very bad | dreadful, appalling, dire |
+| Very important | very important | crucial, vital, indispensable |
+| Very interesting | very interesting | fascinating, intriguing, captivating |
+| Very difficult | very difficult | challenging, demanding, daunting |
+| Like | like | be drawn to, gravitate towards, be keen on |
+| Change | change | transform, reshape, revolutionise |
+| Many | many | a considerable number of, a growing proportion |
+| Think | think | reckon, figure, be inclined to believe |
+| Help | help | lend a hand, come to one's rescue, give a boost |
+| Start | start | kick off, embark on, set out to |
+| Get | get | acquire, gain, pick up |
+| Show | show | demonstrate, showcase, highlight |
+| Understand | understand | grasp, wrap my head around, make sense of |
+| Remember | remember | recall, it sticks in my mind, it's etched in my memory |
 
 ---
 
-## 4. Part 2 的 1 分钟准备笔记模板
+## 4. Part 2: One-Minute Prep Note Template
 
-拿到 cue card 后，只写关键词，按这个格式：
+When you get the cue card, write ONLY keywords in this format:
 
 ```
-PAST:   3 个关键词（背景/怎么开始的）
-NOW:    3 个关键词（现状/具体描述）
-FUTURE: 2 个关键词（计划/希望）
-FEEL:   2 个关键词（感受/意义）
+PAST:   3 keywords (background / how it started)
+NOW:    3 keywords (current state / key details)
+FUTURE: 2 keywords (plans / hopes)
+FEEL:   2 keywords (emotions / significance)
 ```
 
-**示例 — Describe something you can't live without:**
+**Example — Describe something you can't live without:**
 ```
 PAST:   violin as kid → self-taught guitar → Yamaha LL6
 NOW:    play daily → bedroom studio → emotional outlet
@@ -253,23 +343,23 @@ FUTURE: write own album → perform live
 FEEL:   identity → therapy → irreplaceable
 ```
 
-看着这 10 个词就能说 2 分钟。练到这个程度就够了。
+These 10 words carry you through 2 minutes. That's the goal.
 
 ---
 
-## 5. Part 3 的万能答题框架
+## 5. Part 3: Universal Answer Framework
 
 ```
-[表态] I'm inclined to think that...
-[原因] The main reason is...
-[举例] Take... for instance, ... / In my own experience, ...
-[让步] That said, I can see why some people might argue that...
-[收尾] So on balance, I'd say...
+[Position]   I'm inclined to think that...
+[Reason]     The main reason is...
+[Example]    Take... for instance, ... / In my own experience, ...
+[Concession] That said, I can see why some people might argue that...
+[Wrap-up]    So on balance, I'd say...
 ```
 
-**每道 Part 3 题套这个框架，4-6 句搞定。**
+**Every Part 3 question → this framework → 4-6 sentences → done.**
 
 ---
 
-*核心手册 — Silvana, 2026-03-27*
-*配合使用：answers-part1.md / answers-part23-new.md / answers-part23-old.md*
+*Core Cheatsheet v2 (Bilingual) — Silvana, 2026-03-27*
+*Use with: answers-part1.md / answers-part23-new.md / answers-part23-old.md*
