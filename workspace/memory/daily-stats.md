@@ -322,3 +322,71 @@
 | ClawHub Skills 大小 | 852K |
 | OpenClaw 总占用 | 2.7G |
 
+
+## 2026-03-27
+
+| 项目 | 数值 |
+|------|------|
+| 记录时间 | 2026-03-27 10:09:55 |
+| 活跃会话数 | 1 |
+| 对话轮数 (user messages) | 1 |
+| 模型 | claude-api/claude-opus-4-6-thinking-high |
+| Token (输入/输出) | 5 / 426 |
+| Cache (读/写) | 0 / 128,546 |
+| Token 总计 | 128,547 |
+| 压缩次数 | 0 |
+| 模型 | claude-api/claude-sonnet-4-6 |
+| Token (输入/输出) | 11 / 989 |
+| Cache (读/写) | 72,332 / 148,045 |
+| Token 总计 | 26,276 |
+| 压缩次数 | 0 |
+| 模型 | minimax-internal/minimax-m2.7 |
+| Token (输入/输出) | 321,836 / 20,016 |
+| Cache (读/写) | 338,784 / 24,239 |
+| Token 总计 | 50,500 |
+| 压缩次数 | 0 |
+| 模型 | minimax-internal/minimax-m2.7 |
+| Token (输入/输出) | 512,635 / 18,983 |
+| Cache (读/写) | 351,744 / 26,215 |
+| Token 总计 | 63,675 |
+| 压缩次数 | 0 |
+| 模型 | minimax-internal/minimax-m2.7 |
+| Token (输入/输出) | 530,365 / 21,703 |
+| Cache (读/写) | 452,071 / 17,677 |
+| Token 总计 | 63,084 |
+| 压缩次数 | 0 |
+| 模型 | minimax-internal/minimax-m2.7 |
+| Token (输入/输出) | 536,662 / 24,428 |
+| Cache (读/写) | 431,588 / 17,827 |
+| Token 总计 | 69,428 |
+| 压缩次数 | 0 |
+| 模型 | minimax-internal/minimax-m2.7 |
+| Token (输入/输出) | 274,518 / 2,315 |
+| Cache (读/写) | 230,506 / 1,468 |
+| Token 总计 | 45,305 |
+| 压缩次数 | 0 |
+| 模型 | claude-api/claude-sonnet-4-6 |
+| Token (输入/输出) | 9 / 9,571 |
+| Cache (读/写) | 28,512 / 190,670 |
+| Token 总计 | 37,586 |
+| 压缩次数 | 0 |
+| 模型 | claude-api/claude-sonnet-4-6 |
+| Token (输入/输出) | 9 / 11,014 |
+| Cache (读/写) | 27,559 / 184,457 |
+| Token 总计 | 38,398 |
+| 压缩次数 | 0 |
+| 模型 | claude-api/claude-sonnet-4-6 |
+| Token (输入/输出) | 13 / 11,817 |
+| Cache (读/写) | 171,000 / 228,183 |
+| Token 总计 | 44,392 |
+| 压缩次数 | 0 |
+| 模型 | claude-api/claude-sonnet-4-6 |
+| Token (输入/输出) | 11 / 989 |
+| Cache (读/写) | 72,332 / 148,045 |
+| Token 总计 | 26,276 |
+| 压缩次数 | 0 |
+| Workspace 大小 | 2.4G |
+| Sessions 大小 |  46M |
+| ClawHub Skills 大小 | 852K |
+| OpenClaw 总占用 | 2.8G |
+

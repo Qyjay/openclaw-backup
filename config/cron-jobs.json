@@ -8,7 +8,7 @@
       "name": "daily-backup",
       "enabled": true,
       "createdAtMs": 1773914973121,
-      "updatedAtMs": 1774411221647,
+      "updatedAtMs": 1774497636544,
       "schedule": {
         "kind": "cron",
         "expr": "0 12 * * *",
@@ -26,14 +26,14 @@
         "to": "o9cq804suUfmf3KqmbiDCfZhMcGk@im.wechat"
       },
       "state": {
-        "nextRunAtMs": 1774497600000,
-        "lastRunAtMs": 1774411200022,
+        "nextRunAtMs": 1774584000000,
+        "lastRunAtMs": 1774497600020,
         "lastRunStatus": "error",
         "lastStatus": "error",
-        "lastDurationMs": 21625,
+        "lastDurationMs": 36524,
         "lastDeliveryStatus": "unknown",
-        "consecutiveErrors": 3,
-        "runningAtMs": 1774497600007
+        "consecutiveErrors": 4,
+        "runningAtMs": 1774584000008
       }
     }
   ]
