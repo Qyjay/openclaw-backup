@@ -449,42 +449,42 @@
 
 ### Part 2 Answer
 
-> The activity I want to talk about is my first time singing solo on stage, which happened during a school talent show in my final year of high school. A friend basically dared me to sign up, and somehow I agreed despite being absolutely terrified.
+> I'd like to talk about the first time I sang solo on stage, which happened during my high school's annual arts festival. I was probably sixteen at the time, and one of my friends basically dared me to sign up for the solo singing slot. I'd been playing guitar and singing casually for years, but performing alone in front of hundreds of people was a completely different beast.
 >
-> The day of the performance, I remember standing backstage with my hands literally shaking. My legs felt like jelly, and there was a moment — maybe thirty seconds before my name was called — when I seriously considered making a run for it. The auditorium was packed; I could hear the noise of the crowd through the curtain, and my mind was screaming "this was a terrible idea."
+> The day of the performance, I was an absolute wreck. My hands were shaking, my legs felt like jelly, and I genuinely considered faking an illness to get out of it. I stood behind the curtain listening to the act before me, and my heart was pounding so hard I could hear it in my ears. Then my name was announced, and there was no turning back.
 >
-> But then I walked out, the spotlight hit me, and I started singing. The first few notes were shaky, I'll admit, but something shifted after about ten seconds. I found my rhythm, locked onto a friendly face in the front row, and just let the music carry me. By the second verse, the entire hall had gone quiet — not bored-quiet, but genuinely-listening-quiet. And when I finished, the applause was thunderous. That moment — standing there, heart pounding, hearing that reaction — was one of the most exhilarating experiences of my life.
+> The moment I opened my mouth and sang the first line, something shifted. The audience went quiet — not bored-quiet, but actually-listening quiet. I could feel the connection, and suddenly the nerves transformed into this incredible rush of adrenaline. By the chorus, I'd completely forgotten about the fear, and I was just... lost in the music. When I finished, there was this brief moment of silence, and then the hall erupted in applause. That sound — I can still feel it in my chest.
 >
-> It completely changed my relationship with performing. Before that night, I was the kid who played guitar alone in his room. After it, I became someone who actively sought out opportunities to play and sing for others. It taught me that the things that scare you the most are often the things most worth doing.
+> That experience fundamentally changed my relationship with music and with myself. It showed me that the things that terrify you the most often turn out to be the most rewarding. After that day, I started performing regularly and became something of a known singer at school. I genuinely believe that one moment of courage opened a door I'd been too afraid to walk through.
 
 **Key Vocabulary:**
-- legs felt like jelly（腿发软）
-- exhilarating（令人振奋的）
-- thunderous（雷鸣般的）
-- shifted（转变了）
-- actively sought out（主动寻找）
+- a completely different beast（完全不同的事物）
+- an absolute wreck（紧张到崩溃）
+- rush of adrenaline（肾上腺素飙升的快感）
+- erupted in applause（爆发出掌声）
+- fundamentally changed（从根本上改变了）
 
 **Grammar Highlights:**
-- Past continuous for scene-setting: "I was standing backstage with my hands literally shaking"
-- Inversion for emphasis: "Standing there, heart pounding, hearing that reaction"
+- Participle clause: "standing behind the curtain listening to the act before me"
+- Inversion for emphasis: "That sound — I can still feel it in my chest"
 
 ### Part 3 Answers
 
 **Q1: Why are some people unwilling to try new things?**
 
-> I think the root cause is usually fear — fear of failure, fear of embarrassment, fear of the unknown. People build comfortable routines and breaking out of them feels risky. There's also a psychological concept called loss aversion: we tend to weigh potential downsides more heavily than potential gains. So someone might think "what if I look foolish?" rather than "what if this is amazing?" It takes conscious effort to override that instinct.
+> I think the root cause is usually fear of failure or embarrassment. People get comfortable in their routines, and stepping outside that comfort zone feels inherently risky. There's also a cultural dimension — in societies that stigmatise failure, people are naturally more reluctant to experiment. On top of that, some individuals simply lack exposure; they've never been encouraged to try new things, so the idea itself feels alien. I was nearly one of those people before my singing experience.
 
 **Q2: Do you think fear stops people from trying new things?**
 
-> Absolutely, and I speak from experience. I almost didn't sing at that talent show because fear was screaming at me to quit. But here's the thing: fear and excitement are physiologically almost identical — your heart races, your palms sweat. The difference is purely in how you interpret those signals. Once I reframed my terror as adrenaline, everything changed. So yes, fear stops people, but it doesn't have to if you learn to work with it.
+> Absolutely, and I'd say it's the single biggest obstacle. Fear of looking foolish, fear of wasting time, fear of not being good enough — these thoughts can be paralysing. I experienced it myself before that first solo performance; I nearly backed out entirely. The irony is that fear often exaggerates the risk. In reality, most "failed" attempts don't have catastrophic consequences. That said, a healthy amount of caution isn't bad — recklessness isn't the answer either. The key is learning to distinguish between rational concern and irrational anxiety.
 
 **Q3: Why are some people keen on doing dangerous activities?**
 
-> I think they're chasing a specific neurochemical cocktail — adrenaline, dopamine, endorphins. Dangerous activities trigger an intense sense of being alive that mundane daily life doesn't provide. For some, it's also about proving something to themselves — testing their limits and discovering what they're capable of. There may be an element of social identity too; being "the person who skydives" or "the person who rock-climbs" becomes part of how they define themselves.
+> From my perspective, it's largely about the thrill and the sense of being fully alive. Dangerous activities — skydiving, rock climbing, extreme sports — trigger a massive adrenaline rush that everyday life simply can't replicate. For some people, it's also about proving something to themselves, pushing past perceived limits. There's even a psychological argument that controlled risk-taking builds resilience and confidence. That said, I think there's a difference between calculated risk and recklessness, and the appeal varies hugely depending on personality.
 
-**Q4: Do you think children adapt to new things more easily than adults?**
+**Q4: Do you think that children adapt to new things more easily than adults?**
 
-> Generally speaking, yes. Children haven't yet accumulated the fears and assumptions that hold adults back. They approach new experiences with curiosity rather than caution, which accelerates adaptation. Neurologically, their brains are also more plastic — more receptive to new patterns and information. Adults, conversely, have established comfort zones and more to lose, which makes change feel riskier. That said, adults who deliberately maintain a growth mindset can stay remarkably adaptable.
+> Generally speaking, yes, and I think it's because children haven't yet developed the self-consciousness that holds adults back. A five-year-old will happily try painting, dancing, or a new food without worrying about being judged. Adults, by contrast, carry years of accumulated fears and social expectations. Neurologically, children's brains are also more plastic, making it easier to learn new skills. That said, adults have something children don't — the ability to push through discomfort deliberately, which means when they do adapt, they often do it more strategically.
 
 ---
 
@@ -493,42 +493,42 @@
 
 ### Part 2 Answer
 
-> I want to tell you about something that happened when I was quite young — maybe seven or eight — when I accidentally broke my father's wristwatch. It was a mechanical watch, nothing fancy by market standards, but it held enormous sentimental value for my dad because it was a gift from his own father.
+> The time that immediately comes to mind is when I accidentally broke my father's wristwatch as a child. I must have been about seven or eight years old, and I was home alone in the living room, fascinated by this silver watch my dad always wore. It looked so sophisticated and important — I remember thinking it was what made him look like a real grown-up.
 >
-> I remember the afternoon clearly. I'd been playing in the living room and spotted the watch sitting on a shelf. Being a curious kid, I picked it up and started fiddling with it — turning the crown, pressing the buttons. At some point, I held it up to look at the glass face in the light, and it slipped right out of my small hands. It hit the tile floor with this horrible cracking sound, and the crystal face shattered into several pieces.
+> I picked it up from the coffee table, wanting to try it on, but it was far too big for my wrist. I was fiddling with the clasp, turning it over in my hands, when it slipped through my fingers and hit the tile floor face-down. The sound of glass cracking is something I'll never forget — this sharp, final little *crack* that told me instantly something was very wrong. When I turned it over, the watch face was shattered, with spiderweb fractures running across the dial.
 >
-> I was absolutely petrified. I stood there staring at the broken watch, my heart hammering, convinced I was going to get the worst scolding of my life. When my dad came home and saw it, I braced myself. But instead of shouting, he just looked at me calmly and said something I've never forgotten: "Things that are broken can be repaired. As long as you're okay, nothing else matters."
+> I was absolutely terrified. I genuinely considered hiding the broken watch or even blaming it on the cat. My stomach was in knots for the rest of the afternoon waiting for my dad to come home. When he finally walked in and I showed him what had happened, tears already streaming down my face, he looked at the watch, then looked at me, and simply said: "Things can be fixed. As long as you're okay, that's what matters."
 >
-> That sentence has stayed with me for over fifteen years now. It taught me that my father valued people over possessions, and it shaped how I handle mistakes — with accountability rather than panic. The watch was eventually repaired, but honestly, it's my dad's reaction that became the truly valuable thing from that day.
+> That sentence has stayed with me to this day. It taught me that my father valued people over possessions, and it showed me what real grace under pressure looks like. Looking back, breaking that watch was probably one of the most formative moments of my childhood — not because of the damage, but because of the response.
 
 **Key Vocabulary:**
-- sentimental value（情感价值）
 - fiddling with（摆弄）
-- petrified（吓呆了）
-- braced myself（做好心理准备）
-- accountability（担当/责任心）
+- spiderweb fractures（蛛网状裂纹）
+- my stomach was in knots（紧张到胃打结）
+- grace under pressure（压力下的从容）
+- formative moment（塑造性格的时刻）
 
 **Grammar Highlights:**
-- Direct speech: "Things that are broken can be repaired. As long as you're okay, nothing else matters."
-- Present perfect for lasting impact: "That sentence has stayed with me for over fifteen years"
+- Reported speech: "He simply said: 'Things can be fixed. As long as you're okay...'"
+- Past continuous for vivid narrative: "I was fiddling with the clasp... when it slipped"
 
 ### Part 3 Answers
 
 **Q1: What kind of things are more likely to be broken by people at home?**
 
-> Fragile items like glasses, ceramic plates, and phone screens top the list, I'd say. Anything that combines everyday use with breakable materials is vulnerable. In my family's case, we've gone through an embarrassing number of phone screen protectors. Electronics with moving parts — headphone jacks, charging cables — also wear out and break frequently, though that's more gradual deterioration than dramatic smashing.
+> Fragile items like glassware, ceramic dishes, and phone screens are the usual casualties. In my experience, anything you use daily has a higher chance of being broken simply through frequency of handling. Electronic gadgets are another category — remote controls, earbuds, charging cables — they're not built to last forever. Kids tend to break toys and, well, pretty much anything within reach. The irony is that the more valuable something is, the more careful we are with it, which is why it's often the everyday items that get damaged.
 
 **Q2: What kind of people like to fix things by themselves?**
 
-> Usually people who are hands-on, patient, and enjoy problem-solving. There's a whole DIY culture built around the satisfaction of repairing something yourself rather than paying a professional. I've noticed it's often people who grew up watching their parents fix things — it becomes a learned behaviour. Environmental consciousness also plays a role; the "repair don't replace" mentality is gaining traction among younger generations who are concerned about waste.
+> I'd say it tends to be people who are naturally hands-on and enjoy problem-solving — the kind who watch YouTube repair tutorials for fun. There's often a practical motivation too: DIY repairs save money, and in some communities, especially rural ones, calling a professional isn't always an option. I've also noticed a growing "right to repair" movement among younger, environmentally conscious people who refuse to throw things away just because they're slightly broken. It's a mindset that values resourcefulness over convenience.
 
 **Q3: Do you think clothes produced in the factory are of better quality than those made by hand?**
 
-> Not necessarily. Factory production excels at consistency and affordability, but handmade garments often use superior materials and craftsmanship. A hand-tailored suit, for instance, will outlast most mass-produced alternatives. The trade-off is price and accessibility — handmade items are significantly more expensive. So factory clothes serve the mass market well, but for quality and uniqueness, handmade is often superior.
+> Not necessarily better, but more consistent. Factory production uses standardised materials and processes, so you know what you're getting — but the quality ceiling is often lower. Handmade garments, on the other hand, can be exquisite in terms of craftsmanship and materials, though they vary depending on the maker's skill. The real difference, I think, is in the intention: factory clothes are made for efficiency, while handmade clothes are made with care. Both serve different markets and purposes.
 
 **Q4: Do you think handmade clothes are more valuable?**
 
-> In terms of monetary and artistic value, absolutely. They represent hours of skilled labour and individual attention to detail. But "value" is subjective — if you need affordable, functional clothing, factory-produced items are more valuable in a practical sense. I think the growing popularity of handmade and artisanal fashion reflects a broader desire for authenticity in an increasingly mass-produced world.
+> In several senses, yes. They carry the maker's time, skill, and artistry, which gives them an intrinsic value that mass-produced items simply can't match. There's also an emotional dimension — knowing someone crafted something by hand makes it feel more personal and meaningful. Financially, handmade clothes often cost more, which reflects the labour involved. That said, "valuable" is subjective; if someone needs affordable, durable clothing, a well-made factory product might be more valuable to them in practical terms.
 
 ---
 
@@ -537,42 +537,42 @@
 
 ### Part 2 Answer
 
-> I'd like to describe the time I was waiting for my university entrance exam results — the *gaokao* scores — which was hands down one of the most nerve-wracking periods of my life. This was about three years ago, right after I'd finished the exams in June.
+> The most nerve-wracking wait of my life was the period between finishing the *gaokao* — China's national college entrance exam — and receiving the results. This was about three years ago, and the stakes could not have been higher. The *gaokao* essentially determines which university you can attend, which in turn shapes your entire career trajectory. So it wasn't just waiting for a number; it was waiting for my future to be decided.
 >
-> The wait lasted roughly three weeks, and every single day felt like an eternity. I was at home in Enshi, and I had absolutely nothing to distract myself with since school was over. I'd wake up each morning and immediately check my phone for any announcement about when results would be released. I tried to keep busy — I went jogging, practised guitar, rewatched old TV series — but my mind kept drifting back to questions like "did I mess up that math problem?" and "what if my score isn't good enough for Nankai?"
+> The exam itself was in early June, and results came out roughly three weeks later. Those twenty-something days felt like an eternity. I was at home in Enshi with nothing to do but overthink every single question I might have answered wrong. I'd wake up, check my phone compulsively, scroll through student forums where everyone was speculating about cut-off scores, and then lie awake at night running through worst-case scenarios.
 >
-> My parents were amazing during that period, actually. They never added pressure; instead, my dad kept saying "whatever happens, we'll figure it out." Leo — who was waiting for his own results too — and I texted constantly, which helped because misery loves company, as they say.
+> To keep myself sane, I tried to stay busy — I went running along the riverside, played guitar for hours, and binge-watched TV shows I'd been putting off during exam prep. My parents were incredible during this time. They never once asked me how I thought I'd done; they just made sure I was eating well and getting fresh air.
 >
-> When the results finally dropped at midnight, I was sitting in front of my laptop with my heart practically beating out of my chest. I typed in my ID number, hit enter, and — I'd done better than I expected. The wave of relief and joy that hit me was indescribable. All that anxiety evaporated in a single second. It taught me that waiting is its own kind of endurance test, and that the outcome often rewards the patience.
+> When the results finally dropped online at midnight, I was sitting at my desk with my parents standing behind me. My hands were literally trembling as I typed in my exam number. When the scores appeared — higher than I'd dared to hope — I think we all just exhaled simultaneously. That moment of relief and joy was one of the most intense emotions I've ever felt. It taught me that sometimes the waiting is harder than the challenge itself.
 
 **Key Vocabulary:**
-- nerve-wracking（令人焦虑的）
-- felt like an eternity（感觉像永恒）
-- misery loves company（同病相怜）
-- evaporated（消散了）
-- endurance test（耐力考验）
+- nerve-wracking（令人紧张不安的）
+- career trajectory（职业轨迹）
+- compulsively（强迫性地/不由自主地）
+- worst-case scenarios（最坏的情况）
+- exhaled simultaneously（同时松了一口气）
 
 **Grammar Highlights:**
-- Past perfect: "I'd done better than I expected"
-- Participial phrase: "sitting in front of my laptop with my heart practically beating out of my chest"
+- Past perfect: "higher than I'd dared to hope"
+- Fronted adverbial: "Those twenty-something days felt like an eternity"
 
 ### Part 3 Answers
 
 **Q1: On what occasions do people usually need to wait?**
 
-> Waiting is woven into daily life, really. Queuing at hospitals, banks, or government offices is probably the most frustrating kind. In transit, people wait for buses, trains, and during traffic jams. Professional contexts too — waiting for job interview results, promotion decisions, or project approvals. And then there are the big life waits: exam results, university admissions, medical test outcomes. Some waiting is trivial; some is genuinely agonising.
+> Waiting is woven into daily life, really. The obvious ones are queuing at hospitals, banks, and government offices — which in China can involve some seriously long waits. Transportation is another big one: waiting for buses, flights, or during traffic jams. But there's also a more significant category — waiting for life-changing outcomes like exam results, job offers, or medical test results. These waits are qualitatively different because the emotional investment is so much greater.
 
 **Q2: Who behave better when waiting, children or adults?**
 
-> Adults, generally speaking, because they've developed coping mechanisms — scrolling their phones, reading, or simply accepting the delay. Children lack that patience because their prefrontal cortex, which governs impulse control, is still developing. That said, I've seen adults throw tantrums in queues that would embarrass a five-year-old, so maturity doesn't always correlate with age.
+> Adults, without question — though that doesn't mean they enjoy it more. Adults have developed coping mechanisms: reading, scrolling phones, or simply exercising patience they've built over years. Children, on the other hand, lack that emotional regulation. A fifteen-minute wait can feel unbearable to a five-year-old because they haven't yet developed a sense of time or the ability to self-distract. That said, I've seen some remarkably patient children and some shockingly impatient adults, so it's not a universal rule.
 
 **Q3: Compared to the past, are people less patient now? Why?**
 
-> Considerably less, I'd argue. We live in an era of instant gratification — same-day delivery, streaming on demand, instant messaging. Our brains have been conditioned to expect immediate results, so any delay feels disproportionately frustrating. Previous generations had no choice but to wait — letters took weeks, information required trips to the library. They developed patience out of necessity. We've traded that patience for convenience, and I think it's made us psychologically more fragile when things don't happen instantly.
+> I'd argue yes, significantly so. Technology has conditioned us to expect instant gratification — same-day delivery, streaming on demand, instant messaging. When everything is designed to be immediate, any delay feels abnormal. Social media amplifies this by constantly showing us what we don't have yet, creating a sense of urgency and dissatisfaction. Our grandparents' generation waited weeks for letters and thought nothing of it; my generation gets anxious if a WeChat message isn't replied to within an hour. The speed of modern life has fundamentally eroded our tolerance for waiting.
 
 **Q4: What are the positive and negative effects of waiting on society?**
 
-> On the positive side, waiting teaches patience, resilience, and delayed gratification — all qualities linked to long-term success. Orderly queuing also reinforces social norms and fairness. On the negative side, excessive waiting — in healthcare, bureaucracy, or public services — signals inefficiency and can breed frustration and even social unrest. The key is distinguishing between productive waiting that builds character and unnecessary waiting that simply wastes people's time.
+> On the positive side, waiting teaches patience, which is a cornerstone of emotional maturity. Orderly queuing also reflects and reinforces social discipline — it shows that a society respects fairness. However, excessive waiting has real costs: it wastes productive time, increases stress levels, and can even breed resentment towards institutions that make people wait unnecessarily. The key, I think, is distinguishing between unavoidable waiting and systemic inefficiency. The former builds character; the latter just frustrates people.
 
 ---
 
@@ -581,42 +581,42 @@
 
 ### Part 2 Answer
 
-> Actually, this is a story where I was both the viewer and, surprisingly, the content creator. About a year ago, I casually recorded myself playing guitar and singing a Chinese indie song in my dorm room — nothing fancy, just my Yamaha LL6, my phone propped up on a stack of textbooks, and natural lighting from the window. I posted it on Douyin mostly for fun, expecting maybe a few dozen views from friends.
+> This is actually a story about something I *posted* rather than saw, but it was the reactions that made it truly interesting. A few months ago, I was in my dorm room late one evening, casually playing guitar and singing a Chinese indie song — nothing special, just unwinding after a long day. My roommate happened to be filming a short video for fun, and he captured maybe 40 seconds of me playing.
 >
-> I woke up the next morning to find the video had blown up — tens of thousands of likes overnight. My phone was buzzing non-stop with notifications. The comment section was incredibly heartwarming: people were saying things like "this healed my entire day" and "your voice is so soothing, please post more." Some even asked whether I had a music career planned.
+> On a whim, he uploaded it to my Douyin account — I didn't even know he'd done it until the next morning. When I checked my phone, I had thousands of notifications. The video had somehow caught the algorithm's attention and gone semi-viral overnight. Within a couple of days, it had racked up tens of thousands of likes and hundreds of comments.
 >
-> What made this so interesting to me wasn't just the numbers — it was the realisation that a completely unpolished, authentic moment could resonate with so many strangers. I'd always thought social media success required fancy editing and professional equipment. This experience proved me wrong. Raw, genuine content sometimes connects more deeply than anything produced in a studio.
+> What made it genuinely interesting was reading the comments. People were saying things like "this voice healed my entire day" and "I've replayed this twenty times." Complete strangers were tagging their friends and sharing their own stories about how music had helped them through difficult times. One person even said they'd started learning guitar because of my video. It was incredibly humbling to see a casual, unpolished moment resonate so deeply with people I'd never met.
 >
-> Looking back, it was a real eye-opener. It showed me the incredible reach of social media — that a random guy in his university dorm can touch people's lives through a sixty-second clip. It actually made me think more seriously about using music as a way to connect with people beyond my immediate circle. And honestly, scrolling through those comments still puts a smile on my face.
+> The whole experience shifted my perspective on social media. I'd always seen it as a bit superficial, but this showed me that it can genuinely connect people through authentic content. It also made me realise that music has a reach far beyond the people sitting in front of you, and that thought still excites me today.
 
 **Key Vocabulary:**
-- blown up（爆红）
-- heartwarming（暖心的）
-- unpolished（未经修饰的）
-- resonate with（引起共鸣）
-- a real eye-opener（大开眼界的经历）
+- on a whim（一时兴起）
+- gone semi-viral（半病毒式传播/小火了一把）
+- racked up（积累了）
+- incredibly humbling（令人非常谦卑的）
+- resonate deeply（深深地引起共鸣）
 
 **Grammar Highlights:**
-- Past perfect: "I'd always thought social media success required fancy editing"
-- Complex noun phrase: "a completely unpolished, authentic moment"
+- Past perfect: "I didn't even know he'd done it until the next morning"
+- Cleft structure: "What made it genuinely interesting was reading the comments"
 
 ### Part 3 Answers
 
 **Q1: Why do people like to use social media?**
 
-> It satisfies several fundamental needs simultaneously — connection, entertainment, information, and self-expression. People can stay in touch with friends across continents, discover news in real-time, and curate an online identity. There's also a dopamine loop at play; every like, comment, and follow triggers a small reward in the brain, which keeps people coming back. It's essentially a one-stop shop for human social needs, which is why it's become so deeply embedded in daily life.
+> I think it satisfies several fundamental human needs simultaneously. There's the social connection — staying in touch with friends, sharing life updates, feeling part of a community. Then there's entertainment: the endless scroll of short videos, memes, and stories is genuinely addictive. Beyond that, social media has become a primary information source — many people learn about news, trends, and even career opportunities through their feeds rather than traditional media. It's this convergence of communication, entertainment, and information that makes it so compelling.
 
 **Q2: What kinds of things are popular on social media?**
 
-> Short-form video dominates right now — platforms like Douyin and TikTok have proven that bite-sized content wins attention. Food and travel content are perennially popular, as are life hacks and comedy sketches. In China specifically, livestream shopping has become massive. What I find interesting is the growing appetite for authentic, unfiltered content — people are increasingly tired of overly curated perfection and crave something real. My guitar video going viral was a perfect example of that shift.
+> Short-form video content absolutely dominates right now — funny clips, cooking tutorials, travel vlogs, and music performances like the one I accidentally went viral with. Beyond that, there's a huge appetite for relatable, everyday content — people documenting their routines, sharing honest struggles, or posting aesthetic food photos. Educational content is also surging; accounts that explain science, history, or practical skills in bite-sized formats get enormous engagement. The common thread is authenticity — overly polished, corporate-feeling content tends to underperform.
 
 **Q3: What are the advantages and disadvantages of using social media?**
 
-> The advantages are clear: instant communication, access to diverse perspectives, and powerful tools for self-expression and even career-building. The disadvantages are equally significant, though. Addiction is a genuine concern — the average person spends hours daily scrolling mindlessly. Misinformation spreads like wildfire, and constant comparison with curated lives can damage mental health. The challenge is finding a balance where you use social media intentionally rather than letting it use you.
+> The advantages are significant: it democratises communication, gives ordinary people a platform, and enables connections that geography would otherwise prevent. My guitar video reaching thousands of strangers is a perfect example. The disadvantages, though, are equally real. Screen addiction is a growing concern, especially among young people. There's also the spread of misinformation, cyberbullying, and the insidious comparison culture that erodes self-esteem. On balance, I think social media is a powerful tool, but one that requires conscious, disciplined use.
 
-**Q4: What do you think of making friends on social networks?**
+**Q4: What do you think of making friends on social network?**
 
-> It's a perfectly valid way to meet people who share your interests — I've connected with fellow musicians through Douyin comments, for instance. However, online friendships tend to be shallower unless you eventually move them offline. It's easy to present an idealised version of yourself online, so you never truly know someone until you've spent real time together. So I'd say social media is great for starting connections, but depth requires face-to-face interaction.
+> It's a legitimate way to meet people, but I think it works best as a starting point rather than a substitute for real-world connection. Online, you can discover people with shared interests you'd never encounter in your physical circle — musicians, photographers, fellow students from different cities. But building genuine trust and depth requires offline interaction eventually. A friendship that exists only through screens is fundamentally limited. So I'd say use social media to find your people, then invest in seeing them face to face.
 
 ---
 
@@ -625,42 +625,42 @@
 
 ### Part 2 Answer
 
-> My first real conversation in a foreign language happened during my first year at Nankai University, on a weekend trip to the Five Great Avenues in Tianjin — it's this beautiful historic district with European-style architecture. I was walking along one of the tree-lined streets when a Japanese tourist approached me looking quite confused, holding a paper map upside down.
+> The first time I genuinely used a foreign language in a real-world situation was during my first year at university. I was walking along the Five Great Avenues — *Wudadao* — in Tianjin, which is this beautiful historic district full of European-style buildings. A Japanese tourist approached me, looking quite confused, and asked me in very broken English if I could help him find the nearest subway station.
 >
-> She was trying to find a specific museum, and since she didn't speak Chinese, she switched to English — which was clearly not her first language either. So there we were, two people communicating in a language that was foreign to both of us. I understood her question, but formulating my answer took much longer than I expected. I kept pausing, searching for the right words, and using a lot of hand gestures and pointing.
+> Now, I should mention that my English at that point was decent on paper but barely tested in conversation. And this man's English was even more limited than mine. So there we were — a Chinese student and a Japanese tourist, both fumbling through our second language, supplementing words with wild hand gestures and pointing at a map on his phone.
 >
-> The whole exchange probably lasted about five minutes, which doesn't sound long, but when you're straining to communicate in a foreign language, every second feels stretched. I managed to direct her successfully — pointing down the street, counting the intersections, miming a left turn. When she finally understood, her face lit up and she bowed several times saying "thank you, thank you" with such genuine gratitude that I felt like I'd just completed a heroic quest.
+> The whole exchange took about five minutes, and it was gloriously messy. I kept mixing up "turn left" and "turn right," and at one point I think I accidentally told him to walk into a wall. But somehow, through a combination of English fragments, gestures, and sheer determination, he understood. When he finally nodded, smiled, and bowed while saying "thank you, thank you," I felt this surge of accomplishment that was completely disproportionate to the task.
 >
-> That experience was a real turning point for me. It proved that language isn't just about grammar and vocabulary — it's about the willingness to connect despite imperfection. The fact that we both stumbled through English but still achieved genuine communication was incredibly empowering. It motivated me to take English learning much more seriously, and in many ways, it's the reason I'm sitting here preparing for IELTS today.
+> Looking back, that tiny interaction on a Tianjin street corner was a turning point for me. It proved that language isn't about perfection — it's about communication. You don't need flawless grammar to connect with someone from the other side of the world. That realisation gave me the confidence to speak more, make more mistakes, and ultimately improve far faster than any textbook could have taught me.
 
 **Key Vocabulary:**
-- formulating（组织/构思）
-- straining to communicate（费力地沟通）
-- her face lit up（她眼前一亮）
-- a real turning point（真正的转折点）
-- empowering（赋予力量的）
+- fumbling through（磕磕绊绊地进行）
+- supplementing（补充）
+- gloriously messy（精彩地混乱）
+- surge of accomplishment（成就感涌上来）
+- disproportionate to（与……不成比例的）
 
 **Grammar Highlights:**
-- Participial clause: "holding a paper map upside down"
-- Conditional reflection: "when you're straining to communicate, every second feels stretched"
+- Fronted adverbial clause: "So there we were — a Chinese student and a Japanese tourist..."
+- Conditional reflection: "You don't need flawless grammar to connect with someone"
 
 ### Part 3 Answers
 
 **Q1: At what age should children start learning a foreign language?**
 
-> Research suggests the earlier the better, ideally between ages three and seven, when children's brains are most receptive to phonetic patterns. Young children can absorb pronunciation and intonation almost natively, which becomes progressively harder after puberty. That said, the method matters enormously — it should be through play, songs, and immersion, not rote memorisation. Forcing a five-year-old to do grammar drills would be counterproductive.
+> Research consistently suggests that earlier is better, ideally between ages four and seven, when children's brains are most receptive to language acquisition. At that age, they can absorb pronunciation and intonation almost effortlessly, something that becomes much harder after puberty. However, I'd emphasise that the approach matters as much as the timing — young children learn best through immersion, play, and natural interaction, not through grammar drills. If the experience feels like a chore, early exposure can actually backfire by creating negative associations with the language.
 
 **Q2: Which skill is more important, speaking or writing?**
 
-> For practical daily communication, speaking wins hands down. You use spoken language in virtually every human interaction — work, shopping, socialising, travelling. Writing is certainly important for academic and professional contexts, but you can survive abroad with good spoken English even if your writing is weak. The reverse isn't true. That said, I think speaking and writing reinforce each other — writing helps you organise your thoughts, which actually makes you a more articulate speaker.
+> For practical, everyday communication, I'd argue speaking takes priority. Most human interaction — meetings, conversations, negotiations — happens orally. My experience helping that Japanese tourist proved that even imperfect spoken English can achieve real communication. Writing, however, becomes increasingly important in professional and academic contexts. In an ideal world, you'd master both, but if forced to choose, I'd invest in speaking first, because fluent speakers typically develop writing skills more easily than the reverse.
 
 **Q3: Does a person still need to learn other languages if he or she is good at English?**
 
-> I'd say yes, absolutely. English opens many doors, but it doesn't open all of them. Knowing a local language when you travel or work abroad shows respect and builds deeper connections. Beyond utility, each language carries a unique worldview and cultural nuance that translation can't fully capture. In my case, even that brief interaction with the Japanese tourist made me curious about Japanese — there's something enriching about seeing the world through a different linguistic lens.
+> I'd say yes, for reasons beyond pure communication. English might get you understood in most countries, but learning another language gives you access to an entirely different worldview and culture. There's a saying — "a different language is a different vision of life" — and I genuinely believe that. On a practical level, knowing Mandarin and a third language like Japanese or Spanish would be a tremendous career advantage. And frankly, relying solely on English feels a bit linguistically arrogant, even if it is the global lingua franca.
 
 **Q4: Do you think minority languages will disappear?**
 
-> Some inevitably will, and that's genuinely tragic because each language represents a unique way of understanding the world. Globalisation and urbanisation push people towards dominant languages for economic survival. However, I'm cautiously optimistic because technology — digital dictionaries, language-learning apps, social media in local languages — is giving minority communities new tools for preservation. In Enshi, for instance, there's growing interest in documenting the Tujia language before it fades entirely.
+> Unfortunately, many already are disappearing at an alarming rate. Globalisation and urbanisation push younger generations towards dominant languages — English, Mandarin, Spanish — because that's where economic opportunity lies. In my hometown Enshi, the Tujia language is barely spoken by young people anymore, which is heartbreaking. That said, there are encouraging preservation efforts: language documentation projects, bilingual education programmes, and digital archives. Whether these can reverse the trend is uncertain, but I believe every language lost is a piece of human heritage that's gone forever.
 
 ---
 
@@ -669,42 +669,42 @@
 
 ### Part 2 Answer
 
-> The natural place I want to describe is the Enshi Grand Canyon in my hometown, Hubei Province. It's often called the "Oriental Colorado" because of its stunning karst landscape — towering limestone cliffs, deep gorges, and underground rivers that have been sculpted by water over millions of years. It's genuinely one of the most breathtaking places I've ever seen.
+> The natural place I want to talk about is the Enshi Grand Canyon in my hometown of Enshi, Hubei Province. It's sometimes called the "Oriental Colorado" because of its stunning karst landscape — towering limestone cliffs, deep gorges, and underground rivers that have been carved out over millions of years. Growing up, I took it for granted, but now that I live in Tianjin for university, I appreciate it more than ever.
 >
-> I've known this place my entire life since I grew up in Enshi. As a child, I used to go hiking there with my family, and my high school geography teacher would take us on field trips to study the geological formations firsthand. He'd say things like, "This land raised you — don't ever forget to protect it," which really shaped my appreciation for the natural environment.
+> The canyon stretches for over a hundred kilometres, and the most famous section features these incredible needle-like rock pillars that shoot up from the valley floor. One of them — called the "Incense Burner" — is a single column of rock nearly 150 metres tall and only four metres wide at the base. It looks like it could topple over at any moment, which is both terrifying and awe-inspiring. The whole area is blanketed in dense subtropical forest, and on misty mornings, the peaks poke through the clouds like islands in a white sea.
 >
-> The canyon itself is incredibly dramatic. There's a particular section with a narrow rock column called the "Incense Burning Pillar" that stands 150 metres tall and is only four metres wide at its base. When morning mist fills the valley, the peaks poke through the clouds like islands in a white sea — it's the kind of scene that makes you understand why Chinese landscape painting exists.
+> I first really explored it on a school field trip organised by my high school geography teacher, who was passionate about environmental conservation. He kept telling us, "the land beneath your feet raised you — don't forget to protect it when you leave." Those words stuck with me and genuinely shaped my attitude towards my hometown's natural environment.
 >
-> I love visiting because it grounds me, quite literally. When I'm stressed about university or my internship, just thinking about those mountains and that impossibly fresh mountain air calms me down. It's a reminder that the world is far bigger and more ancient than my deadlines. Every time I go home, I make sure to spend at least one day walking through the canyon, and I always leave feeling recharged and grateful.
+> Whenever I go home for holidays, I try to visit the canyon. It's the kind of place that makes you feel simultaneously insignificant and deeply connected to something ancient. The air is so clean it almost hurts your lungs after months of city living. I find it incredibly grounding, and it reminds me where I come from — quite literally, in geological terms.
 
 **Key Vocabulary:**
 - karst landscape（喀斯特地貌）
-- breathtaking（令人叹为观止的）
-- geological formations（地质构造）
-- grounds me（让我踏实/安定下来）
-- recharged（充了电/恢复精力）
+- awe-inspiring（令人敬畏的）
+- blanketed in（被……覆盖）
+- grounding（让人踏实/接地气的）
+- took it for granted（习以为常/视为理所当然）
 
 **Grammar Highlights:**
-- Simile: "peaks poke through the clouds like islands in a white sea"
-- Present simple for habitual: "Every time I go home, I make sure to spend..."
+- Simile: "the peaks poke through the clouds like islands in a white sea"
+- Direct speech embedded: 'He kept telling us, "the land beneath your feet raised you..."'
 
 ### Part 3 Answers
 
 **Q1: What kind of people like to visit natural places?**
 
-> It's actually a broader demographic than you might think. Obviously, outdoor enthusiasts — hikers, photographers, birdwatchers — are drawn to nature. But increasingly, urban professionals are seeking natural environments as an escape from digital overload. There's a growing wellness movement around "forest bathing," which originated in Japan. Families with young children also gravitate towards natural parks for safe, open play spaces. So it's not limited to adventure types; anyone craving peace and fresh air qualifies.
+> It's a surprisingly diverse group, actually. You've got outdoor enthusiasts — hikers, climbers, birdwatchers — who are drawn to the physical challenge and the wildlife. Then there are photographers and artists seeking inspiration from landscapes. But increasingly, I see stressed-out office workers and students treating nature visits as a form of therapy — a way to decompress from urban life. In Enshi, we get a lot of city visitors from Wuhan and Chongqing who come specifically because the air quality and pace of life are so different from what they're used to.
 
 **Q2: What are the differences between a natural place and a city?**
 
-> The contrasts are stark. Cities offer convenience, infrastructure, and economic opportunity but come with noise, pollution, and crowding. Natural places provide tranquillity, clean air, and aesthetic beauty but lack the services and connectivity people depend on. Psychologically, the difference is significant too — studies consistently show that time in nature reduces cortisol levels and improves mood, whereas prolonged city living can increase stress. Ideally, we'd find ways to bring more nature into urban environments.
+> The contrast is stark. Cities are defined by speed, noise, and human construction — concrete, glass, traffic. Natural places operate on an entirely different rhythm — slower, quieter, governed by weather and seasons rather than schedules. The sensory experience is completely different too: in a city, you hear traffic and construction; in the Enshi Grand Canyon, you hear birdsong, wind, and rushing water. I'd also say natural places have a humbling effect that cities don't — standing next to a 150-metre rock pillar really puts your daily problems in perspective.
 
 **Q3: Do you think that going to the park is the only way to get close to nature?**
 
-> Not at all. Parks are the most accessible option in cities, but getting close to nature can be as simple as growing plants on your balcony, walking along a riverside, or even just sitting under a tree. Some people practise what's called "micro-nature" experiences — intentionally noticing birds, insects, and plant life in their immediate surroundings. For deeper immersion, hiking mountains, visiting rural villages, or camping offer much richer experiences. The key is intentionality — actively choosing to engage with the natural world rather than passively scrolling past it.
+> Not at all. Parks are the most accessible option in urban areas, but they're just the starting point. You can connect with nature by hiking in mountains, camping by lakes, gardening on your balcony, or even just paying attention to the sky and weather patterns. In Enshi, "nature" isn't something you go to — it's something you live inside. I think the real barrier isn't access; it's attention. Most people walk past trees and birds every day without noticing them. Mindful observation of your immediate environment is a form of connecting with nature that requires no travel at all.
 
 **Q4: What can people gain from going to natural places?**
 
-> The benefits are both physical and psychological. Physically, outdoor activities like hiking and swimming improve cardiovascular health and boost immunity. Psychologically, nature reduces anxiety, improves focus, and fosters creativity — there's a reason so many writers and artists seek rural retreats. On a deeper level, spending time in nature cultivates humility and perspective; standing before the Enshi Grand Canyon, you realise how small your problems really are. It's genuinely therapeutic.
+> The benefits are both physical and psychological. Fresh air and physical activity improve cardiovascular health and boost immunity. But the mental benefits are arguably even more significant: reduced stress, improved mood, enhanced creativity, and a sense of perspective. Research shows that even twenty minutes in a green environment measurably lowers cortisol levels. On a deeper level, I think nature gives us a sense of belonging to something larger than ourselves — a reminder that the world isn't just offices and screens. For me, returning to the Enshi Grand Canyon feels like plugging back into a power source.
 
 ---
 
@@ -713,42 +713,42 @@
 
 ### Part 2 Answer
 
-> The wild animal I'm most curious about is the snow leopard. I first became aware of them through a BBC nature documentary — I think it was *Planet Earth II* — where they showed footage of a snow leopard hunting on an almost vertical cliff face in the Himalayas. The camera had been hidden for months to capture just a few minutes of footage, which gives you a sense of how elusive these animals are.
+> The wild animal I'm most fascinated by and want to learn more about is the snow leopard. I first came across this incredible creature in a BBC nature documentary called *Planet Earth* when I was in high school. They showed footage of a snow leopard stalking its prey across a near-vertical cliff face in the Himalayas, moving with this impossibly graceful, silent precision, and I was absolutely mesmerised.
 >
-> What fascinates me about snow leopards is their paradox: they're apex predators, incredibly powerful, yet they're so rarely seen that they're nicknamed the "ghost of the mountains." They live in some of the harshest environments on Earth — high-altitude rocky terrain across Central Asia, including parts of western China — and they've adapted beautifully to conditions that would kill most other large cats.
+> Snow leopards are sometimes called the "ghosts of the mountains" because they're so elusive that even researchers who spend years in their habitat rarely see one. They live at altitudes of 3,000 to 5,000 metres across Central Asia, including parts of western China — Qinghai, Tibet, and Xinjiang. Their thick, smoky-grey fur with dark rosette patterns acts as perfect camouflage against rocky slopes, and their extraordinarily long tails help them balance on narrow ledges.
 >
-> I want to learn more about their behaviour specifically — how they communicate, how they select territories, and how they survive through brutal winters with such scarce prey. I'm also curious about conservation efforts, because snow leopards are classified as vulnerable, with only an estimated 4,000 to 6,500 left in the wild. Climate change and habitat loss threaten their survival, which makes understanding them all the more urgent.
+> What really drew me in is how little we still know about them. Unlike lions or elephants, snow leopards are solitary, secretive, and incredibly difficult to study. Estimates suggest there are only 4,000 to 6,500 left in the wild, making them a vulnerable species. I want to understand their hunting behaviour, their territorial patterns, and what conservation efforts are actually working to protect them.
 >
-> I think what draws me to snow leopards is that they represent something wild and untamed in a world that's becoming increasingly controlled and digitalised. Learning about them feels like a way of staying connected to the raw, magnificent side of nature that we risk losing.
+> I think my interest connects to growing up in Enshi, surrounded by mountains and wildlife. There's something deeply compelling about an animal that has mastered survival in one of the harshest environments on Earth while remaining almost invisible. The snow leopard represents everything I find beautiful about the natural world — resilience, mystery, and quiet power.
 
 **Key Vocabulary:**
 - elusive（难以捉摸的）
-- apex predators（顶级掠食者）
-- harsh environments（恶劣环境）
-- classified as vulnerable（被归类为易危物种）
-- untamed（未被驯服的）
+- mesmerised（着迷）
+- rosette patterns（玫瑰花斑纹）
+- vulnerable species（易危物种）
+- resilience（韧性/适应力）
 
 **Grammar Highlights:**
-- Relative clause: "where they showed footage of a snow leopard hunting"
-- Present perfect passive: "they're nicknamed the 'ghost of the mountains'"
+- Participle phrase: "moving with this impossibly graceful, silent precision"
+- Passive voice: "Estimates suggest there are only 4,000 to 6,500 left in the wild"
 
 ### Part 3 Answers
 
 **Q1: Why should we protect wild animals?**
 
-> On a practical level, every species plays a role in its ecosystem, and removing one can trigger a cascade of unintended consequences. Wolves, for instance, regulate deer populations, which in turn affects vegetation patterns and even river courses. Beyond ecology, there's a moral argument: humans have driven countless species to the brink through habitat destruction and poaching, so we bear responsibility for repair. And from a scientific perspective, biodiversity holds untapped potential for medical and technological breakthroughs.
+> The case for wildlife protection rests on both ecological and ethical grounds. Ecologically, every species plays a role in its ecosystem — remove one, and you risk a cascading effect that destabilises the whole system. Apex predators like snow leopards control prey populations, which in turn affects vegetation patterns. Ethically, most species decline is driven by human activity — habitat destruction, poaching, pollution — so we have a moral responsibility to repair the damage we've caused. Beyond that, biodiversity holds enormous potential for scientific and medical discoveries that we haven't even begun to tap.
 
 **Q2: Why are some people more willing to protect wild animals than others?**
 
-> I think it correlates strongly with education and exposure. People who've learned about ecosystems, watched nature documentaries, or visited wildlife reserves tend to develop stronger empathy for animals. Personal experience matters too — growing up in Enshi near natural habitats gave me a connection to wildlife that someone in a concrete metropolis might not share. There's also a socioeconomic dimension: when you're struggling to meet basic needs, conservation understandably feels like a lower priority.
+> I think it comes down to exposure, education, and emotional connection. People who've grown up close to nature — like I did in Enshi — tend to feel a stronger bond with wildlife. Education plays a massive role too; understanding ecological interdependence makes you more likely to care about conservation. There's also a pragmatic factor: if you're struggling to meet basic needs, wildlife protection understandably feels like a luxury. So willingness often correlates with privilege, awareness, and personal experience with the natural world.
 
 **Q3: Do you think it's important to take children to the zoo to see animals?**
 
-> It has value, but with significant caveats. Zoos can spark a child's curiosity and create emotional connections with animals they'd never otherwise encounter. However, seeing animals in enclosures gives a distorted picture of their natural behaviour, and some zoos have genuinely poor conditions. I'd say the best approach combines zoo visits with nature documentaries and, where possible, trips to genuine natural habitats. The goal should be education and empathy, not entertainment.
+> It's a good starting point, but I think it needs to be done thoughtfully. Seeing a real animal — its size, its movement, its eyes — creates an emotional connection that no documentary can fully replicate. That sense of wonder can spark a lifelong interest in conservation. However, I'm increasingly uncomfortable with zoos that prioritise entertainment over animal welfare. The best zoos focus on education and conservation breeding, while the worst are little more than prisons. So yes, take children, but choose the right kind of zoo and use it as a teaching moment, not just a day out.
 
 **Q4: Why do some people attach more importance to protecting rare animals?**
 
-> Rare animals capture public attention because their scarcity creates urgency and emotional impact — the idea that "we might be the last generation to see this creature" is powerfully motivating. They also tend to be charismatic species — pandas, tigers, snow leopards — that serve as flagship species for broader conservation efforts. Protecting their habitat indirectly protects hundreds of less glamorous species sharing the same ecosystem. So focusing on rare animals is partly emotional, but it's also strategically effective.
+> Rarity creates a sense of urgency — when something is on the verge of disappearing forever, the stakes feel higher. There's also the "flagship species" effect: charismatic animals like snow leopards, pandas, and tigers capture public imagination and media attention, making them natural symbols for broader conservation efforts. From a scientific perspective, rare species often represent unique evolutionary lineages that took millions of years to develop. Losing them means losing irreplaceable genetic information. So the emphasis isn't misplaced, though I'd argue we should also care about less glamorous species that are equally vital to their ecosystems.
 
 ---
 
@@ -757,42 +757,42 @@
 
 ### Part 2 Answer
 
-> The old thing I want to talk about is our family *zupu* — a clan genealogy book — which has been in my family for generations. It's a handwritten record of our family tree, documenting names, birth dates, marriages, and significant life events going back several generations. My grandfather started compiling it when he was young, and later my father took over the responsibility of maintaining and updating it.
+> The most significant old item in our family is a handwritten *zúpǔ* — a family genealogy record, or what you'd call a "family tree book" in English. My grandfather started compiling it when he was a young man, documenting the names, birth dates, and major life events of our family going back several generations. It was later passed down to my father, who has continued adding to it.
 >
-> Physically, it's a thick, worn notebook with yellowed pages and ink that's faded in places but still perfectly legible. The handwriting changes as you flip through — my grandfather's brush calligraphy in the earlier pages, then my father's more modern pen script in the later ones. There are even a few pressed wildflowers between pages, though I'm not sure who put them there or why.
+> Physically, it's a thick, cloth-bound notebook with yellowed pages and slightly faded ink, but the handwriting — my grandfather's — is still remarkably clear and precise. Some entries include brief notes about historical events that affected our family, like relocations during wartime or the birth of the first university graduate in our lineage. It's not just a list of names; it's a narrative of where our family has been and what they endured.
 >
-> Every Chinese New Year, our family gathers, and at some point, someone — usually my father — will bring out the *zupu* and we'll flip through it together. He'll tell stories about relatives I never met: a great-uncle who was a village teacher, a great-grandmother who walked twenty kilometres to sell tea at the market. These aren't famous people, but hearing their stories makes me feel rooted in something larger than myself.
+> Every year during Spring Festival, when the whole family gathers at our ancestral home in Enshi, my father brings out the *zúpǔ* after dinner. The older relatives share stories connected to the entries, and my generation listens — sometimes fascinated, sometimes teased for not knowing our own ancestors. It's become a ritual that anchors the reunion in something deeper than just food and fireworks.
 >
-> The *zupu* is important because in our increasingly mobile, digital society, it's easy to lose touch with where you come from. This book is physical proof of continuity — that the family I have today exists because of the sacrifices and choices made by people generations before me. It's not worth anything in monetary terms, but emotionally and culturally, it's priceless.
+> This genealogy means everything to our family because it gives us a sense of continuity and identity. In a world that moves so fast, it's grounding to know exactly where you come from — not in a vague, sentimental way, but with actual names, dates, and stories. When my father eventually passes it to me, I'll feel both the weight and the honour of continuing that record. It's irreplaceable in a way that no material possession ever could be.
 
 **Key Vocabulary:**
-- clan genealogy book（族谱）
-- compiling（编纂）
-- perfectly legible（完全清晰可读的）
-- feel rooted in（感到扎根于）
-- priceless（无价的）
+- genealogy record（族谱/家谱）
+- cloth-bound（布面装订的）
+- lineage（世系/血统）
+- anchors the reunion（为团聚增添深度/锚定了团聚的意义）
+- irreplaceable（不可替代的）
 
 **Grammar Highlights:**
-- Present simple for habitual ritual: "Every Chinese New Year, someone will bring out the zupu"
-- Contrast structure: "not worth anything in monetary terms, but emotionally... priceless"
+- Present simple for habitual ritual: "Every year... my father brings out the zúpǔ"
+- Conditional future: "When my father eventually passes it to me, I'll feel..."
 
 ### Part 3 Answers
 
 **Q1: What kind of old things do people in your country like to keep?**
 
-> In China, people tend to keep items with strong emotional or cultural significance — old photographs, handwritten letters, calligraphy scrolls, jade jewellery, and family heirlooms. In rural areas, you'll still find families preserving wooden furniture or agricultural tools from previous generations. Urban families might keep vintage watches or porcelain. What unites all of these is that they serve as tangible connections to family history and cultural identity rather than having practical utility.
+> In China, photographs and letters are probably the most common — tangible records of relationships and milestones. Older families often keep heirloom jewellery, traditional clothing, or handwritten documents like my family's genealogy. Furniture made from quality wood — rosewood or elm — gets passed down because it genuinely improves with age. There's also a strong tradition of keeping calligraphy pieces or paintings by respected ancestors. What all these items share is that their value isn't monetary; it's sentimental and cultural.
 
 **Q2: Why do people keep old things?**
 
-> At the deepest level, I think it's about fighting impermanence. Old objects anchor us to memories, relationships, and periods of life that would otherwise fade. They also provide a sense of identity and continuity — knowing where you came from helps you understand who you are. There's a comfort in holding something your grandparent once held; it collapses time in a way that photographs or stories alone can't quite achieve.
+> At the most fundamental level, it's about memory and identity. Old objects serve as physical anchors to our past — holding your grandmother's bracelet or reading your father's letters connects you to people and moments that would otherwise fade. There's also a practical dimension: some antiques genuinely appreciate in financial value. But I think the emotional function is primary. In an era of mass production and disposability, old things represent permanence. They're proof that someone existed, cared, and left something behind.
 
 **Q3: What are the differences between the things old people keep and those young people keep?**
 
-> Older generations tend to preserve items with historical or sentimental resonance — letters, medals, handmade crafts. These objects tell stories. Young people, on the other hand, are more likely to keep items tied to pop culture or personal milestones — concert tickets, limited-edition sneakers, signed albums. There's also a digital shift: young people "keep" things in cloud storage or social media archives, whereas older people favour physical objects. The underlying impulse is the same — preserving what matters — but the medium has changed.
+> The generational gap is quite interesting. Older people tend to keep physical, sentimental items — handwritten letters, photographs printed on paper, heirloom jewellery, clothing with personal history. Young people, by contrast, "keep" things digitally — screenshots, saved messages, playlists, cloud-stored photos. We also tend to keep branded or aesthetically significant items — limited-edition sneakers, concert tickets, vinyl records. The fundamental motivation is the same — preserving memory — but the medium has shifted dramatically from physical to digital.
 
-**Q4: What are the differences between the things that people keep today and those kept in the past?**
+**Q4: What are the differences between the things that people keep today and the things that people kept in the past?**
 
-> The most obvious shift is from physical to digital. People today archive thousands of photos on their phones that they'll never print. In the past, a single photograph was precious precisely because it was rare and physical. Modern keepsakes also tend to be mass-produced — a souvenir magnet from a holiday, for instance — whereas historical keepsakes were often handmade and unique. I think something is lost in this transition; digital files lack the sensory richness of a yellowed letter or a well-worn book.
+> The most obvious shift is from physical to digital. People used to keep diaries, photo albums, and pressed flowers; now they keep Instagram stories, voice memos, and screenshots. Modern keepsakes also tend to be more commercially driven — collectible figures, branded merchandise — whereas historical keepsakes were more organic and utilitarian. That said, I think the pandemic sparked a renewed appreciation for physical objects. People started writing letters again, printing photos, and valuing tangible mementos. So perhaps the trend is less linear than it seems.
 
 ---
 
@@ -801,42 +801,42 @@
 
 ### Part 2 Answer
 
-> This might sound a bit unconventional, but the "toy" I was most attached to as a child was actually my violin. My parents enrolled me in violin lessons when I was about five or six, and while most kids had action figures or toy cars, my constant companion was this quarter-size violin in a blue velvet case.
+> This might sound unusual, but the "toy" I loved most as a child was my violin. My parents enrolled me in violin lessons when I was about five or six, and while most kids my age were playing with action figures or building blocks, I had this quarter-size violin that went everywhere with me. I know it's technically a musical instrument, but to a five-year-old, the line between toy and instrument doesn't really exist — it was the thing I played with, quite literally.
 >
-> I didn't think of it as a musical instrument at that age — it was more like a fascinating, complicated toy that made sounds. I remember being mesmerised by the way the strings vibrated when I drew the bow across them. My favourite "game" was trying to reproduce melodies I'd heard on TV — cartoon theme songs, mostly — and I'd spend hours in my room doing exactly that, much to my parents' mixed delight and occasional exasperation.
+> I remember the case was almost as big as I was, and I'd drag it around the house feeling incredibly important. The violin itself was a reddish-brown colour with a small scratch on the back from the time I accidentally bumped it against a doorframe. My mother nearly had a heart attack, but the sound wasn't affected.
 >
-> Of course, there were times I hated practising scales and wanted to quit. But my mother was firm about consistency, and gradually the violin became part of my identity. By the time I was ten or eleven, I'd transitioned from treating it as a toy to understanding it as an instrument — and that shift coincided with my growing genuine love for music.
+> The way I "played" with it evolved over the years. At first, it was more like torture for everyone within earshot — squeaky, out-of-tune notes that made the neighbours' dog howl. But gradually, as lessons progressed, it became something genuinely musical. I'd spend hours in my room practising — not because my parents forced me, but because I was genuinely fascinated by the idea that I could make this wooden box produce beautiful sounds. It was like a puzzle I never got tired of solving.
 >
-> Looking back, I see that violin as the foundation of who I am musically. Without those early years of treating it as play, I might never have developed the ear and the discipline that later led me to pick up the guitar and fall in love with songwriting. It taught me that the line between play and learning is thinner than we think — sometimes the best education happens when a child doesn't realise they're being educated.
+> Even though I eventually shifted to guitar as my primary instrument, that little violin laid the foundation for everything musical in my life. It taught me discipline, trained my ear, and gave me an emotional outlet before I even understood what emotions were. My parents still keep it in a cupboard at home, and every time I see it, I feel a wave of nostalgia for those early days of discovery.
 
 **Key Vocabulary:**
-- unconventional（非传统的）
-- mesmerised（着迷的）
-- exasperation（无奈/恼怒）
-- transitioned from... to...（从...过渡到...）
-- the line between play and learning（玩耍与学习的界限）
+- within earshot（在听力范围内）
+- out-of-tune（跑调的）
+- laid the foundation（奠定了基础）
+- emotional outlet（情感出口）
+- wave of nostalgia（一阵怀旧之情）
 
 **Grammar Highlights:**
-- Conditional: "Without those early years, I might never have developed..."
-- Past continuous: "I'd spend hours in my room doing exactly that"
+- Concessive clause: "while most kids my age were playing with action figures..."
+- Metaphor: "It was like a puzzle I never got tired of solving"
 
 ### Part 3 Answers
 
 **Q1: How do advertisements influence children?**
 
-> Advertisements are designed to exploit children's underdeveloped critical thinking. Bright colours, catchy jingles, and beloved cartoon characters create powerful emotional associations with products. Children can't distinguish between entertainment and marketing, so they genuinely believe they need whatever's being advertised. This creates pressure on parents and can instil materialistic values from a remarkably young age. I think stricter regulation of children's advertising is long overdue.
+> Advertisements are extraordinarily effective on children because kids lack the critical thinking skills to recognise persuasion. Bright colours, catchy jingles, and cartoon characters create strong emotional associations with products. Children then pester their parents — the "nag factor," as marketers cynically call it. Beyond direct purchases, ads shape children's values: they learn to equate happiness with consumption, which is a problematic foundation. I'd say the influence is both commercial and psychological, and it starts far earlier than most parents realise.
 
 **Q2: Should advertising aimed at kids be prohibited?**
 
-> I'm inclined to say it should be heavily restricted, if not prohibited outright. Children are simply too vulnerable to manipulative marketing techniques. Several European countries have already implemented bans on advertising during children's programming, and the results have been positive. That said, a complete ban might be impractical in the digital age, where ads are embedded everywhere. So at minimum, there should be strict guidelines about what can and cannot target young audiences.
+> I lean towards strict regulation rather than an outright ban. Children are genuinely vulnerable to manipulation because they can't distinguish advertising from entertainment — to a five-year-old, a toy commercial IS a cartoon. Countries like Sweden and Norway have already banned advertising targeting children under twelve, and the results are encouraging. However, a total ban might be impractical in the digital age where content is global. So I'd advocate for strong regulations: no ads during children's content, clear labelling, and restrictions on using cartoon characters to sell junk food.
 
 **Q3: What's the difference between the toys kids play now and those they played in the past?**
 
-> The shift is primarily from analogue to digital. Past generations played with wooden blocks, dolls, and outdoor games that relied on imagination. Today's toys are often electronic — tablets, gaming consoles, programmable robots. The key difference is that old toys demanded creativity from the child, whereas modern toys often deliver stimulation passively. My violin "toy" was analogue but deeply engaging; a child today might be equally attached to an iPad, but the nature of the engagement is fundamentally different.
+> The shift has been dramatic. When I was young, my "toys" were things like a violin, a skipping rope, and whatever sticks and stones I found in the Enshi mountains. Today, children are playing with tablets, gaming consoles, and app-connected toys that talk back to them. The fundamental difference is interactivity — modern toys respond and adapt, while traditional toys required the child's imagination to bring them to life. Whether this is progress or loss depends on your perspective; I'd argue children need a mix of both.
 
 **Q4: Do you think parents should buy more toys for their kids or spend more time with them?**
 
-> Time, without question. Research consistently shows that quality time with parents — playing together, reading, having conversations — has far greater impact on child development than any toy. Toys are temporary distractions; parental engagement builds emotional security, language skills, and cognitive ability. My parents enrolled me in violin lessons and sat with me during practice — that time investment shaped my entire life. No toy on a shelf could have done that.
+> Time, without question. I've seen children surrounded by expensive toys who are emotionally neglected, and children with very few possessions who are happy because their parents are present and engaged. Toys provide entertainment; parental attention provides security, self-worth, and social skills. My parents couldn't afford many toys, but they invested in violin lessons and spent evenings listening to me practise. That investment of time shaped who I am far more than any toy ever could have.
 
 ---
 
@@ -845,42 +845,42 @@
 
 ### Part 2 Answer
 
-> The book I want to talk about is *The Alchemist* by Paulo Coelho, which I read during a particularly uncertain period in high school. I picked it up at a bookshop almost on a whim — the cover caught my eye, and the blurb mentioned something about following your dreams, which appealed to my teenage self.
+> The book that has genuinely had the most impact on my life is *The Alchemist* by Paulo Coelho. I read it during my second year of high school, a period when I was feeling particularly lost about my future. I wasn't sure whether to pursue science or arts, whether my passion for music was a realistic path, and honestly, whether any of my dreams were worth chasing at all.
 >
-> It tells the story of Santiago, a young Spanish shepherd who has a recurring dream about treasure hidden near the Egyptian pyramids. He leaves everything behind to pursue this dream, encountering mentors, setbacks, and life lessons along the way. The writing is simple — almost parable-like — but the ideas beneath the surface are profound.
+> The book tells the story of Santiago, a young shepherd from Spain who dreams of finding treasure at the Egyptian pyramids. He abandons his comfortable life and embarks on this extraordinary journey across North Africa, encountering all sorts of characters who teach him about life, love, and purpose along the way. The narrative is deceptively simple, almost like a fable, but the themes underneath are profoundly layered.
 >
-> The line that struck me the hardest was: "When you want something, all the universe conspires in helping you achieve it." Now, rationally, I know that's an oversimplification. The universe doesn't literally rearrange itself for your convenience. But what the book really captures is the power of committed intention — when you pursue something wholeheartedly, you start noticing opportunities that were always there but invisible to an uncommitted eye.
+> The line that struck me hardest — and I can still quote it from memory — is: "When you want something, all the universe conspires in helping you to achieve it." Now, as a grown-up, I know that's not literally true. The universe is indifferent. But what Coelho captures brilliantly is the idea that genuine commitment to a goal changes your behaviour in ways that create opportunities. When you're truly dedicated, you notice doors that were always there but you'd been too unfocused to see.
 >
-> I found this book incredibly useful during that difficult period because it gave me courage to dream bigger. I was stuck between "practical" career paths my relatives recommended and the creative, tech-oriented future I actually wanted. *The Alchemist* didn't tell me what to choose, but it gave me permission to believe that pursuing what I genuinely loved wasn't naïve. That mindset ultimately led me to software engineering and now to AI — and I'd say Santiago's journey parallels mine more than I expected.
+> I found this book incredibly useful because it gave me courage during a time of deep uncertainty. It didn't tell me *what* to do — it told me that the act of pursuing something meaningful is itself the point. That philosophy has stayed with me through every difficult decision since — choosing my university, starting my internship at MiniMax, and preparing for this IELTS exam to study abroad. I revisit it every year or so, and it always finds new ways to speak to wherever I am in life.
 
 **Key Vocabulary:**
-- on a whim（心血来潮）
-- parable-like（寓言般的）
-- committed intention（坚定的意向）
-- oversimplification（过度简化）
-- parallels mine（与我的经历相似）
+- deceptively simple（看似简单实则不然）
+- profoundly layered（深层的/意蕴丰富的）
+- the universe conspires（整个宇宙都在合力帮助你）
+- genuine commitment（真正的投入/承诺）
+- revisit（重温）
 
 **Grammar Highlights:**
-- Direct quotation embedded: "When you want something, all the universe conspires..."
-- Conditional reflection: "I know that's an oversimplification, but what the book really captures is..."
+- Reduced relative clause: "The line that struck me hardest — and I can still quote it"
+- Third person narrative embedded: "Santiago, a young shepherd who dreams of..."
 
 ### Part 3 Answers
 
 **Q1: What are the types of books that young people like to read?**
 
-> In China, web novels are hugely popular — fantasy, romance, and martial arts genres dominate online reading platforms. Beyond that, self-improvement books — career advice, productivity hacks, psychology — sell incredibly well among university students. Light novels influenced by Japanese and Korean pop culture also have a strong following. Physical book enthusiasts tend to gravitate towards literary fiction and non-fiction. I'd say reading habits have become more fragmented and platform-dependent than ever before.
+> In China, online novels — *wǎngwén* — are enormously popular, especially fantasy, romance, and cultivation genres that can run for thousands of chapters. Beyond that, young people are increasingly drawn to self-help and personal development books — how to be more productive, how to manage anxiety, that sort of thing. Manga and graphic novels maintain a loyal following. What I find interesting is that fewer young people read literary fiction for pleasure; it's mostly either escapist genre fiction or practical non-fiction. Books like *The Alchemist* that bridge both worlds are relatively rare finds.
 
 **Q2: What should the government do to make libraries better?**
 
-> First and foremost, modernise their digital infrastructure — free Wi-Fi, extensive e-book collections, and quiet study spaces with power outlets. Many libraries in China are still designed around physical book lending, which isn't how most young people consume information anymore. Programming matters too: author talks, reading clubs, and community workshops can transform libraries from dusty repositories into vibrant cultural hubs. Extending opening hours would also help enormously — students need evening and weekend access.
+> The most impactful change would be modernising the experience. Libraries need reliable Wi-Fi, comfortable seating, extended hours, and robust digital collections. Many university libraries in China have already done this brilliantly, but public libraries lag behind. I'd also suggest hosting community events — author talks, reading groups, study workshops — to make libraries social hubs rather than silent vaults. And crucially, invest in outreach to rural areas where library access is still limited. The goal should be making libraries indispensable to daily life, not relics of a pre-internet era.
 
 **Q3: Do you think old people spend more time reading than young people?**
 
-> On average, yes, but the picture is more nuanced than it seems. Retired people have more leisure time and fewer competing demands on their attention, so they naturally read more. However, young people arguably read *more text overall* when you include social media, news apps, and messaging — it's just fragmented and screen-based rather than sustained book reading. The quality and depth of reading may differ, but the volume of text consumed is probably comparable.
+> In terms of traditional reading — physical books, newspapers, magazines — yes, absolutely. Retired people have more leisure time and fewer digital distractions competing for their attention. However, if you define "reading" broadly to include online articles, social media posts, and digital content, young people might actually read more in terms of sheer volume. The difference is in depth: older people tend to read longer, more concentrated texts, while younger people consume shorter, fragmented content. Quality of attention, rather than quantity, is where the real gap lies.
 
 **Q4: Which one is better, paper books or e-books?**
 
-> Each has genuine advantages, and I use both. Paper books offer a tactile, focused experience — no notifications, no distractions, and better retention according to some studies. E-books are portable, affordable, and searchable, which makes them ideal for reference and travel. I read *The Alchemist* in paperback and loved the physical experience, but I read technical articles on my tablet for convenience. Rather than declaring one "better," I think the intelligent approach is using whichever format suits the context.
+> They serve different purposes, and I use both. Paper books offer a richer sensory experience — the weight, the texture, the smell — and research suggests better retention for long-form reading. There's also something psychologically satisfying about physically turning pages and seeing your progress. E-books, however, are unbeatable for convenience: I carry my entire reading list on my phone. They're also cheaper and more environmentally friendly in the long run. For me, *The Alchemist* lives on my physical bookshelf because I want to revisit it with the original copy, but for most other reading, my Kindle wins.
 
 ---
 
@@ -889,42 +889,42 @@
 
 ### Part 2 Answer
 
-> The talent — or perhaps I should say the skill — I most want to improve isn't related to music, surprisingly. It's my social ability, my capacity to connect with people I don't know well. I realised this was something I needed to work on quite early, probably in high school, when I noticed that I was perfectly confident and outgoing with close friends but would become noticeably quieter and more reserved around strangers or in formal settings.
+> This might seem like an unconventional answer, but the talent I most want to improve is my ability to connect with strangers — social confidence, if you will. I know it's not typically what people think of when they hear "natural talent," but I believe some people are born with an innate ease in social situations, and I'd like to develop mine further.
 >
-> The contrast was actually quite jarring. With my friend Leo or when I was performing music, I felt completely natural and expressive. But put me in a networking event, a job interview, or even a large party where I didn't know many people, and I'd retreat into my shell — making polite small talk but never truly connecting.
+> I first became aware of this as something I wanted to work on during my first year at Nankai University. I noticed that some classmates could walk into any room — a party, a seminar, a group project meeting — and immediately engage everyone around them. They'd crack jokes, ask questions, make people feel comfortable. Meanwhile, I'd often hang back, waiting for someone else to initiate conversation. With people I already know, like Leo or my roommates, I'm totally at ease — warm, funny, open. But put me in a room of strangers, and I become a different person.
 >
-> I've been trying to improve this consciously. During my internship at MiniMax, I forced myself to initiate conversations with colleagues from other departments, to ask questions in meetings instead of staying silent, and to attend team social events even when my instinct was to decline. It's been gradually getting better, but it's still very much a work in progress.
+> My plan to improve involves deliberate practice. I've started forcing myself into slightly uncomfortable social situations — introducing myself to classmates I don't know, asking questions in large lectures, even making small talk with baristas. At MiniMax, my internship role in client-facing solutions has actually been excellent training because I regularly present to people I've never met. Each interaction gets a little easier.
 >
-> I feel strongly about improving this because in the career I'm heading towards — AI and tech — technical skill alone isn't enough. The people who thrive are those who can communicate ideas persuasively, build relationships, and collaborate across teams. I don't want to be the brilliant coder who can't present their work or the talented musician who only plays alone in his room. So this is probably the most important "talent" I can develop for my future.
+> I feel genuinely motivated to improve this because I know it's holding me back. As a software engineering student preparing to enter the job market, networking and interviewing are non-negotiable skills. But beyond career pragmatism, I want to be the kind of person who makes others feel welcomed and at ease — the way Leo does naturally. It's a talent worth cultivating, and I'm committed to putting in the work.
 
 **Key Vocabulary:**
-- retreat into my shell（缩回壳里/变得内向）
-- networking event（社交活动）
-- a work in progress（仍在进步中）
-- communicate ideas persuasively（有说服力地传达想法）
-- thrive（蓬勃发展/如鱼得水）
+- innate ease（天生的自在感）
+- hang back（退缩/不主动）
+- deliberate practice（刻意练习）
+- client-facing（面向客户的）
+- non-negotiable skills（必不可少的技能）
 
 **Grammar Highlights:**
-- Concession: "The talent — or perhaps I should say the skill —"
-- Conditional: "put me in a networking event... and I'd retreat"
+- Conditional contrast: "With people I already know... I'm totally at ease. But put me in a room of strangers, and I become a different person"
+- Present perfect progressive: "I've started forcing myself into uncomfortable situations"
 
 ### Part 3 Answers
 
 **Q1: Do you think artists with talents should focus on their talents?**
 
-> To a large extent, yes — exceptional talent is rare, and it would be a waste for someone with extraordinary musical or artistic ability not to develop it fully. However, I don't think focusing on talent means neglecting everything else. The most successful artists — Jay Chou comes to mind — combine their creative talent with business acumen and communication skills. Pure talent without complementary abilities often leads to unfulfilled potential.
+> I think they should prioritise their talents, yes, but not to the exclusion of everything else. Singular focus can produce extraordinary work, but it can also lead to burnout and an imbalanced life. The most interesting artists I've encountered — in music, in visual arts — are those who bring diverse life experiences into their work. Jay Chou's music is richer because he draws from Chinese history, not just music theory. So I'd say: make your talent your centre, but let your life be wider than your art.
 
-**Q2: Is it possible to know whether 3-4 year olds will become musicians or painters when they grow up?**
+**Q2: Is it possible to know whether children aged 3-4 will become musicians and painters when they grow up?**
 
-> You can spot early indicators — a child who hums melodies accurately or draws with unusual spatial awareness might have latent ability. But predicting outcomes at that age is largely guesswork. Interests shift dramatically during childhood, and talent without sustained nurturing fades quickly. I showed musical promise early, but it was years of practice and encouragement that actually developed it. So early signs are worth noticing, but they're starting points, not destiny.
+> You can spot early indicators, but predicting outcomes is unreliable. A toddler who hums melodies in perfect pitch or draws with unusual spatial awareness might have latent talent, but talent alone doesn't determine career paths. Motivation, opportunity, parental support, and sheer chance all play enormous roles. I started violin at five — was that talent or just my parents' decision? It became a lifelong passion, but it could just as easily have been abandoned if I'd hated it. So observe, encourage, expose — but don't label or project too early.
 
 **Q3: Why do people like to watch talent shows?**
 
-> There's an emotional arc that talent shows exploit brilliantly: the underdog backstory, the nerve-wracking performance, the dramatic reveal. Viewers project themselves onto the contestants — "that could be me up there." There's also the vicarious thrill of witnessing raw talent emerge from an ordinary person. And let's be honest, the competitive element is inherently entertaining. Whether it's genuine artistry or reality TV spectacle, talent shows package human ambition in a compelling format.
+> Talent shows tap into something deeply human — the love of watching someone transform before your eyes. There's the suspense of not knowing what's coming, the vicarious thrill of seeing ordinary people achieve extraordinary things, and the emotional storytelling that producers masterfully weave around each contestant. It's also aspirational; viewers see someone "just like them" succeed and think, "maybe I could do that too." The format works globally because it combines entertainment, emotion, and the universal dream of being recognised for who you really are.
 
 **Q4: Do you think it is more interesting to watch famous people's or ordinary people's shows?**
 
-> Personally, I find ordinary people's performances more compelling. Famous artists deliver polished, predictable excellence, which is impressive but not surprising. When an unknown person walks on stage and delivers something extraordinary, there's an element of genuine shock and emotional impact that no celebrity performance can match. The unexpectedness is what creates those viral, goosebump-inducing moments. That said, watching masters of their craft also has a different kind of appeal — it's about appreciating the pinnacle of human ability.
+> I find ordinary people's performances more compelling, honestly. When a famous person performs brilliantly, it's expected — they've had years of training and resources. But when an unknown person steps onto a stage and delivers something breathtaking, it carries genuine surprise and emotional weight. Think about it: the most-viewed talent show clips online are almost always unknown performers shocking the judges. That element of surprise, combined with the underdog narrative, makes ordinary people's shows far more engaging to me.
 
 ---
 
@@ -933,42 +933,42 @@
 
 ### Part 2 Answer
 
-> I'd like to talk about the story of *Chang'e Flying to the Moon*, which is one of the most beloved myths in Chinese culture. I first heard it from my grandmother when I was about six or seven, on a Mid-Autumn Festival evening while we were eating mooncakes and gazing at the full moon in our village in Enshi.
+> The traditional story I'd like to talk about is the legend of Chang'e — the Moon Goddess — which is one of the most beloved myths in Chinese culture and is closely tied to the Mid-Autumn Festival. I first heard this story from my grandmother when I was about five or six, sitting on the doorstep of our old house in Enshi on a Mid-Autumn evening, staring up at the full moon.
 >
-> The story goes like this: in ancient times, there were ten suns in the sky, scorching the earth and making life impossible. A legendary archer named Hou Yi shot down nine of them, saving humanity. As a reward, he received an elixir of immortality. His wife, Chang'e, was left to guard the elixir while Hou Yi was away, but when an apprentice tried to steal it, she swallowed the entire potion herself to prevent it from falling into the wrong hands. The elixir caused her to float upward, and she flew all the way to the moon, where she's been living ever since, accompanied only by a jade rabbit.
+> The story goes like this: in ancient times, there were ten suns burning in the sky, scorching the earth. A legendary archer named Hou Yi shot down nine of them, saving the world. As a reward, he received an elixir of immortality. His wife, Chang'e, swallowed the elixir — some versions say to keep it from a villain, others say out of curiosity — and she floated up into the sky, eventually landing on the moon. She's been living there ever since, alone except for a jade rabbit who keeps her company.
 >
-> When my grandmother told me this, I remember feeling a mix of wonder and sadness. The idea of someone sacrificing their earthly life and being separated from their loved one forever was deeply moving, even to a child. I kept looking at the moon that night, genuinely believing I might spot Chang'e if I squinted hard enough.
+> What struck me when I first heard it was the sadness of it. Here was this couple who loved each other, permanently separated by her ascent to the moon. As a child, I found it heartbreaking. I actually went outside that night and tried to spot Chang'e on the moon's surface — I was convinced I could see her shadow. My grandmother laughed and said that's why we eat mooncakes during Mid-Autumn Festival: to keep Chang'e company, even from a distance.
 >
-> What makes this story so enduring, I think, is that it captures universal themes — sacrifice, love, and the bittersweet nature of heroism. It's also the origin story behind the Mid-Autumn Festival, which makes it not just a fairy tale but a living piece of cultural heritage that connects generations. Even now, whenever I look at a full moon, I think of Chang'e and my grandmother telling me that story.
+> Even now, this story resonates with me because it weaves together themes that feel universal — sacrifice, separation, longing, and the bittersweet nature of immortality. Every Mid-Autumn Festival, when I look up at the full moon, I think of my grandmother telling me this story, and it connects me to both my culture and my family in a way that feels deeply personal.
 
 **Key Vocabulary:**
 - elixir of immortality（长生不老药）
+- jade rabbit（玉兔）
 - bittersweet（苦乐参半的）
-- enduring（经久不衰的）
-- cultural heritage（文化遗产）
-- squinted（眯着眼看）
+- resonates with me（引起我的共鸣）
+- weaves together（将……编织在一起）
 
 **Grammar Highlights:**
-- Reported narrative: "The story goes like this: in ancient times..."
-- Past continuous for scene-setting: "while we were eating mooncakes and gazing at the full moon"
+- Narrative present for storytelling: "The story goes like this: there were ten suns..."
+- Relative clause chain: "this couple who loved each other, permanently separated by..."
 
 ### Part 3 Answers
 
 **Q1: What kind of stories do children like?**
 
-> Children are drawn to stories with clear heroes and villains, magical elements, and satisfying endings where good triumphs over evil. Animal characters are perennially popular because they're relatable and non-threatening. Adventure narratives with a sense of danger and resolution also captivate young listeners. Crucially, children want emotional engagement — they want to feel scared, excited, or amazed. A story that doesn't provoke an emotional response, no matter how well-constructed, will lose their attention instantly.
+> Children gravitate towards stories with clear heroes and villains, magical elements, and satisfying endings where good triumphs over evil. Animal characters are perennially popular — there's something about talking animals that captivates kids. Adventure stories also work brilliantly because they tap into children's natural sense of exploration. In China specifically, stories from *Journey to the West* — Sun Wukong's adventures — remain wildly popular because they combine magic, humour, and action. The common thread is that children want stories that spark their imagination and give them characters they can root for.
 
 **Q2: What are the benefits of bedtime stories for children?**
 
-> The benefits are remarkably wide-ranging. Linguistically, bedtime stories expose children to new vocabulary and sentence structures in a context they find enjoyable. Emotionally, the ritual of a parent reading creates security and intimacy — it's a bonding experience as much as an educational one. Cognitively, following a narrative develops memory, sequencing, and imagination. And practically, the calming rhythm of a parent's voice helps children transition from the stimulation of the day to restful sleep.
+> The benefits are remarkably wide-ranging. Linguistically, bedtime stories expose children to vocabulary and sentence structures they wouldn't encounter in everyday conversation. Emotionally, the ritual creates a warm, secure bonding moment between parent and child — it signals "you are safe, you are loved, it's time to rest." Cognitively, following a narrative develops sequencing skills, cause-and-effect reasoning, and imagination. And there's evidence that children who are read to regularly develop stronger empathy because stories teach them to see the world through others' eyes. It's honestly one of the most impactful things a parent can do.
 
 **Q3: Why do most children like listening to stories before bedtime?**
 
-> It's a combination of comfort and escapism. Bedtime can feel uncertain for young children — the darkness, being alone — and a parent's voice telling a story creates a bridge of familiarity and safety. The story itself transports them to a different world, which is both distracting and soothing. There's also the element of ritual; humans are creatures of habit, and a consistent bedtime story becomes a reassuring signal that everything is as it should be.
+> I think it's the combination of comfort and escapism. Bedtime can feel lonely or scary for young children, and a story provides both a parent's reassuring presence and a world to disappear into. The rhythmic quality of a parent's voice while reading has a genuinely soothing, almost hypnotic effect. There's also anticipation — children love serialised stories where each night reveals a new chapter. My grandmother's storytelling sessions in Enshi are among my warmest childhood memories, and I think that emotional warmth is what children are really responding to.
 
 **Q4: What can children learn from stories?**
 
-> Far more than we often give credit for. Stories teach moral reasoning — through characters' choices and consequences, children develop their own sense of right and wrong. They build empathy by imagining themselves in another person's situation. They learn cultural values and historical context without it feeling like a lesson. And they develop crucial narrative comprehension skills — understanding cause and effect, sequence, and character motivation — which underpin literacy and academic success later in life.
+> Stories are stealth education — children absorb moral lessons without feeling lectured. Through characters' choices and consequences, they learn about kindness, courage, honesty, and the dangers of greed or selfishness. The Chang'e story, for example, teaches about sacrifice and the weight of decisions. Beyond morality, stories develop language skills, cultural knowledge, and critical thinking — children learn to predict outcomes, question characters' motives, and imagine alternatives. Arguably, stories are the oldest and most effective educational technology humans have ever invented.
 
 ---
 
@@ -977,42 +977,42 @@
 
 ### Part 2 Answer
 
-> The habit I want to talk about belongs to my close friend Leo — Li Hao — and it's his incredible discipline around weekly planning. Every single Sunday evening, without exception, Leo sits down with a notebook and maps out his entire week: classes, study sessions, gym time, social commitments, even when he'll do laundry. He's been doing this for as long as I've known him.
+> The habit I want to develop is weekly planning, and the friend who inspired me is Leo — Li Hao — my closest friend at Nankai University. Every Sunday evening, without exception, Leo sits down at his desk with a notebook and maps out his entire upcoming week. He blocks out time for classes, study sessions, exercise, meals, and even leisure. It sounds rigid, but the way he does it is actually quite flexible — he builds in buffer time and adjusts throughout the week.
 >
-> I first noticed it when we were revising for midterms together in our first year. I was frantically jumping between subjects with no clear structure, while Leo was calmly working through his revision schedule like a well-oiled machine. He'd say, "I've got two hours on organic chemistry, then a thirty-minute break, then English vocabulary." And he'd actually stick to it. I was both impressed and slightly annoyed, honestly, because he made discipline look effortless.
+> I first noticed this habit during our second year when we were working on a group project together. I was constantly scrambling to meet deadlines, pulling all-nighters, and feeling perpetually behind. Leo, meanwhile, was calm, on schedule, and somehow still finding time to play basketball. I asked him how he managed it, and he showed me his weekly planning system. It was beautifully simple — colour-coded blocks in a notebook, with priorities marked and deadlines highlighted.
 >
-> What I admire most is that Leo's planning isn't rigid or joyless. He builds in flexibility — buffer slots for unexpected tasks, scheduled leisure time, even "do nothing" blocks. It's not about controlling every minute; it's about having a framework so that nothing important falls through the cracks.
+> What really convinced me was during my third year when I started my MiniMax internship. I was drowning — coursework, internship tasks, and exam prep all competing for the same 24 hours. Leo noticed I was struggling and actually sat down with me to create a planning template tailored to my schedule. That week was the first time in months I felt in control. The difference was night and day.
 >
-> I desperately want to develop this habit because I tend to operate on instinct — tackling whatever feels most urgent rather than what's most important. During my internship at MiniMax, this lack of structure nearly caught up with me when deadlines started overlapping. Leo's example has convinced me that planning doesn't restrict freedom; it actually creates it, because you stop wasting mental energy worrying about what you've forgotten. I've started doing a basic weekly review, and even that small step has made a noticeable difference.
+> I haven't been as consistent as Leo yet — old habits die hard — but I've started doing a simplified version every Sunday. Even this rough planning has reduced my anxiety noticeably. What I admire most about Leo's approach isn't just the productivity; it's the mental peace it creates. He doesn't stress about forgetting things or missing deadlines because he's already accounted for them. That clarity of mind is what I'm ultimately chasing.
 
 **Key Vocabulary:**
-- maps out（规划/安排）
-- a well-oiled machine（运转良好的机器）
-- falls through the cracks（遗漏/疏忽）
-- buffer slots（缓冲时间段）
-- wasting mental energy（浪费心理能量）
+- without exception（毫无例外地）
+- scrambling to meet deadlines（手忙脚乱地赶截止日期）
+- night and day（天壤之别）
+- old habits die hard（积习难改）
+- clarity of mind（思维的清晰）
 
 **Grammar Highlights:**
-- Present simple for habitual: "Every single Sunday evening, Leo sits down..."
-- Reported speech: "He'd say, 'I've got two hours on organic chemistry...'"
+- Present simple for habitual action: "Every Sunday evening, Leo sits down..."
+- Reduced clause: "Leo, meanwhile, was calm, on schedule, and somehow still finding time"
 
 ### Part 3 Answers
 
 **Q1: What habits should children have?**
 
-> Beyond the obvious ones like regular sleep schedules and good hygiene, I think children should develop the habit of curiosity — actively asking "why?" about the world around them. Reading regularly, finishing what they start, and expressing gratitude are also crucial. The habit of physical activity is important too, not just for health but for developing discipline and stress management. What matters most isn't which specific habits they develop, but that they learn the meta-skill of building habits — because that ability serves them for life.
+> I'd highlight three categories. First, learning habits: curiosity, reading regularly, and completing tasks before moving on — these lay the groundwork for academic success. Second, health habits: consistent sleep schedules, physical activity, and balanced eating, which are far easier to establish in childhood than to retrofit later. Third, social habits: taking turns, expressing gratitude, and resolving conflicts with words rather than fists. The key is that these habits should feel natural rather than imposed — children adopt behaviours they see modelled by adults around them.
 
 **Q2: What should parents do to teach their children good habits?**
 
-> Model the behaviour yourself — children learn far more from observation than instruction. If you want your child to read, let them see you reading. Beyond modelling, consistency is key: enforce rules kindly but firmly, and don't make exceptions that undermine the habit-building process. Positive reinforcement works better than punishment — praise the effort, not just the outcome. And give children age-appropriate autonomy; habits feel more meaningful when they're chosen rather than imposed.
+> The most effective strategy is leading by example. Children are observational learners — they mimic what they see far more than what they're told. If a parent reads every evening, the child naturally gravitates towards books. Beyond modelling, parents should create consistent routines, celebrate effort over outcomes, and allow natural consequences when appropriate. What doesn't work is lecturing or punishing — that creates resentment, not habits. My parents never explicitly told me to practise violin; they just made it part of the daily routine, and eventually it became as natural as brushing my teeth.
 
 **Q3: What influences do children with bad habits have on other children?**
 
-> Peer influence is enormously powerful during childhood. A child who skips homework, talks back to teachers, or displays aggressive behaviour can normalise those behaviours within a friend group. Children want to belong, and they'll sometimes adopt bad habits just to fit in. The contagion effect is real — one disruptive student can shift the entire classroom dynamic. This is why the social environment parents choose for their children — schools, neighbourhoods, extracurriculars — matters so much.
+> The peer effect is incredibly powerful, especially among children who are still forming their sense of right and wrong. A child who bullies, cheats, or disrupts class can normalise those behaviours for others — kids think, "if they're doing it and not getting in trouble, maybe it's okay." There's also social pressure to conform; even well-behaved children might adopt bad habits to fit in with a popular group. This is why the environment matters so much: schools and parents need to actively cultivate a culture where positive behaviour is the social currency, not rebellion.
 
 **Q4: Why do some habits change when people get older?**
 
-> Priorities shift, bodies change, and responsibilities accumulate. A university student might stay up gaming until 3 AM, but once they have a job and a family, sleep becomes non-negotiable. Health concerns also drive change — people start exercising or adjusting their diet after a health scare. There's also a maturation effect: with experience comes the wisdom to recognise which habits serve you and which don't. I've already noticed my own habits shifting since starting my internship — I'm more structured now than I was two years ago, simply because the stakes are higher.
+> Several factors drive this. Physiologically, our bodies change — late nights become harder, dietary needs shift, and energy levels fluctuate differently. Psychologically, priorities evolve: a university student might stay up gaming until 3 AM, but that same person with a child and a job will value sleep above everything. Life circumstances force adaptation too — moving cities, changing careers, or health scares all trigger habit reassessment. I've already noticed changes in myself since starting university: I'm more disciplined with my time than I was in high school, largely because the consequences of poor habits are more immediate.
 
 ---
 
@@ -1021,42 +1021,42 @@
 
 ### Part 2 Answer
 
-> An important decision I made with help was choosing software engineering as my university major. This happened during my final year of high school, and honestly, I was torn between several directions — music, computer science, and business. Each had its appeal, and I genuinely couldn't see a clear path.
+> The most consequential decision I've made with others' help was choosing software engineering as my university major. This happened during the final months of high school, when every senior was agonising over which direction to take for the *gaokao* voluntary application. I was genuinely torn between three paths: music performance, English language, and computer science.
 >
-> My parents were incredibly supportive but also practical. My father, who'd built his career through hard work rather than formal education, advised me to choose something with strong employment prospects. He said, "Follow your passion, but make sure it can feed you." My mother leaned towards something stable and well-structured, which ruled out music as a primary degree.
+> My heart was pulling me towards music — I'd been playing instruments for years and it was my greatest passion. But my father, who had built his career from nothing in a very practical, grounded way, sat me down for a long conversation. He didn't dismiss music at all — in fact, he said he was proud of my talent. But he asked me a question I'll never forget: "Can you keep music as a lifelong love without making it your only income?" That reframed everything for me.
 >
-> I also sought advice from a senior student at Nankai who was already studying software engineering. She told me something that really stuck: "Software engineering gives you tools to build anything — including music technology, if that's what you love." That reframing was the breakthrough. I realised I didn't have to choose between music and technology; I could pursue one and use it to enhance the other.
+> My high school homeroom teacher also played a crucial role. She noticed I was good at logical thinking and problem-solving, and suggested I consider software engineering — a field that was booming and offered both stability and creativity. She pointed out that technology and music weren't mutually exclusive; in fact, many musicians today use programming for production and composition.
 >
-> With all that input, I chose software engineering, and I haven't looked back. Now that I'm interning at MiniMax working on AI solutions, I can see how technology and creativity intersect in fascinating ways. I'm grateful that I didn't make the decision alone, because each person contributed a perspective I couldn't have generated on my own. It taught me that seeking counsel isn't a sign of indecision — it's a sign of wisdom.
+> After weeks of deliberation and conversations with my parents, my teacher, and Leo, I chose software engineering. Looking back from my third year at Nankai and my internship at MiniMax, I'm deeply grateful for that guidance. Music remains my soulmate — I play guitar every single day — but software engineering has given me career security, intellectual challenge, and the AI knowledge that now fascinates me. It was the right decision, and I couldn't have made it alone.
 
 **Key Vocabulary:**
-- torn between（在...之间纠结）
-- employment prospects（就业前景）
-- reframing（重新定义/换框思考）
-- seeking counsel（寻求建议）
-- haven't looked back（从未后悔）
+- consequential（重大的/有深远影响的）
+- agonising over（苦苦纠结）
+- reframed everything（重新定义了一切/换了个角度看问题）
+- mutually exclusive（互相排斥的）
+- deliberation（深思熟虑）
 
 **Grammar Highlights:**
-- Direct speech: "Follow your passion, but make sure it can feed you."
-- Reported speech: "She told me that software engineering gives you tools to build anything"
+- Reported speech with impact: 'He asked, "Can you keep music as a lifelong love...?"'
+- Concessive structure: "Music remains my soulmate, but software engineering has given me..."
 
 ### Part 3 Answers
 
 **Q1: What kind of decisions do you think are meaningful?**
 
-> Decisions that have lasting consequences and shape your trajectory — career choices, educational paths, relationship commitments. But I'd also argue that small daily decisions can be surprisingly meaningful when compounded over time. Choosing to read instead of scrolling social media, or choosing to exercise instead of sleeping in — these seem trivial individually but collectively transform your life. So meaningful decisions exist on a spectrum from life-changing to quietly cumulative.
+> Decisions that alter your trajectory — not just today, but for years to come. Choosing a career path, a life partner, or where to live are the obvious ones. But I'd also include smaller decisions that compound over time: deciding to read daily, to exercise regularly, or to maintain a friendship. My decision to study software engineering wasn't just about a major; it shaped my internship, my career prospects, and even my interest in AI. So meaningful decisions aren't always dramatic — sometimes they're quiet choices that reshape your life gradually.
 
 **Q2: What important decisions should be made by teenagers themselves?**
 
-> Teenagers should make decisions about their hobbies, friendships, and how they spend their free time — these are areas where autonomy builds responsibility. Academic choices, like which subjects to focus on, should also involve teenage input, though parents can offer guidance. What I don't think teenagers should decide alone are major financial commitments or decisions with irreversible consequences. The sweet spot is giving them increasing autonomy as they demonstrate sound judgement, rather than treating decision-making as all-or-nothing.
+> Teenagers should decide their academic focus, their hobbies, and how they invest their free time — these are training grounds for adult decision-making. Choosing friends is another critical area where autonomy builds social intelligence. However, I think major financial or life-altering decisions still benefit from parental guidance at that age. The ideal approach is collaborative: parents provide information and perspective, but the teenager makes the final call. That's essentially how my major decision worked — I listened to everyone, then chose for myself.
 
 **Q3: Why are some people unwilling to make quick decisions?**
 
-> Perfectionism is a big factor — some people are so afraid of making the "wrong" choice that they end up making no choice at all, which is itself a decision. Information overload contributes too; with so many options available today, analysis paralysis is incredibly common. And some people simply lack confidence in their own judgement, so they delay hoping that time will clarify things. Ironically, in many cases, a good decision made quickly is better than a perfect decision made too late.
+> It often stems from a fear of irreversibility — the worry that a wrong choice can't be undone. Perfectionism plays a role too; some people are paralysed by the desire to make the *optimal* decision rather than a good-enough one. Analysis paralysis is real, especially for high-stakes choices. I experienced this myself when choosing my major: the more options I considered, the harder it became to commit. Sometimes, ironically, having too much information makes decision-making harder, not easier.
 
 **Q4: Do people like to ask for advice more for their personal life or their work?**
 
-> I think it varies by culture and personality. In my experience, Chinese people tend to seek work advice more openly because it's considered practical and non-embarrassing. Personal life advice — about relationships, family conflicts, emotional struggles — is shared more cautiously and usually only with very close friends or family. There's still a stigma around discussing personal vulnerability, though this is slowly changing among younger generations who are more comfortable with emotional openness.
+> I think personal life advice is sought more frequently, simply because those decisions feel more emotionally loaded. Choosing a partner, handling family conflicts, navigating friendships — these are areas where people feel vulnerable and want reassurance. Work decisions tend to be more structured, with clearer criteria and data to guide them. That said, career-defining moments — changing jobs, asking for a promotion — often trigger advice-seeking too. In my experience, the line blurs: my major decision was both personal and professional, and I needed advice from both family and mentors.
 
 ---
 
@@ -1065,42 +1065,42 @@
 
 ### Part 2 Answer
 
-> I had a really memorable shopping experience about six months ago when I went to buy a new pair of headphones at an electronics store in Joy City mall, which is near our Nankai campus. I'd been using cheap earbuds for ages and decided to invest in something decent for music production and my daily listening.
+> I'd like to describe a really positive shopping experience I had at an electronics store in Joy City mall — *Dàyuèchéng* — which is near Nankai University in Tianjin. I went there about six months ago specifically to buy a decent pair of headphones for my music production and IELTS listening practice. I had a rough budget of around 500 yuan and honestly didn't know much about the technical specifications.
 >
-> What impressed me from the start was the sales assistant's approach. Instead of immediately pushing the most expensive model, she asked me what I'd be using the headphones for. When I explained that I was into music production and guitar recording, her eyes actually lit up — turns out she was a music enthusiast herself. She walked me through four or five options, explaining the difference between open-back and closed-back designs, frequency response ranges, and impedance — not in a condescending way, but with genuine enthusiasm, like she was talking to a fellow music lover.
+> When I walked in, the store assistant — a guy probably in his mid-twenties — immediately noticed I was browsing the headphone section and came over. What struck me right away was that he didn't launch into a hard sell. Instead, he asked what I'd be using the headphones for. When I mentioned music production and language study, he nodded thoughtfully and said, "Those are actually quite different use cases — let me show you a few options that handle both well."
 >
-> She set up a listening station and let me try each pair with my own playlist from my phone. She didn't hover or pressure me; she gave me space to compare and only came back when I had questions. When I finally chose a pair of Audio-Technica monitors, she also threw in a free carry case and a cleaning cloth, saying "these deserve proper care."
+> He pulled out three pairs in my price range and patiently explained the differences — open-back versus closed-back, frequency response, noise isolation. He even let me test each pair with my own music from my phone, which was a nice touch. When I was leaning towards the most expensive one, he actually talked me *down*, saying the mid-range option would serve my needs just as well and the extra money wasn't worth it for my purposes. That kind of honesty blew me away.
 >
-> I left feeling genuinely delighted — not just with the headphones but with the entire experience. It was the kind of service that makes you want to return and recommend the store to friends. It reminded me that great customer service is about understanding someone's needs and treating them as a person rather than a transaction. I've gone back to that store twice since.
+> I walked out with a great pair of headphones, well within budget, and feeling genuinely respected as a customer. The whole interaction lasted maybe twenty minutes, but it completely changed my perception of electronics shopping. Good service isn't about pushing the most expensive product — it's about understanding what someone actually needs and guiding them honestly. I've gone back to that store twice since then.
 
 **Key Vocabulary:**
-- invest in something decent（投资买一个像样的东西）
-- condescending（居高临下的）
-- listening station（试听台）
-- hover（盘旋/紧盯不放）
-- a transaction（一笔交易）
+- hard sell（强行推销）
+- use cases（使用场景）
+- talked me down（劝我选便宜的）
+- a nice touch（贴心的举动）
+- changed my perception（改变了我的看法）
 
 **Grammar Highlights:**
-- Reported speech: "she said, 'these deserve proper care'"
-- Contrast: "not in a condescending way, but with genuine enthusiasm"
+- Direct speech for impact: 'He said, "Those are actually quite different use cases"'
+- Past continuous for scene-setting: "I was browsing... he came over"
 
 ### Part 3 Answers
 
 **Q1: Why are shopping malls so popular in China?**
 
-> They're essentially one-stop lifestyle destinations — shopping, dining, entertainment, socialising all under one roof. In cities with extreme weather — brutally hot summers and freezing winters — malls provide climate-controlled comfort. There's also a social dimension: for young people especially, malls are places to hang out with friends, catch a movie, or grab bubble tea. The experiential shift is key too; modern malls aren't just about buying things, they're about experiences — VR zones, themed restaurants, pop-up exhibitions.
+> Shopping malls in China serve a function far beyond retail. They're essentially lifestyle centres — you can shop, eat, watch movies, exercise, and socialise all under one roof. In a country with extreme weather — scorching summers and freezing winters in many regions — the temperature-controlled environment is a huge draw. Malls also cater to group outings: families, couples, and friend groups can each find something to do. Joy City near my university is packed every weekend, and half the people there aren't even shopping — they're eating, catching films, or just hanging out.
 
 **Q2: What are the advantages and disadvantages of shopping in small shops?**
 
-> Small shops offer personalised service — the owner often remembers your preferences and can provide tailored recommendations. There's also a charm and uniqueness to independent shops that chain stores can't replicate. On the downside, selection is limited, prices are typically higher due to lack of economies of scale, and return policies may be less consumer-friendly. For everyday essentials, big retailers win on convenience and price; for specialist or artisanal products, small shops offer an irreplaceable experience.
+> Small shops offer a level of personal service that big retailers can't match. The owner often knows regular customers by name, remembers their preferences, and provides tailored recommendations. There's also a charm and character that chain stores lack. On the downside, selection is limited, prices are often higher due to lack of economies of scale, and modern conveniences like contactless payment or return policies may be absent. For speciality items or unique products, small shops are wonderful; for everyday essentials, larger stores are usually more practical.
 
 **Q3: Why do some people not like shopping in small shops?**
 
-> Convenience and price sensitivity are the main reasons. In a world of same-day delivery and price-comparison apps, small shops can feel slow and expensive. Younger consumers especially have been conditioned by e-commerce to expect vast selection and instant gratification. There's also a trust factor — established chains and platforms offer standardised quality and robust return policies, whereas small shops feel riskier to some buyers. It's not that small shops are bad; they just can't compete on the dimensions that modern consumers prioritise most.
+> Convenience is the main factor. Small shops have limited stock, restricted hours, and often no online presence. In a world where you can get anything delivered to your door within 24 hours, physically visiting a small shop for a limited selection feels inefficient to many people. Price sensitivity also plays a role — consumers know that larger retailers and e-commerce platforms offer competitive pricing through scale. And younger consumers, who've grown up with digital shopping, simply aren't accustomed to the small-shop experience.
 
 **Q4: What are the differences between online shopping and in-store shopping?**
 
-> The fundamental difference is sensory experience. In-store shopping lets you touch, try, and immediately take home products, which reduces buyer's remorse. Online shopping offers unmatched convenience, broader selection, and often lower prices, but you sacrifice the tactile element and accept delivery delays and return hassles. I think the two are converging — many physical stores now offer online ordering, and e-commerce platforms use AR technology to simulate try-on experiences. The future is probably a seamless blend of both.
+> The fundamental difference is tangibility. In-store shopping lets you see, touch, and try products before committing — which is why my headphone purchase at Joy City worked so well. You also get immediate gratification; you walk out with your item. Online shopping offers incomparably wider selection, lower prices, and the convenience of shopping at 2 AM in your pyjamas. The downside is that you can't physically assess quality, returns can be tedious, and the dopamine hit of impulsive scrolling leads to overconsumption. I use both strategically: in-store for things I need to evaluate physically, online for everything else.
 
 ---
 
@@ -1109,45 +1109,39 @@
 
 ### Part 2 Answer
 
-> The scientific field I'm most interested in is artificial intelligence. I first became aware of AI as a concept through science fiction movies — *Ex Machina*, *Her*, that sort of thing — but it was my internship at MiniMax that transformed my casual curiosity into genuine fascination. MiniMax is an AI company, and working on their open platform gave me a front-row seat to how large language models actually function, which is far more nuanced and complex than the media portrayal suggests.
+> The area of science I'm most passionate about is artificial intelligence. My interest wasn't always there — in fact, before university, AI felt like something out of science fiction, not real life. The turning point came when I started my internship at MiniMax, which is a company that develops large language models and AI applications. Being exposed to the technology from the inside completely transformed my understanding of what AI is and what it can do.
 >
-> I mainly get information about AI through a combination of channels: tech news sites, academic paper summaries on platforms like Zhihu and WeChat public accounts, YouTube explainers from channels like 3Blue1Brown, and conversations with my colleagues at MiniMax. I've also started experimenting with AI tools myself — using them for coding assistance, English practice, and even music composition.
+> At MiniMax, I work on the open platform team as a pre-sales solution consultant, which means I help clients understand how to integrate AI capabilities into their products. Through this role, I've seen AI being used for everything from natural language processing and content generation to voice synthesis and image recognition. What fascinates me most is the speed of development — models that were state-of-the-art six months ago are already being surpassed by newer architectures.
 >
-> What captivates me about AI is the sheer breadth of its implications. It's not just one narrow field — it intersects with linguistics, neuroscience, philosophy, mathematics, and virtually every industry imaginable. The question of whether machines can truly "understand" language or just pattern-match is philosophically profound. And the practical applications are staggering: healthcare diagnostics, climate modelling, personalised education, creative tools.
+> I get most of my information through a combination of hands-on experience at work, online courses, and following researchers on social media. I've also started reading academic papers — slowly, with a lot of dictionary-checking — to understand the theoretical foundations. My software engineering background at Nankai gives me the programming skills to experiment with models, which makes the learning much more concrete.
 >
-> I'm genuinely excited about potentially pursuing AI research or development as a career. It feels like being alive during the invention of electricity — you can sense that this technology will reshape the world, and having the chance to contribute to that transformation is incredibly motivating. It's the rare field where my technical training in software engineering and my creative instincts in music both find a home.
+> What truly excites me about AI is its potential to democratise access to knowledge and capability. A farmer in rural Enshi could use an AI assistant to diagnose crop diseases. A student without access to expensive tutors could use AI to learn any subject. The technology is far from perfect — bias, hallucination, and ethical concerns are all real — but the trajectory is extraordinary. I want to be part of shaping how AI develops, not just a passive user of it. That's why I'm pursuing further studies abroad — to deepen my expertise in this field.
 
 **Key Vocabulary:**
-- front-row seat（前排座位/近距离接触）
-- nuanced（细致的/有层次的）
-- sheer breadth（纯粹的广度）
-- staggering（令人震惊的）
-- reshape the world（重塑世界）
+- large language models（大语言模型）
+- state-of-the-art（最先进的）
+- democratise access（使获取……的途径民主化）
+- theoretical foundations（理论基础）
+- the trajectory is extraordinary（发展轨迹是非凡的）
 
 **Grammar Highlights:**
-- Simile: "It feels like being alive during the invention of electricity"
-- Relative clause: "The question of whether machines can truly 'understand' language"
+- Conditional example: "A farmer in rural Enshi could use an AI assistant to..."
+- Contrast structure: "The technology is far from perfect... but the trajectory is extraordinary"
 
 ### Part 3 Answers
 
 **Q1: Why do some children not like learning science at school?**
 
-> Often it's a pedagogy problem rather than a subject problem. Science taught as rote memorisation of formulas and facts feels dry and disconnected from reality. Children naturally love experimentation and discovery — just watch a five-year-old explore anything — but traditional classrooms can stamp that curiosity out through rigid testing and lecture-heavy formats. When science is taught through hands-on experiments, real-world applications, and storytelling, children are far more engaged. The subject isn't boring; the delivery sometimes is.
+> Often it's a pedagogical issue rather than an inherent disinterest. Science taught as rote memorisation of formulas and definitions is soul-crushing for children. If a teacher never connects the material to real-world applications — never says "this is how your phone screen works" or "this is why the sky is blue" — students see it as abstract and irrelevant. Lab sessions that are overly controlled ("follow these exact steps") also kill the exploratory spirit that science should foster. The children who dislike science usually dislike how it's taught, not science itself.
 
 **Q2: Is it important to study science at school?**
 
-> Critically important, and not just for future scientists. Scientific literacy teaches evidence-based thinking, which is essential for navigating a world of misinformation. Understanding basic biology, physics, and chemistry helps people make informed decisions about health, technology, and the environment. Beyond specific knowledge, science education develops the skill of systematic inquiry — formulating hypotheses, testing them, and revising your understanding based on evidence. That's a thinking framework valuable in any career.
+> Absolutely essential, and not just for future scientists. Scientific literacy is a survival skill in the modern world — understanding how vaccines work, why climate change is happening, how algorithms shape your social media feed. Beyond specific knowledge, science teaches a methodology: observe, hypothesise, test, revise. That rigorous thinking process applies to every domain of life. My software engineering studies are built on scientific principles, and even my AI work at MiniMax requires constant hypothesis-testing. So yes, science education is foundational, not optional.
 
 **Q3: Which science subject is the most important for children to learn?**
 
-> That's a tough call, but I'd lean towards biology as a starting point because it's the most immediately relatable — children can observe plants, animals, and their own bodies. It provides a gateway into broader scientific thinking. However, in today's world, I'd also advocate for introducing computational thinking and basic AI concepts early on. Understanding how algorithms shape the information they see online is becoming as fundamental as understanding photosynthesis. The most important science is whatever equips children to navigate their actual world.
+> If I had to choose one, I'd say biology, because it directly connects to children's lived experience — their bodies, the food they eat, the animals and plants around them. It makes science feel immediate and personal rather than abstract. That said, I think the *most* important thing isn't a specific subject but a scientific mindset: curiosity, questioning, and evidence-based thinking. If a child develops that mindset through any science discipline — physics, chemistry, biology, or even computer science — the specific subject matters less than the thinking patterns it builds.
 
 **Q4: Should people continue to study science after graduating from school?**
 
-> Absolutely — perhaps more so than ever before. Science and technology evolve so rapidly that knowledge from a decade ago can be outdated. Understanding developments in AI, genetic engineering, and climate science isn't just academic; it affects how people vote, what products they use, and how they manage their health. Lifelong scientific learning doesn't require formal courses — podcasts, documentaries, and quality journalism all serve the purpose. The goal isn't to become an expert; it's to remain an informed citizen in an increasingly complex world.
-
----
-
-*All 26 Part 2&3 老题沿用话题答案生成完毕。*
-*Generated by Silvana for Master Kylin — 2026-03-27*
-
+> In today's world, absolutely. Scientific knowledge is advancing at an unprecedented pace — what I learned about AI two years ago is already partially outdated. Continuous learning isn't optional; it's necessary for professional relevance and informed citizenship. You don't need to enrol in formal courses — podcasts, documentaries, online articles, and even social media accounts run by scientists make lifelong science learning accessible and enjoyable. At MiniMax, I learn something new about AI practically every week, and I expect that pace to accelerate, not slow down. The people who stop learning after graduation will find themselves increasingly disconnected from the world they live in.
