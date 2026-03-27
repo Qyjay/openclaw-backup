@@ -13,6 +13,7 @@
 - 安装新 skill 后自动重启 gateway
 - 重大变更后自动备份到 GitHub
 - GitHub 仓库保持 public
+- **中文引号铁律：中文文章/文案中必须用中文引号（「」『』或""''），绝对禁止英文引号（"" ''）。会暴露 AI 痕迹。**
 
 ## Key Decisions
 - [2026-03-19] Agent 系统采用 Master-Servant 架构
