@@ -371,8 +371,7 @@
       "accounts": {
         "default": {
           "appId": "cli_a9f63f867cb9dcca",
-          "appSecret": "Kn8zGSoJv8TcQfmqemWaPgd3qEHvi8sC",
-          "botName": "Silvana"
+          "appSecret": "Kn8zGSoJv8TcQfmqemWaPgd3qEHvi8sC"
         }
       }
     }
