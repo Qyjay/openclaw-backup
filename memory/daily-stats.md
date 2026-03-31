@@ -674,3 +674,96 @@
 | ClawHub Skills 大小 | 852K |
 | OpenClaw 总占用 | 2.8G |
 
+
+## 2026-03-31
+
+| 项目 | 数值 |
+|------|------|
+| 记录时间 | 2026-03-31 10:01:56 |
+| 活跃会话数 | 1 |
+| 对话轮数 (user messages) | 1 |
+| 模型 | unknown |
+| Token (输入/输出) | 99 / 23 |
+| Cache (读/写) | 21,649 / 180 |
+| Token 总计 | 21,928 |
+| 压缩次数 | 0 |
+| 模型 | claude-api/claude-opus-4-6-thinking-high |
+| Token (输入/输出) | 10 / 963 |
+| Cache (读/写) | 69,625 / 119,281 |
+| Token 总计 | 25,140 |
+| 压缩次数 | 0 |
+| 模型 | minimax-internal/minimax-m2.7 |
+| Token (输入/输出) | 321,836 / 20,016 |
+| Cache (读/写) | 338,784 / 24,239 |
+| Token 总计 | 50,500 |
+| 压缩次数 | 0 |
+| 模型 | minimax-internal/minimax-m2.7 |
+| Token (输入/输出) | 512,635 / 18,983 |
+| Cache (读/写) | 351,744 / 26,215 |
+| Token 总计 | 63,675 |
+| 压缩次数 | 0 |
+| 模型 | minimax-internal/minimax-m2.7 |
+| Token (输入/输出) | 530,365 / 21,703 |
+| Cache (读/写) | 452,071 / 17,677 |
+| Token 总计 | 63,084 |
+| 压缩次数 | 0 |
+| 模型 | minimax-internal/minimax-m2.7 |
+| Token (输入/输出) | 536,662 / 24,428 |
+| Cache (读/写) | 431,588 / 17,827 |
+| Token 总计 | 69,428 |
+| 压缩次数 | 0 |
+| 模型 | minimax-internal/minimax-m2.7 |
+| Token (输入/输出) | 274,518 / 2,315 |
+| Cache (读/写) | 230,506 / 1,468 |
+| Token 总计 | 45,305 |
+| 压缩次数 | 0 |
+| 模型 | claude-api/claude-sonnet-4-6 |
+| Token (输入/输出) | 9 / 9,571 |
+| Cache (读/写) | 28,512 / 190,670 |
+| Token 总计 | 37,586 |
+| 压缩次数 | 0 |
+| 模型 | claude-api/claude-sonnet-4-6 |
+| Token (输入/输出) | 9 / 11,014 |
+| Cache (读/写) | 27,559 / 184,457 |
+| Token 总计 | 38,398 |
+| 压缩次数 | 0 |
+| 模型 | claude-api/claude-sonnet-4-6 |
+| Token (输入/输出) | 13 / 11,817 |
+| Cache (读/写) | 171,000 / 228,183 |
+| Token 总计 | 44,392 |
+| 压缩次数 | 0 |
+| 模型 | claude-api/claude-opus-4-6-thinking-high |
+| Token (输入/输出) | 5 / 13,396 |
+| Cache (读/写) | 0 / 134,095 |
+| Token 总计 | 61,568 |
+| 压缩次数 | 0 |
+| 模型 | claude-api/claude-opus-4-6-thinking-high |
+| Token (输入/输出) | 10 / 18,095 |
+| Cache (读/写) | 338,060 / 424,109 |
+| Token 总计 | 119,251 |
+| 压缩次数 | 0 |
+| 模型 | claude-api/claude-opus-4-6-thinking-high |
+| Token (输入/输出) | 15 / 29,603 |
+| Cache (读/写) | 719,922 / 550,032 |
+| Token 总计 | 111,993 |
+| 压缩次数 | 0 |
+| 模型 | claude-api/claude-opus-4-6-thinking-high |
+| Token (输入/输出) | 15 / 21,988 |
+| Cache (读/写) | 412,550 / 809,042 |
+| Token 总计 | 104,220 |
+| 压缩次数 | 0 |
+| 模型 | claude-api/claude-opus-4-6-thinking-high |
+| Token (输入/输出) | 5 / 20,210 |
+| Cache (读/写) | 0 / 98,505 |
+| Token 总计 | 46,006 |
+| 压缩次数 | 0 |
+| 模型 | claude-api/claude-opus-4-6-thinking-high |
+| Token (输入/输出) | 10 / 963 |
+| Cache (读/写) | 69,625 / 119,281 |
+| Token 总计 | 25,140 |
+| 压缩次数 | 0 |
+| Workspace 大小 | 2.4G |
+| Sessions 大小 |  50M |
+| ClawHub Skills 大小 | 852K |
+| OpenClaw 总占用 | 2.8G |
+
