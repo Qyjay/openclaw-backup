@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastTouchedVersion": "2026.3.23-2",
-    "lastTouchedAt": "2026-03-25T08:36:03.310Z"
+    "lastTouchedVersion": "2026.3.31",
+    "lastTouchedAt": "2026-04-01T02:52:17.717Z"
   },
   "wizard": {
     "lastRunAt": "2026-02-02T08:28:08.796Z",
@@ -429,5 +429,11 @@
       }
     },
     "installs": {}
+  },
+  "tools": {
+    "exec": {
+      "ask": "off",
+      "security": "full"
+    }
   }
 }
