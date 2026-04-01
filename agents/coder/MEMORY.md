@@ -34,6 +34,11 @@
 - 备份范围：MEMORY.md + memory/*.md + SESSION-STATE.md + skills/ + 配置文件
 - 备份命令：`cd ~/projects/openclaw-backup && rsync -av ~/.openclaw/workspace-coder/ agents/coder/ && git add -A && git commit && git push`
 
+### 4. 代码改动同步更新文档（2026-04-01）
+- **每次代码提交，必须同时检查并更新相关文档**
+- 范围：README.md / CLAUDE.md / docs/ 下对应的 TASK / ONBOARDING / API-DOCS 等
+- 代码和文档一起 commit + push，不允许文档滞后
+
 ## Lessons Learned
 
 ### 🔴 铁律：任务完成先通知前辈，再做验证（2026-03-21）
