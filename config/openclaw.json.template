@@ -23,6 +23,21 @@
       }
     }
   },
+  "mcp": {
+    "servers": {
+      "MiniMax": {
+        "command": "/Users/minimax/.local/bin/uvx",
+        "args": [
+          "minimax-coding-plan-mcp",
+          "-y"
+        ],
+        "env": {
+          "MINIMAX_API_KEY": "sk-cp-8Evc0_Uq4rAingir9yM6syTHq2U4_oLSfTR6HoNJ3Q9VgAd58CM05likpBsyA3rFqxhIzC2Y5OWouO1qL3_Ut92kwcUiSmdBJPWtHXzBgkmxgj2E2fgzgwc",
+          "MINIMAX_API_HOST": "https://api.minimaxi.com"
+        }
+      }
+    }
+  },
   "acp": {
     "enabled": true,
     "backend": "acpx",

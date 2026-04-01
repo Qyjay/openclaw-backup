@@ -1,26 +1,23 @@
 # SESSION-STATE.md — BB 热内存
 
 ## 当前任务
-日迹 App 后端重写 — 已完成（2026-03-25 夜）
-
-## 已完成
-- 前端代码推送到 GitHub: https://github.com/Qyjay/riji-frontend (public)
-- API-SPEC.md 生成（52 接口完整规范）
-- BACKEND-REWRITE-SPEC.md 生成（开发路径规范）
-- 旧后端分析报告（6 大类问题定位）
-- 后端重写 Group 0→7 全量完成
-
-## 关键决策
-- 全局 camelCase: CamelModel 基类 + alias_generator=to_camel
-- 列表格式逐接口核对前端泛型参数
-- POST /chat 返回纯文本不是 SSE
-- 可复用: config/database/dependencies/response/auth-service/minimax-client/models
-- 重写: 所有 router.py + schemas.py + service.py
-
-## 待处理
-- 日迹 App 后端部署验证（未开始）
-- AIGC 比赛后端（未开始）
+日迹 App — 广场+分身模块数据库建设（模型 + 种子数据）
 
 ## Active Sessions
-无活跃 session。
+- **vivid-cloud** (pid 22797) — 新建 plaza/avatar 数据模型 + 展示级种子数据（10用户/15帖子/全模块数据）
 
+## 已完成（今日）
+- 广场+分身 API 文档更新（API-DOCS.md 新增 §12 §13，16 个接口）
+- 任务书 TASK-E-PLAZA.md 创建
+- ONBOARDING.md 更新分工
+- git push 到 riji-backend
+
+## 待处理
+- 等待 vivid-cloud 完成数据库建设
+- 完成后需要验证 seed.py 运行结果
+
+## 关键信息
+- riji-frontend: https://github.com/Qyjay/riji-frontend
+- riji-backend: https://github.com/Qyjay/riji-backend
+- 后端路径: ~/projects/riji-backend
+- 接口总数: 72 个（56 已实现 + 16 新增待实现）
