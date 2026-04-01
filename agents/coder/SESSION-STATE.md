@@ -5,6 +5,7 @@
 
 ## Active Sessions
 - **oceanic-reef** (pid 44652) — 种子数据脚本 seed_plaza_avatar.py + commit push（重派，vivid-cloud 未完成）
+- **BB 手动完成** — seed_plaza_avatar.py（Claude Code API 不稳，BB 直接写）
 
 ## 已完成（今日）
 - 广场+分身 API 文档更新（API-DOCS.md 新增 §12 §13，16 个接口）

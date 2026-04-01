@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.31",
-    "lastTouchedAt": "2026-04-01T02:52:17.717Z"
+    "lastTouchedAt": "2026-04-01T03:53:07.356Z"
   },
   "wizard": {
     "lastRunAt": "2026-02-02T08:28:08.796Z",
@@ -236,9 +236,7 @@
     "defaults": {
       "model": {
         "primary": "claude-api/claude-opus-4-6-thinking-high",
-        "fallbacks": [
-          "minimax-internal/minimax-m2.7"
-        ]
+        "fallbacks": []
       },
       "models": {
         "claude-api/claude-opus-4-6-thinking-high": {
