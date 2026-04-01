@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin: 0; padding: 40px; background: #fff; display: flex; justify-content: center; }
+  .mermaid { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; }
+</style>
+</head>
+<body>
+<div class="mermaid">
+graph TD
+    A["<b>PM + 技术负责人</b><br/>赵麒杰<br/>项目管理 · 架构设计<br/>进度管控 · 技术选型<br/>前端页面设计 &amp; 开发"]
+
+    A --> B["<b>CV 工程师</b><br/>武英文<br/>图像预处理<br/>图像分割<br/>OCR 识别"]
+    A --> C["<b>AI 工程师</b><br/>李传宇<br/>公式识别<br/>画图分析<br/>多模态关联"]
+    A --> D["<b>AI 工程师</b><br/>王硕<br/>RAG + LLM<br/>智能体<br/>接口开发"]
+    A --> E["<b>测试 / 文档</b><br/>代树衡<br/>测试设计<br/>竞品调研<br/>项目文档"]
+
+    style A fill:#4a90d9,stroke:#2c5f8a,color:#fff,stroke-width:2px
+    style B fill:#67b168,stroke:#3d7a3e,color:#fff
+    style C fill:#67b168,stroke:#3d7a3e,color:#fff
+    style D fill:#67b168,stroke:#3d7a3e,color:#fff
+    style E fill:#f5a623,stroke:#c17d15,color:#fff
+</div>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'base'});</script>
+</body>
+</html>
