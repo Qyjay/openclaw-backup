@@ -4,6 +4,11 @@
 > Leader: Seneschal 👑
 > 始于: 2026-03-19
 
+## 2026-04-02 12:00 — 每日自动备份
+- ✅ 全量备份完成并推送到 GitHub（openclaw-backup）
+- 备份内容：workspace、ClawHub skills、配置（已脱敏）、定时任务、子 Agent（coder/scribe/riji）
+- 执行方式：cron 定时任务自动触发
+
 ## 2026-04-01 12:00 — 每日自动备份
 
 - ✅ 全量备份完成并推送至 GitHub（openclaw-backup）

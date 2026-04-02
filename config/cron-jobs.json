@@ -8,7 +8,7 @@
       "name": "daily-backup",
       "enabled": true,
       "createdAtMs": 1773914973121,
-      "updatedAtMs": 1775016028922,
+      "updatedAtMs": 1775102438113,
       "schedule": {
         "kind": "cron",
         "expr": "0 12 * * *",
@@ -26,13 +26,13 @@
         "to": "o9cq804suUfmf3KqmbiDCfZhMcGk@im.wechat"
       },
       "state": {
-        "nextRunAtMs": 1775102400000,
-        "lastRunAtMs": 1775016000014,
+        "nextRunAtMs": 1775188800000,
+        "lastRunAtMs": 1775102400016,
         "lastRunStatus": "error",
         "lastStatus": "error",
-        "lastDurationMs": 28908,
+        "lastDurationMs": 38097,
         "lastDeliveryStatus": "unknown",
-        "consecutiveErrors": 10,
+        "consecutiveErrors": 11,
         "lastError": "AxiosError: Request failed with status code 400"
       }
     }
