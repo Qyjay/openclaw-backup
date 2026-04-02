@@ -1,24 +1,26 @@
 # SESSION-STATE.md — BB 热内存
 
 ## 当前任务
-日迹 App — 广场+分身模块数据库建设（模型 + 种子数据）
+日迹 App — TASK-F 对话自动转素材（前后端并行开发中）
 
 ## Active Sessions
-- **oceanic-reef** (pid 44652) — 种子数据脚本 seed_plaza_avatar.py + commit push（重派，vivid-cloud 未完成）
-- **BB 手动完成** — seed_plaza_avatar.py（Claude Code API 不稳，BB 直接写）
+- **tender-wharf** (pid 16473) — 后端 TASK-F：ChatSession 模型 + session 管理 + close-session 接口 + AI 摘要 + 文档更新
+- **wild-wharf** (pid 16616) — 前端 TASK-F：💬 对话卡片 + ChatDetailSheet + 设置页对话素材区 + chat API 服务层 + 文档更新
 
-## 已完成（今日）
-- 广场+分身 API 文档更新（API-DOCS.md 新增 §12 §13，16 个接口）
-- 任务书 TASK-E-PLAZA.md 创建
-- ONBOARDING.md 更新分工
-- git push 到 riji-backend
+## 已完成（今日 2026-04-02）
+- 对话自动转素材详细设计方案（前后端全覆盖）
+- 后端任务书 TASK-F-CHAT-MATERIAL.md 创建
+- 前端任务书 TASK-F-CHAT-MATERIAL.md 创建
+- 并行 spawn 两个 Claude Code 实例
 
 ## 待处理
-- 等待 vivid-cloud 完成数据库建设
-- 完成后需要验证 seed.py 运行结果
+- 等待两个 Claude Code 完成
+- 完成后验证前后端接口对齐
+- 验证测试通过
 
 ## 关键信息
 - riji-frontend: https://github.com/Qyjay/riji-frontend
 - riji-backend: https://github.com/Qyjay/riji-backend
 - 后端路径: ~/projects/riji-backend
-- 接口总数: 72 个（56 已实现 + 16 新增待实现）
+- 前端路径: ~/projects/riji-frontend
+- 接口总数: 74 个（56 已实现 + 16 广场分身待实现 + 2 新增对话 session）
