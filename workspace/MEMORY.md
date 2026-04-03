@@ -33,7 +33,22 @@
 - [2026-03-20] git remote 可能会丢失（原因不明），备份前先检查 `git remote -v`，确认 origin 存在。
 
 ## Projects
-*(待创建)*
+
+### 🔬 软件项目管理课程 — 高中物理作业智能批改系统
+- **性质:** 南开大学「软件项目管理」课程学期小组项目（主线任务）
+- **项目编号:** 第 16 题
+- **Master 角色:** PM + 技术负责人（赵麒杰）
+- **团队:** 武英文(CV) / 李传宇(AI-1) / 王硕(AI-2) / 代树衡(测试文档)，共 5 人
+- **核心:** OCR + 公式识别 + 手绘物理图分析 + RAG + InternLM-Math + 多 Agent 批改
+- **周期:** 约 14 周（学期内）
+- **文档:** `projects/physics-grading/PROJECT-CHARTER.md`
+- **创建日期:** 2026-03-25
+
+### 🎮 AIGC 比赛 — 大学生 AI 生活伙伴 App
+- **性质:** 第三届中国高校计算机大赛·AIGC创新赛（应用赛道）
+- **初赛截止:** 2026-05-11
+- **状态:** 前端 MVP 完成，后端 v2 改造完成，待联调
+- **文档:** `projects/aigc-competition/`
 
 ---
 *Curated memory — distill insights from daily logs here*
