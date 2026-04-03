@@ -1,10 +1,19 @@
 {
   "meta": {
-    "lastTouchedVersion": "2026.3.31"
+    "lastTouchedVersion": "2026.3.31",
+    "lastTouchedAt": "2026-04-01T03:53:07.356Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-02-02T08:28:08.796Z",
+    "lastRunVersion": "2026.1.30",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
   },
   "update": {
     "channel": "stable",
-    "auto": { "enabled": true }
+    "auto": {
+      "enabled": true
+    }
   },
   "auth": {
     "profiles": {
@@ -17,10 +26,13 @@
   "mcp": {
     "servers": {
       "MiniMax": {
-        "command": "uvx",
-        "args": ["minimax-coding-plan-mcp", "-y"],
+        "command": "/Users/minimax/.local/bin/uvx",
+        "args": [
+          "minimax-coding-plan-mcp",
+          "-y"
+        ],
         "env": {
-          "MINIMAX_API_KEY": "YOUR_MINIMAX_API_KEY",
+          "MINIMAX_API_KEY": "sk-cp-8Evc0_Uq4rAingir9yM6syTHq2U4_oLSfTR6HoNJ3Q9VgAd58CM05likpBsyA3rFqxhIzC2Y5OWouO1qL3_Ut92kwcUiSmdBJPWtHXzBgkmxgj2E2fgzgwc",
           "MINIMAX_API_HOST": "https://api.minimaxi.com"
         }
       }
@@ -30,24 +42,38 @@
     "enabled": true,
     "backend": "acpx",
     "defaultAgent": "claude",
-    "allowedAgents": ["claude"],
+    "allowedAgents": [
+      "claude"
+    ],
     "maxConcurrentSessions": 4,
-    "stream": { "coalesceIdleMs": 300, "maxChunkChars": 1200 },
-    "runtime": { "ttlMinutes": 120 }
+    "stream": {
+      "coalesceIdleMs": 300,
+      "maxChunkChars": 1200
+    },
+    "runtime": {
+      "ttlMinutes": 120
+    }
   },
   "models": {
     "providers": {
       "minimax-portal": {
         "baseUrl": "https://api.minimaxi.com/anthropic",
-        "apiKey": "YOUR_MINIMAX_PORTAL_API_KEY",
+        "apiKey": "minimax-oauth",
         "api": "anthropic-messages",
         "models": [
           {
             "id": "MiniMax-M2.1",
             "name": "MiniMax M2.1",
             "reasoning": false,
-            "input": ["text"],
-            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
             "contextWindow": 200000,
             "maxTokens": 8192
           },
@@ -55,27 +81,41 @@
             "id": "MiniMax-M2.1-lightning",
             "name": "MiniMax M2.1 Lightning",
             "reasoning": false,
-            "input": ["text"],
-            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
             "contextWindow": 200000,
             "maxTokens": 8192
           }
         ]
       },
       "claude-api": {
-        "baseUrl": "YOUR_CLAUDE_API_BASE_URL",
-        "apiKey": "YOUR_CLAUDE_API_KEY",
+        "baseUrl": "https://platform-api.xaminim.com",
+        "apiKey": "<YOUR_API_KEY_HERE>",
         "api": "anthropic-messages",
         "headers": {
-          "X-Sub-Module": "YOUR_X_SUB_MODULE"
+          "X-Sub-Module": "claude-code-internal"
         },
         "models": [
           {
             "id": "claude-opus-4-6-thinking-high",
             "name": "Claude Opus 4 (Thinking High)",
             "reasoning": true,
-            "input": ["text"],
-            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
             "contextWindow": 200000,
             "maxTokens": 32000
           },
@@ -83,8 +123,15 @@
             "id": "claude-sonnet-4-6",
             "name": "Claude Sonnet 4.6",
             "reasoning": false,
-            "input": ["text"],
-            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
             "contextWindow": 200000,
             "maxTokens": 8192
           },
@@ -92,8 +139,15 @@
             "id": "claude-haiku-4-5-20251001",
             "name": "Claude Haiku 4.5",
             "reasoning": false,
-            "input": ["text"],
-            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
             "contextWindow": 200000,
             "maxTokens": 8192
           },
@@ -110,19 +164,26 @@
         ]
       },
       "minimax-internal": {
-        "baseUrl": "YOUR_MINIMAX_INTERNAL_BASE_URL",
-        "apiKey": "YOUR_MINIMAX_INTERNAL_API_KEY",
+        "baseUrl": "https://talkie-ali-virginia-prod-internal.xaminim.com/llm/debug/claude",
+        "apiKey": "<YOUR_API_KEY_HERE>",
         "api": "anthropic-messages",
         "headers": {
-          "X-Biz-Id": "YOUR_X_BIZ_ID"
+          "X-Biz-Id": "claude-code"
         },
         "models": [
           {
             "id": "minimax-m2.7",
             "name": "MiniMax M2.7",
             "reasoning": false,
-            "input": ["text"],
-            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
             "contextWindow": 1000000,
             "maxTokens": 8192
           }
@@ -130,7 +191,7 @@
       },
       "minimax-tokenplan": {
         "baseUrl": "https://api.minimaxi.com/anthropic",
-        "apiKey": "YOUR_MINIMAX_TOKENPLAN_API_KEY",
+        "apiKey": "<YOUR_API_KEY_HERE>",
         "api": "anthropic-messages",
         "models": [
           {
@@ -138,8 +199,15 @@
             "name": "MiniMax M2.7 (Token Plan)",
             "api": "anthropic-messages",
             "reasoning": false,
-            "input": ["text"],
-            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
             "contextWindow": 1000000,
             "maxTokens": 8192
           },
@@ -148,8 +216,15 @@
             "name": "MiniMax M2.7 Highspeed (Token Plan)",
             "api": "anthropic-messages",
             "reasoning": false,
-            "input": ["text"],
-            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
             "contextWindow": 1000000,
             "maxTokens": 8192
           }
@@ -164,17 +239,35 @@
         "fallbacks": []
       },
       "models": {
-        "claude-api/claude-opus-4-6-thinking-high": { "alias": "opus" },
-        "claude-api/claude-sonnet-4-6": { "alias": "sonnet" },
-        "claude-api/claude-haiku-4-5-20251001": { "alias": "haiku" },
-        "minimax-internal/minimax-m2.7": { "alias": "minimax" },
-        "minimax-portal/MiniMax-M2.1": { "alias": "minimax-m2.1" },
-        "minimax-portal/MiniMax-M2.1-lightning": { "alias": "minimax-m2.1-lightning" },
-        "minimax-tokenplan/MiniMax-M2.7": { "alias": "m2.7-tp" },
-        "minimax-tokenplan/MiniMax-M2.7-highspeed": { "alias": "m2.7-hs" }
+        "claude-api/claude-opus-4-6-thinking-high": {
+          "alias": "opus"
+        },
+        "claude-api/claude-sonnet-4-6": {
+          "alias": "sonnet"
+        },
+        "claude-api/claude-haiku-4-5-20251001": {
+          "alias": "haiku"
+        },
+        "minimax-internal/minimax-m2.7": {
+          "alias": "minimax"
+        },
+        "minimax-portal/MiniMax-M2.1": {
+          "alias": "minimax-m2.1"
+        },
+        "minimax-portal/MiniMax-M2.1-lightning": {
+          "alias": "minimax-m2.1-lightning"
+        },
+        "minimax-tokenplan/MiniMax-M2.7": {
+          "alias": "m2.7-tp"
+        },
+        "minimax-tokenplan/MiniMax-M2.7-highspeed": {
+          "alias": "m2.7-hs"
+        }
       },
-      "workspace": "~/.openclaw/workspace",
-      "compaction": { "mode": "safeguard" },
+      "workspace": "/Users/minimax/.openclaw/workspace",
+      "compaction": {
+        "mode": "safeguard"
+      },
       "maxConcurrent": 4,
       "subagents": {
         "maxConcurrent": 8,
@@ -198,7 +291,15 @@
         "name": "Babette Lucy",
         "workspace": "~/.openclaw/workspace-coder",
         "agentDir": "~/.openclaw/agents/coder/agent",
-        "skills": ["agentic-coding", "code-review", "piv", "mini-piv", "prd", "github", "coding-agent"],
+        "skills": [
+          "agentic-coding",
+          "code-review",
+          "piv",
+          "mini-piv",
+          "prd",
+          "github",
+          "coding-agent"
+        ],
         "identity": {
           "name": "Babette Lucy",
           "emoji": "🔮",
@@ -210,8 +311,14 @@
         "name": "Muse",
         "workspace": "~/.openclaw/workspace-scribe",
         "agentDir": "~/.openclaw/agents/scribe/agent",
-        "model": { "primary": "claude-api/claude-sonnet-4-6" },
-        "skills": ["ai-prompt-optimizer-cn", "multi-search-engine", "google-trends"],
+        "model": {
+          "primary": "claude-api/claude-sonnet-4-6"
+        },
+        "skills": [
+          "ai-prompt-optimizer-cn",
+          "multi-search-engine",
+          "google-trends"
+        ],
         "identity": {
           "name": "Muse",
           "emoji": "✍️"
@@ -224,15 +331,31 @@
         "agentDir": "~/.openclaw/agents/riji/agent",
         "model": {
           "primary": "minimax-tokenplan/MiniMax-M2.7-highspeed",
-          "fallbacks": ["minimax-internal/minimax-m2.7"]
+          "fallbacks": [
+            "minimax-internal/minimax-m2.7"
+          ]
         },
         "identity": {
           "name": "日迹",
           "emoji": "📔"
         },
         "tools": {
-          "allow": ["memory_search", "memory_get", "web_search"],
-          "deny": ["exec", "write", "edit", "browser", "canvas", "nodes", "cron", "gateway", "sessions_spawn"]
+          "allow": [
+            "memory_search",
+            "memory_get",
+            "web_search"
+          ],
+          "deny": [
+            "exec",
+            "write",
+            "edit",
+            "browser",
+            "canvas",
+            "nodes",
+            "cron",
+            "gateway",
+            "sessions_spawn"
+          ]
         }
       }
     ]
@@ -240,10 +363,14 @@
   "bindings": [
     {
       "agentId": "coder",
-      "match": { "channel": "feishu" }
+      "match": {
+        "channel": "feishu"
+      }
     }
   ],
-  "messages": { "ackReactionScope": "group-mentions" },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
   "commands": {
     "native": "auto",
     "nativeSkills": "auto",
@@ -256,8 +383,8 @@
       "dmPolicy": "pairing",
       "accounts": {
         "default": {
-          "appId": "YOUR_FEISHU_APP_ID",
-          "appSecret": "YOUR_FEISHU_APP_SECRET"
+          "appId": "cli_a9f63f867cb9dcca",
+          "appSecret": "Kn8zGSoJv8TcQfmqemWaPgd3qEHvi8sC"
         }
       }
     }
@@ -268,25 +395,43 @@
     "bind": "loopback",
     "auth": {
       "mode": "token",
-      "token": "YOUR_GATEWAY_TOKEN"
+      "token": "<YOUR_GATEWAY_TOKEN_HERE>"
     },
-    "tailscale": { "mode": "off", "resetOnExit": false },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
     "http": {
       "endpoints": {
-        "chatCompletions": { "enabled": true }
+        "chatCompletions": {
+          "enabled": true
+        }
       }
     }
   },
   "plugins": {
-    "allow": ["feishu", "minimax", "acpx"],
+    "allow": [
+      "feishu",
+      "minimax",
+      "acpx"
+    ],
     "entries": {
-      "feishu": { "enabled": true },
-      "minimax": { "enabled": true },
-      "acpx": { "enabled": true }
+      "feishu": {
+        "enabled": true
+      },
+      "minimax": {
+        "enabled": true
+      },
+      "acpx": {
+        "enabled": true
+      }
     },
     "installs": {}
   },
   "tools": {
-    "exec": { "ask": "off", "security": "full" }
+    "exec": {
+      "ask": "off",
+      "security": "full"
+    }
   }
 }
